@@ -455,6 +455,13 @@ form textarea {
   form select {
     padding: calc(var(--margin) * 0.6);
   }
+  #login label[for="username"] {
+    display: block;
+  }
+  #login input[name="username"] {
+    margin-right: calc(var(--margin) * 0.5);
+    width: calc(100% - 13.2ch);
+  }
 }
 
 /* 480px */
