@@ -15,6 +15,7 @@ const matrixClient = matrixcs.createClient({
 });
 
 const Account = () => {
+  // eslint-disable-next-line
   const [auth, setAuth] = useContext(AuthContext);
   const joinedRooms = useJoinedRooms();
   const profile = useProfile();
@@ -25,6 +26,7 @@ const Account = () => {
   const getAccData = async () => {
     try {
       const email = await matrixClient.getThreePids();
+      // eslint-disable-next-line
       email.threepids.map((item, index) => {
         setMail(email.threepids[index].address);
       })
@@ -40,6 +42,7 @@ const Account = () => {
     localStorage.removeItem('mx_user_id');
     localStorage.removeItem('mx_access_token');
     localStorage.removeItem('cr_auth');
+    history.push('/')
     return window.location.reload(false);
   }
 
@@ -70,6 +73,7 @@ const Account = () => {
 
   useEffect(() => {
     getAccData();
+    // eslint-disable-next-line
   }, [profile]);
 
   return (

@@ -11,6 +11,7 @@ const Header = () => {
 
   useEffect(() => {
     setAuth(localStorage.getItem('cr_auth'))
+    // eslint-disable-next-line
   }, [])
 
   return (
@@ -29,7 +30,7 @@ const Header = () => {
           null
         )
       }
-      {auth ? <a activeclassname="active" href="https://medienhaus.udk-berlin.de/classroom" target="_blank">/classroom&nbsp;-&gt;</a> : <Link activeclassname="active" to="/login">login</Link>}
+      {auth ? <a activeclassname="active" href="https://medienhaus.udk-berlin.de/classroom" target="_blank" rel="noopener noreferrer">/classroom&nbsp;-&gt;</a> : <Link activeclassname="active" to="/login">login</Link>}
     </header>
   )
 };
