@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "faculty": "gru",
+    "displayName": "Grunewaldstraße"
+  },
+  {
+    "id": 2,
+    "faculty": "udk",
+    "displayName": "Universität der Künste Berlin"
+  },
+  {
+    "id": 3,
+    "faculty": "kum",
+    "displayName": "Kunst und Medien"
+  },
+  {
+    "id": 4,
+    "faculty": "gwk",
+    "displayName": "Gesellschafts- und Wirtschafskommunikation"
+  },
+  {
+    "id": 5,
+    "faculty": "vk",
+    "displayName": "Visuelle Kommunikation"
+  }
+]
