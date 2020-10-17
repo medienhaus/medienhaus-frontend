@@ -468,6 +468,9 @@ form textarea {
   form input {
     min-width: 10ch;
   }
+  #login div:first-of-type {
+    grid-template-columns: 8ch auto max-content;
+  }
 }
 
 /* 799px */
