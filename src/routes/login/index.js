@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { AuthContext } from '../../components/context/AuthStatus'
 import { useForm } from "react-hook-form";
 import { Redirect, useHistory } from 'react-router-dom'
 import * as matrixcs from "matrix-js-sdk";
@@ -16,15 +15,11 @@ const Login = () => {
     const { register, handleSubmit, errors } = useForm();
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-    const [loggedIn, setLoggedIn] = useState(false);
     const history = useHistory();
     const auth = localStorage.getItem('cr_auth');
 
     const onSubmit = async () => {
         const data = { "type": "m.login.password", "user": name, "password": password }
-        console.log(name);
-        console.log(password);
-
         try {
             const sendMessage = await matrixClient.login("m.login.password", data);
             const res = await sendMessage;
