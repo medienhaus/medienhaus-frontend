@@ -46,7 +46,7 @@ body {
   animation: init 0.03s ease-in 0.5s 1 forwards;
 }
 
-body > #app > * + *:not(footer),
+body > #app > *:not(section) + *:not(footer),
 body > #app > *:not(header):not(footer) > * + * {
   margin-top: calc(var(--margin) * 2);
 }
