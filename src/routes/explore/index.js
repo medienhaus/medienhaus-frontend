@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Loading } from "../../components/loading/loading";
 import { useHistory } from 'react-router-dom'
 import roomStructure from "../../data/exploreList.json"

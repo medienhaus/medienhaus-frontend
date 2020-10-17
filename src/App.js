@@ -6,6 +6,7 @@ import Footer from "./components/footer";
 
 // Code-splitting is automated for `routes` directory
 import Landing from "./routes/landing"
+import Dashboard from "./routes/dashboard"
 import Account from "./routes/account";
 import Explore from "./routes/explore";
 import Support from "./routes/support";
@@ -19,6 +20,7 @@ const App = () => (
         <Header />
         <Switch>
           <Route path="/" exact component={Landing} />
+          <Route path="/dashboard" component={Dashboard} />
           <Route path="/account" component={Account} />
           <Route path="/explore" component={Explore} />
           <Route path="/support" component={Support} />
