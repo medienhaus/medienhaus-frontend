@@ -17,7 +17,7 @@ const useJoinedRooms = () => {
   const getAnswer = async () => {
 
     const answer = await matrixClient.getJoinedRooms();
-    if (answer.joinedRooms > 0) {
+    if (answer.joined_rooms.length > 0) {
       const getNames = await Promise.all(answer.joined_rooms.map(async (roomId) => {
         try {
           const room = await matrixClient.getStateEvent(roomId, "m.room.name");
