@@ -40,6 +40,7 @@ const useJoinedRooms = () => {
 
   useEffect(() => {
     getAnswer();
+    // eslint-disable-next-line
   }, []);
 
   return answer;
