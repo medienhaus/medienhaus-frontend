@@ -53,7 +53,11 @@ const Login = () => {
           </div>
           <button name="submit" type="submit">LOGIN</button>
         </form>
-
+        <ul>
+          <li><a href="https://www.oase.udk-berlin.de/udk-oase-nutzeraccount/" rel="external noopener noreferrer">Which account do I need?</a></li>
+          <li><a href="https://www.oase.udk-berlin.de/passwort" rel="external noopener noreferrer">I forgot my username/password!</a></li>
+          <li><a href="mailto:info@medienhaus.udk-berlin.de?subject=medienhaus/help" rel="external noopener noreferrer">I cannot log in!</a></li>
+        </ul>
       </section>) : (
         <Redirect to='/' />
       )
