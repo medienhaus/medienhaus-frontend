@@ -1,5 +1,4 @@
-import React, { useState, useContext, useCallback } from 'react';
-import { AuthContext } from '../../components/context/AuthStatus'
+import React, { useState } from 'react';
 import * as matrixcs from "matrix-js-sdk";
 import { useForm } from 'react-hook-form';
 const myUserId = "@request_:medienhaus.udk-berlin.de";
@@ -11,7 +10,6 @@ const matrixClient = matrixcs.createClient({
 });
 
 export default function App() {
-  const [auth, setAuth] = useContext(AuthContext);
   const { register, handleSubmit, errors } = useForm();
   const [sending, setSending] = useState(false);
   const [department, setDepartment] = useState("");
