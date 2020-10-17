@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { AuthContext } from '../../components/context/AuthStatus'
 import { Loading } from "../../components/loading/loading";
+import { useHistory } from 'react-router-dom'
 import roomStructure from "../../data/exploreList.json"
 import PublicRooms from "../../components/matrix_public_rooms"
 import * as matrixcs from "matrix-js-sdk";
@@ -15,15 +15,14 @@ const matrixClient = matrixcs.createClient({
 });
 
 const Explore = () => {
-  const [auth, setAuth] = useContext(AuthContext);
   const [joinedRooms, setJoinedRooms] = useState([]);
   const [joinId, setJoinId] = useState("");
   const [leaveId, setLeaveId] = useState("");
   const [update, setUpdate] = useState(false);
   const [loading, setLoading] = useState(true);
   const publicRooms = PublicRooms();
+  const history = useHistory();
 
-  setAuth(localStorage.getItem('cr_auth'))
   //first let's fetch all rooms our user is part of
   const getJoinedRooms = async () => {
     const answer = await matrixClient.getJoinedRooms();
@@ -101,9 +100,11 @@ const Explore = () => {
   }
 
   return (
-    <section className="explore">
-      {publicRooms.length === 0 ? <Loading /> : <RoomStructure />}
-    </section>
+    localStorage.getItem('cr_auth') ? (
+      <section className="explore">
+        {publicRooms.length === 0 ? <Loading /> : <RoomStructure />}
+      </section>) : (
+        history.push('login'))
 
   );
 }

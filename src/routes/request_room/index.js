@@ -20,8 +20,6 @@ export default function App() {
   const [room, setRoom] = useState("");
   const [name, setName] = useState("");
 
-  setAuth(localStorage.getItem('cr_auth'))
-
   const changeMsg = e => setMsg(e.target.value);
   const changeMail = e => setMail(e.target.value);
   const changeDepartment = e => setDepartment(e.target.value);
@@ -50,7 +48,7 @@ export default function App() {
   }
 
   return (
-    auth ? (
+    localStorage.getItem('cr_auth') !== null ? (
       <section className="request">
         <p>Please fill out the form below to request an <strong>openly accessible</strong> and <strong>public</strong> room … <em>you don’t have to request private rooms, you can create them.</em></p>
         <form onSubmit={handleSubmit(onSubmit)}>
