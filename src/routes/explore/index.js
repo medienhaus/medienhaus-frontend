@@ -101,9 +101,11 @@ const Explore = () => {
 
   return (
     localStorage.getItem('cr_auth') ? (
+
       <section className="explore">
         {publicRooms.length === 0 ? <Loading /> : <RoomStructure />}
-      </section>) : (
+      </section>
+    ) : (
         history.push('login'))
 
   );

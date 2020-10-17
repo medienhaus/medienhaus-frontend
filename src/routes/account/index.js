@@ -30,12 +30,14 @@ const Account = () => {
       email.threepids.map((item, index) => {
         setMail(email.threepids[index].address);
       })
+      console.log(joinedRooms);
     } catch (e) {
       if (e.data.error === "Invalid macaroon passed.") {
         history.push('/login')
       }
       console.log(e.data.error);
     }
+
   }
   const logout = async () => {
     await matrixClient.logout();
@@ -78,6 +80,7 @@ const Account = () => {
 
   return (
     <>
+
       {joinedRooms.length === 0 ? (<Loading />) : (
         <section className="account">
           <ProfilePic />
