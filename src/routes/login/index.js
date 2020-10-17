@@ -27,7 +27,6 @@ const Login = () => {
       localStorage.setItem('mx_access_token', res.access_token);
       localStorage.setItem('cr_auth', true)
       history.push('/dashboard')
-      return window.location.reload(false);
     }
     catch (e) {
       alert(e.data.error)
