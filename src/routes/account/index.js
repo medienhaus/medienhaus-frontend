@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../../components/context/AuthStatus'
 import useJoinedRooms from "../../components/matrix_joined_rooms";
 import useProfile from "../../components/matrix_profile";
@@ -20,6 +20,7 @@ const Account = () => {
   const profile = useProfile();
   const [mail, setMail] = useState("");
   const pageload = useRef(1);
+  const history = useHistory();
 
   const getAccData = async () => {
     try {
@@ -28,8 +29,18 @@ const Account = () => {
         setMail(email.threepids[index].address);
       })
     } catch (e) {
+      if (e.data.error === "Invalid macaroon passed.") {
+        history.push('/login')
+      }
       console.log(e.data.error);
     }
+  }
+  const logout = async () => {
+    await matrixClient.logout();
+    localStorage.removeItem('mx_user_id');
+    localStorage.removeItem('mx_access_token');
+    localStorage.removeItem('cr_auth');
+    return window.location.reload(false);
   }
 
   const ProfilePic = () => {
@@ -51,6 +62,12 @@ const Account = () => {
     )
   }
 
+  const LogoutBtn = () => {
+    return (
+      auth ? <button onClick={() => logout()} name="logout">LOGOUT</button> : null
+    )
+  }
+
   useEffect(() => {
     getAccData();
   }, [profile]);
@@ -66,6 +83,7 @@ const Account = () => {
               joinedRoom !== "" && <li key={joinedRoom}>{joinedRoom}</li>
             ))}
           </ul>
+          <LogoutBtn />
         </section>
       )
       }

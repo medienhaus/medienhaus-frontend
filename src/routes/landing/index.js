@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from '../../components/context/AuthStatus'
 import { Redirect } from 'react-router-dom'
 import Profile from "../../components/matrix_profile";
@@ -8,12 +8,6 @@ const Landing = () => {
   //const [auth, setAuth] = useContext(AuthProvider);
   const [auth, setAuth] = useContext(AuthContext);
   const profile = Profile();
-  setAuth(localStorage.getItem('cr_auth'))
-  console.log(localStorage.getItem('cr_auth'));
-
-  useEffect(() => {
-
-  }, [auth]);
 
   return (
     localStorage.getItem('cr_auth') === null ? <Redirect to='/login' /> : (
