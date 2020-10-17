@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom'
 import Profile from "../../components/matrix_profile";
 import { Loading } from "../../components/loading/loading";
@@ -6,9 +6,13 @@ import { Loading } from "../../components/loading/loading";
 const Dashboard = () => {
   //const [auth, setAuth] = useContext(AuthProvider);
   const profile = Profile();
+  const auth = localStorage.getItem('cr_auth');
+  useEffect(() => {
+
+  }, [profile])
 
   return (
-    localStorage.getItem('cr_auth') === null ? <Redirect to='/' /> : (
+    auth === null ? <Redirect to='/' /> : (
       profile.length === 0 ? (<Loading />) : (
         <section className="landing">
           <h2>Hello <strong>{profile.displayname}</strong>, you are now logged in.</h2>
