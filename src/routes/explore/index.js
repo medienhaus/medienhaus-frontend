@@ -25,21 +25,26 @@ const Explore = () => {
 
   //first let's fetch all rooms our user is part of
   const getJoinedRooms = async () => {
-    const answer = await matrixClient.getJoinedRooms();
-    const getNames = await Promise.all(answer.joined_rooms.map(async (roomId) => {
-      try {
-        const room = await matrixClient.getStateEvent(roomId, "m.room.name");
-        if (room.name !== "") {
-          return room.name;
-        } else {
-          return "[[ Untitled Chat ]]";
+    try {
+      const answer = await matrixClient.getJoinedRooms();
+      const getNames = await Promise.all(answer.joined_rooms.map(async (roomId) => {
+        try {
+          const room = await matrixClient.getStateEvent(roomId, "m.room.name");
+          if (room.name !== "") {
+            return room.name;
+          } else {
+            return "[[ Untitled Chat ]]";
+          }
+        } catch (error) {
+          return "[[ Private Chat ]]";
         }
-      } catch (error) {
-        return "[[ Private Chat ]]";
-      }
-    }));
-    setJoinedRooms(getNames);
+      }));
+      setJoinedRooms(getNames);
+    } catch (e) {
+      console.log(e.data.error);
+    }
     setLoading(false);
+
   }
 
   useEffect(() => {
@@ -67,6 +72,13 @@ const Explore = () => {
       );
     setJoinId("");
   }, [joinId])
+
+  const NotLogged = () => {
+    history.push('/login');
+    return (<p>
+      you are being redirected to the login page
+    </p>)
+  }
 
   const RoomStructure = () => {
     return (
@@ -100,12 +112,12 @@ const Explore = () => {
 
   return (
     localStorage.getItem('cr_auth') ? (
-
       <section className="explore">
         {publicRooms.length === 0 ? <Loading /> : <RoomStructure />}
       </section>
     ) : (
-        history.push('login'))
+        <NotLogged />
+      )
 
   );
 }
