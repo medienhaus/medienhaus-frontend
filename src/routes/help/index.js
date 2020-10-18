@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown'
 
 // Using https://github.com/remarkjs/react-markdown for markdown
+
 const Faq = () => {
   const faqPath = require('../../data/faq.md');
   const [markdown, setMarkdown] = useState();
@@ -16,7 +17,9 @@ const Faq = () => {
   })
 
   return (
-    <ReactMarkdown source={markdown} />
+    <section>
+      <ReactMarkdown source={markdown} />
+    </section>
   )
 }
 
