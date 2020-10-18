@@ -9,13 +9,13 @@
     "id": 1,
     "faculty": "h33",
     "type": "location",
-    "displayName": "Hardenbergstraße33"
+    "displayName": "Hardenbergstraße 33"
   },
   {
     "id": 2,
     "faculty": "gru",
     "type": "location",
-    "displayName": "Grunewaldstraße 2-5"
+    "displayName": "Grunewaldstraße 2–5"
   },
   {
     "id": 3,
@@ -27,13 +27,13 @@
     "id": 4,
     "faculty": "17j",
     "type": "location",
-    "displayName": "Grunewaldstraße"
+    "displayName": "strasse 17.juni"
   },
   {
     "id": 5,
     "faculty": "fas",
     "type": "location",
-    "displayName": "Fasanenstraße 1B"
+    "displayName": "Fasanenstraße 1b"
   },
   {
     "id": 6,
@@ -63,7 +63,7 @@
     "id": 10,
     "faculty": "gwk",
     "type": "subject",
-    "displayName": "Gesellschafts- und Wirtschafskommunikation"
+    "displayName": "Gesellschafts- und Wirtschaftskommunikation"
   },
   {
     "id": 11,
@@ -81,7 +81,7 @@
     "id": 13,
     "faculty": "bk",
     "type": "subject",
-    "displayName": "Bildene Kunst"
+    "displayName": "Bildende Kunst"
   },
   {
     "id": 14,
@@ -93,7 +93,7 @@
     "id": 15,
     "faculty": "lbk",
     "type": "subject",
-    "displayName": "Lehramt Bildene Kunst"
+    "displayName": "Lehramt Bildende Kunst"
   },
   {
     "id": 16,
