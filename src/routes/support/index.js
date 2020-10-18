@@ -47,9 +47,6 @@ const Support = () => {
       setSending(false);
     }
   }
-
-  console.log(errors);
-
   return (
     localStorage.getItem('mx_user_id') !== null ? (
       <section className="support">
