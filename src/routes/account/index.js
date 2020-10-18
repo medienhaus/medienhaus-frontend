@@ -20,7 +20,7 @@ const Account = () => {
   const profile = useProfile();
   const [mail, setMail] = useState("");
   const history = useHistory();
-  const auth = localStorage.getItem('cr_auth');
+  const auth = localStorage.getItem('mx_access_token');
   const getAccData = async () => {
     try {
       const email = await matrixClient.getThreePids();
