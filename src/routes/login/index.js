@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Redirect, useHistory } from 'react-router-dom'
+import { Redirect, useHistory, useLocation } from 'react-router-dom'
+import { LocationContext } from '../../components/context/LocationContext'
 import * as matrixcs from "matrix-js-sdk";
 
 const myUserId = localStorage.getItem("mx_user_id");
@@ -17,16 +18,24 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const history = useHistory();
   const auth = localStorage.getItem('cr_auth');
+  const [loc, setLoc] = useContext(LocationContext);
+  const location = useLocation();
+
+  useEffect(() => {
+    setLoc(location.pathname);
+  })
 
   const onSubmit = async () => {
     const data = { "type": "m.login.password", "user": name, "password": password }
+
     try {
       const sendMessage = await matrixClient.login("m.login.password", data);
       const res = await sendMessage;
       localStorage.setItem('mx_user_id', res.user_id);
       localStorage.setItem('mx_access_token', res.access_token);
-      localStorage.setItem('cr_auth', true)
+      localStorage.setItem('cr_auth', true);
       history.push('/dashboard')
+      return (window.location.reload(false))
     }
     catch (e) {
       alert(e.data.error)

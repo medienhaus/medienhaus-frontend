@@ -17,6 +17,7 @@ const useProfile = () => {
       const answer = await matrixClient.getProfileInfo(myUserId);
       setAnswer(answer);
     } catch (e) {
+
     }
   }
 

@@ -30,7 +30,6 @@ const Account = () => {
       email.threepids.map((item, index) => {
         setMail(email.threepids[index].address);
       })
-      console.log(joinedRooms);
     } catch (e) {
       if (e.data.error === "Invalid macaroon passed.") {
         history.push('/login')

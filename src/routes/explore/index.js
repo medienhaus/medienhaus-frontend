@@ -71,11 +71,10 @@ const Explore = () => {
   const RoomStructure = () => {
     return (
       roomStructure.map(data => (
-        <RoomList faculty={data.faculty} displayName={data.displayName} />
+        <RoomList faculty={data.faculty} displayName={data.displayName} key={data.id} />
       ))
     )
   }
-
 
   //component
   const RoomList = ({ faculty, displayName }) => {
