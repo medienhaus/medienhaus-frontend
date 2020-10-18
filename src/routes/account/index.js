@@ -47,7 +47,7 @@ const Account = () => {
   }
 
   const ProfilePic = () => {
-    const src = matrixClient.mxcUrlToHttp(profile.avatar_url, 100, 100, "crop", false);
+    const src = matrixClient.mxcUrlToHttp(profile.avatar_url, 100, 100, "crop", true);
     return (<div className="pofile">
       { profile.avatar_url ? <img className="avatar" src={src} alt="avatar" /> : null}
       < div >
