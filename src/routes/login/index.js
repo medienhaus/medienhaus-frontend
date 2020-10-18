@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Redirect, useHistory, useLocation } from 'react-router-dom'
 import { LocationContext } from '../../components/context/LocationContext'
+import { UserContext } from '../../components/context/UserContext'
 import * as matrixcs from "matrix-js-sdk";
 
 const myUserId = localStorage.getItem("mx_user_id");
@@ -19,10 +20,12 @@ const Login = () => {
   const history = useHistory();
   const auth = localStorage.getItem('cr_auth');
   const [loc, setLoc] = useContext(LocationContext);
+  const { user, setUser } = useContext(UserContext);
   const location = useLocation();
 
   useEffect(() => {
     setLoc(location.pathname);
+    console.log(user)
   }, [loc])
 
   const onSubmit = async () => {
@@ -31,14 +34,14 @@ const Login = () => {
     try {
       const sendMessage = await matrixClient.login("m.login.password", data);
       const res = await sendMessage;
-      console.log(res);
       localStorage.setItem('mx_user_id', res.user_id);
       localStorage.setItem('mx_access_token', res.access_token);
       localStorage.setItem('mx_home_server', res.home_server);
       localStorage.setItem('mx_device_id', res.device_id);
       localStorage.setItem('cr_auth', true);
       history.push('/dashboard')
-      return (window.location.reload(false))
+      return setUser(res.user_id);
+      //return (window.location.reload(false))
     }
     catch (e) {
       alert(e.data.error)
@@ -51,7 +54,7 @@ const Login = () => {
 
   return (
     auth === null ? (
-      <section id="login">
+      < section id="login" >
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label htmlFor="username">username:</label>
@@ -69,7 +72,7 @@ const Login = () => {
           <li><a href="https://www.oase.udk-berlin.de/passwort" rel="external noopener noreferrer">I forgot my username/password!</a></li>
           <li><a href="mailto:info@medienhaus.udk-berlin.de?subject=medienhaus/help" rel="external noopener noreferrer">I cannot log in!</a></li>
         </ul>
-      </section>) : (
+      </section >) : (
         <Redirect to='/' />
       )
   );
