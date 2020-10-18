@@ -40,7 +40,7 @@ const useJoinedRooms = () => {
         );
         setAnswer(getNames);
       } else {
-        setAnswer(["Wow such empty"])
+        setAnswer(["You are currently not part of any rooms"])
       }
     } catch (e) {
       console.log(e.data.error);
