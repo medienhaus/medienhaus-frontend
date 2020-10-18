@@ -15,31 +15,34 @@ const useJoinedRooms = () => {
   const history = useHistory();
 
   const getAnswer = async () => {
-
-    const answer = await matrixClient.getJoinedRooms();
-    if (answer.joined_rooms.length > 0) {
-      const getNames = await Promise.all(answer.joined_rooms.map(async (roomId) => {
-        try {
-          const room = await matrixClient.getStateEvent(roomId, "m.room.name");
-          if (room.name !== "") {
-            return room.name;
-          } else {
+    try {
+      const answer = await matrixClient.getJoinedRooms();
+      if (answer.joined_rooms.length > 0) {
+        const getNames = await Promise.all(answer.joined_rooms.map(async (roomId) => {
+          try {
+            const room = await matrixClient.getStateEvent(roomId, "m.room.name");
+            if (room.name !== "") {
+              return room.name;
+            } else {
+              return ""
+            }
+          } catch (error) {
+            if (error.data.error === "Unrecognised access token") {
+              return history.push('/login')
+            } else if (error.data.error === "Invalid macaroon passed.") {
+              return history.push('/login')
+            }
             return ""
           }
-        } catch (error) {
-          if (error.data.error === "Unrecognised access token") {
-            return history.push('/login')
-          } else if (error.data.error === "Invalid macaroon passed.") {
-            return history.push('/login')
-          }
-          return ""
         }
+        )
+        );
+        setAnswer(getNames);
+      } else {
+        setAnswer(["Wow such empty"])
       }
-      )
-      );
-      setAnswer(getNames);
-    } else {
-      setAnswer(["Wow such empty"])
+    } catch (e) {
+      console.log(e.data.error);
     }
   }
 

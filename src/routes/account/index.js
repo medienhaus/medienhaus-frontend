@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../../components/context/AuthStatus'
 import useJoinedRooms from "../../components/matrix_joined_rooms";
@@ -20,7 +20,6 @@ const Account = () => {
   const joinedRooms = useJoinedRooms();
   const profile = useProfile();
   const [mail, setMail] = useState("");
-  const pageload = useRef(1);
   const history = useHistory();
 
   const getAccData = async () => {
@@ -60,7 +59,6 @@ const Account = () => {
   }
 
   const Email = () => {
-    pageload.current = pageload.current + 1;
     return (
       mail ? <p>{mail}</p> : <p>please add an email address to your profile</p>
     )
