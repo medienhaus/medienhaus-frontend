@@ -10,7 +10,8 @@ const myAccessToken = localStorage.getItem("mx_access_token");
 const matrixClient = matrixcs.createClient({
   baseUrl: "https://medienhaus.udk-berlin.de",
   accessToken: myAccessToken,
-  userId: myUserId
+  userId: myUserId,
+  useAuthorizationHeader: true
 });
 
 const Account = () => {
@@ -20,7 +21,6 @@ const Account = () => {
   const [mail, setMail] = useState("");
   const history = useHistory();
   const auth = localStorage.getItem('cr_auth');
-
   const getAccData = async () => {
     try {
       const email = await matrixClient.getThreePids();
