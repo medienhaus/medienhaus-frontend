@@ -124,5 +124,17 @@
     "faculty": "ton",
     "type": "subject",
     "displayName": "Tonmeister*in"
+  },
+  {
+    "id": 21,
+    "faculty": "asta",
+    "type": "other",
+    "displayName": "AStA"
+  },
+  {
+    "id": 22,
+    "faculty": "org",
+    "type": "other",
+    "displayName": "Organisation"
   }
 ]
