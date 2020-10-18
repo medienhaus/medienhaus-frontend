@@ -13,10 +13,10 @@ import Request from "./routes/request_room";
 import Landing from './routes/landing';
 import Dashboard from './routes/dashboard';
 import Faq from './routes/help';
-import { AuthProvider } from './components/context/AuthStatus';
+import { UserProvider } from './components/context/UserContext';
 const App = () => (
   <React.Fragment>
-    <AuthProvider>
+    <UserProvider>
       <LocationProvider>
         <Router>
           <Header />
@@ -34,7 +34,7 @@ const App = () => (
           <Footer />
         </Router>
       </LocationProvider>
-    </AuthProvider>
+    </UserProvider>
   </React.Fragment>
 )
 

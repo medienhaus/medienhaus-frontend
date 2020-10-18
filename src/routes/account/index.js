@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom'
-import { AuthContext } from '../../components/context/AuthStatus'
 import useJoinedRooms from "../../components/matrix_joined_rooms";
 import useProfile from "../../components/matrix_profile";
 import { Loading } from "../../components/loading/loading"
@@ -16,11 +15,11 @@ const matrixClient = matrixcs.createClient({
 
 const Account = () => {
   // eslint-disable-next-line
-  const [auth, setAuth] = useContext(AuthContext);
   const joinedRooms = useJoinedRooms();
   const profile = useProfile();
   const [mail, setMail] = useState("");
   const history = useHistory();
+  const auth = localStorage.getItem('cr_auth');
 
   const getAccData = async () => {
     try {

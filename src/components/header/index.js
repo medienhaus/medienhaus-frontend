@@ -1,16 +1,17 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import { AuthContext } from '../../components/context/AuthStatus'
+import { UserContext } from '../context/UserContext'
 /*
 import style from './style.css';
 */
 const Header = () => {
-  const [auth, setAuth] = useContext(AuthContext);
+  const { user, setUser } = useContext(UserContext);
+  const [auth, setAuth] = useState(null);
 
   useEffect(() => {
     setAuth(localStorage.getItem('cr_auth'))
     // eslint-disable-next-line
-  }, [])
+  }, [user])
 
   return (
     <header>
