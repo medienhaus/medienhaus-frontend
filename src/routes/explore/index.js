@@ -12,7 +12,7 @@ const matrixClient = matrixcs.createClient({
   baseUrl: "https://medienhaus.udk-berlin.de",
   accessToken: myAccessToken,
   userId: myUserId,
-  useAuthorizationHeader = true
+  useAuthorizationHeader: true
 });
 
 const Explore = () => {
