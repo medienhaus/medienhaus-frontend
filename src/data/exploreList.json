@@ -103,38 +103,32 @@
   },
   {
     "id": 17,
-    "faculty": "lm",
-    "type": "subject",
-    "displayName": "Lehramt Musik"
-  },
-  {
-    "id": 18,
     "faculty": "arch",
     "type": "subject",
     "displayName": "Architektur"
   },
   {
-    "id": 19,
+    "id": 18,
     "faculty": "kik",
     "type": "subject",
     "displayName": "Kunst im Kontext"
   },
   {
-    "id": 20,
+    "id": 19,
     "faculty": "ton",
     "type": "subject",
     "displayName": "Tonmeister*in"
   },
   {
-    "id": 21,
+    "id": 20,
     "faculty": "asta",
     "type": "other",
     "displayName": "AStA"
   },
   {
-    "id": 22,
+    "id": 21,
     "faculty": "org",
     "type": "other",
-    "displayName": "Organisation"
+    "displayName": "Organisationen"
   }
 ]
