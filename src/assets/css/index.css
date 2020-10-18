@@ -148,6 +148,10 @@ header {
   top: 0;
 }
 
+header > :first-child {
+  justify-self: start;
+}
+
 header > :last-child {
   justify-self: end;
 }
