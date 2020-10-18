@@ -29,7 +29,7 @@ const Header = () => {
           null
         )
       }
-      {auth ? <a activeclassname="active" href="https://medienhaus.udk-berlin.de/classroom" target="_blank" rel="noopener noreferrer">/classroom&nbsp;-&gt;</a> : <Link activeclassname="active" to="/login">login</Link>}
+      {auth ? <a activeclassname="active" href="https://medienhaus.udk-berlin.de/classroom" rel="noopener noreferrer">/classroom&nbsp;-&gt;</a> : <Link activeclassname="active" to="/login">login</Link>}
     </header>
   )
 };
