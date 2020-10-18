@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 export const LocationContext = createContext();
 
