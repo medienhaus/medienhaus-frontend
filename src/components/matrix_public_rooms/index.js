@@ -13,8 +13,12 @@ const usePublicRooms = () => {
   const [answer, setAnswer] = useState([]);
 
   const getAnswer = async () => {
-    const answer = await matrixClient.publicRooms();
-    setAnswer(answer.chunk);
+    try {
+      const answer = await matrixClient.publicRooms();
+      setAnswer(answer.chunk);
+    } catch (e) {
+      console.log(e.data.error);
+    }
   }
 
   useEffect(() => {
