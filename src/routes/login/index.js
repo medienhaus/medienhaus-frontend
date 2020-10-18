@@ -18,7 +18,7 @@ const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
-  const auth = localStorage.getItem('cr_auth');
+  const auth = localStorage.getItem('mx_access_token');
   const { setUser } = useContext(UserContext);
 
   const onSubmit = async () => {

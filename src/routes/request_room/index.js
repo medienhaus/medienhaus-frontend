@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import * as matrixcs from "matrix-js-sdk";
 import { useForm } from 'react-hook-form';
-const myUserId = "@request_:medienhaus.udk-berlin.de";
-const myAccessToken = "MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEByZXF1ZXN0X2JvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSBQVnl4YjhKcERsUHpsPWV1CjAwMmZzaWduYXR1cmUgvxLiTh5m1rr07--yuxf1J36X-TakNj5skIr6xl1abf8K";
+const myUserId = "@request_bot:medienhaus.udk-berlin.de";
+const myAccessToken = "MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEByZXF1ZXN0X2JvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSB4UTZzQVQja1Rmfmt5bmZfCjAwMmZzaWduYXR1cmUgu4D5Z-AIZcUGm-pzoz5oK0CVyydqgY8xlV1Zvmyu2RUK";
 const matrixClient = matrixcs.createClient({
   baseUrl: "https://medienhaus.udk-berlin.de",
   accessToken: myAccessToken,
@@ -47,7 +47,7 @@ export default function App() {
   }
 
   return (
-    localStorage.getItem('cr_auth') !== null ? (
+    localStorage.getItem('mx_access_token') !== null ? (
       <section className="request">
         <p>Please fill out the form below to request an <strong>openly accessible</strong> and <strong>public</strong> room … <em>you don’t have to request private rooms, you can create them.</em></p>
         <form onSubmit={handleSubmit(onSubmit)}>

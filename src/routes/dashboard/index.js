@@ -11,7 +11,7 @@ const Dashboard = () => {
 
 
   const getAuth = () => {
-    setToken(localStorage.getItem('cr_auth'));
+    setToken(localStorage.getItem('mx_access_token'));
     //console.log(location.pathname);
   }
   const profile = Profile();
