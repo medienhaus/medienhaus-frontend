@@ -27,11 +27,11 @@ const Login = () => {
     try {
       const sendMessage = await matrixClient.login("m.login.password", data);
       const res = await sendMessage;
-      localStorage.setItem('mx_user_id', res.user_id);
-      localStorage.setItem('mx_access_token', res.access_token);
-      localStorage.setItem('mx_home_server', res.home_server);
-      localStorage.setItem('mx_device_id', res.device_id);
-      localStorage.setItem('cr_auth', true);
+      sessionStorage.setItem('mx_access_token', res.access_token);
+      sessionStorage.setItem('mx_home_server', res.home_server);
+      sessionStorage.setItem('mx_user_id', res.user_id);
+      sessionStorage.setItem('mx_device_id', res.device_id);
+      sessionStorage.setItem('cr_auth', true);
       setUser(res.user_id);
       history.push('/dashboard')
       return (window.location.reload(false))
