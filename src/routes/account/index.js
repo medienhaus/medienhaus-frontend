@@ -38,9 +38,7 @@ const Account = () => {
   }
   const logout = async () => {
     await matrixClient.logout();
-    localStorage.removeItem('mx_user_id');
-    localStorage.removeItem('mx_access_token');
-    localStorage.removeItem('cr_auth');
+    localStorage.clear();
     history.push('/')
     return window.location.reload(false);
   }
