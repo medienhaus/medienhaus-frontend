@@ -12,6 +12,7 @@ import Logout from "./routes/logout";
 import Request from "./routes/request_room";
 import Landing from './routes/landing';
 import Dashboard from './routes/dashboard';
+import Faq from './routes/help';
 import { AuthProvider } from './components/context/AuthStatus';
 const App = () => (
   <React.Fragment>
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/request" component={Request} />
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
+            <Route path="/help" component={Faq} />
           </Switch>
           <Footer />
         </Router>
