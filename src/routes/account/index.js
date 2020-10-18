@@ -21,6 +21,7 @@ const Account = () => {
   const [mail, setMail] = useState("");
   const history = useHistory();
   const auth = localStorage.getItem('mx_access_token');
+
   const getAccData = async () => {
     try {
       const email = await matrixClient.getThreePids();
@@ -31,6 +32,10 @@ const Account = () => {
     } catch (e) {
       if (e.data.error === "Invalid macaroon passed.") {
         history.push('/login')
+      } else if (e.data.error === "Unrecognised access token") {
+        alert("Oops something went wrong! Please try loggin in again")
+        localStorage.clear();
+        history.push('/login');
       }
       console.log(e.data.error);
     }
