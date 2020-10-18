@@ -96,7 +96,7 @@ const Support = () => {
         </form>
       </section>
     ) : (
-        <p>Please login</p>
+        <p>Please <a activeclassname="active" href="/login">login</a> first</p>
       )
 
   );
