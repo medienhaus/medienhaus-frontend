@@ -6,7 +6,8 @@ const myAccessToken = localStorage.getItem("mx_access_token");
 const matrixClient = matrixcs.createClient({
   baseUrl: "https://medienhaus.udk-berlin.de",
   accessToken: myAccessToken,
-  userId: myUserId
+  userId: myUserId,
+  useAuthorizationHeader = true
 });
 
 const useProfile = () => {

@@ -6,7 +6,8 @@ const myAccessToken = "MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEza
 const matrixClient = matrixcs.createClient({
   baseUrl: "https://medienhaus.udk-berlin.de",
   accessToken: myAccessToken,
-  userId: myUserId
+  userId: myUserId,
+  useAuthorizationHeader = true
 });
 
 export default function App() {
