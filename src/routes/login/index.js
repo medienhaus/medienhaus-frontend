@@ -23,7 +23,7 @@ const Login = () => {
 
   useEffect(() => {
     setLoc(location.pathname);
-  })
+  }, [loc])
 
   const onSubmit = async () => {
     const data = { "type": "m.login.password", "user": name, "password": password }
@@ -31,8 +31,11 @@ const Login = () => {
     try {
       const sendMessage = await matrixClient.login("m.login.password", data);
       const res = await sendMessage;
+      console.log(res);
       localStorage.setItem('mx_user_id', res.user_id);
       localStorage.setItem('mx_access_token', res.access_token);
+      localStorage.setItem('mx_home_server', res.home_server);
+      localStorage.setItem('mx_device_id', res.device_id);
       localStorage.setItem('cr_auth', true);
       history.push('/dashboard')
       return (window.location.reload(false))
