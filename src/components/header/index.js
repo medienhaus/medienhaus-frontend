@@ -5,7 +5,7 @@ import { UserContext } from '../context/UserContext'
 import style from './style.css';
 */
 const Header = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [auth, setAuth] = useState(null);
 
   useEffect(() => {

@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Redirect, useLocation } from 'react-router-dom'
-import { LocationContext } from '../../components/context/LocationContext'
+import { Redirect } from 'react-router-dom'
 import { UserContext } from '../../components/context/UserContext'
 import Profile from "../../components/matrix_profile";
 import { Loading } from "../../components/loading/loading";
@@ -8,14 +7,11 @@ import { Loading } from "../../components/loading/loading";
 const Dashboard = () => {
   //const [auth, setAuth] = useContext(AuthProvider);
   const [token, setToken] = useState();
-  const [loc, setLoc] = useContext(LocationContext);
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
-  const location = useLocation();
 
   const getAuth = () => {
     setToken(localStorage.getItem('cr_auth'));
-    setLoc(location.pathname);
     //console.log(location.pathname);
   }
   const profile = Profile();

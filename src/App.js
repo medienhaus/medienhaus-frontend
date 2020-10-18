@@ -13,7 +13,9 @@ import Request from "./routes/request_room";
 import Landing from './routes/landing';
 import Dashboard from './routes/dashboard';
 import Faq from './routes/help';
+import { Docs } from './routes/docs';
 import { UserProvider } from './components/context/UserContext';
+
 const App = () => (
   <React.Fragment>
     <UserProvider>
@@ -30,6 +32,7 @@ const App = () => (
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
             <Route path="/help" component={Faq} />
+            <Route path="/docs" component={Docs} />
           </Switch>
           <Footer />
         </Router>

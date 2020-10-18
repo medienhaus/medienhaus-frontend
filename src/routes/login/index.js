@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Redirect, useHistory, useLocation } from 'react-router-dom'
-import { LocationContext } from '../../components/context/LocationContext'
+import { Redirect, useHistory } from 'react-router-dom'
 import { UserContext } from '../../components/context/UserContext'
 import * as matrixcs from "matrix-js-sdk";
 
@@ -19,14 +18,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const history = useHistory();
   const auth = localStorage.getItem('cr_auth');
-  const [loc, setLoc] = useContext(LocationContext);
-  const { user, setUser } = useContext(UserContext);
-  const location = useLocation();
-
-  useEffect(() => {
-    setLoc(location.pathname);
-    console.log(user)
-  }, [loc])
+  const { setUser } = useContext(UserContext);
 
   const onSubmit = async () => {
     const data = { "type": "m.login.password", "user": name, "password": password }
@@ -39,9 +31,9 @@ const Login = () => {
       localStorage.setItem('mx_home_server', res.home_server);
       localStorage.setItem('mx_device_id', res.device_id);
       localStorage.setItem('cr_auth', true);
+      setUser(res.user_id);
       history.push('/dashboard')
-      return setUser(res.user_id);
-      //return (window.location.reload(false))
+      return (window.location.reload(false))
     }
     catch (e) {
       alert(e.data.error)
@@ -61,10 +53,12 @@ const Login = () => {
             <input name="username" type="text" placeholder="u.name" value={name} onChange={changeName} ref={register({ required: true })} />
             <label>@udk-berlin.de</label>
           </div>
+          {errors.username && "Username can't be empty"}
           <div>
             <label htmlFor="password">password:</label>
             <input name="password" type="password" placeholder="" value={password} onChange={changePassword} ref={register({ required: true })} />
           </div>
+          {errors.password && "Password can't be empty"}
           <button name="submit" type="submit">LOGIN</button>
         </form>
         <ul>
