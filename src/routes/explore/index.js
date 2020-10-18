@@ -42,7 +42,16 @@ const Explore = () => {
       }));
       setJoinedRooms(getNames);
     } catch (e) {
+      if (e.data.error === "Invalid macaroon passed.") {
+        history.push('/login')
+      } else if (e.data.error === "Unrecognised access token") {
+        alert("Oops something went wrong! Please try loggin in again")
+        localStorage.clear();
+        history.push('/login');
+      }
+
       console.log(e.data.error);
+
     }
     setLoading(false);
   }
@@ -51,6 +60,7 @@ const Explore = () => {
     setLoading(true);
     getJoinedRooms();
     setUpdate(false);
+    // eslint-disable-next-line
   }, [update])
 
   useEffect(() => {
