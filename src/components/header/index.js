@@ -9,7 +9,7 @@ const Header = () => {
   const [auth, setAuth] = useState(null);
 
   useEffect(() => {
-    setAuth(localStorage.getItem('cr_auth'))
+    setAuth(localStorage.getItem('mx_access_token'))
     // eslint-disable-next-line
   }, [user])
 

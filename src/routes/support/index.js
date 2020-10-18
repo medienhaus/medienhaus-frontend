@@ -6,7 +6,7 @@ import Profile from "../../components/matrix_profile";
 import style from './style.css';
 */
 const myUserId = "@support_bot:medienhaus.udk-berlin.de";
-const myAccessToken = "MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEBzdXBwb3J0X2JvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSBZMWtMOV9mSUtnRGN2OW9VCjAwMmZzaWduYXR1cmUg7iKkRqtPcP7E51cBPwnC02WmBRiHTkf8NcCunp5eRcAK";
+const myAccessToken = "MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEBzdXBwb3J0X2JvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSA2LkY1RkFHMDhjRGR6ZGlOCjAwMmZzaWduYXR1cmUgTnOEJZtqGLKMmBmn3YRAA_W6Fk3Xkpl4LUNOoNeAZIsK";
 const matrixClient = matrixcs.createClient({
   baseUrl: "https://medienhaus.udk-berlin.de",
   accessToken: myAccessToken,
@@ -49,7 +49,7 @@ const Support = () => {
     }
   }
   return (
-    localStorage.getItem('mx_user_id') !== null ? (
+    localStorage.getItem('mx_access_token') !== null ? (
       <section className="support">
         <ul>
           <li><a href="/help">Maybe your question is answered in the FAQs?</a></li>
