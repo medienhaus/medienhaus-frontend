@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import * as matrixcs from "matrix-js-sdk";
 import Profile from "../../components/matrix_profile";
 /*
@@ -52,9 +53,9 @@ const Support = () => {
     localStorage.getItem('mx_access_token') !== null ? (
       <section className="support">
         <ul>
-          <li><a href="/help">Maybe your question is answered in the FAQs?</a></li>
-          <li><a href="/docs">Maybe your problem is described in the docs?</a></li>
-          <li><a href="/request">Request an openly accessible public room?</a></li>
+          <li><Link to="/help">Maybe your question is answered in the FAQs?</Link></li>
+          <li><Link to="/docs">Maybe your problem is described in the docs?</Link></li>
+          <li><Link to="/request">Request an openly accessible public room?</Link></li>
         </ul>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
