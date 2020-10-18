@@ -76,7 +76,7 @@ export default function App() {
         </form>
       </section>
     ) : (
-        <p>please login first</p>
+        <p>please <a activeclassname="active" href="/login">login</a> first</p>
       )
   );
 }
