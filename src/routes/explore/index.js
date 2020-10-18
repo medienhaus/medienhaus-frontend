@@ -44,7 +44,6 @@ const Explore = () => {
       console.log(e.data.error);
     }
     setLoading(false);
-
   }
 
   useEffect(() => {
