@@ -111,7 +111,7 @@ const Explore = () => {
   }
 
   return (
-    localStorage.getItem('cr_auth') ? (
+    localStorage.getItem('mx_access_token') ? (
       <section className="explore">
         {publicRooms.length === 0 ? <Loading /> : <RoomStructure />}
       </section>
