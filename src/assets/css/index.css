@@ -426,6 +426,12 @@ form textarea {
   margin:0 auto;
 }
 
+.react-player {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 .react-player__preview {
   background-color: var(--color-fg);
 }
@@ -436,6 +442,20 @@ form textarea {
 
 .react-player__shadow {
   background: unset;
+}
+
+.videoplayer {
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.wrapper {
+  padding-top: 56.25%;
+  position: relative;
+  z-index:-1;
 }
 
 @keyframes init {
@@ -523,6 +543,10 @@ form textarea {
   */
   section > *:not(blockquote) {
     max-width: 50%;
+  }
+  .wrapper {
+    width: 50% !important;
+    max-width: 50% !important;
   }
 }
 
