@@ -18,7 +18,7 @@ const usePublicRooms = () => {
   const getAnswer = async () => {
     try {
       const answer = await matrixClient.publicRooms();
-      answer.chunk.length !== 0 ? setAnswer(answer.chunk) : setAnswer("empty");
+      setAnswer(answer.chunk);
     } catch (e) {
       if (e.data.error === "Unrecognised access token") {
         alert("Oops something went wrong! Please try loggin in again")
@@ -32,7 +32,6 @@ const usePublicRooms = () => {
       console.log(e.data.error);
     }
   }
-
   useEffect(() => {
     getAnswer();
     // eslint-disable-next-line
