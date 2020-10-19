@@ -17,7 +17,7 @@ const Faq = () => {
   })
 
   return (
-    <section>
+    <section className="faq">
       <ReactMarkdown source={markdown} />
     </section>
   )

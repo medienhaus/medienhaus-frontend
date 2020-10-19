@@ -426,6 +426,15 @@ form textarea {
   margin:0 auto;
 }
 
+.faq > h2 {
+  font-weight: bold;
+}
+
+.faq code {
+  background-color: var(--color-lo);
+  padding: 0 calc(var(--margin) * 0.2);
+}
+
 .react-player {
   position: absolute;
   left: 0;
