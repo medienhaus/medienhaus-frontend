@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as matrixcs from "matrix-js-sdk";
 import { useForm } from 'react-hook-form';
 const myUserId = "@request-bot:medienhaus.udk-berlin.de";
-const myAccessToken = "MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEByZXF1ZXN0LWJvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSA9bTUrMGZfUDI3R1BFOixBCjAwMmZzaWduYXR1cmUgH_cAwuJ9AkfvKauHG_ObX2TDMBXEizvpNJfDJvlBr6EK";
+const myAccessToken = "MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEByZXF1ZXN0LWJvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSBLUztZMyoyMHRENDRQeHNlCjAwMmZzaWduYXR1cmUg1o6ZEgjmbQC9FVK0D4nZZshNrUrgaX8DFWd8R-tBOjoK";
 const matrixClient = matrixcs.createClient({
   baseUrl: "https://medienhaus.udk-berlin.de",
   accessToken: myAccessToken,
@@ -35,7 +35,7 @@ export default function App() {
       "formatted_body": "From: <b>" + name + "</b>  <br />User ID: <b>" + localStorage.getItem("mx_user_id") + "</b>  <br /> Email: <b>" + mail + "</b> <br /> Department: <b>" + department + "</b> <br /> Room name: <b>" + room + "</b><br />Notes: <b> " + msg + "</b><hr />"
     }
     try {
-      await matrixClient.sendMessage("!JkKkqvovaudipgxBSq:medienhaus.udk-berlin.de", requestRoom)
+      await matrixClient.sendMessage("!NcGFsMFcKRAgDJMEsN:medienhaus.udk-berlin.de", requestRoom)
       alert("Your request has ben sent! We will get back to you asap!");
       setSending(false);
     }

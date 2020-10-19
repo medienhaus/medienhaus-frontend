@@ -7,7 +7,7 @@ import Profile from "../../components/matrix_profile";
 import style from './style.css';
 */
 const myUserId = "@support-bot:medienhaus.udk-berlin.de";
-const myAccessToken = "MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEBzdXBwb3J0LWJvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSA6ekozX2VxT0N1QlVpMDtrCjAwMmZzaWduYXR1cmUgFWJpzcRMyM-_JOG7HosW7P9VnqkIZMfiOIp1dadj8IAK";
+const myAccessToken = "MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEBzdXBwb3J0LWJvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSBwQVZqWU9XflI0NFRYUkEtCjAwMmZzaWduYXR1cmUgdZm-5kS1tijZ3TQkBeiwsO261iOCBA-lhbLcTb4bTccK";
 const matrixClient = matrixcs.createClient({
   baseUrl: "https://medienhaus.udk-berlin.de",
   accessToken: myAccessToken,
@@ -39,7 +39,7 @@ const Support = () => {
       "formatted_body": "From: <b>" + profile.displayname + "</b>  <br /> Email: <b>" + mail + "</b> <br /> Browser: <b>" + browser + "</b> <br /> Operating system: <b>" + system + "</b><hr /> <b> " + msg + "</b><br />"
     }
     try {
-      await matrixClient.sendMessage("!ifbFfQkZUmiSclJBnx:medienhaus.udk-berlin.de", support)
+      await matrixClient.sendMessage("!PHQMOmXiiNqFUJNDie:medienhaus.udk-berlin.de", support)
       alert("Your message has ben sent! We will get back to you asap!");
       setSending(false);
     }
