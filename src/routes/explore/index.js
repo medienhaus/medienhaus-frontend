@@ -112,10 +112,8 @@ const Explore = () => {
             </div>
           ) : (
               null
-            )
-        )
-        )
-        }
+          )
+        ))}
       </>
     )
   }
@@ -127,8 +125,7 @@ const Explore = () => {
       </section>
     ) : (
         <NotLogged />
-      )
-
+    )
   );
 }
 
