@@ -40,16 +40,6 @@ const Account = () => {
       console.log(e.data.error);
     }
   }
-  /*
-  const getSync = async () => {
-    try {
-      const res = await matrixClient.isInitialSyncComplete();
-      console.log(res);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-  */
 
   const logout = async () => {
     await matrixClient.logout();
@@ -84,7 +74,6 @@ const Account = () => {
 
   useEffect(() => {
     getAccData();
-    //getSync();
     // eslint-disable-next-line
   }, [profile]);
 
