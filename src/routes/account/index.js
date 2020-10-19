@@ -39,8 +39,17 @@ const Account = () => {
       }
       console.log(e.data.error);
     }
-
   }
+
+  /*  const getSync = async () => {
+      try {
+        await matrixClient.getSyncState()
+          .then((res) => console.log(res));
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  */
   const logout = async () => {
     await matrixClient.logout();
     localStorage.clear();
@@ -74,6 +83,7 @@ const Account = () => {
 
   useEffect(() => {
     getAccData();
+    //getSync();
     // eslint-disable-next-line
   }, [profile]);
 
