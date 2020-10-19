@@ -40,15 +40,17 @@ const Account = () => {
       console.log(e.data.error);
     }
   }
-  /*  const getSync = async () => {
-      try {
-        await matrixClient.getSyncState()
-          .then((res) => console.log(res));
-      } catch (e) {
-        console.log(e);
-      }
+  /*
+  const getSync = async () => {
+    try {
+      const res = await matrixClient.isInitialSyncComplete();
+      console.log(res);
+    } catch (e) {
+      console.log(e);
     }
+  }
   */
+
   const logout = async () => {
     await matrixClient.logout();
     localStorage.clear();
@@ -59,7 +61,7 @@ const Account = () => {
   const ProfilePic = () => {
     const src = matrixClient.mxcUrlToHttp(profile.avatar_url, 100, 100, "crop", true);
     return (<div className="pofile">
-      { profile.avatar_url ? <img className="avatar" src={src} alt="avatar" /> : null}
+      { profile.avatar_url ? <img className="avatar" src={src} alt="avatar" /> : <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>}
       < div >
         <h2><strong>{profile.displayname}</strong></h2>
         <Email />

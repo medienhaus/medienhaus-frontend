@@ -12,20 +12,16 @@ const matrixClient = matrixcs.createClient({
 
 const useProfile = () => {
   const [answer, setAnswer] = useState([]);
-
   const getAnswer = async () => {
     try {
       const answer = await matrixClient.getProfileInfo(myUserId);
       setAnswer(answer);
     } catch (e) {
-
     }
   }
-
   useEffect(() => {
     getAnswer();
   }, []);
-
   return answer;
 }
 
