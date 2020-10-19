@@ -1,6 +1,6 @@
 ## What is **medienhaus/**?
 
-**medienhaus/** is a project initiated by students, teachers and colleagues with the effort to create an easy to use, free and open-source, privacy and security focused solution for the online e of university enhancement.
+**medienhaus/** is a project initiated by students, teachers and colleagues with the effort to create an easy to use, free and open-source, privacy and security focused solution for the solution for the online enhancement of the university.
 
 We’d like to create a responsible tool for remote education using existing services that do not exploit the user and their data. **medienhaus/** includes:
 - a space to **communicate**
