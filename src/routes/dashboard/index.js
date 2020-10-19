@@ -4,14 +4,11 @@ import { UserContext } from '../../components/context/UserContext'
 import Profile from "../../components/matrix_profile";
 import { Loading } from "../../components/loading/loading";
 import ReactPlayer from 'react-player'
-//import video from '../../../public/vid/public_onboarding_2_small.mp4'
 
 const Dashboard = () => {
   //const [auth, setAuth] = useContext(AuthProvider);
   const [token, setToken] = useState();
   const { user } = useContext(UserContext);
-  const videoPath = '../../data/vid/public_onboarding_2_small.mp4'
-
 
   const getAuth = () => {
     setToken(localStorage.getItem('mx_access_token'));
@@ -23,11 +20,11 @@ const Dashboard = () => {
     return (
       <>
         <p>Getting started:</p>
-        <ReactPlayer playing url='vid/public_onboarding_2_small.mp4' light controls volume='0.6' />
+        <ReactPlayer playing url='vid/public_onboarding.mp4' light controls volume='0.6' />
         <p>Public vs. Private rooms</p>
-        <ReactPlayer playing url='vid/teacher_onboarding_public_private_small.mp4' light controls volume='0.6' />
+        <ReactPlayer playing url='vid/teacher_onboarding_visibility.mp4' light controls volume='0.6' />
         <p>How can I add widgets like video calling to my room?</p>
-        <ReactPlayer playing url='vid/teacher_onboarding_widget_small.mp4' light controls volume='0.6' />
+        <ReactPlayer playing url='vid/teacher_onboarding_widgets.mp4' light controls volume='0.6' />
       </>
     )
   }
