@@ -426,6 +426,18 @@ form textarea {
   margin:0 auto;
 }
 
+.react-player__preview {
+  background-color: var(--color-fg);
+}
+
+.react-player__play-icon {
+  border-color: var(--color-bg);
+}
+
+.react-player__shadow {
+  background: unset;
+}
+
 @keyframes init {
   from {
     opacity: 0;
