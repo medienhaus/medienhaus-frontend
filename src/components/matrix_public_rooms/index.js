@@ -32,7 +32,6 @@ const usePublicRooms = () => {
       console.log(e.data.error);
     }
   }
-
   useEffect(() => {
     getAnswer();
     // eslint-disable-next-line
