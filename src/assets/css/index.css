@@ -393,7 +393,7 @@ form textarea {
   display: grid;
   align-items: center;
   grid-gap: var(--margin);
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr 6ch;
 }
 
 .explore h2 {
@@ -415,6 +415,15 @@ form textarea {
 .explore button[disabled] {
   cursor: not-allowed;
   opacity: 0.3;
+}
+
+.explore button > #loading {
+  /*
+  border-color: var(--color-bg) transparent var(--color-bg) transparent;
+  */
+  max-height: calc(var(--margin) * 1.15);
+  max-width: calc(var(--margin) * 1.15);
+  margin:0 auto;
 }
 
 @keyframes init {
