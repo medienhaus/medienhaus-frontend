@@ -20,15 +20,15 @@ const Dashboard = () => {
     return (
       <>
         <p>Getting started:</p>
-        <div className="wrapper">
+        <div className="videowrapper">
           <ReactPlayer className="videoplayer" playing url='vid/public_onboarding.mp4' light controls volume='0.6' />
         </div>
         <p>Public vs. Private rooms</p>
-        <div className="wrapper">
+        <div className="videowrapper">
           <ReactPlayer className="videoplayer" playing url='vid/teacher_onboarding_visibility.mp4' light controls volume='0.6' />
         </div>
         <p>How can I add widgets like video calling to my room?</p>
-        <div className="wrapper">
+        <div className="videowrapper">
           <ReactPlayer className="videoplayer" playing url='vid/teacher_onboarding_widgets.mp4' light controls volume='0.6' />
         </div>
       </>
