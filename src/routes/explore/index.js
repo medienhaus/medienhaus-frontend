@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Loading } from "../../components/loading/loading";
 import { useHistory } from 'react-router-dom'
-import roomStructure from "../../data/exploreList.json"
+import roomStructure from "../../assets/data/exploreList.json"
 import PublicRooms from "../../components/matrix_public_rooms"
 import * as matrixcs from "matrix-js-sdk";
 
