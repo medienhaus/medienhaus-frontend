@@ -1,0 +1,134 @@
+[
+  {
+    "id": 0,
+    "faculty": "udk",
+    "type": "global",
+    "displayName": "Universität der Künste Berlin"
+  },
+  {
+    "id": 1,
+    "faculty": "h33",
+    "type": "location",
+    "displayName": "Hardenbergstraße 33"
+  },
+  {
+    "id": 2,
+    "faculty": "gru",
+    "type": "location",
+    "displayName": "Grunewaldstraße 2–5"
+  },
+  {
+    "id": 3,
+    "faculty": "mir",
+    "type": "location",
+    "displayName": "Mierendorffstraße 30"
+  },
+  {
+    "id": 4,
+    "faculty": "17j",
+    "type": "location",
+    "displayName": "Straße des 17. Juni"
+  },
+  {
+    "id": 5,
+    "faculty": "fas",
+    "type": "location",
+    "displayName": "Fasanenstraße 1b"
+  },
+  {
+    "id": 6,
+    "faculty": "ein",
+    "type": "location",
+    "displayName": "Einsteinufer"
+  },
+  {
+    "id": 7,
+    "faculty": "sg",
+    "type": "subject",
+    "displayName": "Studium Generale"
+  },
+  {
+    "id": 8,
+    "faculty": "vk",
+    "type": "subject",
+    "displayName": "Visuelle Kommunikation"
+  },
+  {
+    "id": 9,
+    "faculty": "kum",
+    "type": "subject",
+    "displayName": "Kunst und Medien"
+  },
+  {
+    "id": 10,
+    "faculty": "gwk",
+    "type": "subject",
+    "displayName": "Gesellschafts- und Wirtschaftskommunikation"
+  },
+  {
+    "id": 11,
+    "faculty": "ipp",
+    "type": "subject",
+    "displayName": "Produktdesign"
+  },
+  {
+    "id": 12,
+    "faculty": "ibt",
+    "type": "subject",
+    "displayName": "Modedesign"
+  },
+  {
+    "id": 13,
+    "faculty": "bk",
+    "type": "subject",
+    "displayName": "Bildende Kunst"
+  },
+  {
+    "id": 14,
+    "faculty": "dc",
+    "type": "subject",
+    "displayName": "Design and Computation"
+  },
+  {
+    "id": 15,
+    "faculty": "lbk",
+    "type": "subject",
+    "displayName": "Lehramt Bildende Kunst"
+  },
+  {
+    "id": 16,
+    "faculty": "lm",
+    "type": "subject",
+    "displayName": "Lehramt Musik"
+  },
+  {
+    "id": 17,
+    "faculty": "arch",
+    "type": "subject",
+    "displayName": "Architektur"
+  },
+  {
+    "id": 18,
+    "faculty": "kik",
+    "type": "subject",
+    "displayName": "Kunst im Kontext"
+  },
+  {
+    "id": 19,
+    "faculty": "ton",
+    "type": "subject",
+    "displayName": "Tonmeister*in"
+  },
+  {
+    "id": 20,
+    "faculty": "asta",
+    "type": "other",
+    "displayName": "AStA"
+  },
+  {
+    "id": 21,
+    "faculty": "org",
+    "type": "other",
+    "displayName": "Organisationen"
+  }
+]
