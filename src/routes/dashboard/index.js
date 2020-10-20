@@ -42,31 +42,17 @@ const Dashboard = () => {
   return (
     token === null ? <Redirect to='/' /> : (
       profile.length === 0 ? (<Loading />) : (
-        <section className="landing with-sidebar">
-          <div>
-            <div>
-              <ul>
-                <li><strong><Link to="/account">/account</Link></strong></li>
-                <li><strong><Link to="/explore">/explore</Link></strong></li>
-                <li><strong><Link to="/docs">/docs</Link></strong></li>
-                <li><strong><Link to="/help">/help</Link></strong></li>
-                <li><strong><Link to="/support">/support</Link></strong></li>
-                <li><strong><Link to="/request">/request</Link></strong></li>
-              </ul>
-            </div>
-            <div>
-              <h2>Hello <strong>{profile.displayname}</strong>, you are now logged in.</h2> {user}
-              <ul>
-                <li><strong><Link to="/account">/account</Link></strong> your profile and a list of your rooms</li>
-                <li><strong><Link to="/explore">/explore</Link></strong> explore, join, and leave public rooms</li>
-                <li><strong><Link to="/docs">/docs</Link></strong> documentation, how-to and usage guide</li>
-                <li><strong><Link to="/help">/help</Link></strong> frequently asked questions and answers</li>
-                <li><strong><Link to="/support">/support</Link></strong> in case of undocumented problems</li>
-                <li><strong><Link to="/request">/request</Link></strong> openly accessible public rooms</li>
-              </ul>
-              <Videos />
-            </div>
-          </div>
+        <section className="landing">
+          <h2>Hello <strong>{profile.displayname}</strong>, you are now logged in.</h2> {user}
+          <ul>
+            <li><strong><Link to="/account">/account</Link></strong> your profile and a list of your rooms</li>
+            <li><strong><Link to="/explore">/explore</Link></strong> explore, join, and leave public rooms</li>
+            <li><strong><Link to="/docs">/docs</Link></strong> documentation, how-to and usage guide</li>
+            <li><strong><Link to="/help">/help</Link></strong> frequently asked questions and answers</li>
+            <li><strong><Link to="/support">/support</Link></strong> in case of undocumented problems</li>
+            <li><strong><Link to="/request">/request</Link></strong> openly accessible public rooms</li>
+          </ul>
+          <Videos />
         </section>
       )
     )
