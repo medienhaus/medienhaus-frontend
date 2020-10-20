@@ -13,7 +13,7 @@ import Support from "./routes/support";
 import Request from "./routes/request";
 
 import Faq from "./routes/faqs";
-import { Docs } from "./routes/docs";
+import { Kino } from "./routes/docs";
 
 import Login from "./routes/login";
 import Logout from "./routes/logout";
@@ -36,7 +36,7 @@ const App = () => (
               <Route path="/support" component={Support} />
               <Route path="/request" component={Request} />
               <Route path="/faqs" component={Faq} />
-              <Route path="/docs" component={Docs} />
+              <Route path="/docs" component={Kino} />
               <Route path="/login" component={Login} />
               <Route path="/logout" component={Logout} />
             </Switch>
