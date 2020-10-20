@@ -23,6 +23,10 @@ const Landing = () => {
           <li><strong>/stream</strong> audio/video live streaming and playback</li>
         </ul>
       </section>
+    </>
+  )
+}
+      /*
       <section id="team">
         <h2><strong>Team</strong> (sorted alphabetically):</h2>
         <ul>
@@ -38,7 +42,6 @@ const Landing = () => {
           <li>Paul Seidler</li>
         </ul>
       </section>
-    </>
-  )
-}
+      */
+
 export default Landing;
