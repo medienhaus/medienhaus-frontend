@@ -47,7 +47,8 @@ body {
 }
 
 body > #app > *:not(section) + *:not(footer),
-body > #app > *:not(header):not(footer) > * + * {
+body > #app > *:not(header):not(footer) > * + *,
+body > #app > .with-sidebar > * > * > * + * {
   margin-top: calc(var(--margin) * 2);
 }
 
@@ -192,6 +193,10 @@ section + section {
   margin-top: calc(var(--margin) * 4);
 }
 
+section a:link {
+  text-decoration: underline;
+}
+
 /*
 section h2 {
   font-weight: bold;
@@ -202,10 +207,6 @@ section h2,
 section blockquote {
   font-size: 2.8rem;
   line-height: 1.2;
-}
-
-section p a:link {
-  text-decoration: underline;
 }
 
 section ul {
@@ -454,24 +455,47 @@ form textarea {
 }
 
 .videoplayer {
-  height: 100%;
-  max-width: calc(100vw - calc(var(--margin) * 5)) !important;
-  /*
+  height: 100% !important;
+  width: 100% !important;
   position: absolute;
   left: 0;
   top: 0;
+}
+
+.videowrapper {
+  padding-top: 56.25%;
+  position: relative;
+  /*
+  z-index:-1;
   */
 }
 
-/*
-.wrapper {
-  padding-top: 56.25%;
-  position: relative;
-  */
-  /*
-  z-index:-1;
+.with-sidebar {
+  overflow: hidden;
 }
-*/
+
+.with-sidebar > * {
+  display: flex;
+  flex-wrap: wrap;
+  margin: calc(var(--margin) / 2 * -1);
+}
+
+.with-sidebar > * > * {
+  margin: calc(var(--margin) / 2);
+  flex-basis: 20%;
+  flex-grow: 1;
+}
+
+.with-sidebar > * > :first-child {
+  position: sticky;
+  top: calc(var(--margin) * 6);
+}
+
+.with-sidebar > * > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: calc(50% - var(--margin));
+}
 
 @keyframes init {
   from {
@@ -556,12 +580,14 @@ form textarea {
   /*
   section > *:not(h2):not(blockquote) {
   */
+  /*
   section > *:not(blockquote) {
     max-width: 50%;
   }
   .videoplayer {
     max-width: 100% !important;
   }
+  */
 }
 
 /* 960px */
