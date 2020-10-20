@@ -33,7 +33,7 @@ const Explore = () => {
           if (room.name !== "") {
             return room.name;
           } else {
-            return "[[ Untitled Chat ]]";
+            return "[[ Untyped Chat ]]";
           }
         } catch (error) {
           return "[[ Private Chat ]]";
@@ -88,15 +88,29 @@ const Explore = () => {
   }
 
   const RoomStructure = () => {
+    const keys = []
+    roomStructure.map(data => (
+      keys.push(data.type)
+    ))
+    const uniqKeys = [...new Set(keys)];;
+
     return (
-      roomStructure.map(data => (
-        <RoomList faculty={data.faculty} displayName={data.displayName} key={data.id} />
-      ))
+      uniqKeys.map(keys => (
+        <><h2 style={{ textTransform: 'capitalize' }}>{keys}</h2>
+          {roomStructure.map((data, index) => (
+            keys === data.type ? (
+              <RoomList faculty={data.faculty} displayName={data.displayName} type={data.type} key={data.id} />
+            ) : (
+                null
+              )
+          ))}
+        </>)
+      )
     )
   }
 
   //component
-  const RoomList = ({ faculty, displayName }) => {
+  const RoomList = ({ faculty, displayName, type }) => {
     return (
       <>
         <h2>{displayName}</h2>
