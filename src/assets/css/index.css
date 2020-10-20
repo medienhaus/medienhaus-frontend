@@ -454,18 +454,24 @@ form textarea {
 }
 
 .videoplayer {
-  max-height: 100%;
-  max-width: 100%;
+  height: 100%;
+  max-width: calc(100vw - calc(var(--margin) * 5)) !important;
+  /*
   position: absolute;
   left: 0;
   top: 0;
+  */
 }
 
+/*
 .wrapper {
   padding-top: 56.25%;
   position: relative;
+  */
+  /*
   z-index:-1;
 }
+*/
 
 @keyframes init {
   from {
@@ -553,9 +559,8 @@ form textarea {
   section > *:not(blockquote) {
     max-width: 50%;
   }
-  .wrapper {
-    width: 50% !important;
-    max-width: 50% !important;
+  .videoplayer {
+    max-width: 100% !important;
   }
 }
 
