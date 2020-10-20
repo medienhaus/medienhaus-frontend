@@ -23,7 +23,7 @@ const Videos = () => {
   )
 }
 
-export const Docs = () => {
+export const Kino = () => {
 
   return (<Videos />)
 }
