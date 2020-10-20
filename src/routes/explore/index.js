@@ -103,9 +103,15 @@ const Explore = () => {
         {[...publicRooms].sort().map(publicRoom => (
           publicRoom.name.startsWith(`${faculty}`) ? (
             <div className="explore" key={publicRoom.room_id}>
-              {publicRoom.avatar_url ? <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, "crop", false)} alt="avatar" /> : <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>}
+              {publicRoom.avatar_url ? (
+                <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, "crop", false)} alt="avatar" />
+              ) : (
+                  <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
+                )}
               <label htmlFor={publicRoom.room_id} key={publicRoom.name} name={faculty}>{publicRoom.name}</label>
-              {joinedRooms.includes(publicRoom.name) ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">{loading ? <Loading /> : "Leave"}</button> : <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : "Join"}</button>}
+              {joinedRooms.includes(publicRoom.name) ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
+                {loading ? <Loading /> : "Leave"}</button> :
+                <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : "Join"}</button>}
             </div>
           ) : (
               null
