@@ -204,6 +204,10 @@ section + section {
 section a:link {
 }
 
+section h2 {
+  font-weight: bold;
+}
+
 section blockquote {
   font-size: 2.8rem;
   line-height: 1.2;
@@ -314,7 +318,7 @@ form textarea {
   display: grid;
   grid-template-columns: 1fr max-content;
   grid-template-rows: auto 1fr auto;
-  grid-gap: 0 calc(var(--margin) * 2);
+  grid-gap: 0 calc(var(--margin) * 4);
   min-height: 100%;
 }
 
@@ -375,10 +379,6 @@ form textarea {
   grid-template-columns: auto 1fr 6ch;
 }
 
-.explore h2 {
-  font-weight: bold;
-}
-
 .explore button {
   background-color: var(--color-fg);
   border-color: var(--color-fg);
@@ -402,10 +402,6 @@ form textarea {
   margin:0 auto;
 }
 
-.faq > h2 {
-  font-weight: bold;
-}
-
 .faq code {
   background-color: var(--color-lo);
   padding: 0 calc(var(--margin) * 0.2);
@@ -427,6 +423,14 @@ form textarea {
 
 .react-player__shadow {
   background: unset;
+}
+
+.sidebar {
+  grid-column: 1;
+}
+
+.videos {
+  grid-column: 2;
 }
 
 .videoplayer {
