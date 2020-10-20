@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import useJoinedRooms from "../../components/matrix_joined_rooms";
 import useProfile from "../../components/matrix_profile";
-import { Loading } from "../../components/loading/loading"
+import { Loading } from "../../components/loading"
 import * as matrixcs from "matrix-js-sdk";
 
 const myUserId = localStorage.getItem("mx_user_id");

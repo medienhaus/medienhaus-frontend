@@ -26,8 +26,9 @@ const Nav = () => {
             <div>
               <Link activeclassname="active" to="/account">/account</Link>
               <Link activeclassname="active" to="/explore">/explore</Link>
-              <Link activeclassname="active" to="/support">/support</Link>
               <Link activeclassname="active" to="/request">/request</Link>
+              <Link activeclassname="active" to="/support">/support</Link>
+              <Link activeclassname="active" to="/kino">/kino</Link>
             </div>
             <div>
               <Link activeclassname="active" to="/meet">/meet</Link>
