@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 // Using https://github.com/remarkjs/react-markdown for markdown
 
 const Faq = () => {
-  const faqPath = require('../../data/faq.md');
+  const faqPath = require('../../assets/data/faq.md');
   const [markdown, setMarkdown] = useState();
 
   const getMarkdownText = () => {
