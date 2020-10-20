@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Redirect, Link } from 'react-router-dom'
 import { UserContext } from '../../components/context/UserContext'
 import Profile from "../../components/matrix_profile";
-import { Loading } from "../../components/loading/loading";
+import { Loading } from "../../components/loading";
 import ReactPlayer from 'react-player'
 
 const Dashboard = () => {
