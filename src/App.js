@@ -9,7 +9,7 @@ import Explore from "./routes/explore";
 import Support from "./routes/support";
 import Login from "./routes/login";
 import Logout from "./routes/logout";
-import Request from "./routes/request_room";
+import Request from "./routes/request";
 import Landing from './routes/landing';
 import Dashboard from './routes/dashboard';
 import Faq from './routes/help';
