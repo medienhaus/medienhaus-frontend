@@ -5,7 +5,6 @@ import roomStructure from "../../data/exploreList.json"
 import PublicRooms from "../../components/matrix_public_rooms"
 import * as matrixcs from "matrix-js-sdk";
 
-
 const myUserId = localStorage.getItem("mx_user_id");
 const myAccessToken = localStorage.getItem("mx_access_token");
 const matrixClient = matrixcs.createClient({
@@ -49,9 +48,7 @@ const Explore = () => {
         localStorage.clear();
         history.push('/login');
       }
-
       console.log(e.data.error);
-
     }
     setLoading(false);
   }
@@ -112,7 +109,7 @@ const Explore = () => {
             </div>
           ) : (
               null
-          )
+            )
         ))}
       </>
     )
@@ -125,7 +122,7 @@ const Explore = () => {
       </section>
     ) : (
         <NotLogged />
-    )
+      )
   );
 }
 
