@@ -15,9 +15,14 @@ const Header = () => {
 
   return (
     <header>
-      <Link activeclassname="active" to="/">
-        <h1>medienhaus/</h1>
-      </Link>
+      { auth ? (
+        <Link activeclassname="active" to="/dashboard">
+          <h1>medienhaus/</h1>
+        </Link>
+      ) : (
+          <Link activeclassname="active" to="/">
+            <h1>medienhaus/</h1>
+          </Link>)}
       {auth ? (
         <nav>
           <Link activeclassname="active" to="/account">account</Link>
