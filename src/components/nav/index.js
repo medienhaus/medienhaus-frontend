@@ -16,7 +16,7 @@ const Nav = () => {
       <div>
         <div>
           {auth ? (
-            <a href="https://medienhaus.udk-berlin.de/classroom" rel="external nofollow noopener noreferrer" target="_self">/classroom&nbsp;-&gt;</a>
+            <a href="https://medienhaus.udk-berlin.de/classroom" rel="nofollow noopener noreferrer" target="_self">/classroom&nbsp;-&gt;</a>
           ) : (
             <NavLink activeclassname="active" to="/login">login</NavLink>
           )}
