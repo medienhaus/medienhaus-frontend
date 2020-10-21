@@ -305,7 +305,7 @@ form textarea {
   border-width: calc(var(--margin) * 0.2);
   box-shadow: none;
   outline: none;
-  padding: calc(var(--margin) * 0.2);
+  padding: calc(var(--margin) * 0.4);
   width: 100%;
 }
 
