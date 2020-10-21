@@ -98,7 +98,7 @@ You can find a search function at the top of the screen on the right side of the
 
 ## Do I need to logout?
 
-If you use a private device you don’t need to logout. We furthermore discourage you from logging out if you are on your private hardware, since you need to verify new sessions. If you use a shared device you should logout.
+If you use a private device you don’t need to logout. We furthermore discourage you from logging out if you are on your private device, since you need to verify new sessions. If you use a shared device you should logout.
 
 ## I received a notification but now it’s gone. Where can I find the recent activity?
 
