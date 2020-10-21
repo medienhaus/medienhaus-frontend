@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { UserContext } from '../context/UserContext'
 
 const Nav = () => {
@@ -16,24 +16,24 @@ const Nav = () => {
       <div>
         <div>
           {auth ? (
-            <a activeclassname="active" href="https://medienhaus.udk-berlin.de/classroom" target="_self" rel="noopener noreferrer">/classroom&nbsp;-&gt;</a>
+            <a activeClassName="active" href="https://medienhaus.udk-berlin.de/classroom" target="_self" rel="noopener noreferrer">/classroom&nbsp;-&gt;</a>
           ) : (
-            <Link activeclassname="active" to="/login">login</Link>
+            <NavLink activeClassName="active" to="/login">login</NavLink>
           )}
         </div>
         {auth ? (
           <>
             <div>
-              <Link activeclassname="active" to="/account">/account</Link>
-              <Link activeclassname="active" to="/explore">/explore</Link>
-              <Link activeclassname="active" to="/request">/request</Link>
-              <Link activeclassname="active" to="/support">/support</Link>
-              <Link activeclassname="active" to="/kino">/kino</Link>
+              <NavLink activeClassName="active" to="/account">/account</NavLink>
+              <NavLink activeClassName="active" to="/explore">/explore</NavLink>
+              <NavLink activeClassName="active" to="/request">/request</NavLink>
+              <NavLink activeClassName="active" to="/support">/support</NavLink>
+              <NavLink activeClassName="active" to="/kino">/kino</NavLink>
             </div>
             <div>
-              <Link activeclassname="active" to="/meet">/meet</Link>
-              <Link activeclassname="active" to="/write">/write</Link>
-              <Link activeclassname="active" to="/stream">/stream</Link>
+              <NavLink activeClassName="active" to="/meet">/meet</NavLink>
+              <NavLink activeClassName="active" to="/write">/write</NavLink>
+              <NavLink activeClassName="active" to="/stream">/stream</NavLink>
             </div>
           </>
         ) : (
