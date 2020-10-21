@@ -55,28 +55,30 @@ export default function App() {
             <label htmlFor="name">your name</label>
             <input type="text" placeholder="Name Yourname" name="name" value={name} onChange={changeName} ref={register({ required: true })} />
           </div>
-          {errors.name && "Please enter your name"}
+          {errors.name && "Please enter your name."}
           <div>
             <label htmlFor="email">mail address</label>
             <input type="email" placeholder="u.name@udk-berlin.de" name="email" value={mail} onChange={changeMail} ref={register({ required: true })} />
           </div>
-          {errors.email && "Please enter a valid email address"}
+          {errors.email && "Please enter a valid email address."}
           <div>
             <label htmlFor="department">department</label>
             <input type="text" placeholder="Visuelle Kommunikation" name="department" value={department} onChange={changeDepartment} ref={register({ required: true })} />
           </div>
-          {errors.department && "Please specifiy the department"}
+          {errors.department && "Please specifiy the department."}
           <div>
             <label htmlFor="room">room name</label>
             <input type="text" placeholder="i.e. the name of your class or course" name="room" value={room} onChange={changeRoom} ref={register({ required: true })} />
           </div>
-          {errors.room && "Please enter a title for your room"}
+          {errors.room && "Please enter a title for your room."}
           <textarea name="notes" placeholder="Any additional notes?" rows="3" spellCheck="true" value={msg} onChange={changeMsg} ref={register} />
           <button type="submit" disabled={sending}>SUBMIT</button>
         </form>
       </section>
     ) : (
-        <p>please <a activeclassname="active" href="/login">login</a> first</p>
-      )
+      <section>
+        <p>Please <a href="/login">login</a> first.</p>
+      </section>
+    )
   );
 }

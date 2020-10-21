@@ -44,7 +44,7 @@ const Explore = () => {
       if (e.data.error === "Invalid macaroon passed.") {
         history.push('/login')
       } else if (e.data.error === "Unrecognised access token") {
-        alert("Oops something went wrong! Please try loggin in again")
+        alert("Oops something went wrong! Please try loggin in again.")
         localStorage.clear();
         history.push('/login');
       }
@@ -64,9 +64,8 @@ const Explore = () => {
     matrixClient.leave(leaveId)
       .then(() => setUpdate(true))
       .catch((e) => {
-        console.log("thrown error because leavId can't be empty")
-      }
-      );
+        console.log("thrown error because leaveId can't be empty")
+      });
     setLeaveId("");
   }, [leaveId])
 

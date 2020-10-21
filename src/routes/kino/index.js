@@ -11,7 +11,7 @@ const Kino = () => {
   }
 
   return (
-    <section className="support">
+    <section className="kino">
       <section className="sidebar">
         <ul>
           <li><button onClick={() => setVideo('video/public_onboarding.mp4')}><div className="playicon"></div></button> <span>Getting Started &ndash; Your First Day at <strong>medienhaus/</strong></span></li>

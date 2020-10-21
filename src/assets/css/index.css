@@ -6,7 +6,7 @@
 :root {
   --color-fg: rgb(0,0,0);
   --color-bg: rgb(255,255,255);
-  --color-hi: rgb(255,0,0);
+  --color-hi: rgb(228,9,59);
   --color-lo: rgb(240,240,240);
   --color-ft: rgb(0,0,0,0.3);
   --margin: calc(1vw + 1vh + 0.5vmin);
@@ -69,9 +69,11 @@ a:active {
   color: var(--color-fg);
 }
 
+/*
 a.active {
-  text-decoration: underline;
+  color: var(--color-ft);
 }
+*/
 
 em, i {
   font-style: italic;
@@ -135,8 +137,8 @@ footer {
   justify-content: space-between;
   grid-row: 3;
   grid-column: 1 / 3;
-  padding-top: calc(var(--margin) * 3);
-  padding-bottom: var(--margin);
+  margin-top: calc(var(--margin) * 3);
+  margin-bottom: var(--margin);
 }
 
 footer > img[src*=".svg"] {
@@ -190,11 +192,6 @@ nav a {
 
 section {
   scroll-margin-top: calc(var(--margin) * 6);
-}
-
-section + footer,
-section + section {
-  margin-top: calc(var(--margin) * 4);
 }
 
 section a:link {
@@ -320,17 +317,6 @@ form textarea {
   min-height: 100%;
 }
 
-#error {
-  color: var(--color-hi);
-  border-color: var(--color-hi);
-  border-style: dashed;
-  border-width: calc(var(--margin) * 0.2);
-  display: none;
-  padding: calc(var(--margin) * 0.2);
-  place-items: center;
-  width: 100%;
-}
-
 #loading {
   border-color: var(--color-fg) transparent var(--color-fg) transparent;
   border-radius: 50%;
@@ -349,15 +335,14 @@ form textarea {
 }
 
 .account button {
-  background-color: var(--color-fg);
-  border-color: var(--color-fg);
+  background-color: var(--color-hi);
+  border-color: var(--color-hi);
   border-style: solid;
   border-radius: unset;
   border-width: calc(var(--margin) * 0.2);
   color: var(--color-bg);
   cursor: pointer;
   padding: calc(var(--margin) * 0.2);
-  width: 100%;
 }
 
 .account button[disabled] {
@@ -376,12 +361,6 @@ form textarea {
   grid-gap: var(--margin);
   grid-template-columns: auto 1fr 6ch;
 }
-
-/*
-.explore > *:not(h2) {
-  margin-left: calc(var(--margin) * 2);
-}
-*/
 
 .explore > h2 {
   text-decoration: underline;
@@ -415,6 +394,48 @@ form textarea {
   padding: 0 calc(var(--margin) * 0.2);
 }
 
+/*
+.kino {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 0 calc(var(--margin) * 2);
+}
+
+.kino .sidebar {
+  grid-column: 1;
+}
+*/
+
+.kino .sidebar ul {
+  list-style-type: none;
+}
+
+.kino .sidebar ul li > * + * {
+  margin-left: calc(var(--margin) * 0.5);
+}
+
+.kino .sidebar button {
+  background-color: var(--color-fg);
+  border-color: var(--color-fg);
+  border-style: solid;
+  border-radius: unset;
+  border-width: calc(var(--margin) * 0.2);
+  color: var(--color-bg);
+  cursor: pointer;
+  padding: calc(var(--margin) * 0.2);
+  height: calc(var(--margin) * 2);
+  width: calc(var(--margin) * 2);
+}
+
+.kino .sidebar .playicon {
+  border-color: transparent transparent transparent var(--color-bg);
+  border-style: solid;
+  border-width: calc(var(--margin) * 0.4) 0 calc(var(--margin) * 0.4) calc(var(--margin) * 0.65);
+  display: inline-block;
+  margin: 0 auto;
+  pointer-events: none;
+}
+
 .react-player {
   position: absolute;
   left: 0;
@@ -431,48 +452,6 @@ form textarea {
 
 .react-player__shadow {
   background: unset;
-}
-
-/*
-.support {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-gap: 0 calc(var(--margin) * 2);
-}
-
-.sidebar {
-  grid-column: 1;
-}
-*/
-
-.sidebar ul {
-  list-style-type: none;
-}
-
-.sidebar ul li > * + * {
-  margin-left: calc(var(--margin) * 0.5);
-}
-
-.sidebar button {
-  background-color: var(--color-fg);
-  border-color: var(--color-fg);
-  border-style: solid;
-  border-radius: unset;
-  border-width: calc(var(--margin) * 0.2);
-  color: var(--color-bg);
-  cursor: pointer;
-  padding: calc(var(--margin) * 0.2);
-  height: calc(var(--margin) * 2);
-  width: calc(var(--margin) * 2);
-}
-
-.sidebar .playicon {
-  border-color: transparent transparent transparent var(--color-bg);
-  border-style: solid;
-  border-width: calc(var(--margin) * 0.4) 0 calc(var(--margin) * 0.4) calc(var(--margin) * 0.65);
-  display: inline-block;
-  margin: 0 auto;
-  pointer-events: none;
 }
 
 /*
@@ -627,12 +606,7 @@ form textarea {
 
 /* fallback for list-style-type: "<string>"; */
 @supports not (list-style-type: "\2013\0020") {
-  /*
   section ul {
     list-style-type: square;
-  }
-  */
-  section ul li::before {
-    content: "\2013\0020";
   }
 }

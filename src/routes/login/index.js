@@ -55,12 +55,12 @@ const Login = () => {
             <input name="username" type="text" placeholder="u.name" value={name} onChange={changeName} ref={register({ required: true })} />
             <label>@udk-berlin.de</label>
           </div>
-          {errors.username && "Username can't be empty"}
+          {errors.username && "Username can't be empty."}
           <div>
             <label htmlFor="password">password:</label>
             <input name="password" type="password" placeholder="" value={password} onChange={changePassword} ref={register({ required: true })} />
           </div>
-          {errors.password && "Password can't be empty"}
+          {errors.password && "Password can't be empty."}
           <button name="submit" type="submit">LOGIN</button>
         </form>
         <ul>
