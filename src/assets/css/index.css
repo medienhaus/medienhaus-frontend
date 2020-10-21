@@ -467,19 +467,42 @@ form textarea {
   position: relative;
 }
 
+.videowrapper > progress:not([value]) {
+  display: none;
+}
+
 .videowrapper > progress[value] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   border: unset;
-  height: calc(var(--margin) * 0.3);
+  height: calc(var(--margin) * 0.4);
   width: 100%;
 }
 
-.videowrapper > progress[value]::-webkit-progress-bar,
+.videowrapper > progress[value]::-webkit-progress-value,
+.videowrapper > progress[value]::-moz-progress-bar {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--color-fg);
+  border: unset;
+}
+
+/*
+.videowrapper > progress[value]::-webkit-progress-value {
+  background-image: -webkit-linear-gradient(-45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%),
+                    -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%),
+                    -webkit-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%);
+}
+
 .videowrapper > progress[value]::-moz-progress-bar {
   background-color: var(--color-fg);
+  background-image: -moz-linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%),
+                    -moz-linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%),
+                    -moz-linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%);
 }
+*/
 
 /*
 .with-sidebar {
