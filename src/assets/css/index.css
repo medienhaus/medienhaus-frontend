@@ -399,17 +399,6 @@ form textarea {
   font-size: 0.55rem;
 }
 
-.kino .sidebar ul {
-  list-style-type: none;
-}
-
-.kino .sidebar ul li {
-  display: grid;
-  grid-auto-flow: column;
-  grid-gap: calc(var(--margin) * 0.5);
-  place-content: start;
-}
-
 .kino .sidebar button {
   background-color: var(--color-fg);
   border-color: var(--color-fg);
@@ -421,6 +410,18 @@ form textarea {
   display: inline-block;
   height: calc(var(--margin) * 1.4);
   width: calc(var(--margin) * 1.4);
+}
+
+.kino .sidebar ul {
+  list-style-type: none;
+}
+
+.kino .sidebar ul li {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: calc(var(--margin) * 0.5);
+  align-items: center;
+  justify-content: start;
 }
 
 .kino .sidebar .playicon {

@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import ReactPlayer from 'react-player'
 
 const Kino = () => {
-  const [video, setVideo] = useState('video/public_onboarding.mp4');
+  const [video, setVideo] = useState([
+    {src: 'video/public_onboarding.mp4', type: 'video/mp4'},
+    {src: 'video/public_onboarding.webm', type: 'video/webm'}
+  ]);
   const [played, setPlayed] = useState(null);
 
   const Button = ({ url, head, sub, }) => {
@@ -27,7 +30,7 @@ const Kino = () => {
             <Button
               url={[
                 {src: 'video/public_onboarding.mp4', type: 'video/mp4'},
-                {src: 'video/public_onboarding.webm', type: 'video/webm'},
+                {src: 'video/public_onboarding.webm', type: 'video/webm'}
               ]}
               head={'01. The Getting Started Video'}
               sub={['Your first day at ', <strong>/medienhaus</strong>]}
