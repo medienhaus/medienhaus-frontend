@@ -198,6 +198,7 @@ section + section {
 }
 
 section a:link {
+  text-decoration: underline;
 }
 
 section h2,
