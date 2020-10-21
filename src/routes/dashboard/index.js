@@ -46,10 +46,10 @@ const Dashboard = () => {
       profile.length === 0 ? (<Loading />) : (
         <section className="landing">
           <p>Hello, <strong>{profile.displayname}</strong>.</p>
-          <p>Your <strong>/classroom</strong> is a collaborative chat platform where you can organize in rooms for your courses and classes. Each room can be enhanced with a variety of widgets (think of plugins) like audio/video collaboration or collaborative real-time writing and editing.</p>
-          <p>The <strong>/account</strong> section shows your profile information and the rooms you are part of. You will soon be able to accept or reject invites to other rooms in this section.</p>
+          <p>Your <strong>/classroom</strong> is a collaborative chat platform where you can find rooms for your courses and classes. Each room can be enhanced with a variety of widgets (think of plugins) like audio/video collaboration or collaborative real-time writing and editing.</p>
+          <p>The <strong>/account</strong> section shows your profile information and which rooms you are part of. You will soon be able to accept or reject invites to other rooms in this section.</p>
           <p>You can <strong>/explore</strong> openly accessible public rooms categorized by department, location, and subject … soon we will provide a search function and filtering.</p>
-          <p>If you need an openly accessible public room, please <strong>/request</strong> it via the provided form. You can learn more about the differences of public vs. private rooms in our FAQs and video section.</p>
+          <p>If you need an openly accessible public room, please <strong>/request</strong> one via the provided form. You can learn more about the differences of public vs. private rooms in our FAQs and video section.</p>
           <p>In case you need some guidance, please check the frequently asked questions in our <strong>/support</strong> section. If the problem you encounter is not documented, yet, please contact us via the provided form below the FAQs.</p>
           <p>In addition to our written documentation, you can visit <strong>/kino</strong> and browse through our collection of introduction and how-to videos.</p>
           <p>You can use <strong>/meet</strong> for audio/video collaboration for your courses and for presenting your work, or simply for talking to each other virtually face to face.</p>
