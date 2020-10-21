@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Loading } from "../../components/loading";
 import { useHistory } from 'react-router-dom'
-import roomStructure from "../../assets/data/exploreList.json"
+import roomStructure from "../../assets/data/naming.json"
 import PublicRooms from "../../components/matrix_public_rooms"
 import * as matrixcs from "matrix-js-sdk";
 
@@ -113,10 +113,10 @@ const Explore = () => {
   const RoomList = ({ faculty, displayName, type }) => {
     return (
       <>
-        <h2>{displayName}</h2>
+        <h3>{displayName}</h3>
         {[...publicRooms].sort().map(publicRoom => (
           publicRoom.name.startsWith(`${faculty}-`) ? (
-            <div className="explore" key={publicRoom.room_id}>
+            <div className="room" key={publicRoom.room_id}>
               {publicRoom.avatar_url ? (
                 <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, "crop", false)} alt="avatar" />
               ) : (

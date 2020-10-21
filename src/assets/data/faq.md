@@ -8,7 +8,7 @@ We’d like to create a responsible tool for remote education using existing ser
 - **present** to each other
 - **study** together
 
-**medienhaus/** uses rooms as an extension for chats and talks, quick face to face meetings, presentations with groups of people, collaborative realtime writing and documentation and a solution for streaming online.
+**medienhaus/** uses rooms as an extension for chats and talks, quick face to face meetings, presentations with groups of people, collaborative real time writing and documentation and a solution for streaming online.
 
 ## I was told to join a room on **medienhaus/** … how do I do that?
 
@@ -24,7 +24,7 @@ You need to know that there are two kinds of chatrooms: public and private. You 
 
 Public rooms on the other hand are, like the name suggest, public visible and can be seen in the `explore` tab. Public rooms should only be created if a strong incentive is given, that access to the information in these rooms should be publicly available.
 
-Since in most cases a private room is enough, we choose to regulate the creation of public rooms by needing a request that can be found here.
+For most cases private rooms are sufficient, which is why we regulate the creation of public rooms. If you still think you need a publicly available room you can request one here.
 
 To create a private room find the `+` button on the left side in the navigation column besides “Rooms”. Give it a name and a topic.
 
@@ -40,9 +40,9 @@ To leave a room, open the room and click on the name at the top of the screen. U
 
 ## I’d like to start a video chat with someone or with a group of people in a room. But how?
 
-Besides the input field for your chat messages you can find a couple of icons: attach files, select emojis, voice call and video call. The latter two can be used to start a call using Jitsi, a self-hosted, free and open-source video call program, that is integrated in **medienhaus/** …
+Besides the input field for your chat messages you can find a couple of icons: attach files, select emojis, voice call and video call. The latter two start a call with all members in the room. Please note that this is a quick way to get in contact, but if you are hosting a class and want to use an extensive suit of functionality please use **/meet**.
 
-You can safely use Jitsi for one-on-one and group calls up to 10 people. You need to use a recommended browser like Chromium, Firefox or Chrome.
+You need to use a recommended browser like Chromium, Firefox or Chrome.
 
 ## How can I easily share collaborative notes with people in my room?
 
@@ -110,7 +110,7 @@ Video calls require a stable and capable internet connection. Make sure to have 
 
 We recommend you use Firefox, Chromium or Chrome as your browser for **medienhaus/** and our external services. Make sure your computer runs fine and you close programs and apps you don’t need, if you have a slower or older machine. 
 
-## Someone shared their screen in audio/video chat, but I cannot see it. Everyone else can, what’s going on?
+## Someone shared their screen in **/meet**, but I cannot see it. Everyone else can, what’s going on?
 
 This happens from time to time. Please reload the page and it should be working. We also recommend you use Firefox, Chromium and Chrome as your browser for the best experience.
 
@@ -118,13 +118,13 @@ This happens from time to time. Please reload the page and it should be working.
 
 Before you start your video call, please always make sure that your camera and microphone are working. In macOS you can open “Photo Booth” and start a “Movie Recording”. Here you can test your video and audio.
 
-If everything is working fine here, make sure you gave permissions in your browser to the website. Please refer to your browser on how to check for permissions to the camera and microphone.
+If everything is working fine here, make sure you gave permissions in your browser to the website. Please refer to your browser on how to check for permissions for the camera and microphone.
 
-When using BigBlueButton you can use the audio test before joining the room to make sure everything is working.
+When using **/meet**: You can use the audio test before joining the room to make sure everything is working. In the audio test you should be able to hear your audio input with a delay to validate that the microphone is working.
 
-## How do I share my screen in a videocall?
+## How do I share my screen in a **/meet** video call?
 
-When using BigBlueButton: On the bottom of the screen you find a row of icons. The rightmost icon is to share your screen. If you don’t see the button you might need to ask the moderator to grant you the rights to get the role of a presenter. Only one person at a time can share their screen.
+When using **/meet**: On the bottom of the screen you find a row of icons. The rightmost icon is to share your screen. If you don’t see the button you might need to ask the moderator to grant you the rights to get the role of a presenter. Only one person at a time can share their screen.
 
 ## I found a typo, bug or other thing that needs to be fixed!
 

@@ -8,7 +8,7 @@ const Meet = () => {
       <p>The invite links to your rooms are persistent, so if you need to join a course on a weekly basis it is going to be the same link every time.</p>
       <p>As a moderator, you can conveniently control the meeting by muting and un-muting or by choosing presenters to give them the stage.</p>
       <p>You can also create breakout rooms for smaller and more focused groups with a time limit, whereafter people come back to the group meeting with all participants.</p>
-      <p><strong>/meet</strong> can be accessed via: <a href="https://bbb.medienhaus.udk-berlin.de" rel="external nofollower noreferrer" target="_blank">bbb.medienhaus.udk-berlin.de</a></p>
+      <p><strong>/meet</strong> can be accessed via: <a href="https://bbb.medienhaus.udk-berlin.de" rel="external nofollow noopener noreferrer" target="_blank">bbb.medienhaus.udk-berlin.de</a></p>
     </section>
   );
 }
