@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { UserContext } from '../../components/context/UserContext'
 import Profile from "../../components/matrix_profile";
 import { Loading } from "../../components/loading";
-import ReactPlayer from 'react-player'
+//import ReactPlayer from 'react-player'
 
 const Dashboard = () => {
   //const [auth, setAuth] = useContext(AuthProvider);
@@ -16,6 +16,7 @@ const Dashboard = () => {
     //console.log(location.pathname);
   }
 
+  /*
   const Videos = () => {
     return (
       <>
@@ -34,6 +35,7 @@ const Dashboard = () => {
       </>
     )
   }
+  */
 
   useEffect(() => {
     getAuth();
@@ -43,16 +45,16 @@ const Dashboard = () => {
     token === null ? <Redirect to='/' /> : (
       profile.length === 0 ? (<Loading />) : (
         <section className="landing">
-          <h2>Hello <strong>{profile.displayname}</strong>, you are now logged in.</h2> {user}
-          <ul>
-            <li><strong><Link to="/account">/account</Link></strong> your profile and a list of your rooms</li>
-            <li><strong><Link to="/explore">/explore</Link></strong> explore, join, and leave public rooms</li>
-            <li><strong><Link to="/docs">/docs</Link></strong> documentation, how-to and usage guide</li>
-            <li><strong><Link to="/help">/help</Link></strong> frequently asked questions and answers</li>
-            <li><strong><Link to="/support">/support</Link></strong> in case of undocumented problems</li>
-            <li><strong><Link to="/request">/request</Link></strong> openly accessible public rooms</li>
-          </ul>
-          <Videos />
+          <p>Hello, <strong>{profile.displayname}</strong>.</p>
+          <p>Your <strong>/classroom</strong> is a collaborative chat platform where you can organize in rooms for your courses and classes. Each room can be enhanced with a variety of widgets (think of plugins) like audio/video collaboration or collaborative real-time writing and editing.</p>
+          <p>The <strong>/account</strong> section shows your profile information and the rooms you are part of. You will soon be able to accept or reject invites to other rooms in this section.</p>
+          <p>You can <strong>/explore</strong> openly accessible public rooms categorized by department, location, and subject … soon we will provide a search function and filtering.</p>
+          <p>If you need an openly accessible public room, please <strong>/request</strong> it via the provided form. You can learn more about the differences of public vs. private rooms in our FAQs and video section.</p>
+          <p>In case you need some guidance, please check the frequently asked questions in our <strong>/support</strong> section. If the problem you encounter is not documented, yet, please contact us via the provided form below the FAQs.</p>
+          <p>In addition to our written documentation, you can visit <strong>/kino</strong> and browse through our collection of introduction and how-to videos.</p>
+          <p>You can use <strong>/meet</strong> for audio/video collaboration for your courses and for presenting your work, or simply for talking to each other virtually face to face.</p>
+          <p>You can use <strong>/write</strong> for collaborating with others in real-time on the same text document, or you can simply take some notes for only yourself.</p>
+          <p>If you want to present your course or project to a large group of people, you can use <strong>/stream</strong> for real-time live streaming audio/video content.</p>
         </section>
       )
     )
