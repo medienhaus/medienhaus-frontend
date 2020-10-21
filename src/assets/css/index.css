@@ -431,6 +431,11 @@ form textarea {
   pointer-events: none;
 }
 
+.kino .sidebar .playicon.playing {
+  border-color: var(--color-bg);
+  border-width: calc(var(--margin) * 0.2) 0 calc(var(--margin) * 0.2) calc(var(--margin) * 0.4);
+}
+
 .react-player {
   position: absolute;
   left: 0;

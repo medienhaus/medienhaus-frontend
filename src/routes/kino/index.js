@@ -9,7 +9,7 @@ const Kino = () => {
     return (
       <li>
         <button onClick={() => setVideo(url)} >
-          {url === video ? <div className="playicon pause"></div> : <div className="playicon"></div>}
+          {url === video ? <div className="playicon playing"></div> : <div className="playicon"></div>}
         </button>
         <div>
           <p><em>{head}</em></p>
@@ -24,17 +24,29 @@ const Kino = () => {
       <div>
         <section className="sidebar">
           <ul>
-            <Button url={'video/public_onboarding.mp4'}
+            <Button
+              url={[
+                {src: 'video/public_onboarding.mp4', type: 'video/mp4'},
+                {src: 'video/public_onboarding.webm', type: 'video/webm'},
+              ]}
               head={'01. The Getting Started Video'}
-              sub={['Your first day at', <strong> '/medienhaus'</strong>]}
+              sub={['Your first day at ', <strong>'/medienhaus'</strong>]}
             />
 
-            <Button url={'video/teacher_onboarding_visibility.mp4'}
+            <Button
+              url={[
+                {src: 'video/teacher_onboarding_visibility.mp4', type: 'video/mp4'},
+                {src: 'video/teacher_onboarding_visibility.webm', type: 'video/webm'}
+              ]}
               head={'02. Room Visibility and Access'}
               sub={'Public, private, and invite-only'}
             />
 
-            <Button url={'video/teacher_onboarding_widgets.mp4'}
+            <Button
+              url={[
+                {src: 'video/teacher_onboarding_widgets.mp4', type: 'video/mp4'},
+                {src: 'video/teacher_onboarding_widgets.webm', type: 'video/webm'}
+              ]}
               head={'03. Widgets and Enhancements'}
               sub={['Integrate ', <strong>/meet</strong>, ', ', <strong>/write</strong>, ', ', < strong > /stream</strong >]}
             />
