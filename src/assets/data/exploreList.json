@@ -27,7 +27,7 @@
     "id": 4,
     "faculty": "17j",
     "type": "location",
-    "displayName": "Straße des 17. Juni"
+    "displayName": "strasse 17.juni"
   },
   {
     "id": 5,
@@ -130,5 +130,11 @@
     "faculty": "org",
     "type": "other",
     "displayName": "Organisationen"
+  },
+  {
+    "id": 22,
+    "faculty": "udk2030",
+    "type": "other",
+    "displayName": "UdK2030"
   }
 ]
