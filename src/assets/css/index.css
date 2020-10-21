@@ -394,24 +394,19 @@ form textarea {
   padding: 0 calc(var(--margin) * 0.2);
 }
 
-/*
-.kino {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-gap: 0 calc(var(--margin) * 2);
-}
-
 .kino .sidebar {
-  grid-column: 1;
+  font-size: 0.5rem;
 }
-*/
 
 .kino .sidebar ul {
   list-style-type: none;
 }
 
-.kino .sidebar ul li > * + * {
-  margin-left: calc(var(--margin) * 0.5);
+.kino .sidebar ul li {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: calc(var(--margin) * 0.5);
+  place-content: start;
 }
 
 .kino .sidebar button {
@@ -422,15 +417,15 @@ form textarea {
   border-width: calc(var(--margin) * 0.2);
   color: var(--color-bg);
   cursor: pointer;
-  padding: calc(var(--margin) * 0.2);
-  height: calc(var(--margin) * 2);
-  width: calc(var(--margin) * 2);
+  display: inline-block;
+  height: calc(var(--margin) * 1.4);
+  width: calc(var(--margin) * 1.4);
 }
 
 .kino .sidebar .playicon {
   border-color: transparent transparent transparent var(--color-bg);
   border-style: solid;
-  border-width: calc(var(--margin) * 0.4) 0 calc(var(--margin) * 0.4) calc(var(--margin) * 0.65);
+  border-width: calc(var(--margin) * 0.2) 0 calc(var(--margin) * 0.2) calc(var(--margin) * 0.325);
   display: inline-block;
   margin: 0 auto;
   pointer-events: none;
@@ -454,12 +449,10 @@ form textarea {
   background: unset;
 }
 
-/*
-.videos {
-  grid-column: 2;
-  margin: unset !important;
+.video > div {
+  position: sticky;
+  top: calc(var(--margin) * 4.8);
 }
-*/
 
 .videoplayer {
   height: 100% !important;
@@ -492,6 +485,7 @@ form textarea {
 .with-sidebar {
   overflow: hidden;
 }
+*/
 
 .with-sidebar > * {
   display: flex;
@@ -501,7 +495,9 @@ form textarea {
 
 .with-sidebar > * > * {
   margin: calc(var(--margin) / 2);
+  /*
   flex-basis: 20%;
+  */
   flex-grow: 1;
 }
 
@@ -510,7 +506,6 @@ form textarea {
   flex-grow: 999;
   min-width: calc(50% - var(--margin));
 }
-*/
 
 @keyframes init {
   from {
