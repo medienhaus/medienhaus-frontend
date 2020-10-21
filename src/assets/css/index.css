@@ -306,6 +306,7 @@ form textarea {
   box-shadow: none;
   outline: none;
   padding: calc(var(--margin) * 0.4);
+  resize: vertical;
   width: 100%;
 }
 
