@@ -30,7 +30,7 @@ const Kino = () => {
                 {src: 'video/public_onboarding.webm', type: 'video/webm'},
               ]}
               head={'01. The Getting Started Video'}
-              sub={['Your first day at ', <strong>'/medienhaus'</strong>]}
+              sub={['Your first day at ', <strong>/medienhaus</strong>]}
             />
 
             <Button
@@ -54,7 +54,7 @@ const Kino = () => {
         </section>
         <section className="video">
           <div className="videowrapper">
-            <ReactPlayer className="videoplayer" playing controls url={video} light volume='0.6' width='100%' onProgress={(state) => setPlayed(state.played)} />
+            <ReactPlayer className="videoplayer" playing controls url={video} light volume={0.6} width='100%' onProgress={(state) => setPlayed(state.played)} />
             <progress max={1} value={played} />
           </div>
         </section>
