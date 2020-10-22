@@ -16,24 +16,24 @@ const Nav = () => {
       <div>
         <div>
           {auth ? (
-            <a activeClassName="active" href="https://medienhaus.udk-berlin.de/classroom" target="_self" rel="noopener noreferrer">/classroom&nbsp;-&gt;</a>
+            <a href="https://medienhaus.udk-berlin.de/classroom" rel="nofollow noopener noreferrer" target="_self">/classroom&nbsp;-&gt;</a>
           ) : (
-            <NavLink activeClassName="active" to="/login">login</NavLink>
+            <NavLink activeclassname="active" to="/login">login</NavLink>
           )}
         </div>
         {auth ? (
           <>
             <div>
-              <NavLink activeClassName="active" to="/account">/account</NavLink>
-              <NavLink activeClassName="active" to="/explore">/explore</NavLink>
-              <NavLink activeClassName="active" to="/request">/request</NavLink>
-              <NavLink activeClassName="active" to="/support">/support</NavLink>
-              <NavLink activeClassName="active" to="/kino">/kino</NavLink>
+              <NavLink activeclassname="active" to="/account">/account</NavLink>
+              <NavLink activeclassname="active" to="/explore">/explore</NavLink>
+              <NavLink activeclassname="active" to="/request">/request</NavLink>
+              <NavLink activeclassname="active" to="/support">/support</NavLink>
+              <NavLink activeclassname="active" to="/kino">/kino</NavLink>
             </div>
             <div>
-              <NavLink activeClassName="active" to="/meet">/meet</NavLink>
-              <NavLink activeClassName="active" to="/write">/write</NavLink>
-              <NavLink activeClassName="active" to="/stream">/stream</NavLink>
+              <NavLink activeclassname="active" to="/meet">/meet</NavLink>
+              <NavLink activeclassname="active" to="/write">/write</NavLink>
+              <NavLink activeclassname="active" to="/stream">/stream</NavLink>
             </div>
           </>
         ) : (

@@ -305,7 +305,8 @@ form textarea {
   border-width: calc(var(--margin) * 0.2);
   box-shadow: none;
   outline: none;
-  padding: calc(var(--margin) * 0.2);
+  padding: calc(var(--margin) * 0.4);
+  resize: vertical;
   width: 100%;
 }
 
@@ -395,18 +396,7 @@ form textarea {
 }
 
 .kino .sidebar {
-  font-size: 0.5rem;
-}
-
-.kino .sidebar ul {
-  list-style-type: none;
-}
-
-.kino .sidebar ul li {
-  display: grid;
-  grid-auto-flow: column;
-  grid-gap: calc(var(--margin) * 0.5);
-  place-content: start;
+  font-size: 0.55rem;
 }
 
 .kino .sidebar button {
@@ -422,6 +412,18 @@ form textarea {
   width: calc(var(--margin) * 1.4);
 }
 
+.kino .sidebar ul {
+  list-style-type: none;
+}
+
+.kino .sidebar ul li {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: calc(var(--margin) * 0.5);
+  align-items: center;
+  justify-content: start;
+}
+
 .kino .sidebar .playicon {
   border-color: transparent transparent transparent var(--color-bg);
   border-style: solid;
@@ -429,6 +431,11 @@ form textarea {
   display: inline-block;
   margin: 0 auto;
   pointer-events: none;
+}
+
+.kino .sidebar .playicon.playing {
+  border-color: var(--color-bg);
+  border-width: calc(var(--margin) * 0.2) 0 calc(var(--margin) * 0.2) calc(var(--margin) * 0.4);
 }
 
 .react-player {
@@ -467,19 +474,42 @@ form textarea {
   position: relative;
 }
 
+.videowrapper > progress:not([value]) {
+  display: none;
+}
+
 .videowrapper > progress[value] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   border: unset;
-  height: calc(var(--margin) * 0.3);
+  height: calc(var(--margin) * 0.4);
   width: 100%;
 }
 
-.videowrapper > progress[value]::-webkit-progress-bar,
+.videowrapper > progress[value]::-webkit-progress-value,
+.videowrapper > progress[value]::-moz-progress-bar {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--color-fg);
+  border: unset;
+}
+
+/*
+.videowrapper > progress[value]::-webkit-progress-value {
+  background-image: -webkit-linear-gradient(-45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%),
+                    -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%),
+                    -webkit-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%);
+}
+
 .videowrapper > progress[value]::-moz-progress-bar {
   background-color: var(--color-fg);
+  background-image: -moz-linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%),
+                    -moz-linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%),
+                    -moz-linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%);
 }
+*/
 
 /*
 .with-sidebar {
