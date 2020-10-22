@@ -5,7 +5,7 @@ const Kino = () => {
   const [video, setVideo] = useState('video/public_onboarding.mp4');
   const [played, setPlayed] = useState(null);
 
-  const Button = ({ url, head, sub, }) => {
+  const Button = ({ url, head, sub }) => {
     return (
       <li>
         <button onClick={() => setVideo(url)} >
@@ -26,7 +26,7 @@ const Kino = () => {
           <ul>
             <Button url={'video/public_onboarding.mp4'}
               head={'01. The Getting Started Video'}
-              sub={['Your first day at', <strong> '/medienhaus'</strong>]}
+              sub={['Your first day at', <strong key={'4'}> '/medienhaus'</strong>]}
             />
 
             <Button url={'video/teacher_onboarding_visibility.mp4'}
@@ -36,13 +36,13 @@ const Kino = () => {
 
             <Button url={'video/teacher_onboarding_widgets.mp4'}
               head={'03. Widgets and Enhancements'}
-              sub={['Integrate ', <strong>/meet</strong>, ', ', <strong>/write</strong>, ', ', < strong > /stream</strong >]}
+              sub={['Integrate ', <strong key={'5'}>/meet</strong>, ', ', <strong key={'6'}>/write</strong>, ', ', < strong key={'7'} > /stream</strong >]}
             />
           </ul>
         </section>
         <section className="video">
           <div className="videowrapper">
-            <ReactPlayer className="videoplayer" playing controls url={video} light volume='0.6' width='100%' onProgress={(state) => setPlayed(state.played)} />
+            <ReactPlayer className="videoplayer" playing controls url={video} light volume={0.6} width='100%' onProgress={(state) => setPlayed(state.played)} />
             <progress max={1} value={played} />
           </div>
         </section>
