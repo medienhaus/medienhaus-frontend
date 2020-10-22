@@ -440,7 +440,8 @@ form textarea {
   border-width: calc(var(--margin) * 0.2);
   color: var(--color-bg);
   cursor: pointer;
-  display: inline-block;
+  display: inline-grid;
+  place-content: center;
   height: calc(var(--margin) * 1.4);
   width: calc(var(--margin) * 1.4);
 }
@@ -461,14 +462,14 @@ form textarea {
   border-color: transparent transparent transparent var(--color-bg);
   border-style: solid;
   border-width: calc(var(--margin) * 0.2) 0 calc(var(--margin) * 0.2) calc(var(--margin) * 0.325);
-  display: inline-block;
-  margin: 0 auto;
+  margin-left: calc(var(--margin) * calc(0.325 / 4));
   pointer-events: none;
 }
 
 .kino .sidebar .playicon.playing {
   border-color: var(--color-bg);
   border-width: calc(var(--margin) * 0.2) 0 calc(var(--margin) * 0.2) calc(var(--margin) * 0.4);
+  margin-left: 0;
 }
 
 .react-player {
@@ -652,7 +653,6 @@ form textarea {
   nav {
     display: none;
   }
-  /*
   .kino .sidebar {
     font-size: 1rem;
   }
@@ -669,7 +669,6 @@ form textarea {
   .kino .sidebar .playicon.playing {
     border-width: calc(var(--margin) * 0.6) 0 calc(var(--margin) * 0.6) calc(var(--margin) * 1.2);
   }
-  */
 }
 
 /* 800px */

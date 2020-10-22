@@ -39,7 +39,7 @@ const Kino = () => {
                 { src: 'video/public_onboarding.webm', type: 'video/webm' }
               ]}
               head={'01. The Getting Started Video'}
-              sub={['Your first day at', <strong key={'medienhaus'}> '/medienhaus'</strong>]}
+              sub={['Your first day at', <strong key={'medienhaus'}> /medienhaus</strong>]}
             />
 
             <Button
