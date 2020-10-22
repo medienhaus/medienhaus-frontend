@@ -44,7 +44,7 @@ const Dashboard = () => {
   return (
     token === null ? <Redirect to='/' /> : (
       profile.length === 0 ? (<Loading />) : (
-        <section className="landing">
+        <section className="dashboard">
           <p>Hello, <strong>{profile.displayname}</strong>.</p>
           <p>Your <strong>/classroom</strong> is a collaborative chat platform where you can find rooms for your courses and classes. Each room can be enhanced with a variety of widgets (think of plugins) like audio/video collaboration or collaborative real-time writing and editing.</p>
           <p>The <strong>/account</strong> section shows your profile information and which rooms you are part of. You will soon be able to accept or reject invites to other rooms in this section.</p>
