@@ -2,14 +2,17 @@ import React, { useState } from 'react'
 import ReactPlayer from 'react-player'
 
 const Kino = () => {
-  const [video, setVideo] = useState('video/public_onboarding.mp4');
+  const [video, setVideo] = useState([
+    { src: 'video/public_onboarding.mp4', type: 'video/mp4' },
+    { src: 'video/public_onboarding.webm', type: 'video/webm' }
+  ]);
   const [played, setPlayed] = useState(null);
 
   const Button = ({ url, head, sub }) => {
     return (
       <li>
         <button onClick={() => setVideo(url)} >
-          {url === video ? <div className="playicon pause"></div> : <div className="playicon"></div>}
+          {url === video ? <div className="playicon playing"></div> : <div className="playicon"></div>}
         </button>
         <div>
           <p><em>{head}</em></p>
@@ -24,19 +27,31 @@ const Kino = () => {
       <div>
         <section className="sidebar">
           <ul>
-            <Button url={'video/public_onboarding.mp4'}
+            <Button
+              url={[
+                { src: 'video/public_onboarding.mp4', type: 'video/mp4' },
+                { src: 'video/public_onboarding.webm', type: 'video/webm' }
+              ]}
               head={'01. The Getting Started Video'}
-              sub={['Your first day at', <strong key={'4'}> '/medienhaus'</strong>]}
+              sub={['Your first day at', <strong key={'medienhaus'}> '/medienhaus'</strong>]}
             />
 
-            <Button url={'video/teacher_onboarding_visibility.mp4'}
+            <Button
+              url={[
+                { src: 'video/teacher_onboarding_visibility.mp4', type: 'video/mp4' },
+                { src: 'video/teacher_onboarding_visibility.webm', type: 'video/webm' }
+              ]}
               head={'02. Room Visibility and Access'}
               sub={'Public, private, and invite-only'}
             />
 
-            <Button url={'video/teacher_onboarding_widgets.mp4'}
+            <Button
+              url={[
+                { src: 'video/teacher_onboarding_widgets.mp4', type: 'video/mp4' },
+                { src: 'video/teacher_onboarding_widgets.webm', type: 'video/webm' }
+              ]}
               head={'03. Widgets and Enhancements'}
-              sub={['Integrate ', <strong key={'5'}>/meet</strong>, ', ', <strong key={'6'}>/write</strong>, ', ', < strong key={'7'} > /stream</strong >]}
+              sub={['Integrate ', <strong key={'meet'}>/meet</strong>, ', ', <strong key={'weite'}>/write</strong>, ', ', < strong key={'stream'} > /stream</strong >]}
             />
           </ul>
         </section>
