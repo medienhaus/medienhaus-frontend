@@ -234,6 +234,7 @@ section#definition {
   display: grid;
   align-items: center;
   height: calc(100vh - calc(var(--margin) * 12));
+  padding-top: calc(var(--margin) * 1);
   padding-bottom: calc(var(--margin) * 3);
 }
 
