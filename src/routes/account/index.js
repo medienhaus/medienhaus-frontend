@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import useJoinedRooms from "../../components/matrix_joined_rooms";
 import useProfile from "../../components/matrix_profile";
@@ -21,6 +21,8 @@ const Account = () => {
   const [mail, setMail] = useState("");
   const history = useHistory();
   const auth = localStorage.getItem('mx_access_token');
+  const logoutRef = useRef(0);
+  const [logBtnStr, setLogBtnStr] = useState("LOGOUT")
 
   const getAccData = async () => {
     try {
@@ -51,10 +53,16 @@ const Account = () => {
   }
 
   const logout = async () => {
-    await matrixClient.logout();
-    localStorage.clear();
-    history.push('/')
-    return window.location.reload(false);
+    if (logoutRef.current === 1) {
+      await matrixClient.logout();
+      localStorage.clear();
+      history.push('/')
+      return window.location.reload(false);
+    }
+    else {
+      logoutRef.current = logoutRef.current + 1;
+      setLogBtnStr("ARE YOU SURE?")
+    }
   }
 
   const ProfilePic = () => {
@@ -77,7 +85,7 @@ const Account = () => {
 
   const LogoutBtn = () => {
     return (
-      auth ? <button onClick={() => logout()} name="logout">LOGOUT</button> : null
+      auth && <button onClick={() => logout()} name="logout">{logBtnStr}</button>
     )
   }
 
