@@ -47,6 +47,14 @@ body > #app > * > * > * + * {
   margin-top: calc(var(--margin) * 2);
 }
 
+body > #app > main > :first-of-type {
+  margin-top: calc(var(--margin) * 0.6);
+}
+
+body > #app > main > section + section {
+  margin-top: calc(var(--margin) * 4);
+}
+
 a:link {
   color: var(--color-fg);
   text-decoration: none;
@@ -137,7 +145,7 @@ footer {
   justify-content: space-between;
   grid-row: 3;
   grid-column: 1 / 3;
-  margin-top: calc(var(--margin) * 3);
+  margin-top: calc(var(--margin) * 4);
   margin-bottom: var(--margin);
 }
 
@@ -151,7 +159,7 @@ header {
   grid-row: 1;
   grid-column: 1;
   padding-top: calc(var(--margin) * 1.4);
-  padding-bottom: calc(var(--margin) * 2);
+  padding-bottom: calc(var(--margin) * 1.4);
   position: sticky;
   top: 0;
   z-index: 1;
@@ -173,7 +181,9 @@ main {
 nav {
   grid-row: 1 / 3;
   grid-column: 2;
+  /*
   margin-top: calc(var(--margin) * 1.4);
+  */
 }
 
 nav > div {
@@ -181,8 +191,8 @@ nav > div {
   top: calc(var(--margin) * 1.4);
 }
 
-nav > * > * > a + a{
-  margin-top: calc(var(--margin) * 0.5);
+nav > * > * > a + a {
+  margin-top: calc(var(--margin) * 0.55);
 }
 
 nav a {
@@ -190,9 +200,11 @@ nav a {
   font-weight: bold;
 }
 
+/*
 section {
   scroll-margin-top: calc(var(--margin) * 6);
 }
+*/
 
 section a:link {
   text-decoration: underline;
@@ -207,6 +219,12 @@ section blockquote {
   font-size: 2.8rem;
   line-height: 1.2;
 }
+
+/*
+section p + p {
+  margin-top: calc(var(--margin) * 1.4);
+}
+*/
 
 section ul {
   list-style-type: "\2013\0020";
@@ -315,6 +333,9 @@ form textarea {
   grid-template-columns: 1fr max-content;
   grid-template-rows: auto 1fr auto;
   grid-gap: 0 calc(var(--margin) * 4);
+  /*
+  grid-gap: calc(var(--margin) * 1) calc(var(--margin) * 4);
+  */
   min-height: 100%;
 }
 
@@ -610,11 +631,9 @@ form textarea {
 
 /* 799px */
 @media (max-width: 49.938em) {
-  /*
   nav {
     display: none;
   }
-  */
 }
 
 /* 800px */
