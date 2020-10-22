@@ -15,7 +15,7 @@ const Kino = () => {
           {url === video ? <div className="playicon playing"></div> : <div className="playicon"></div>}
         </button>
         <div>
-          <p><em>{head}</em></p>
+          <p>{head}</p>
           <p>{sub}</p>
         </div>
       </li>
