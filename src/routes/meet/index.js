@@ -2,7 +2,7 @@ import React from 'react';
 
 const Meet = () => {
   return (
-    <section className="meet">
+    <section className="meet copy">
       <p>You can use <strong>/meet</strong> for audio/video collaboration in courses and online presentations. It comes with useful functions to present your work or split the course in breakout rooms for focused sessions.</p>
       <p>Screensharing or shared videowatching are great tools to show and communicate your ideas. An included chat is a great way to share links or discuss matters quitetly.</p>
       <p>The invite links to your rooms are persistent, so if you need to join a course on a weekly basis it is going to be the same link every time.</p>

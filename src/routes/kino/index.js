@@ -25,6 +25,12 @@ const Kino = () => {
   return (
     <section className="kino with-sidebar">
       <div>
+        <section className="video">
+          <div className="videowrapper">
+            <ReactPlayer className="videoplayer" playing controls url={video} light volume={0.6} width='100%' onProgress={(state) => setPlayed(state.played)} />
+            <progress max={1} value={played} />
+          </div>
+        </section>
         <section className="sidebar">
           <ul>
             <Button
@@ -54,12 +60,6 @@ const Kino = () => {
               sub={['Integrate ', <strong key={'meet'}>/meet</strong>, ', ', <strong key={'weite'}>/write</strong>, ', ', < strong key={'stream'} > /stream</strong >]}
             />
           </ul>
-        </section>
-        <section className="video">
-          <div className="videowrapper">
-            <ReactPlayer className="videoplayer" playing controls url={video} light volume={0.6} width='100%' onProgress={(state) => setPlayed(state.played)} />
-            <progress max={1} value={played} />
-          </div>
         </section>
       </div>
     </section>
