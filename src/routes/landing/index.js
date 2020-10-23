@@ -10,8 +10,12 @@ const Landing = () => {
       <section id="introduction" className="copy">
         <p><a href="https://www.udk-berlin.de/en/university/college-of-architecture-media-and-design/medienhaus/" rel="nofollow noreferrer noopener" target="_blank">Medienhaus</a> is the media design and art department of Berlin University of the Arts; it is an experimental playground shared amongst Visual Communication, Art and Media, and Communication in Social and Economic Contexts.</p>
         <p>As the COVID-19 pandemic happened, we quickly needed to provide an intuitive remote collaboration platform, satisfying the requirements and needs of an art school during this crisis and beyond.</p>
-        <p>We rapidly prototyped and iteratively enhanced a privacy-focused, free and open-source set of tools and services for our students and staff.</p>
-        <p>We developed <strong>medienhaus/</strong> &mdash; not replacing but extending the name-giving physical space. Please feel free to log in with your udk account.</p>
+        <p>We rapidly prototyped and iteratively enhanced a privacy-focused, free and open-source set of tools and services for our students and staff. Please feel free to log in with your udk account.</p>
+      </section>
+      <section id="shoutout">
+        <blockquote>We developed <strong>medienhaus/</strong> &mdash; not replacing but extending the name-giving physical space.</blockquote>
+      </section>
+      <section id="services">
         <ul>
           <li><strong>/classroom</strong> asynchronous communication space</li>
           <li><strong>/meet</strong> audio/video collaboration and presentation</li>
