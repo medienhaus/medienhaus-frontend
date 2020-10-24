@@ -1,0 +1,10 @@
+{
+  "instruction": "Please fill out the form below to request an <1>openly accessible</1> and <3>public</3> room … <5>you don’t have to request private rooms, you can create them.</5>",
+  "form": {
+    "name": "your name",
+    "email": "mail address",
+    "department": "department",
+    "room": "room name"
+  },
+  "button": "SUBMIT"
+}
