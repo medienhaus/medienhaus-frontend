@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown' // https://github.com/remarkjs/react-markdown
 import { useForm } from "react-hook-form"; // https://github.com/react-hook-form/react-hook-form
 import { Loading } from '../../components/loading'
+import { useTranslation, Trans } from 'react-i18next';
 //import { Link } from "react-router-dom";
 import * as matrixcs from "matrix-js-sdk";
 
@@ -25,6 +26,7 @@ const Support = () => {
   const [loading, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
   const profile = Profile();
+  const { t, i18n } = useTranslation(['translation', 'support']);
 
   const changeMsg = e => setMsg(e.target.value);
   const changeMail = e => setMail(e.target.value);
@@ -33,6 +35,7 @@ const Support = () => {
 
   const faqPath = require('../../assets/data/faq.md');
   const [markdown, setMarkdown] = useState();
+
 
   const getMarkdownText = () => {
     setLoading(true)
@@ -75,10 +78,10 @@ const Support = () => {
             <ReactMarkdown source={markdown} />
           </section>
           <section className="support">
-            <h2>In case you didn’t find an answer to your question here, please provide us some details and tell us about the problem you encounter via the support form below.</h2>
+            <h2>{t('support:instruction')}</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div>
-                <label htmlFor="Operating System">operating system</label>
+                <label htmlFor="Operating System">{t('support:form.os')}</label>
                 <select name="Operating System" defaultValue={''} onChange={changeSystem} ref={register({ required: true })}>
                   <option value="" disabled hidden>-- select operating system --</option>
                   <option value="Linux">Linux</option>
@@ -91,7 +94,7 @@ const Support = () => {
               </div>
               {errors.browser && "Please select an operating system."}
               <div>
-                <label htmlFor="Web Browser">web browser</label>
+                <label htmlFor="Web Browser">{t('support:form.browser')}</label>
                 <select name="browser" defaultValue={''} onChange={changeBrowser} ref={register({ required: true })}>
                   <option value="" disabled hidden >-- select web browser --</option>
                   <option value="Firefox">Firefox</option>
@@ -105,21 +108,21 @@ const Support = () => {
               </div>
               {errors.browser && "Please select a web browser."}
               <div>
-                <label htmlFor="Mail Address">mail address</label>
+                <label htmlFor="Mail Address">{t('support:form.email')}</label>
                 {/* eslint-disable-next-line*/}
                 <input type="email" placeholder="u.name@udk-berlin.de" name="email" value={mail} onChange={changeMail} ref={register({ required: true, pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })} />
               </div>
               {errors.email && "Please enter a valid email address."}
-              <textarea name="messageInput" placeholder="Please describe the problem you encounter …" rows="7" spellCheck="true" value={msg} onChange={changeMsg} ref={register({ required: true })} />
+              <textarea name="messageInput" placeholder={t('support:form.placeholder')} rows="7" spellCheck="true" value={msg} onChange={changeMsg} ref={register({ required: true })} />
               {errors.messageInput && "This field can’t be empty."}
-              <button type="submit" disabled={sending}>SUBMIT</button>
+              <button type="submit" disabled={sending}>{t('support:button')}</button>
             </form>
           </section>
         </>)
     ) : (
-      <section>
-        <p>Please <a href="/login">login</a> first.</p>
-      </section>
+        <section>
+          <p>Please <a href="/login">login</a> first.</p>
+        </section>
       )
   );
 }
