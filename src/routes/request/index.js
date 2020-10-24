@@ -48,7 +48,7 @@ export default function App() {
 
   return (
     localStorage.getItem('mx_access_token') !== null ? (
-      <section className="request">
+      <section className="request copy">
         <p>Please fill out the form below to request an <strong>openly accessible</strong> and <strong>public</strong> room … <em>you don’t have to request private rooms, you can create them.</em></p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
