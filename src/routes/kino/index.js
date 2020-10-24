@@ -9,6 +9,8 @@ const Kino = () => {
   const [played, setPlayed] = useState(null);
 
   const Button = ({ url, head, sub }) => {
+    console.log(Object.entries(video))
+    console.log("url: " + url)
     return (
       <li>
         <button onClick={() => setVideo(url)} >
