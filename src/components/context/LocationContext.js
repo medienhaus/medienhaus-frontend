@@ -1,11 +1,9 @@
 import React, { createContext, useState } from 'react';
-import { useLocation } from 'react-router-dom'
 
 export const LocationContext = createContext();
 
 export const LocationProvider = props => {
-  const loc = useLocation;
-  const [location, setLocation] = useState(loc.pathname);
+  const [location, setLocation] = useState(null);
   return (
     <LocationContext.Provider value={[location, setLocation]}>
       {props.children}

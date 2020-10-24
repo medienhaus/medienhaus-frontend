@@ -47,7 +47,7 @@ const useJoinedRooms = () => {
         setAnswer(["You are currently not part of any rooms"])
       }
     } catch (e) {
-      console.log(e.data.error);
+      console.log(e);
     }
   }
 

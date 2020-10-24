@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import * as matrixcs from "matrix-js-sdk";
 import { useForm } from 'react-hook-form';
+import { useTranslation, Trans } from 'react-i18next';
+
 const myUserId = "@request-bot:medienhaus.udk-berlin.de";
 const myAccessToken = "MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEByZXF1ZXN0LWJvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSBLUztZMyoyMHRENDRQeHNlCjAwMmZzaWduYXR1cmUg1o6ZEgjmbQC9FVK0D4nZZshNrUrgaX8DFWd8R-tBOjoK";
 const matrixClient = matrixcs.createClient({
@@ -24,6 +26,8 @@ export default function App() {
   const changeDepartment = e => setDepartment(e.target.value);
   const changeName = e => setName(e.target.value);
   const changeRoom = e => setRoom(e.target.value);
+
+  const { t, i18n } = useTranslation(['translation', 'request']);
 
   const onSubmit = async () => {
     //Andi feel free to change markup
@@ -49,36 +53,40 @@ export default function App() {
   return (
     localStorage.getItem('mx_access_token') !== null ? (
       <section className="request copy">
-        <p>Please fill out the form below to request an <strong>openly accessible</strong> and <strong>public</strong> room … <em>you don’t have to request private rooms, you can create them.</em></p>
+        <p>
+          <Trans i18nKey="request:instruction">
+            Please fill out the form below to request an <strong>openly accessible</strong> and <strong>public</strong> room … <em>you don’t have to request private rooms, you can create them.</em>
+          </Trans>
+        </p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <label htmlFor="name">your name</label>
+            <label htmlFor="name">{t('request:form.name')}</label>
             <input type="text" placeholder="Name Yourname" name="name" value={name} onChange={changeName} ref={register({ required: true })} />
           </div>
           {errors.name && "Please enter your name."}
           <div>
-            <label htmlFor="email">mail address</label>
+            <label htmlFor="email">{t('request:form.email')}</label>
             <input type="email" placeholder="u.name@udk-berlin.de" name="email" value={mail} onChange={changeMail} ref={register({ required: true })} />
           </div>
           {errors.email && "Please enter a valid email address."}
           <div>
-            <label htmlFor="department">department</label>
+            <label htmlFor="department">{t('request:form.department')}</label>
             <input type="text" placeholder="Visuelle Kommunikation" name="department" value={department} onChange={changeDepartment} ref={register({ required: true })} />
           </div>
           {errors.department && "Please specifiy the department."}
           <div>
-            <label htmlFor="room">room name</label>
+            <label htmlFor="room">{t('request:form.room')}</label>
             <input type="text" placeholder="i.e. the name of your class or course" name="room" value={room} onChange={changeRoom} ref={register({ required: true })} />
           </div>
           {errors.room && "Please enter a title for your room."}
           <textarea name="notes" placeholder="Any additional notes?" rows="3" spellCheck="true" value={msg} onChange={changeMsg} ref={register} />
-          <button type="submit" disabled={sending}>SUBMIT</button>
+          <button type="submit" disabled={sending}>{t('request:button')}</button>
         </form>
       </section>
     ) : (
-      <section>
-        <p>Please <a href="/login">login</a> first.</p>
-      </section>
-    )
+        <section>
+          <p>Please <a href="/login">login</a> first.</p>
+        </section>
+      )
   );
 }
