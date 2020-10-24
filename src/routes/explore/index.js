@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import roomStructure from "../../assets/data/naming.json"
 import PublicRooms from "../../components/matrix_public_rooms"
 import * as matrixcs from "matrix-js-sdk";
+import { useTranslation } from 'react-i18next';
 
 const myUserId = localStorage.getItem("mx_user_id");
 const myAccessToken = localStorage.getItem("mx_access_token");
@@ -22,6 +23,7 @@ const Explore = () => {
   const [loading, setLoading] = useState(true);
   const publicRooms = PublicRooms();
   const history = useHistory();
+  const { t, i18n } = useTranslation(['translation', 'explore']);
 
   //first let's fetch all rooms our user is part of
   const getJoinedRooms = async () => {
@@ -123,8 +125,8 @@ const Explore = () => {
                 )}
               <label htmlFor={publicRoom.room_id} key={publicRoom.name} name={faculty}>{publicRoom.name}</label>
               {joinedRooms.includes(publicRoom.name) ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
-                {loading ? <Loading /> : "Leave"}</button> :
-                <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : "Join"}</button>}
+                {loading ? <Loading /> : t('explore:buttonLeave')}</button> :
+                <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
             </div>
           ) : (
               null
