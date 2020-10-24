@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import useJoinedRooms from "../../components/matrix_joined_rooms";
 import useProfile from "../../components/matrix_profile";
 import { Loading } from "../../components/loading"
+import { useTranslation } from 'react-i18next';
 import * as matrixcs from "matrix-js-sdk";
 
 const myUserId = localStorage.getItem("mx_user_id");
@@ -14,6 +15,7 @@ const matrixClient = matrixcs.createClient({
   useAuthorizationHeader: true
 });
 
+
 const Account = () => {
   // eslint-disable-next-line
   const joinedRooms = useJoinedRooms();
@@ -22,7 +24,10 @@ const Account = () => {
   const history = useHistory();
   const auth = localStorage.getItem('mx_access_token');
   const logoutRef = useRef(0);
-  const [logBtnStr, setLogBtnStr] = useState("LOGOUT")
+  //const location = useContext();
+  const { t, i18n } = useTranslation(['translation', 'account']);
+  const [logBtnStr, setLogBtnStr] = useState(t('account:logout'))
+
 
   const getAccData = async () => {
     try {
@@ -61,7 +66,8 @@ const Account = () => {
     }
     else {
       logoutRef.current = logoutRef.current + 1;
-      setLogBtnStr("ARE YOU SURE?")
+      console.log(logoutRef)
+      setLogBtnStr(t('account:logout2'))
     }
   }
 
@@ -79,7 +85,7 @@ const Account = () => {
 
   const Email = () => {
     return (
-      mail ? <p>{mail}</p> : <p>please add an email address to your profile</p>
+      mail ? <p>{mail}</p> : <p>{t('account:email')}</p>
     )
   }
 
@@ -97,11 +103,10 @@ const Account = () => {
 
   return (
     <>
-
       {joinedRooms.length === 0 ? (<Loading />) : (
         <section className="account">
           <ProfilePic />
-          <p>You are currently part of the following rooms:</p>
+          <p>{t('account:rooms.text')}</p>
           <ul>
             {[...joinedRooms].sort().map(joinedRoom => (
               joinedRoom !== "" && <li key={joinedRoom}>{joinedRoom}</li>
