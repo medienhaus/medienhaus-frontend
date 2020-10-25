@@ -1,7 +1,7 @@
 {
-  "p0": "Du kannst <1>/stream</1> for broadcasting your video (a webcam or your desktop) and audio (your voice via microphone or your music for example) to the internet.",
-  "p1": "Live streaming is different than /meet in the fact that you can stream to an unlimited amount of people who just tune in to your stream with a link.",
-  "p2": "You can incorporate this into a project of yours or use it for traditional live streaming to an audience. It is up to you how to use it.",
-  "p3": "<1><2>/stream</2> can be accessed via: <3>stream.medienhaus.udk-berlin.de</3></1>",
-  "p4": "NOTE: Until we finished updating and renewing our live streaming service, you can use our testing instance via: <5>cast.medienhaus.udk-berlin.de</5>"
+  "p0": "Du kannst <1>/stream</1> verwenden, um dein Video (eine Webcam oder Ihren Desktop) und Audio (Ihre Stimme über ein Mikrofon oder Ihre Musik) ins Internet zu übertragen.",
+  "p1": "Live-Streaming unterscheidet sich von /meet darin, dass du zu einer unbegrenzten Anzahl von Personen streamen kannst, die nur einen Link benötigen, um deinen Stream schauen.",
+  "p2": "Du kannst diese Technologie in ein Projekt von dir integrieren oder es für traditionelles Live-Streaming an ein Publikum verwenden. Es liegt an dir, wie du es verwendest.",
+  "p3": "<1><2>/stream</2> ist erreichbar via: <3>stream.medienhaus.udk-berlin.de</3></1>",
+  "p4": "BEMERKUNG: Bis wir /stream geupdatet haben, ist der Service unter: <5>cast.medienhaus.udk-berlin.de</5> zu erreichen."
 }

@@ -43,7 +43,7 @@ body {
   animation: init 0.03s ease-in 0.5s 1 forwards;
 }
 
-body > #app > * > * > * + * {
+body > #app > *:not(footer) > * > * + * {
   margin-top: calc(var(--margin) * 2);
 }
 
@@ -470,6 +470,24 @@ form textarea {
   border-color: var(--color-bg);
   border-width: calc(var(--margin) * 0.2) 0 calc(var(--margin) * 0.2) calc(var(--margin) * 0.4);
   margin-left: 0;
+}
+
+.l10n {
+  display: grid;
+  align-items: start;
+  grid-auto-flow: column;
+  grid-gap: calc(var(--margin) * 1);
+}
+
+.l10n > button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--color-bg);
+  border: unset;
+  color: var(--color-fg);
+  cursor: pointer;
+  line-height: 1.4;
 }
 
 .react-player {
