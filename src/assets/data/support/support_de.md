@@ -7,7 +7,7 @@ Wir möchten ein verantwortungsbewusstes Werkzeug für die Fernausbildung schaff
 - einen Raum zum **Kommunizieren**
 - **Treffen** von Angesicht zu Angesicht
 - sich gegenseitig **präsentieren**
-- zusammen studieren
+- zusammen **studieren**
 
 **medienhaus/** nutzt Räume als Erweiterung für Chats und Gespräche, schnelle persönliche Treffen, Präsentationen mit Personengruppen, gemeinsames Schreiben und Dokumentieren in Echtzeit und eine Lösung für das Streaming online.
 
