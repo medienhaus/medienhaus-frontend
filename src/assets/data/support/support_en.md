@@ -13,7 +13,7 @@ We’d like to create a responsible tool for remote education using existing ser
 
 ## I was told to join a room on **medienhaus/** … how do I do that?
 
-If you are invited to a public room, let’s say by a teacher for an upcoming course, you can find the room in the `[explore](https://medienhaus.udk-berlin.de/explore)` tab. Invitations to privat rooms can be found at the left side of the screen in the [classroom](https://medienhaus.udk-berlin.de/classroom) in the navigation column.
+If you are invited to a public room, let’s say by a teacher for an upcoming course, you can find the room in the **[/explore](https://medienhaus.udk-berlin.de/explore)** tab. Invitations to privat rooms can be found at the left side of the screen in the **[/classroom](https://medienhaus.udk-berlin.de/classroom)** in the navigation column.
 
 ## I don’t know my password and/or username!
 
@@ -23,13 +23,13 @@ The password and username is the same you use for logging in to your UdK mail ac
 
 You need to know that there are two kinds of chatrooms: public and private. You can freely create private rooms and personally invite your friends, colleagues or other people in the network. This group is only visible by the people who have access.
 
-Public rooms on the other hand are, like the name suggest, public visible and can be seen in the `[explore](https://medienhaus.udk-berlin.de/explore)` tab. Public rooms should only be created if a strong incentive is given, that access to the information in these rooms should be publicly available.
+Public rooms on the other hand are, like the name suggest, public visible and can be seen in the **[/explore](https://medienhaus.udk-berlin.de/explore)** tab. Public rooms should only be created if a strong incentive is given, that access to the information in these rooms should be publicly available.
 
 For most cases private rooms are sufficient, which is why we regulate the creation of public rooms. If you still think you need a publicly available room you can request one [here](https://medienhaus.udk-berlin.de/request).
 
-To create a private room find the `+` button on the left side in the navigation column besides “Rooms”. Give it a name and a topic.
+To create a private room find the `+` button on the left side in the navigation column besides `Rooms`. Give it a name and a topic.
 
-You now created a room where you can invite people to join the conversation by clicking on the name on the top and then “Person”. Search for the name and press “invite” … et voilà!
+You now created a room where you can invite people to join the conversation by clicking on the name on the top and then `Person`. Search for the name and press `invite` … et voilà!
 
 [Here](https://medienhaus.udk-berlin.de/kino) is a video on the topic of private and public rooms
 
@@ -39,7 +39,7 @@ No, the person you want to invite to your room or want to start a direct message
 
 ## I’d like to leave a room. How can I do that?
 
-To leave a room, open the room and click on the name at the top of the screen. Under “room settings’ you find the button “leave room”. Note that if you a are the last member of a room, the room will be closed and all chat messages will be lost. Make a backup beforehand!
+To leave a room, open the room and click on the name at the top of the screen. Under `Room settings` you find the button `Leave room`. Note that if you a are the last member of a room, the room will be closed and all chat messages will be lost. Make a backup beforehand!
 
 ## I’d like to start a video chat with someone or with a group of people in a room. But how?
 
@@ -51,7 +51,8 @@ You need to use a recommended browser like Chromium, Firefox or Chrome.
 
 You can extend the functionality of your room by adding widgets like an Etherpad. This self-hosted, free and open-source application works like a privacy enhanced Google Docs.
 
-Here you can share notes, long text documents or work on a text with people in your room. This way you can keep the chat for the chatting and have a place for your notes. To use it visit [/write](https://medienhaus.udk-berlin.de/write).
+Here you can share notes, long text documents or work on a text with people in your room. This way you can keep the chat for the chatting and have a place for your notes. To use it visit **[/write](https://medienhaus.udk-berlin.de/write)**.
+
 In information how to incorporate services into your rooms visit [this video](https://medienhaus.udk-berlin.de/kino).
 
 ## Can I use my mobile or tablet for **medienhaus/**?
@@ -70,7 +71,7 @@ Very little data is gathered and it will never be sold, used or in other ways ex
 
 Invitations to a private room can be seen on the left side in the room list. The room will have a notification icon and you will need to accept the invitation by clicking on it. If you enable browser notifications you will also receive a notification.
 
-If you don’t see the invitation, please make sure that you reload the page by clicking the 🔄 icon in your browser or using `cmd` + `r` . Public rooms can be found in the `[explore](https://medienhaus.udk-berlin.de/explore)` tab.
+If you don’t see the invitation, please make sure that you reload the page by clicking the 🔄 icon in your browser or using `cmd` + `r` . Public rooms can be found in the **[/explore](https://medienhaus.udk-berlin.de/explore)** tab.
 
 ## I have a problem and I cannot find any information in this FAQ about it!
 
@@ -78,11 +79,11 @@ That’s on us! We are continuously expanding the FAQ. Please use the support fo
 
 ## What can I personalise in **medienhaus/**?
 
-First up we recommend that you add information to your profile. You can do that by clicking on your name in the top left of the screen and then the button “All settings”. Here you can add a profile picture, your email address and your phone number. If you open the tab “Appearance” you can select dark mode or change the font size. The Tab “Notifications” gives you full control over what kind of notifications and how you want to receive them. Make sure you have them enabled in your browser.
+First up we recommend that you add information to your profile. You can do that by clicking on your name in the top left of the screen and then the button `All settings`. Here you can add a profile picture, your email address and your phone number. If you open the tab `Appearance` you can select dark mode or change the font size. The tab `Notifications` gives you full control over what kind of notifications and how you want to receive them. Make sure you have them enabled in your browser.
 
 ## I’d like to direct my message in a room full of people to someone specific. How do I do that?
 
-When typing your message you can use “@” followed by their name to mention them. A list of suggested names helps you find the right person. The command “@room” notifies everyone in the room. With great power comes great responsibility.
+When typing your message you can use `@` followed by their name to mention them. A list of suggested names helps you find the right person. The command `@room` notifies everyone in the room. With great power comes great responsibility.
 
 ## Can I share a file, video or photo?
 

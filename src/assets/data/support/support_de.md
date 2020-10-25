@@ -1,6 +1,6 @@
 ## Was ist medienhaus/?
 
-medienhaus/ ist ein Projekt, das von Studierenden, Lehrenden und vom Kollegium mit dem Ziel initiiert wurde, eine einfach zu bedienende, freie und open source, auf Datenschutz und Sicherheit ausgerichtete Lösung für die Online-Verbesserung der Universität zu schaffen.
+**medienhaus/** ist ein Projekt, das von Studierenden, Lehrenden und vom Kollegium mit dem Ziel initiiert wurde, eine einfach zu bedienende, freie und open-source, auf Datenschutz und Sicherheit ausgerichtete Lösung für die Online-Verbesserung der Universität zu schaffen.
 
 Wir möchten ein verantwortungsbewusstes Werkzeug für die Fernausbildung schaffen, das bestehende Dienste nutzt, die den Benutzer und seine Daten nicht ausnutzen. **medienhaus/** beinhaltet:
 
@@ -11,9 +11,9 @@ Wir möchten ein verantwortungsbewusstes Werkzeug für die Fernausbildung schaff
 
 **medienhaus/** nutzt Räume als Erweiterung für Chats und Gespräche, schnelle persönliche Treffen, Präsentationen mit Personengruppen, gemeinsames Schreiben und Dokumentieren in Echtzeit und eine Lösung für das Streaming online.
 
-## Mir wurde gesagt, ich solle mich einem Raum im medienhaus/ anschließen ... wie mache ich das?
+## Mir wurde gesagt, ich solle mich einem Raum im medienhaus/ anschließen … wie mache ich das?
 
-Wenn Sie in einen öffentlichen Raum eingeladen werden, z.B. von einem Dozenten oder einer Dozentin für einen bevorstehenden Kurs, können Sie den Raum unter `[erkunden/](https://medienhaus.udk-berlin.de/explore)` finden. Einladungen zu privaten Räumen finden Sie am linken Bildschirmrand im [Klassenraum](https://medienhaus.udk-berlin.de/classroom) in der Navigationsspalte. 
+Wenn Sie in einen öffentlichen Raum eingeladen werden, z.B. von einem Dozenten oder einer Dozentin für einen bevorstehenden Kurs, können Sie den Raum unter [/erkunden](https://medienhaus.udk-berlin.de/explore) finden. Einladungen zu privaten Räumen finden Sie am linken Bildschirmrand im [Klassenraum](https://medienhaus.udk-berlin.de/classroom) in der Navigationsspalte. 
 
 ## **Ich kenne mein Passwort und/oder meinen Benutzernamen nicht!**
 
@@ -23,21 +23,21 @@ Das Passwort und der Benutzername sind die gleichen, die Sie für die Anmeldung 
 
 Sie müssen wissen, dass es zwei Arten von Chaträumen gibt: öffentliche und private. Sie können frei private Räume einrichten und Ihre Freunde, Kollegen oder andere Personen im Netzwerk persönlich einladen. Diese Gruppe ist nur für die Personen sichtbar, die Zugang haben.
 
-Öffentliche Räume hingegen sind, wie der Name vermuten lässt, öffentlich sichtbar und können in der Registerkarte `[erkunden/](https://medienhaus.udk-berlin.de/explore)` eingesehen werden. Öffentliche Räume sollten nur dann geschaffen werden, wenn ein starker Anreiz gegeben ist, dass der Zugang zu den Informationen in diesen Räumen öffentlich zugänglich sein sollte.
+Öffentliche Räume hingegen sind, wie der Name vermuten lässt, öffentlich sichtbar und können in der Registerkarte [/erkunden](https://medienhaus.udk-berlin.de/explore) eingesehen werden. Öffentliche Räume sollten nur dann geschaffen werden, wenn ein starker Anreiz gegeben ist, dass der Zugang zu den Informationen in diesen Räumen öffentlich zugänglich sein sollte.
 
 Für die meisten Fälle sind private Räume ausreichend, weshalb wir das Errichten öffentlicher Räume regeln. Wenn Sie dennoch der Meinung sind, dass Sie einen öffentlich zugänglichen Raum benötigen, können Sie hier einen solchen beantragen.
 
-Um einen privaten Raum zu erstellen, finden Sie links in der Navigationsspalte neben "Räume" den `+`Knopf. Geben Sie ihm einen Namen und ein Thema.
+Um einen privaten Raum zu erstellen, finden Sie links in der Navigationsspalte neben `Räume` den `+`-Knopf. Geben Sie ihm einen Namen und ein Thema.
 
-Sie haben nun einen Raum erstellt, in den Sie Personen zum Gespräch einladen können, indem Sie oben auf den Namen und dann auf "Person" klicken. Suchen Sie den Namen und drücken Sie "einladen" ... et voilà!
+Sie haben nun einen Raum erstellt, in den Sie Personen zum Gespräch einladen können, indem Sie oben auf den Namen und dann auf `Person` klicken. Suchen Sie den Namen und drücken Sie `einladen` … et voilà!
 
-## Ich möchte jemanden einladen, der noch nicht im medienhaus ist/ ... funktioniert das?
+## Ich möchte jemanden einladen, der noch nicht im medienhaus/ ist … funktioniert das?
 
-Nein, die Person, die Sie in Ihren Raum einladen oder eine direkte Nachricht starten möchten, muss ihr medienhaus/-Konto einrichten, indem sie sich mit ihren Zugangsdaten einloggt und die Einrichtung abschließt. Das öffentliche Teilen von Chaträumen ist nicht möglich.
+Nein, die Person, die Sie in Ihren Raum einladen oder eine direkte Nachricht starten möchten, muss ihr **medienhaus/**-Konto einrichten, indem sie sich mit ihren Zugangsdaten einloggt und die Einrichtung abschließt. Das öffentliche Teilen von Chaträumen ist nicht möglich.
 
 ## **Ich möchte einen Raum verlassen. Wie kann ich das tun?**
 
-Um einen Raum zu verlassen, öffnen Sie den Raum und klicken Sie auf den Namen am oberen Bildschirmrand. Unter „room settings“ finden Sie die Schaltfläche „leave room“. Beachten Sie, dass, wenn Sie das letzte Mitglied eines Raumes sind, der Raum geschlossen wird und alle Chat-Nachrichten verloren gehen. Machen Sie vorher ein Backup!
+Um einen Raum zu verlassen, öffnen Sie den Raum und klicken Sie auf den Namen am oberen Bildschirmrand. Unter `Raumeinstellungen` finden Sie die Schaltfläche `Raum verlassen`. Beachten Sie, dass, wenn Sie das letzte Mitglied eines Raumes sind, der Raum geschlossen wird und alle Chat-Nachrichten verloren gehen. Machen Sie vorher ein Backup!
 
 ## Ich möchte einen Video-Chat mit jemandem oder mit einer Gruppe von Personen in einem Raum starten. Aber wie?
 
@@ -47,7 +47,7 @@ Sie müssen einen empfohlenen Browser wie Chromium, Firefox oder Chrome verwende
 
 ## Wie kann ich auf einfache Weise gemeinsame Notizen mit Personen in meinem Raum austauschen?
 
-Sie können die Funktionalität Ihres Raumes erweitern, indem Sie Widgets wie ein Etherpad hinzufügen. Diese selbst gehostete, kostenlose und open source Anwendung funktioniert wie eine datenschutzfreundliche Google Docs-Anwendung.
+Sie können die Funktionalität Ihres Raumes erweitern, indem Sie Widgets wie ein Etherpad hinzufügen. Diese selbst gehostete, freie und open-source Anwendung funktioniert wie eine datenschutzfreundliche Google Docs-Anwendung.
 
 Hier können Sie Notizen und lange Textdokumente mit den Personen in Ihrem Raum austauschen oder an einem Text arbeiten. Auf diese Weise können Sie den Chat für das Chatten beibehalten und haben einen Platz für Ihre Notizen. Mehr Informationen sind unter **[/schreiben](https://medienhaus.udk-berlin.de/write)** zu finden oder unter **[/kino](https://medienhaus.udk-berlin.de/kino)**.
 
@@ -67,7 +67,7 @@ Es werden nur sehr wenige Daten gesammelt, und sie werden niemals verkauft, verw
 
 Einladungen zu einem Privatraum sind auf der linken Seite in der Zimmerliste zu sehen. Der Raum wird mit einem Benachrichtigungssymbol versehen und Sie müssen die Einladung durch Anklicken annehmen. Wenn Sie Browser-Benachrichtigungen aktivieren, erhalten Sie ebenfalls eine Benachrichtigung.
 
-Wenn Sie die Einladung nicht sehen, stellen Sie bitte sicher, dass Sie die Seite neu laden, indem Sie auf das Symbol 🔄 in Ihrem Browser klicken oder `cmd` + `r` verwenden. Öffentliche Räume finden Sie unter `[erkunden/](https://medienhaus.udk-berlin.de/explore)`.
+Wenn Sie die Einladung nicht sehen, stellen Sie bitte sicher, dass Sie die Seite neu laden, indem Sie auf das Symbol 🔄 in Ihrem Browser klicken oder `cmd` + `r` verwenden. Öffentliche Räume finden Sie unter [/erkunden](https://medienhaus.udk-berlin.de/explore).
 
 ## Ich habe ein Problem und kann in dieser FAQ keine Informationen darüber finden!
 
@@ -75,11 +75,11 @@ Das liegt an uns! Wir erweitern die FAQ ständig. Bitte benutzen Sie das Support
 
 ## Was kann ich im medienhaus/ personalisieren?
 
-Zunächst empfehlen wir Ihnen, Ihr Profil um Informationen zu ergänzen. Das können Sie tun, indem Sie oben links auf Ihren Namen und dann auf die Schaltfläche „All settings“ klicken. Hier können Sie ein Profilbild, Ihre E-Mail-Adresse und Ihre Telefonnummer hinzufügen. Wenn Sie die Registerkarte „Appearance“ öffnen, können Sie den dunklen Modus wählen oder die Schriftgröße ändern. Der Tab „notifications“ gibt Ihnen die volle Kontrolle darüber, welche Art von Benachrichtigungen Sie erhalten und wie Sie diese erhalten möchten. Stellen Sie sicher, dass Sie sie in Ihrem Browser aktiviert haben.
+Zunächst empfehlen wir Ihnen, Ihr Profil um Informationen zu ergänzen. Das können Sie tun, indem Sie oben links auf Ihren Namen und dann auf die Schaltfläche `Einstellungen` klicken. Hier können Sie ein Profilbild, Ihre E-Mail-Adresse und Ihre Telefonnummer hinzufügen. Wenn Sie die Registerkarte `Darstellung` öffnen, können Sie den dunklen Modus wählen oder die Schriftgröße ändern. Der Tab `Benachrichtigungen` gibt Ihnen die volle Kontrolle darüber, welche Art von Benachrichtigungen Sie erhalten und wie Sie diese erhalten möchten. Stellen Sie sicher, dass Sie sie in Ihrem Browser aktiviert haben.
 
 ## Ich möchte meine Nachricht in einem Raum voller Leute an eine bestimmte Person richten. Wie kann ich das tun?
 
-Wenn Sie Ihre Nachricht eingeben, können Sie "@" gefolgt von ihrem Namen verwenden, um sie zu erwähnen. Eine Liste mit Namensvorschlägen hilft Ihnen, die richtige Person zu finden. Der Befehl "@room" benachrichtigt alle Personen im Raum. Mit großer Macht kommt große Verantwortung.
+Wenn Sie Ihre Nachricht eingeben, können Sie `@` gefolgt von ihrem Namen verwenden, um sie zu erwähnen. Eine Liste mit Namensvorschlägen hilft Ihnen, die richtige Person zu finden. Der Befehl `@room` benachrichtigt alle Personen im Raum. Mit großer Macht kommt große Verantwortung.
 
 ## Kann ich eine Datei, ein Video oder ein Foto mit anderen teilen?
 
@@ -87,7 +87,7 @@ Ja, Sie können das Symbol 📎 in Direktnachrichten oder in einem Raum verwende
 
 ## Ich habe ein Wort falsch geschrieben und muss die Nachricht bearbeiten!
 
-Sie können Ihre bereits gesendeten Nachrichten ganz einfach bearbeiten, indem Sie beim Herüberfahren mit der Maus auf das Symbol `...` auf der rechten Seite Ihrer Nachricht klicken. Wählen Sie `bearbeiten` und nehmen Sie Ihre Änderungen vor. Ihre Nachricht erhält die Anmerkung (bearbeitet).
+Sie können Ihre bereits gesendeten Nachrichten ganz einfach bearbeiten, indem Sie beim Herüberfahren mit der Maus auf das Symbol `…` auf der rechten Seite Ihrer Nachricht klicken. Wählen Sie `bearbeiten` und nehmen Sie Ihre Änderungen vor. Ihre Nachricht erhält die Anmerkung (bearbeitet).
 
 ## Ich möchte auf eine Frage antworten oder eine andere Nachricht zitieren, ist dies möglich?
 
@@ -111,7 +111,7 @@ Videoanrufe erfordern eine stabile und leistungsfähige Internetverbindung. Stel
 
 Als Browser für **medienhaus/** und unsere externen Dienste empfehlen wir Ihnen Firefox, Chromium oder Chrome. Stellen Sie sicher, dass Ihr Computer einwandfrei läuft und schließen Sie Programme und Anwendungen, die Sie nicht benötigen, wenn Sie einen langsameren oder älteren Rechner haben.
 
-## Jemand hat seinen Bildschirm in /meet freigegeben, aber ich kann ihn nicht sehen. Alle anderen können es, was ist hier los?
+## Jemand hat seinen Bildschirm in /erkunden freigegeben, aber ich kann ihn nicht sehen. Alle anderen können es, was ist hier los?
 
 Das passiert von Zeit zu Zeit. Bitte laden Sie die Seite neu und sie sollte funktionieren. Wir empfehlen Ihnen auch, Firefox, Chromium und Chrome als Browser zu benutzen, um die beste Erfahrung zu machen.
 
@@ -123,9 +123,9 @@ Wenn hier alles funktioniert, vergewissern Sie sich, dass Sie in Ihrem Browser B
 
 Bei Verwendung von **[/treffen](https://medienhaus.udk-berlin.de/meet)**: Sie können den Audiotest verwenden, bevor Sie den Raum betreten, um sicherzustellen, dass alles funktioniert. Im Audiotest sollten Sie in der Lage sein, Ihre Audioeingabe mit einer Verzögerung zu hören, um zu überprüfen, ob das Mikrofon funktioniert.
 
-## Wie gebe ich meinen Bildschirm in einem /meet-Videoanruf frei?
+## Wie gebe ich meinen Bildschirm in einem /treffen-Videoanruf frei?
 
-Bei Verwendung von /meet: Unten auf dem Bildschirm finden Sie eine Reihe von Symbolen. Das ganz rechte Symbol dient zur Freigabe Ihres Bildschirms. Wenn Sie die Schaltfläche nicht sehen, müssen Sie möglicherweise den Moderator bitten, Ihnen die Rechte für die Rolle des Moderators zu erteilen. Nur jeweils eine Person kann ihren Bildschirm freigeben.
+Bei Verwendung von **[/treffen](https://medienhaus.udk-berlin.de/meet)**: Unten auf dem Bildschirm finden Sie eine Reihe von Symbolen. Das ganz rechte Symbol dient zur Freigabe Ihres Bildschirms. Wenn Sie die Schaltfläche nicht sehen, müssen Sie möglicherweise den Moderator bitten, Ihnen die Rechte für die Rolle des Moderators zu erteilen. Nur jeweils eine Person kann ihren Bildschirm freigeben.
 
 ## Ich habe einen Tippfehler, einen Fehler oder eine andere Sache gefunden, die behoben werden muss!
 

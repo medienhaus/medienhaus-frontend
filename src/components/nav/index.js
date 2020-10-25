@@ -1,10 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { UserContext } from '../context/UserContext'
+import { useTranslation } from 'react-i18next';
 
 const Nav = () => {
   const { user } = useContext(UserContext);
   const [auth, setAuth] = useState(null);
+  /*
+  const { t, i18n } = useTranslation(['translation', 'welcome']);
+
+  const changeLanguage = code => {
+    i18n.changeLanguage(code);
+  };
+  */
 
   useEffect(() => {
     setAuth(localStorage.getItem('mx_access_token'))

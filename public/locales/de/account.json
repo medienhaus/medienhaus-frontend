@@ -1,7 +1,7 @@
 {
-  "email": "Bitte füge deinem Profil eine Email Adresse hinzu",
+  "email": "Bitte füge deinem Profil eine gültige Mail-Adresse hinzu",
   "rooms": {
-    "text": "Du bist in folgenden Räumen:"
+    "text": "Du bist in den folgenden Räumen:"
   },
   "logout": "Ausloggen",
   "logout2": "Bist du sicher?"

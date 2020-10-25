@@ -1,9 +1,9 @@
 {
-  "definition": "<0>classroom, n.</0> gemeinsamer Raum zum <2>Kommunizieren</2> und Austauschen, <4>Treffen</4> von Angesicht zu Angesicht, miteinander <6>Präsentieren</6> und <8>gemeinsames Lernen</8>.",
-  "introduction": "<0> Medienhaus</0> ist die Abteilung für Mediendesign und Kunst der Universität der Künste Berlin; Es ist ein experimenteller Spielplatz, der von visueller Kommunikation, Kunst und Medien sowie Kommunikation in sozialen und wirtschaftlichen Kontexten geteilt wird.",
+  "definition": "<0>classroom, n.</0> — gemeinsamer Raum zum <2>Kommunizieren</2>, <4>Treffen</4>, <6>Präsentieren</6> und zusammen <8>Lernen</8>.",
+  "introduction": "Das <0>Medienhaus</0> ist der Standort für Gestaltung, Kunst und Medien der Universität der Künste Berlin; es ist ein experimenteller Spielplatz, der von den Studiengängen Visuelle Kommunikation, Kunst und Medien sowie Kommunikation in sozialen und wirtschaftlichen Kontexten bespielt wird.",
   "intro1": "Durch die COVID-19-Pandemie ausgelöst, mussten wir schnell eine intuitive Plattform für die Remote-Zusammenarbeit bereitstellen, die die Anforderungen und Bedürfnisse einer Kunstschule während dieser Krise und darüber hinaus erfüllt.",
   "intro2": "Wir haben schnell Prototypen erstellt und iterativ einen datenschutzorientierten, kostenlosen und Open-Source orienterten Satz von Tools und Diensten für unsere Studenten und Mitarbeiter erstellt und verbessert. Um es auszuprobieren melde dich einfach mit deinem UdK-Konto an.",
-  "shoutout": "Wir haben <1>medienhaus/</1> entwickelt, um den namengebenden physischen Raum nicht zu ersetzen, sondern zu erweitern.",
+  "shoutout": "Wir haben <1>medienhaus/</1> entwickelt, nicht um etwa den namensgebenden physischen Raum zu ersetzen, sondern digital zu erweitern.",
   "classroom": "<0>/Klassenraum</0> Kommunikationsraum",
   "meet": "<0>/treffen</0> audio/video Zusammenarbeit und Präsentationen",
   "write": "<0>/schreiben</0> kollaboratives Schreiben, Lesen und Bearbeiten",

@@ -7,7 +7,7 @@ const Landing = () => {
   return (
     <>
       <section id="definition">
-        <blockquote><Trans i18nKey="landing:definition"><em>classroom, n.</em> &mdash; shared space to <strong>communicate</strong> and exchange, <strong>meet</strong> face to face, <strong>present</strong> to each other, and <strong>study</strong> together.</Trans></blockquote>
+        <blockquote><Trans i18nKey="landing:definition"><em>classroom, n.</em> — shared space to <strong>communicate</strong> and exchange, <strong>meet</strong> face to face, <strong>present</strong> to each other, and <strong>study</strong> together.</Trans></blockquote>
       </section>
       <section id="introduction" className="copy">
         <p><Trans i18nKey="landing:introduction">
@@ -18,7 +18,7 @@ const Landing = () => {
       </section>
       <section id="shoutout">
         <blockquote><Trans i18nKey="landing:shoutout">
-          We developed <strong>medienhaus/</strong> &mdash; not replacing but extending the name-giving physical space.
+          We developed <strong>medienhaus/</strong> — not replacing but extending the name-giving physical space.
         </Trans></blockquote>
       </section>
       <section id="services">
