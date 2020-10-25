@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { UserContext } from '../context/UserContext'
-import { useTranslation } from 'react-i18next';
 
 const Nav = () => {
   const { user } = useContext(UserContext);
@@ -26,8 +25,8 @@ const Nav = () => {
           {auth ? (
             <a href="https://medienhaus.udk-berlin.de/classroom" rel="nofollow noopener noreferrer" target="_self">/classroom&nbsp;-&gt;</a>
           ) : (
-            <NavLink activeclassname="active" to="/login">/login</NavLink>
-          )}
+              <NavLink activeclassname="active" to="/login">/login</NavLink>
+            )}
         </div>
         {auth ? (
           <>
