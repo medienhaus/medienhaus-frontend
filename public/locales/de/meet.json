@@ -1,8 +1,8 @@
 {
-  "p0": "Du kannst <1>/meet</1> for audio/video collaboration in courses and online presentations. It comes with useful functions to present your work or split the course in breakout rooms for focused sessions.",
-  "p1": "Screensharing or shared videowatching are great tools to show and communicate your ideas. An included chat is a great way to share links or discuss matters quitetly.",
-  "p2": "The invite links to your rooms are persistent, so if you need to join a course on a weekly basis it is going to be the same link every time.",
-  "p3": "As a moderator, you can conveniently control the meeting by muting and un-muting or by choosing presenters to give them the stage.",
-  "p4": "You can also create breakout rooms for smaller and more focused groups with a time limit, whereafter people come back to the group meeting with all participants.",
-  "p5": "<1>/meet</1> can be accessed via: <2>bbb.medienhaus.udk-berlin.de</2>"
+  "p0": "Du kannst <1>/treffen</1> für Audio - oder Videokonferenzen in Kursen und Online Präsentationen verwenden. Es hat nützliche funktionen zum Präsentieren deiner Arbeit oder zum Trennen der Teilnehmer in Kleingruppen.",
+  "p1": "Screensharing oder gemeinsames schauen von Onlinevideos sind großartige Tools, um deine Ideen zu zeigen und zu kommunizieren. Der Textchat ist eine gute Möglichkeit, Links zu teilen oder Dinge ruhig zu diskutieren.",
+  "p2": "Die Einladungslinks zu Ihren /meet Räumen sind permanent. Wenn du also wöchentlich an einem Kurs teilnimmst, ist dies jedes Mal derselbe Link.",
+  "p3": "Als Moderator oder Moderatorin kannst du das Meeting bequem steuern, indem du die Teilnehmenden stummschaltest oder zu Präsentatoren/innen machst.",
+  "p4": "Breakout-Räume sind für kleinere und fokussiertere Gruppen mit einem bestimmten Zeitlimit erstellbar. Anschließend kehren die Breakout-Teilnehmer/innen mit allen Teilnehmenden zur Hauptkonferenz zurück.",
+  "p5": "<0>/treffen</0> ist erreichbar via: <2>bbb.medienhaus.udk-berlin.de</2>"
 }
