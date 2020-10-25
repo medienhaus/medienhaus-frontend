@@ -3,32 +3,35 @@
 **medienhaus/** is a project initiated by students, teachers and colleagues with the effort to create an easy to use, free and open-source, privacy and security focused solution for the solution for the online enhancement of the university.
 
 We’d like to create a responsible tool for remote education using existing services that do not exploit the user and their data. **medienhaus/** includes:
-- a space to **communicate**
-- **meet** face to face
-- **present** to each other
+
+- a space to **communicate**
+- **meet** face to face
+- **present** to each other
 - **study** together
 
-**medienhaus/** uses rooms as an extension for chats and talks, quick face to face meetings, presentations with groups of people, collaborative real time writing and documentation and a solution for streaming online.
+**medienhaus/** uses rooms as an extension for chats and talks, quick face to face meetings, presentations with groups of people, collaborative real time writing and documentation and a solution for streaming online. For a Introduction to medienhaus/ you can watch [this video](https://medienhaus.udk-berlin.de/kino).
 
 ## I was told to join a room on **medienhaus/** … how do I do that?
 
-If you are invited to a public room, let’s say by a teacher for an upcoming course, you can find the room in the `explore` tab. Invitations to privat rooms can be found at the left side of the screen in the classroom in the navigation column.
+If you are invited to a public room, let’s say by a teacher for an upcoming course, you can find the room in the `[explore](https://medienhaus.udk-berlin.de/explore)` tab. Invitations to privat rooms can be found at the left side of the screen in the [classroom](https://medienhaus.udk-berlin.de/classroom) in the navigation column.
 
 ## I don’t know my password and/or username!
 
-The password and username is the same you use for logging in to your UdK mail account. This integration unifies the login credentials and allows us to identify you as a part of the UdK, whether you are a student, teacher or associate.
+The password and username is the same you use for logging in to your UdK mail account. This integration unifies the login credentials and allows us to identify you as a part of the UdK, whether you are a student, teacher or associate. Regarding password safety: use a password manager and/or read [this](https://www.nist.gov/blogs/taking-measure/easy-ways-build-better-p5w0rd).
 
 ## I need a chatroom for something. How can I create one?
 
 You need to know that there are two kinds of chatrooms: public and private. You can freely create private rooms and personally invite your friends, colleagues or other people in the network. This group is only visible by the people who have access.
 
-Public rooms on the other hand are, like the name suggest, public visible and can be seen in the `explore` tab. Public rooms should only be created if a strong incentive is given, that access to the information in these rooms should be publicly available.
+Public rooms on the other hand are, like the name suggest, public visible and can be seen in the `[explore](https://medienhaus.udk-berlin.de/explore)` tab. Public rooms should only be created if a strong incentive is given, that access to the information in these rooms should be publicly available.
 
-For most cases private rooms are sufficient, which is why we regulate the creation of public rooms. If you still think you need a publicly available room you can request one here.
+For most cases private rooms are sufficient, which is why we regulate the creation of public rooms. If you still think you need a publicly available room you can request one [here](https://medienhaus.udk-berlin.de/request).
 
 To create a private room find the `+` button on the left side in the navigation column besides “Rooms”. Give it a name and a topic.
 
 You now created a room where you can invite people to join the conversation by clicking on the name on the top and then “Person”. Search for the name and press “invite” … et voilà!
+
+[Here](https://medienhaus.udk-berlin.de/kino) is a video on the topic of private and public rooms
 
 ## I’d like to invite someone who is not yet in **medienhaus/** … does that work?
 
@@ -36,11 +39,11 @@ No, the person you want to invite to your room or want to start a direct message
 
 ## I’d like to leave a room. How can I do that?
 
-To leave a room, open the room and click on the name at the top of the screen. Under “room settings’ you find the button “leave room”. Note that if you a are the last member of a room, the room will be closed and all chat messages will be lost. Make a backup beforehand! 
+To leave a room, open the room and click on the name at the top of the screen. Under “room settings’ you find the button “leave room”. Note that if you a are the last member of a room, the room will be closed and all chat messages will be lost. Make a backup beforehand!
 
 ## I’d like to start a video chat with someone or with a group of people in a room. But how?
 
-Besides the input field for your chat messages you can find a couple of icons: attach files, select emojis, voice call and video call. The latter two start a call with all members in the room. Please note that this is a quick way to get in contact, but if you are hosting a class and want to use an extensive suit of functionality please use **/meet**.
+Besides the input field for your chat messages you can find a couple of icons: attach files, select emojis, voice call and video call. The latter two start a call with all members in the room. Please note that this is a quick way to get in contact, but if you are hosting a class and want to use an extensive suit of functionality please use **[/meet](https://medienhaus.udk-berlin.de/meet)**.
 
 You need to use a recommended browser like Chromium, Firefox or Chrome.
 
@@ -48,7 +51,8 @@ You need to use a recommended browser like Chromium, Firefox or Chrome.
 
 You can extend the functionality of your room by adding widgets like an Etherpad. This self-hosted, free and open-source application works like a privacy enhanced Google Docs.
 
-Here you can share notes, long text documents or work on a text with people in your room. This way you can keep the chat for the chatting and have a place for your notes.
+Here you can share notes, long text documents or work on a text with people in your room. This way you can keep the chat for the chatting and have a place for your notes. To use it visit [/write](https://medienhaus.udk-berlin.de/write).
+In information how to incorporate services into your rooms visit [this video](https://medienhaus.udk-berlin.de/kino).
 
 ## Can I use my mobile or tablet for **medienhaus/**?
 
@@ -66,7 +70,7 @@ Very little data is gathered and it will never be sold, used or in other ways ex
 
 Invitations to a private room can be seen on the left side in the room list. The room will have a notification icon and you will need to accept the invitation by clicking on it. If you enable browser notifications you will also receive a notification.
 
-If you don’t see the invitation, please make sure that you reload the page by clicking the 🔄 icon in your browser or using `cmd` + `r` … public rooms can be found in the `explore` tab.
+If you don’t see the invitation, please make sure that you reload the page by clicking the 🔄 icon in your browser or using `cmd` + `r` . Public rooms can be found in the `[explore](https://medienhaus.udk-berlin.de/explore)` tab.
 
 ## I have a problem and I cannot find any information in this FAQ about it!
 
@@ -82,11 +86,11 @@ When typing your message you can use “@” followed by their name to mention t
 
 ## Can I share a file, video or photo?
 
-Yes, you can use the 📎 icon in direct messages or a room to share any file format you want. Make sure its below 10 MB size. For bigger files or a collaborative file sharing you can use the UdK Cloud.
+Yes, you can use the 📎 icon in direct messages or a room to share any file format you want. Make sure its below 10 MB size. For bigger files or a collaborative file sharing you can use the [UdK Cloud](https://www.oase.udk-berlin.de/dienste/cloud-dienst/).
 
 ## I misspelled a word and need to edit the message!
 
-You can easily edit your already sent messages by clicking the `…` on the right side of your message when hovering over it. Select “edit message” and make your changes. Your message will receives the annotation (edited).
+You can easily edit your already sent messages by clicking the `…` on the right side of your message when hovering over it. Select `edit` and make your changes. Your message will receives the annotation (edited).
 
 ## I’d like to answer to a question or quote another message, is this possible?
 
@@ -94,7 +98,7 @@ Yes, you can quote another message by hovering over the text and clicking the bu
 
 ## How do I search for a specific message or file in a room or direct message?
 
-You can find a search function at the top of the screen on the right side of the room name. Please note that encrypted messages cannot be searched. You can always resort to the browsers each by pressing `cmd` + `f` …
+You can find a search function at the top of the screen on the right side of the room name. Please note that encrypted messages cannot be searched. You can always resort to the browsers each by pressing `cmd` + `f`.
 
 ## Do I need to logout?
 
@@ -108,7 +112,7 @@ To see a chronological list of your mentions you can click the 🔔 icon on the 
 
 Video calls require a stable and capable internet connection. Make sure to have the best possible connection by testing your wifi strength before the call or using a wired connection. You can use a speed test to determine your speed.
 
-We recommend you use Firefox, Chromium or Chrome as your browser for **medienhaus/** and our external services. Make sure your computer runs fine and you close programs and apps you don’t need, if you have a slower or older machine. 
+We recommend you use Firefox, Chromium or Chrome as your browser for **medienhaus/** and our external services. Make sure your computer runs fine and you close programs and apps you don’t need, if you have a slower or older machine.
 
 ## Someone shared their screen in **/meet**, but I cannot see it. Everyone else can, what’s going on?
 
@@ -116,7 +120,7 @@ This happens from time to time. Please reload the page and it should be working.
 
 ## My microphone is not working when joining a video chat. How can I solve this?
 
-Before you start your video call, please always make sure that your camera and microphone are working. In macOS you can open “Photo Booth” and start a “Movie Recording”. Here you can test your video and audio.
+Before you start your video call, please always make sure that your camera and microphone are working. A good test is to head over to [this site](https://www.onlinemictest.com) and test your webcam and microphone.
 
 If everything is working fine here, make sure you gave permissions in your browser to the website. Please refer to your browser on how to check for permissions for the camera and microphone.
 

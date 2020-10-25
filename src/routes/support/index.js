@@ -26,14 +26,14 @@ const Support = () => {
   const [loading, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
   const profile = Profile();
-  const { t } = useTranslation(['translation', 'support']);
+  const { t, i18n } = useTranslation(['translation', 'support']);
 
   const changeMsg = e => setMsg(e.target.value);
   const changeMail = e => setMail(e.target.value);
   const changeBrowser = e => setBrowser(e.target.value);
   const changeSystem = e => setSystem(e.target.value);
+  const faqPath = i18n.language === "en" ? require('../../assets/data/support/support_en.md') : require('../../assets/data/support/support_de.md');
 
-  const faqPath = require('../../assets/data/faq.md');
   const [markdown, setMarkdown] = useState();
 
 
@@ -47,7 +47,7 @@ const Support = () => {
   useEffect(() => {
     getMarkdownText();
     // eslint-disable-next-line
-  }, [])
+  }, [i18n.language])
 
   const onSubmit = async () => {
     setSending(true);
