@@ -101,6 +101,9 @@ const Account = () => {
     // eslint-disable-next-line
   }, [profile]);
 
+  useEffect(() => {
+    LogoutBtn();
+  }, [t]);
   return (
     <>
       {joinedRooms.length === 0 ? (<Loading />) : (
