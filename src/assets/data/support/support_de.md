@@ -13,7 +13,7 @@ Wir möchten ein verantwortungsbewusstes Werkzeug für die Fernausbildung schaff
 
 ## Mir wurde gesagt, ich solle mich einem Raum im medienhaus/ anschließen … wie mache ich das?
 
-Wenn Sie in einen öffentlichen Raum eingeladen werden, z.B. von einem Dozenten oder einer Dozentin für einen bevorstehenden Kurs, können Sie den Raum unter [/erkunden](https://medienhaus.udk-berlin.de/explore) finden. Einladungen zu privaten Räumen finden Sie am linken Bildschirmrand im [/klassenraum](https://medienhaus.udk-berlin.de/classroom) in der Navigationsspalte. 
+Wenn Sie in einen öffentlichen Raum eingeladen werden, z.B. von einem Dozenten oder einer Dozentin für einen bevorstehenden Kurs, können Sie den Raum unter **[/erkunden](https://medienhaus.udk-berlin.de/explore)** finden. Einladungen zu privaten Räumen finden Sie am linken Bildschirmrand im **[/klassenraum](https://medienhaus.udk-berlin.de/classroom)** in der Navigationsspalte. 
 
 ## **Ich kenne mein Passwort und/oder meinen Benutzernamen nicht!**
 
@@ -23,7 +23,7 @@ Das Passwort und der Benutzername sind die gleichen, die Sie für die Anmeldung 
 
 Sie müssen wissen, dass es zwei Arten von Chaträumen gibt: öffentliche und private. Sie können frei private Räume einrichten und Ihre Freunde, Kollegen oder andere Personen im Netzwerk persönlich einladen. Diese Gruppe ist nur für die Personen sichtbar, die Zugang haben.
 
-Öffentliche Räume hingegen sind, wie der Name vermuten lässt, öffentlich sichtbar und können in der Registerkarte [/erkunden](https://medienhaus.udk-berlin.de/explore) eingesehen werden. Öffentliche Räume sollten nur dann geschaffen werden, wenn ein starker Anreiz gegeben ist, dass der Zugang zu den Informationen in diesen Räumen öffentlich zugänglich sein sollte.
+Öffentliche Räume hingegen sind, wie der Name vermuten lässt, öffentlich sichtbar und können in der Registerkarte **[/erkunden](https://medienhaus.udk-berlin.de/explore)** eingesehen werden. Öffentliche Räume sollten nur dann geschaffen werden, wenn ein starker Anreiz gegeben ist, dass der Zugang zu den Informationen in diesen Räumen öffentlich zugänglich sein sollte.
 
 Für die meisten Fälle sind private Räume ausreichend, weshalb wir das Errichten öffentlicher Räume regeln. Wenn Sie dennoch der Meinung sind, dass Sie einen öffentlich zugänglichen Raum benötigen, können Sie hier einen solchen beantragen.
 
@@ -41,7 +41,7 @@ Um einen Raum zu verlassen, öffnen Sie den Raum und klicken Sie auf den Namen a
 
 ## Ich möchte einen Video-Chat mit jemandem oder mit einer Gruppe von Personen in einem Raum starten. Aber wie?
 
-Neben dem Eingabefeld für Ihre Chat-Nachrichten finden Sie eine Reihe von Symbolen: Dateien anhängen, Emojis auswählen, Sprachanruf und Videoanruf. Die beiden letzteren starten einen Anruf mit allen Mitgliedern im Raum. Bitte beachten Sie, dass dies ein schneller Weg zur Kontaktaufnahme ist, aber wenn Sie eine Klasse veranstalten und eine umfangreiche Funktionalität nutzen möchten, benutzen Sie bitte /meet.
+Neben dem Eingabefeld für Ihre Chat-Nachrichten finden Sie eine Reihe von Symbolen: Dateien anhängen, Emojis auswählen, Sprachanruf und Videoanruf. Die beiden letzteren starten einen Anruf mit allen Mitgliedern im Raum. Bitte beachten Sie, dass dies ein schneller Weg zur Kontaktaufnahme ist, aber wenn Sie eine Klasse veranstalten und eine umfangreiche Funktionalität nutzen möchten, benutzen Sie bitte **/treffen**.
 
 Sie müssen einen empfohlenen Browser wie Chromium, Firefox oder Chrome verwenden.
 
@@ -67,7 +67,7 @@ Es werden nur sehr wenige Daten gesammelt, und sie werden niemals verkauft, verw
 
 Einladungen zu einem Privatraum sind auf der linken Seite in der Zimmerliste zu sehen. Der Raum wird mit einem Benachrichtigungssymbol versehen und Sie müssen die Einladung durch Anklicken annehmen. Wenn Sie Browser-Benachrichtigungen aktivieren, erhalten Sie ebenfalls eine Benachrichtigung.
 
-Wenn Sie die Einladung nicht sehen, stellen Sie bitte sicher, dass Sie die Seite neu laden, indem Sie auf das Symbol 🔄 in Ihrem Browser klicken oder `cmd` + `r` verwenden. Öffentliche Räume finden Sie unter [/erkunden](https://medienhaus.udk-berlin.de/explore).
+Wenn Sie die Einladung nicht sehen, stellen Sie bitte sicher, dass Sie die Seite neu laden, indem Sie auf das Symbol 🔄 in Ihrem Browser klicken oder `cmd` + `r` verwenden. Öffentliche Räume finden Sie unter **[/erkunden](https://medienhaus.udk-berlin.de/explore)**.
 
 ## Ich habe ein Problem und kann in dieser FAQ keine Informationen darüber finden!
 
