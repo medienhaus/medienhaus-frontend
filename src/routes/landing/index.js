@@ -23,10 +23,10 @@ const Landing = () => {
       </section>
       <section id="services">
         <ul>
-          <li><Trans i18nKey="classroom"><strong>/classroom</strong> asynchronous communication space</Trans></li>
-          <li><Trans i18nKey="meet"><strong>/meet</strong> audio/video collaboration and presentation</Trans></li>
-          <li><Trans i18nKey="write"><strong>/write</strong> collaborative writing, reading, and editing</Trans></li>
-          <li><Trans i18nKey="sream"><strong>/stream</strong> audio/video live streaming and playback</Trans></li>
+          <li><Trans i18nKey="landing:classroom"><strong>/classroom</strong> asynchronous communication space</Trans></li>
+          <li><Trans i18nKey="landing:meet"><strong>/meet</strong> audio/video collaboration and presentation</Trans></li>
+          <li><Trans i18nKey="landing:write"><strong>/write</strong> collaborative writing, reading, and editing</Trans></li>
+          <li><Trans i18nKey="landing:stream"><strong>/stream</strong> audio/video live streaming and playback</Trans></li>
         </ul>
       </section>
     </>

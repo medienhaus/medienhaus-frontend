@@ -2,6 +2,6 @@
   "p0": "Du kannst <1>/stream</1> verwenden, um dein Video (eine Webcam oder Ihren Desktop) und Audio (Ihre Stimme über ein Mikrofon oder Ihre Musik) ins Internet zu übertragen.",
   "p1": "Live-Streaming unterscheidet sich von /meet darin, dass du zu einer unbegrenzten Anzahl von Personen streamen kannst, die nur einen Link benötigen, um deinen Stream schauen.",
   "p2": "Du kannst diese Technologie in ein Projekt von dir integrieren oder es für traditionelles Live-Streaming an ein Publikum verwenden. Es liegt an dir, wie du es verwendest.",
-  "p3": "<1><2>/stream</2> ist erreichbar via: <3>stream.medienhaus.udk-berlin.de</3></1>",
-  "p4": "BEMERKUNG: Bis wir /stream geupdatet haben, ist der Service unter: <5>cast.medienhaus.udk-berlin.de</5> zu erreichen."
+  "p3": "<0>/stream</0> ist erreichbar via: <2>stream.medienhaus.udk-berlin.de</2><",
+  "p4": "BEMERKUNG: Bis wir /stream geupdatet haben, ist der Service unter: <1>cast.medienhaus.udk-berlin.de</1> zu erreichen."
 }
