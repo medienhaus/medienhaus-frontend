@@ -60,7 +60,7 @@ const Explore = () => {
     getJoinedRooms();
     setUpdate(false);
     // eslint-disable-next-line
-  }, [update])
+  }, [update, t])
 
   useEffect(() => {
     matrixClient.leave(leaveId)

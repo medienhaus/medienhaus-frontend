@@ -1,11 +1,11 @@
 {
-  "definition": "<0>classroom, n.</0> is voll dufte",
-  "introduction": "<0>Medienhaus</0> is the media design and art department of Berlin University of the Arts; it is an experimental playground shared amongst Visual Communication, Art and Media, and Communication in Social and Economic Contexts.",
-  "intro1": "As the COVID-19 pandemic happened, we quickly needed to provide an intuitive remote collaboration platform, satisfying the requirements and needs of an art school during this crisis and beyond.",
-  "intro2": "We rapidly prototyped and iteratively enhanced a privacy-focused, free and open-source set of tools and services for our students and staff. Please feel free to log in with your udk account.",
-  "shoutout": "We developed <1>medienhaus/</1> &mdash; not replacing but extending the name-giving physical space.",
-  "classroom": "<0>/classroom</0> asynchronous communication space",
-  "meet": "<0>/meet</0> audio/video collaboration and presentation",
-  "write": "<0>/write</0> collaborative writing, reading, and editing",
-  "stream": "<0>/stream</0> audio/video live streaming and playback"
+  "definition": "<0>classroom, n.</0> gemeinsamer Raum zum <2>Kommunizieren</2> und Austauschen, <4>Treffen</4> von Angesicht zu Angesicht, miteinander <6>Präsentieren</6> und <8>gemeinsames Lernen</8>.",
+  "introduction": "<0> Medienhaus</0> ist die Abteilung für Mediendesign und Kunst der Universität der Künste Berlin; Es ist ein experimenteller Spielplatz, der von visueller Kommunikation, Kunst und Medien sowie Kommunikation in sozialen und wirtschaftlichen Kontexten geteilt wird.",
+  "intro1": "Durch die COVID-19-Pandemie ausgelöst, mussten wir schnell eine intuitive Plattform für die Remote-Zusammenarbeit bereitstellen, die die Anforderungen und Bedürfnisse einer Kunstschule während dieser Krise und darüber hinaus erfüllt.",
+  "intro2": "Wir haben schnell Prototypen erstellt und iterativ einen datenschutzorientierten, kostenlosen und Open-Source orienterten Satz von Tools und Diensten für unsere Studenten und Mitarbeiter erstellt und verbessert. Um es auszuprobieren melde dich einfach mit deinem UdK-Konto an.",
+  "shoutout": "Wir haben <1>medienhaus/</1> entwickelt, um den namengebenden physischen Raum nicht zu ersetzen, sondern zu erweitern.",
+  "classroom": "<0>/Klassenraum</0> Kommunikationsraum",
+  "meet": "<0>/treffen</0> audio/video Zusammenarbeit und Präsentationen",
+  "write": "<0>/schreiben</0> kollaboratives Schreiben, Lesen und Bearbeiten",
+  "stream": "<0>/stream</0> Audio/Video Live-Streaming und Wiedergabe"
 }

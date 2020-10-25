@@ -12,7 +12,6 @@ const Header = () => {
     i18n.changeLanguage(code);
   };
 
-
   useEffect(() => {
     setAuth(localStorage.getItem('mx_access_token'))
     // eslint-disable-next-line
