@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 
 const Stream = () => {
-  const { t, i18n } = useTranslation(['translation', 'stream']);
+  const { t } = useTranslation(['translation', 'stream']);
   return (
     <section className="stream copy">
       <p><Trans i18nKey="stream:p0">You can use <strong>/stream</strong> for broadcasting your video (a webcam or your desktop) and audio (your voice via microphone or your music for example) to the internet.</Trans></p>

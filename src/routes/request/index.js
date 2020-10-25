@@ -27,7 +27,7 @@ export default function App() {
   const changeName = e => setName(e.target.value);
   const changeRoom = e => setRoom(e.target.value);
 
-  const { t, i18n } = useTranslation(['translation', 'request']);
+  const { t } = useTranslation(['translation', 'request']);
 
   const onSubmit = async () => {
     //Andi feel free to change markup

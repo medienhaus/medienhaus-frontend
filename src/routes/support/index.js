@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown' // https://github.com/remarkjs/react-markdown
 import { useForm } from "react-hook-form"; // https://github.com/react-hook-form/react-hook-form
 import { Loading } from '../../components/loading'
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 //import { Link } from "react-router-dom";
 import * as matrixcs from "matrix-js-sdk";
 
@@ -26,7 +26,7 @@ const Support = () => {
   const [loading, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
   const profile = Profile();
-  const { t, i18n } = useTranslation(['translation', 'support']);
+  const { t } = useTranslation(['translation', 'support']);
 
   const changeMsg = e => setMsg(e.target.value);
   const changeMail = e => setMail(e.target.value);

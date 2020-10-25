@@ -23,7 +23,7 @@ const Explore = () => {
   const [loading, setLoading] = useState(true);
   const publicRooms = PublicRooms();
   const history = useHistory();
-  const { t, i18n } = useTranslation(['translation', 'explore']);
+  const { t } = useTranslation(['translation', 'explore']);
 
   //first let's fetch all rooms our user is part of
   const getJoinedRooms = async () => {
