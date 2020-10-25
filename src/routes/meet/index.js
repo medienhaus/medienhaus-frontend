@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 
 const Meet = () => {
-  const { t, i18n } = useTranslation(['translation', 'meet']);
+  const { t } = useTranslation(['translation', 'meet']);
 
   return (
     <section className="meet copy">

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import ReactPlayer from 'react-player'
 
 
 
 const Kino = () => {
-  const { t, i18n } = useTranslation(['translation', 'request']);
+  const { t } = useTranslation(['translation', 'kino']);
   const [video, setVideo] = useState([
     { src: 'video/public_onboarding.mp4', type: 'video/mp4' },
     { src: 'video/public_onboarding.webm', type: 'video/webm' }

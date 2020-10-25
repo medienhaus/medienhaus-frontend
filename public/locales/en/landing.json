@@ -1,0 +1,11 @@
+{
+  "definition": "<0>classroom, n.</0> &mdash; shared space to <2>communicate</2> and exchange, <4>meet</4> face to face, <6>present</6> to each other, and <8>study</8> together.",
+  "introduction": "<0>Medienhaus</0> is the media design and art department of Berlin University of the Arts; it is an experimental playground shared amongst Visual Communication, Art and Media, and Communication in Social and Economic Contexts.",
+  "intro1": "As the COVID-19 pandemic happened, we quickly needed to provide an intuitive remote collaboration platform, satisfying the requirements and needs of an art school during this crisis and beyond.",
+  "intro2": "We rapidly prototyped and iteratively enhanced a privacy-focused, free and open-source set of tools and services for our students and staff. Please feel free to log in with your udk account.",
+  "shoutout": "We developed <1>medienhaus/</1> &mdash; not replacing but extending the name-giving physical space.",
+  "classroom": "<0>/classroom</0> asynchronous communication space",
+  "meet": "<0>/meet</0> audio/video collaboration and presentation",
+  "write": "<0>/write</0> collaborative writing, reading, and editing",
+  "stream": "<0>/stream</0> audio/video live streaming and playback"
+}

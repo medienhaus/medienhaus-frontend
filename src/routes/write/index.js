@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 
 const Write = () => {
-  const { t, i18n } = useTranslation(['translation', 'write']);
+  const { t } = useTranslation(['translation', 'write']);
   return (
     <section className="write copy">
       <p><Trans i18nKey="write:p0">You can use <strong>/write</strong> for taking notes and sharing them with your group in real time.</Trans></p>

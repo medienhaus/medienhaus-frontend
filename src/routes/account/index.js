@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import useJoinedRooms from "../../components/matrix_joined_rooms";
 import useProfile from "../../components/matrix_profile";
@@ -25,7 +25,7 @@ const Account = () => {
   const auth = localStorage.getItem('mx_access_token');
   const logoutRef = useRef(0);
   //const location = useContext();
-  const { t, i18n } = useTranslation(['translation', 'account']);
+  const { t } = useTranslation(['translation', 'account']);
   const [logBtnStr, setLogBtnStr] = useState(t('account:logout'))
 
 
