@@ -2,6 +2,6 @@
   "p0": "You can use <1>/stream</1> for broadcasting your video (a webcam or your desktop) and audio (your voice via microphone or your music for example) to the internet.",
   "p1": "Live streaming is different than /meet in the fact that you can stream to an unlimited amount of people who just tune in to your stream with a link.",
   "p2": "You can incorporate this into a project of yours or use it for traditional live streaming to an audience. It is up to you how to use it.",
-  "p3": "<0>/stream</0> can be accessed via: <2>stream.medienhaus.udk-berlin.de</2>",
-  "p4": "NOTE: Until we finished updating and renewing our live streaming service, you can use our testing instance via: <1>cast.medienhaus.udk-berlin.de</1>"
+  "p3": "<1><2>/stream</2> can be accessed via: <3>stream.medienhaus.udk-berlin.de</3></1>",
+  "p4": "NOTE: Until we finished updating and renewing our live streaming service, you can use our testing instance via: <5>cast.medienhaus.udk-berlin.de</5>"
 }
