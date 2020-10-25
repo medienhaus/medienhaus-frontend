@@ -1,0 +1,12 @@
+{
+  "hello": "Hello",
+  "p1": "Your <1>/classroom</1> is a collaborative chat platform where you can find rooms for your courses and classes. Each room can be enhanced with a variety of widgets (think of plugins) like audio/video collaboration or collaborative real-time writing and editing.",
+  "p2": "The <1>/account</1> section shows your profile information and which rooms you are part of. You will soon be able to accept or reject invites to other rooms in this section.",
+  "p3": "You can <1>/explore</1> openly accessible public rooms categorized by department, location, and subject … soon we will provide a search function and filtering.",
+  "p4": "If you need an openly accessible public room, please <1>/request</1> one via the provided form. You can learn more about the differences of public vs. private rooms in our FAQs and video section.",
+  "p5": "In case you need some guidance, please check the frequently asked questions in our <1>/support</1> section. If the problem you encounter is not documented, yet, please contact us via the provided form below the FAQs.",
+  "p6": "In addition to our written documentation, you can visit <1>/kino</1> and browse through our collection of introduction and how-to videos.",
+  "p7": "You can use <1>/meet</1> for audio/video collaboration for your courses and for presenting your work, or simply for talking to each other virtually face to face.",
+  "p8": "You can use <1>/write</1> for collaborating with others in real-time on the same text document, or you can simply take some notes for only yourself.",
+  "p9": "If you want to present your course or project to a large group of people, you can use <1>/stream</1> for real-time live streaming audio/video content."
+}
