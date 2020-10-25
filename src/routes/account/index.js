@@ -103,6 +103,7 @@ const Account = () => {
 
   useEffect(() => {
     LogoutBtn();
+    // eslint-disable-next-line
   }, [t]);
   return (
     <>
