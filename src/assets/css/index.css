@@ -388,7 +388,7 @@ form textarea {
   display: grid;
   align-items: center;
   grid-gap: var(--margin);
-  grid-template-columns: auto 1fr 8ch;
+  grid-template-columns: auto 1fr 11ch;
 }
 
 .explore > h2 {
