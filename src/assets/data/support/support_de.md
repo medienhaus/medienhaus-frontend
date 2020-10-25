@@ -4,16 +4,16 @@
 
 Wir möchten ein verantwortungsbewusstes Werkzeug für die Fernausbildung schaffen, das bestehende Dienste nutzt, die den Benutzer und seine Daten nicht ausnutzen. **medienhaus/** beinhaltet:
 
-- einen Raum zum Kommunizieren
-- Treffen von Angesicht zu Angesicht
-- sich gegenseitig präsentieren
+- einen Raum zum **Kommunizieren**
+- **Treffen** von Angesicht zu Angesicht
+- sich gegenseitig **präsentieren**
 - zusammen studieren
 
 **medienhaus/** nutzt Räume als Erweiterung für Chats und Gespräche, schnelle persönliche Treffen, Präsentationen mit Personengruppen, gemeinsames Schreiben und Dokumentieren in Echtzeit und eine Lösung für das Streaming online.
 
 ## Mir wurde gesagt, ich solle mich einem Raum im medienhaus/ anschließen … wie mache ich das?
 
-Wenn Sie in einen öffentlichen Raum eingeladen werden, z.B. von einem Dozenten oder einer Dozentin für einen bevorstehenden Kurs, können Sie den Raum unter [/erkunden](https://medienhaus.udk-berlin.de/explore) finden. Einladungen zu privaten Räumen finden Sie am linken Bildschirmrand im [Klassenraum](https://medienhaus.udk-berlin.de/classroom) in der Navigationsspalte. 
+Wenn Sie in einen öffentlichen Raum eingeladen werden, z.B. von einem Dozenten oder einer Dozentin für einen bevorstehenden Kurs, können Sie den Raum unter [/erkunden](https://medienhaus.udk-berlin.de/explore) finden. Einladungen zu privaten Räumen finden Sie am linken Bildschirmrand im [/klassenraum](https://medienhaus.udk-berlin.de/classroom) in der Navigationsspalte. 
 
 ## **Ich kenne mein Passwort und/oder meinen Benutzernamen nicht!**
 
