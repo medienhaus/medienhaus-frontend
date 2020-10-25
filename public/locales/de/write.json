@@ -1,6 +1,6 @@
 {
-  "p0": "Du kannst <1>/write</1> for taking notes and sharing them with your group in real time.",
-  "p1": "Write, edit, and read collaboratively and discuss written text with by marking it and adding comments. Simply create a new pad with a random name&thinsp;&mdash;&thinsp;or manually define a name for your pad&thinsp;&mdash;&thinsp;and share your unique link with others.",
-  "p2": "All your changes are backed up by a feature called timeslider, which shows all changes made to the document over time.",
-  "p3": "<2>/write</2> can be accessed via: <3>write.medienhaus.udk-berlin.de</3>"
+  "p0": "Du kannst <1>/schreiben</1> nutzen um Notizen zu machen und diese in Echtzeit mit deiner Gruppe zu teilen.",
+  "p1": "Schreibe, bearbeite und lese gemeinsam mit anderen und diskutiere über bereits geschriebene Texte, indem du ihn markierst und Kommentare hinzufügst. Erstelle einfach ein neues Pad mit einem zufälligen Namen oder definiere manuell einen Namen für dein Pad und teile den Link mit anderen.",
+  "p2": "Alle deine Änderungen werden durch eine Funktion namens Timeslider gesichert, die alle Änderungen anzeigt, die im Laufe der Zeit am Dokument vorgenommen wurden.",
+  "p3": "<2>/schreiben</2> ist erreichbar via: <3>write.medienhaus.udk-berlin.de</3>"
 }

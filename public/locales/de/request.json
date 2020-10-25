@@ -1,10 +1,10 @@
 {
-  "instruction": "Bitte füllen Sie das Forumlar aus um einen <1>öffentlich zugänglichen</1> und <3>gelisteten</3> Raum zu erstellen … <5>Sie müssen keine privaten Räume anfragen, diese können Sie einfach erstellen</5>",
+  "instruction": "Bitte füllen Sie das Formular aus, um einen <1>öffentlich zugänglichen</1> und <3>gelisteten</3> Raum anzufragen. <5>Private Räume müssen nicht angefragt werden, diese können einfach erstellt werden.</5>",
   "form": {
-    "name": "ihr Name",
-    "email": "mail adresse",
-    "department": "fakultät",
-    "room": "raum name"
+    "name": "Name",
+    "email": "Mail-Adresse",
+    "department": "Standort",
+    "room": "Raumname"
   },
   "button": "ABSCHICKEN"
 }
