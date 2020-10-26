@@ -9,7 +9,7 @@ We’d like to create a responsible tool for remote education using existing ser
 - **present** to each other
 - **study** together
 
-**medienhaus/** uses rooms as an extension for chats and talks, quick face to face meetings, presentations with groups of people, collaborative real time writing and documentation and a solution for streaming online. For a Introduction to medienhaus/ you can watch [this video](https://medienhaus.udk-berlin.de/kino).
+**medienhaus/** uses rooms as an extension for chats and talks, quick face to face meetings, presentations with groups of people, collaborative real time writing and documentation and a solution for streaming online. For an introduction to **medienhaus/** you can watch [this video](https://medienhaus.udk-berlin.de/kino).
 
 ## I was told to join a room on **medienhaus/** … how do I do that?
 
