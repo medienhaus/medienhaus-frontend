@@ -17,7 +17,7 @@ Wenn du in einen öffentlichen Raum eingeladen wirst, z.B. von einem Dozenten od
 
 ## Ich kenne mein Passwort und/oder meinen Benutzernamen nicht!
 
-Das Passwort und der Benutzername sind die gleichen, die du für die Anmeldung in Ihrem UdK-Mail-Konto verwendest. Diese Integration vereinheitlicht die Anmeldedaten und ermöglicht es uns, dich als Teil der UdK zu identifizieren, unabhängig davon, ob du Studierende, Lehrende oder Mitarbeitende sind. Informationen zu Passwortsicherheit sind [hier](https://www.nist.gov/blogs/taking-measure/easy-ways-build-better-p5w0rd) zu finden.
+Das Passwort und der Benutzername sind die gleichen, die du für die Anmeldung in deinem UdK-Mail-Konto verwendest. Diese Integration vereinheitlicht die Anmeldedaten und ermöglicht es uns, dich als Teil der UdK zu identifizieren, unabhängig davon, ob du Studierende, Lehrende oder Mitarbeitende sind. Informationen zu Passwortsicherheit sind [hier](https://www.nist.gov/blogs/taking-measure/easy-ways-build-better-p5w0rd) zu finden.
 
 ## Ich benötige einen Chatroom für etwas. Wie kann ich einen erstellen?
 
@@ -48,7 +48,7 @@ Es wird empfohlen Chromium, Firefox oder Chrome als Browser zu verwenden.
 
 Du kannst die Funktionalität deines Raumes erweitern, indem du Widgets wie ein Etherpad hinzufügst. Diese selbst gehostete, freie und open-source Anwendung funktioniert wie eine datenschutzfreundliche Google Docs-Anwendung.
 
-Hier kannst du Notizen und lange Textdokumente mit den Personen in deinem Raum austauschen oder an einem Text arbeiten. Auf diese Weise kannst du den Chat für das Chatten beibehalten und hast einen Platz für Ihre Notizen. Mehr Informationen sind unter **[/write](https://medienhaus.udk-berlin.de/write)** zu finden oder unter **[/kino](https://medienhaus.udk-berlin.de/kino)**.
+Hier kannst du Notizen und lange Textdokumente mit den Personen in deinem Raum austauschen oder an einem Text arbeiten. Auf diese Weise kannst du den Chat für das Chatten beibehalten und hast einen Platz für deine Notizen. Mehr Informationen sind unter **[/write](https://medienhaus.udk-berlin.de/write)** zu finden oder unter **[/kino](https://medienhaus.udk-berlin.de/kino)**.
 
 ## Kann ich mein Handy oder Tablet für medienhaus/ benutzen?
 
@@ -58,15 +58,15 @@ Wir haben **medienhaus/** für die Verwendung in einem Desktop- oder Laptop-Brow
 
 **medienhaus/** glaubt fest an die verantwortungsvolle Erstellung von Werkzeugen und Diensten für die Online-Erweiterung von Bildung und Information. Deshalb hosten wir diese Dienste auf unserer eigenen Hardware mit kontrolliertem Zugang.
 
-Es werden nur sehr wenige Daten gesammelt, und sie werden niemals verkauft, verwendet oder auf andere Weise wie in anderen Diensten preisgegeben. **medienhaus/** ist auch ein kostenloser Dienst, Sie zahlen nicht mit Geld oder Ihren Daten und Ihrer Aufmerksamkeitsspanne.
+Es werden nur sehr wenige Daten gesammelt, und sie werden niemals verkauft, verwendet oder auf andere Weise wie in anderen Diensten preisgegeben. **medienhaus/** ist auch ein kostenloser Dienst, du zahlst nicht mit Geld oder deinen Daten und deiner Aufmerksamkeitsspanne.
 
-**medienhaus/** trennt auch Ihre persönlichen Online-Dienste von Ihrem Studium mit allen Werkzeugen, die du benötigst. All dies ist wirklich nur zu deinen Vorteil und für die Online-Bildung.
+**medienhaus/** trennt auch deine persönlichen Online-Dienste von deinem Studium mit allen Werkzeugen, die du benötigst. All dies ist wirklich nur zu deinen Vorteil und für die Online-Bildung.
 
 ## Ich sollte in einen Raum eingeladen werden, aber ich kann ihn nicht finden.
 
-Einladungen zu einem Privatraum sind auf der linken Seite in der Zimmerliste zu sehen. Der Raum wird mit einem Benachrichtigungssymbol versehen und du musst die Einladung durch Anklicken annehmen. Wenn du Browser-Benachrichtigungen aktivierst, erhältst Sie ebenfalls eine Benachrichtigung.
+Einladungen zu einem Privatraum sind auf der linken Seite in der Zimmerliste zu sehen. Der Raum wird mit einem Benachrichtigungssymbol versehen und du musst die Einladung durch Anklicken annehmen. Wenn du Browser-Benachrichtigungen aktivierst, erhältst du ebenfalls eine Benachrichtigung.
 
-Wenn du die Einladung nicht siehst lade die Seite bitte neu, indem Sie auf das Symbol 🔄 in deinem Browser klickst oder `cmd` + `r` drückst. Öffentliche Räume findst du unter **[/explore](https://medienhaus.udk-berlin.de/explore)**.
+Wenn du die Einladung nicht siehst lade die Seite bitte neu, indem du auf das Symbol 🔄 in deinem Browser klickst oder `cmd` + `r` drückst. Öffentliche Räume findst du unter **[/explore](https://medienhaus.udk-berlin.de/explore)**.
 
 ## Ich habe ein Problem und kann in dieser FAQ keine Informationen darüber finden!
 
@@ -74,7 +74,7 @@ Das liegt an uns! Wir erweitern die FAQ ständig. Bitte benutze das Support-Form
 
 ## Was kann ich im medienhaus/ personalisieren?
 
-Zunächst empfehlen wir dir, dein Profil um Informationen zu ergänzen. Das kannst du tun, indem du oben links auf deinen Namen und dann auf die Schaltfläche `Einstellungen` klicken. Hier kannst du ein Profilbild, deine E-Mail-Adresse und deine Telefonnummer hinzufügen. Wenn du die Registerkarte `Darstellung` öffnen, kannst du den dunklen Modus wählen oder die Schriftgröße ändern. Der Tab `Benachrichtigungen` gibt dir die volle Kontrolle darüber, welche Art von Benachrichtigungen du erhältst und wie du diese erhalten möchtest. Stelle sicher, dass du sie in Ihrem Browser aktiviert hast.
+Zunächst empfehlen wir dir, dein Profil um Informationen zu ergänzen. Das kannst du tun, indem du oben links auf deinen Namen und dann auf die Schaltfläche `Einstellungen` klicken. Hier kannst du ein Profilbild, deine E-Mail-Adresse und deine Telefonnummer hinzufügen. Wenn du die Registerkarte `Darstellung` öffnen, kannst du den dunklen Modus wählen oder die Schriftgröße ändern. Der Tab `Benachrichtigungen` gibt dir die volle Kontrolle darüber, welche Art von Benachrichtigungen du erhältst und wie du diese erhalten möchtest. Stelle sicher, dass du sie in deinem Browser aktiviert hast.
 
 ## Ich möchte meine Nachricht in einem Raum voller Leute an eine bestimmte Person richten. Wie kann ich das tun?
 
