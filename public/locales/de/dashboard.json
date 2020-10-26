@@ -1,0 +1,12 @@
+{
+  "hello": "Hallo",
+  "p1": "Dein <1>/classroom</1> ist eine kollaborative Chat-Plattform, auf der du Räume für deine Kurse und Klassen finden kannst. Jeder Raum kann mit einer Vielzahl von Widgets (man denke an Plugins) wie Audio/Video-Koferenzen oder gemeinschaftliches Schreiben und Editieren in Echtzeit erweitert werden.",
+  "p2": "Die Seite <1>/account</1> zeigt deine Profilinformationen und in welchen Räumen du dich befindest. Du wirst bald in der Lage sein, Einladungen in andere Räume in diesem Bereich anzunehmen oder abzulehnen.",
+  "p3": "Du kannst <1>/explore</1> nutzen um frei zugängliche öffentliche Räume nach Abteilung, Ort und Thema zu kategorisieren ... bald auch mit Suchfunktion und Filter.",
+  "p4": "Wenn du einen öffentlich zugänglichen Raum benötigst, kannst du unter <1>/request</1> das dafür vorgesehene Formular nutzen. Du kannst mehr über die Unterschiede zwischen öffentlichen und privaten Räumen in unseren FAQs oder in unseren Videos erfahren.",
+  "p5": "Falls du Hilfe brauchst, schau dir bitte die 'Frequently Asked Questions' (FAQ) oder auch 'Häufig gestellten Fragen' in unserem <1>/support</1> Bereich an. Wenn das Problem, auf das du stößt, noch nicht dokumentiert ist, kontaktiere uns bitte über das Formular unterhalb der FAQs.",
+  "p6": "Zusätzlich zu unserer schriftlichen Dokumentation kannst du <1>/kino</1> besuchen und unsere Sammlung von Einführungs- und Anleitungsvideos durchstöbern.",
+  "p7": "Du kannst <1>/meet</1> für Audio/Video-Zusammenarbeit in deinen Kursen und für die Präsentation deiner Arbeit verwenden oder einfach nur, um virtuell von Angesicht zu Angesicht miteinander zu sprechen.",
+  "p8": "Du kannst <1>/write</1> benutzen, um mit anderen in Echtzeit an demselben Textdokument zusammenzuarbeiten oder du kannst einfach ein paar Notizen nur für dich selbst machen.",
+  "p9": "Wenn du deinen Kurs oder dein Projekt einer großen Gruppe von Leuten präsentieren möchtest, kannst du <1>/stream</1> für Echtzeit-Live-Streaming von Audio- oder Videoinhalte verwenden."
+}
