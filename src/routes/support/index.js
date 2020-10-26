@@ -87,9 +87,8 @@ const Support = () => {
   }
 
   const scrollBtn = (e, scroll) => {
-    const height = document.getElementById('content').clientHeight;
     e.preventDefault();
-    window.scrollTo(0, scroll + height - 100);
+    window.scrollTo(0, scroll - 100);
   }
 
   return (
