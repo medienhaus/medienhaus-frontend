@@ -1,6 +1,6 @@
 {
-  "p0": "Du kannst <1>/schreiben</1> nutzen um Notizen zu machen und diese in Echtzeit mit deiner Gruppe zu teilen.",
+  "p0": "Du kannst <1>/write</1> nutzen um Notizen zu machen und diese in Echtzeit mit deiner Gruppe zu teilen.",
   "p1": "Schreibe, bearbeite und lese gemeinsam mit anderen und diskutiere über bereits geschriebene Texte, indem du ihn markierst und Kommentare hinzufügst. Erstelle einfach ein neues Pad mit einem zufälligen Namen oder definiere manuell einen Namen für dein Pad und teile den Link mit anderen.",
   "p2": "Alle deine Änderungen werden durch eine Funktion namens Timeslider gesichert, die alle Änderungen anzeigt, die im Laufe der Zeit am Dokument vorgenommen wurden.",
-  "p3": "<0>/schreiben</0> ist erreichbar via: <2>write.medienhaus.udk-berlin.de</2>"
+  "p3": "<0>/write</0> ist erreichbar via: <2>write.medienhaus.udk-berlin.de</2>"
 }
