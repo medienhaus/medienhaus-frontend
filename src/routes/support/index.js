@@ -35,19 +35,36 @@ const Support = () => {
   const faqPath = i18n.language === "en" ? require('../../assets/data/support/support_en.md') : require('../../assets/data/support/support_de.md');
 
   const [markdown, setMarkdown] = useState();
-
+  const [headline, setHeadline] = useState([]);
+  const elements = [];
 
   const getMarkdownText = () => {
     setLoading(true)
     fetch(faqPath)
       .then((response) => response.text())
       .then((text) => setMarkdown(text))
-      .then(() => setLoading(false))
+      .then(() => setLoading(false));
   }
+
   useEffect(() => {
-    getMarkdownText();
+    getMarkdownText()
     // eslint-disable-next-line
   }, [i18n.language])
+
+  useEffect(() => {
+    getHeadlines();
+    // eslint-disable-next-line
+  }, [markdown, i18n.language])
+
+  const getHeadlines = () => {
+    const el = document.getElementsByTagName('h2');
+    // eslint-disable-next-line
+    Object.keys(el).map(function (key, index) {
+      elements.push({ "txt": el[key].innerText, "scroll": el[key].offsetTop });
+    });
+    setHeadline(elements);
+    setLoading(false);
+  }
 
   const onSubmit = async () => {
     setSending(true);
@@ -69,52 +86,63 @@ const Support = () => {
     }
   }
 
+  const scrollBtn = (e, scroll) => {
+    e.preventDefault();
+    window.scrollTo(0, scroll - 100);
+  }
+
   return (
     loading ? <Loading /> : (
       <>
-        <section className="faq">
-          <ReactMarkdown source={markdown} />
-        </section>
-        <section className="support">
-          <h2>{t('support:instruction')}</h2>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <label htmlFor="Operating System">{t('support:form.os')}</label>
-              <select name="Operating System" defaultValue={''} onChange={changeSystem} ref={register({ required: true })}>
-                <option value="" disabled hidden>-- select operating system --</option>
-                <option value="Linux">Linux</option>
-                <option value="macOS">macOS</option>
-                <option value="Windows">Windows</option>
-                <option value="iOs">iOs</option>
-                <option value="android">Android</option>
-                <option value="Other">(Other)</option>
-              </select>
-            </div>
-            {errors.browser && "Please select an operating system."}
-            <div>
-              <label htmlFor="Web Browser">{t('support:form.browser')}</label>
-              <select name="browser" defaultValue={''} onChange={changeBrowser} ref={register({ required: true })}>
-                <option value="" disabled hidden >-- select web browser --</option>
-                <option value="Firefox">Firefox</option>
-                <option value="Chrome">Chrome</option>
-                <option value="Safari">Safari</option>
-                <option value="Opera">Opera</option>
-                <option value="Edge">Edge</option>
-                <option value="Internet Explorer">Internet Explorer</option>
-                <option value="Other">(Other)</option>
-              </select>
-            </div>
-            {errors.browser && "Please select a web browser."}
-            <div>
-              <label htmlFor="Mail Address">{t('support:form.email')}</label>
-              {/* eslint-disable-next-line*/}
-              <input type="email" placeholder="u.name@udk-berlin.de" name="email" value={mail} onChange={changeMail} ref={register({ required: true, pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })} />
-            </div>
-            {errors.email && "Please enter a valid email address."}
-            <textarea name="messageInput" placeholder={t('support:form.placeholder')} rows="7" spellCheck="true" value={msg} onChange={changeMsg} ref={register({ required: true })} />
-            {errors.messageInput && "This field can’t be empty."}
-            <button type="submit" disabled={sending}>{t('support:button')}</button>
-          </form>
+        <section className="support with-sidebar">
+          <section className='sidebar' id="content">
+            {headline.map((txt, index) => {
+              return <li key={index}><button onClick={(e) => scrollBtn(e, txt.scroll)}>{txt.txt}</button></li>
+            })}</section>
+          <section className="faq">
+            <ReactMarkdown source={markdown} />
+          </section>
+          <section className="support">
+            <h2>{t('support:instruction')}</h2>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div>
+                <label htmlFor="Operating System">{t('support:form.os')}</label>
+                <select name="Operating System" defaultValue={''} onChange={changeSystem} ref={register({ required: true })}>
+                  <option value="" disabled hidden>-- select operating system --</option>
+                  <option value="Linux">Linux</option>
+                  <option value="macOS">macOS</option>
+                  <option value="Windows">Windows</option>
+                  <option value="iOs">iOs</option>
+                  <option value="android">Android</option>
+                  <option value="Other">(Other)</option>
+                </select>
+              </div>
+              {errors.browser && "Please select an operating system."}
+              <div>
+                <label htmlFor="Web Browser">{t('support:form.browser')}</label>
+                <select name="browser" defaultValue={''} onChange={changeBrowser} ref={register({ required: true })}>
+                  <option value="" disabled hidden >-- select web browser --</option>
+                  <option value="Firefox">Firefox</option>
+                  <option value="Chrome">Chrome</option>
+                  <option value="Safari">Safari</option>
+                  <option value="Opera">Opera</option>
+                  <option value="Edge">Edge</option>
+                  <option value="Internet Explorer">Internet Explorer</option>
+                  <option value="Other">(Other)</option>
+                </select>
+              </div>
+              {errors.browser && "Please select a web browser."}
+              <div>
+                <label htmlFor="Mail Address">{t('support:form.email')}</label>
+                {/* eslint-disable-next-line*/}
+                <input type="email" placeholder="u.name@udk-berlin.de" name="email" value={mail} onChange={changeMail} ref={register({ required: true, pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })} />
+              </div>
+              {errors.email && "Please enter a valid email address."}
+              <textarea name="messageInput" placeholder={t('support:form.placeholder')} rows="7" spellCheck="true" value={msg} onChange={changeMsg} ref={register({ required: true })} />
+              {errors.messageInput && "This field can’t be empty."}
+              <button type="submit" disabled={sending}>{t('support:button')}</button>
+            </form>
+          </section>
         </section>
       </>)
   );
