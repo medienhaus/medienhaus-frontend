@@ -16,7 +16,6 @@ const matrixClient = matrixcs.createClient({
   useAuthorizationHeader: true
 });
 
-
 const Account = () => {
   // eslint-disable-next-line
   const joinedRooms = useJoinedRooms();
