@@ -2,9 +2,9 @@
   "instruction": "Falls du hier keine Antwort auf deine Frage gefunden hast, beschreibe uns bitte das Problem über das Support-Formular.",
   "form": {
     "os": "Betriebssystem",
-    "browser": "Internetbrowser",
-    "email": "Email",
-    "placeholder": "Bitte beschreibe das Problem..."
+    "browser": "Web Browser",
+    "email": "Mail-Adresse",
+    "placeholder": "Bitte beschreibe das auftretende Problem …"
   },
   "button": "ABSCHICKEN"
 }
