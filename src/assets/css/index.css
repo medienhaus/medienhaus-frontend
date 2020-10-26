@@ -328,9 +328,6 @@ form textarea {
   grid-template-columns: 1fr max-content;
   grid-template-rows: auto 1fr auto;
   grid-gap: 0 calc(var(--margin) * 2.8);
-  /*
-  grid-gap: calc(var(--margin) * 1) calc(var(--margin) * 4);
-  */
   min-height: 100%;
 }
 
@@ -419,9 +416,23 @@ form textarea {
   margin:0 auto;
 }
 
-.faq code {
+.faq > code {
   background-color: var(--color-lo);
   padding: 0 calc(var(--margin) * 0.2);
+}
+
+.faq button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--color-bg);
+  border: unset;
+  color: var(--color-fg);
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  line-height: 1.4;
+  text-align: left;
 }
 
 .kino {
@@ -576,11 +587,11 @@ form textarea {
 }
 
 .with-sidebar > * > * {
-  margin: calc(var(--margin) / 2);
   /*
   flex-basis: 30%;
   */
   flex-grow: 1;
+  margin: calc(var(--margin) / 2);
 }
 
 .with-sidebar > * > :first-child {
