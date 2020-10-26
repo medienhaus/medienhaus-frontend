@@ -9,6 +9,7 @@ const Footer = () => {
   const { t, i18n } = useTranslation(['translation', 'welcome']);
 
   const changeLanguage = code => {
+    localStorage.setItem('cr_lang', code);
     i18n.changeLanguage(code);
   };
 
