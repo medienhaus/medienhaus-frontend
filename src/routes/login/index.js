@@ -18,7 +18,6 @@ const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
-  const auth = localStorage.getItem('mx_access_token');
   const { setUser } = useContext(UserContext);
 
   const onSubmit = async () => {
@@ -32,8 +31,8 @@ const Login = () => {
       localStorage.setItem('mx_hs_url', "https://" + res.home_server);
       localStorage.setItem('mx_user_id', res.user_id);
       localStorage.setItem('mx_device_id', res.device_id);
-      localStorage.setItem('cr_auth', true);
       setUser(res.user_id);
+      //history.push('/dashboard')
       history.push('/dashboard')
       return (window.location.reload(false))
     }
@@ -47,30 +46,27 @@ const Login = () => {
   const changePassword = e => setPassword(e.target.value);
 
   return (
-    auth === null ? (
-      < section id="login" >
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <label htmlFor="username">username:</label>
-            <input name="username" type="text" placeholder="u.name" value={name} onChange={changeName} ref={register({ required: true })} />
-            <label>@udk-berlin.de</label>
-          </div>
-          {errors.username && "Username can't be empty."}
-          <div>
-            <label htmlFor="password">password:</label>
-            <input name="password" type="password" placeholder="" value={password} onChange={changePassword} ref={register({ required: true })} />
-          </div>
-          {errors.password && "Password can't be empty."}
-          <button name="submit" type="submit">LOGIN</button>
-        </form>
-        <ul>
-          <li><a href="https://www.oase.udk-berlin.de/udk-oase-nutzeraccount/" rel="external noopener noreferrer">Which account do I need?</a></li>
-          <li><a href="https://www.oase.udk-berlin.de/passwort" rel="external noopener noreferrer">I forgot my username/password!</a></li>
-          <li><a href="mailto:info@medienhaus.udk-berlin.de?subject=medienhaus/help" rel="external noopener noreferrer">I cannot log in!</a></li>
-        </ul>
-      </section >) : (
-        <Redirect to='/' />
-      )
+    < section id="login" >
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label htmlFor="username">username:</label>
+          <input name="username" type="text" placeholder="u.name" value={name} onChange={changeName} ref={register({ required: true })} />
+          <label>@udk-berlin.de</label>
+        </div>
+        {errors.username && "Username can't be empty."}
+        <div>
+          <label htmlFor="password">password:</label>
+          <input name="password" type="password" placeholder="" value={password} onChange={changePassword} ref={register({ required: true })} />
+        </div>
+        {errors.password && "Password can't be empty."}
+        <button name="submit" type="submit">LOGIN</button>
+      </form>
+      <ul>
+        <li><a href="https://www.oase.udk-berlin.de/udk-oase-nutzeraccount/" rel="external noopener noreferrer">Which account do I need?</a></li>
+        <li><a href="https://www.oase.udk-berlin.de/passwort" rel="external noopener noreferrer">I forgot my username/password!</a></li>
+        <li><a href="mailto:info@medienhaus.udk-berlin.de?subject=medienhaus/help" rel="external noopener noreferrer">I cannot log in!</a></li>
+      </ul>
+    </section >
   );
 }
 
