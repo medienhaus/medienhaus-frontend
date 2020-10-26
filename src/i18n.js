@@ -4,7 +4,7 @@ import Backend from 'i18next-xhr-backend';
 
 
 let lng = 'en';
-if (localStorage.getItem('cr_lang') !== 'undefinend') {
+if (localStorage.getItem('cr_lang') !== null) {
   lng = localStorage.getItem('cr_lang')
 } else {
   lng = 'en';

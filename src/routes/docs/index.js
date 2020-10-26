@@ -4,7 +4,6 @@ import ReactPlayer from 'react-player'
 const Videos = () => {
   const [video, setVideo] = useState('vid/public_onboarding.mp4');
   const [played, setPlayed] = useState(null);
-  console.log(ReactPlayer.onProgress)
 
   const handleProgress = state => {
     setPlayed(state.played);

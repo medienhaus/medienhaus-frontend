@@ -29,17 +29,35 @@ const App = () => (
           <Header />
           <main>
             <Switch>
-              <Route path="/" exact component={Landing} />
-              <Route path="/login" component={Login} />
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/account" component={Account} />
-              <Route path="/explore" component={Explore} />
-              <Route path="/request" component={Request} />
-              <Route path="/support" component={Support} />
-              <Route path="/kino" component={Kino} />
-              <Route path="/meet" component={Meet} />
-              <Route path="/write" component={Write} />
-              <Route path="/stream" component={Stream} />
+              {localStorage.getItem('mx_access_token') === null ? (
+                <>
+                  <Route path="/" exact component={Landing} />
+                  <Route path="/login" component={Login} />
+                  <Route path="/dashboard" component={Login} />
+                  <Route path="/account" component={Login} />
+                  <Route path="/explore" component={Login} />
+                  <Route path="/request" component={Login} />
+                  <Route path="/support" component={Login} />
+                  <Route path="/kino" component={Login} />
+                  <Route path="/meet" component={Login} />
+                  <Route path="/write" component={Login} />
+                  <Route path="/stream" component={Login} />
+                </>
+              ) : (
+                  <>
+                    <Route path="/" exact component={Landing} />
+                    <Route path="/login" component={Login} />
+                    <Route path="/dashboard" component={Dashboard} />
+                    <Route path="/account" component={Account} />
+                    <Route path="/explore" component={Explore} />
+                    <Route path="/request" component={Request} />
+                    <Route path="/support" component={Support} />
+                    <Route path="/kino" component={Kino} />
+                    <Route path="/meet" component={Meet} />
+                    <Route path="/write" component={Write} />
+                    <Route path="/stream" component={Stream} />
+                  </>)
+              }
             </Switch>
           </main>
           <Nav />
