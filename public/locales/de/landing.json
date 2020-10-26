@@ -4,8 +4,8 @@
   "intro1": "Durch die COVID-19-Pandemie ausgelöst, mussten wir schnell eine intuitive Plattform für die Remote-Zusammenarbeit bereitstellen, die die Anforderungen und Bedürfnisse einer Kunstschule während dieser Krise und darüber hinaus erfüllt.",
   "intro2": "Wir haben schnell Prototypen erstellt und iterativ einen datenschutzorientierten, kostenlosen und Open-Source orienterten Satz von Tools und Diensten für unsere Studenten und Mitarbeiter erstellt und verbessert. Um es auszuprobieren melde dich einfach mit deinem UdK-Konto an.",
   "shoutout": "Wir haben <1>medienhaus/</1> entwickelt, nicht um etwa den namensgebenden physischen Raum zu ersetzen, sondern digital zu erweitern.",
-  "classroom": "<0>/klassenraum</0> für angeregten verbalen Austausch",
-  "meet": "<0>/treffen</0> Audio-/Video-Konferenzen und Präsentationen",
-  "write": "<0>/schreiben</0> kollaboratives Schreiben, Lesen und Bearbeiten",
+  "classroom": "<0>/classroom</0> für angeregten verbalen Austausch",
+  "meet": "<0>/meet</0> Audio-/Video-Konferenzen und Präsentationen",
+  "write": "<0>/write</0> kollaboratives Schreiben, Lesen und Bearbeiten",
   "stream": "<0>/stream</0> Audio-/Video-Live-Streaming und Wiedergabe"
 }
