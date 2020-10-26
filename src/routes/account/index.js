@@ -5,6 +5,7 @@ import useProfile from "../../components/matrix_profile";
 import { Loading } from "../../components/loading"
 import { useTranslation } from 'react-i18next';
 import * as matrixcs from "matrix-js-sdk";
+import i18n from '../../i18n';
 
 const myUserId = localStorage.getItem("mx_user_id");
 const myAccessToken = localStorage.getItem("mx_access_token");
@@ -50,8 +51,7 @@ const Account = () => {
 
   const getSync = async () => {
     try {
-      const res = await matrixClient.isInitialSyncComplete();
-      console.log(res);
+      await matrixClient.isInitialSyncComplete();
     } catch (e) {
       console.log(e);
     }
@@ -61,12 +61,12 @@ const Account = () => {
     if (logoutRef.current === 1) {
       await matrixClient.logout();
       localStorage.clear();
+      localStorage.setItem('cr_lang', i18n.language)
       history.push('/')
       return window.location.reload(false);
     }
     else {
       logoutRef.current = logoutRef.current + 1;
-      console.log(logoutRef)
       setLogBtnStr(t('account:logout2'))
     }
   }

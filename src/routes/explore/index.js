@@ -81,12 +81,7 @@ const Explore = () => {
     setJoinId("");
   }, [joinId])
 
-  const NotLogged = () => {
-    history.push('/login');
-    return (<p>
-      you are being redirected to the login page
-    </p>)
-  }
+
 
   const RoomStructure = () => {
     const keys = []
@@ -137,13 +132,9 @@ const Explore = () => {
   }
 
   return (
-    localStorage.getItem('mx_access_token') ? (
-      <section className="explore">
-        {publicRooms.length === 0 ? <Loading /> : <RoomStructure />}
-      </section>
-    ) : (
-        <NotLogged />
-      )
+    <section className="explore">
+      {publicRooms.length === 0 ? <Loading /> : <RoomStructure />}
+    </section>
   );
 }
 
