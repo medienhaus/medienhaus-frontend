@@ -107,10 +107,15 @@ const Explore = () => {
 
   //component
   const RoomList = ({ faculty, displayName, type }) => {
+    const sort = [...publicRooms].sort((a, b) => {
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
+    });
     return (
       <>
         <h3>{displayName}</h3>
-        {[...publicRooms].sort().map(publicRoom => (
+        {[...sort].map(publicRoom => (
           publicRoom.name.startsWith(`${faculty}-`) ? (
             <div className="room" key={publicRoom.room_id}>
               {publicRoom.avatar_url ? (
