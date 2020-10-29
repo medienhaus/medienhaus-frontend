@@ -52,12 +52,13 @@ const Support = () => {
   }, [i18n.language])
 
   useEffect(() => {
-    getHeadlines();
+    //getHeadlines();
     // eslint-disable-next-line
   }, [markdown, i18n.language])
 
   const getHeadlines = () => {
-    const el = document.getElementsByTagName('h2 ~ *:not(h2)');
+    const el = document.getElementsByTagName('h2');
+    //console.log(el);
     // eslint-disable-next-line
     Object.keys(el).map(function (key, index) {
       elements.push({ "txt": el[key].innerText, "scroll": el[key].offsetTop });
@@ -95,9 +96,9 @@ const Support = () => {
     loading ? <Loading /> : (
       <>
         <section className="faq">
-          {headline.map((txt, index) => {
+          {/*headline.map((txt, index) => {
             return <button key={index} onClick={(e) => scrollBtn(e, txt.scroll)}>{txt.txt}</button>
-          })}
+          })*/}
           <ReactMarkdown source={markdown} />
         </section>
         <section className="support">
