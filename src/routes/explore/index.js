@@ -19,6 +19,7 @@ const Explore = () => {
   const [joinedRooms, setJoinedRooms] = useState([]);
   const [joinId, setJoinId] = useState("");
   const [leaveId, setLeaveId] = useState("");
+  const [search, setSearch] = useState("");
   const [update, setUpdate] = useState(false);
   const [loading, setLoading] = useState(true);
   const publicRooms = PublicRooms();
@@ -60,7 +61,7 @@ const Explore = () => {
     getJoinedRooms();
     setUpdate(false);
     // eslint-disable-next-line
-  }, [update, t])
+  }, [update, t, search])
 
   useEffect(() => {
     matrixClient.leave(leaveId)
@@ -81,7 +82,34 @@ const Explore = () => {
     setJoinId("");
   }, [joinId])
 
+  const searchBar = e => {
+    setSearch(e.target.value)
+  }
 
+  const SearchStructure = () => {
+
+    const sort = [...publicRooms].sort((a, b) => {
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
+    });
+
+    return ([...sort].map(publicRoom => (
+      publicRoom.name.includes(search.toLowerCase().replace(/ /g, '')) &&
+      <div className="room" key={publicRoom.room_id}>
+        {publicRoom.avatar_url ? (
+          <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, "crop", false)} alt="avatar" />
+        ) : (
+            <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
+          )}
+        <label htmlFor={publicRoom.room_id} key={publicRoom.name} >{publicRoom.name}</label>
+        {joinedRooms.includes(publicRoom.name) ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
+          {loading ? <Loading /> : t('explore:buttonLeave')}</button> :
+          <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
+      </div>
+    ))
+    )
+  }
 
   const RoomStructure = () => {
     const keys = []
@@ -94,11 +122,7 @@ const Explore = () => {
       uniqKeys.map(keys => (
         <><h2 style={{ textTransform: 'capitalize' }}>{keys}</h2>
           {roomStructure.map((data, index) => (
-            keys === data.type ? (
-              <RoomList faculty={data.faculty} displayName={data.displayName} type={data.type} key={data.id} />
-            ) : (
-                null
-              )
+            keys === data.type && <RoomList faculty={data.faculty} displayName={data.displayName} type={data.type} key={data.id} />
           ))}
         </>)
       )
@@ -107,6 +131,7 @@ const Explore = () => {
 
   //component
   const RoomList = ({ faculty, displayName, type }) => {
+
     const sort = [...publicRooms].sort((a, b) => {
       if (a.name < b.name) return -1;
       if (a.name > b.name) return 1;
@@ -138,7 +163,8 @@ const Explore = () => {
 
   return (
     <section className="explore">
-      {publicRooms.length === 0 ? <Loading /> : <RoomStructure />}
+      <input type='text' value={search} onChange={(e) => searchBar(e)} placeholder='i.e new media' />
+      {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <RoomStructure />}
     </section>
   );
 }
