@@ -66,7 +66,7 @@ Es werden nur sehr wenige Daten gesammelt, und sie werden niemals verkauft, verw
 
 Einladungen zu einem Privatraum sind auf der linken Seite in der Zimmerliste zu sehen. Der Raum wird mit einem Benachrichtigungssymbol versehen und du musst die Einladung durch Anklicken annehmen. Wenn du Browser-Benachrichtigungen aktivierst, erhältst du ebenfalls eine Benachrichtigung.
 
-Wenn du die Einladung nicht siehst lade die Seite bitte neu, indem du auf das Symbol 🔄 in deinem Browser klickst oder `cmd` + `r` drückst. Öffentliche Räume findst du unter **[/explore](https://medienhaus.udk-berlin.de/explore)**.
+Wenn du die Einladung nicht siehst lade die Seite bitte neu, indem du auf das `🔄`-Symbol in deinem Browser klickst oder `cmd` + `r` drückst. Öffentliche Räume findst du unter **[/explore](https://medienhaus.udk-berlin.de/explore)**.
 
 ## Ich habe ein Problem und kann in dieser FAQ keine Informationen darüber finden!
 
@@ -82,11 +82,11 @@ Wenn du deine Nachricht eingibst, kannst du `@` gefolgt von dem Namen der anzusp
 
 ## Kann ich eine Datei, ein Video oder ein Foto mit anderen teilen?
 
-Ja, du kannst das Symbol 📎 in Direktnachrichten oder in einem Raum verwenden, um ein beliebiges Dateiformat mit anderen zu teilen. Achte darauf, dass es unter 10 MB groß ist. Für größere Dateien oder eine Dateifreigabe per Link kannst du die [UdK-Cloud](https://cloud.udk-berlin.de/) verwenden.
+Ja, du kannst das `📎`-Symbol in Direktnachrichten oder in einem Raum verwenden, um ein beliebiges Dateiformat mit anderen zu teilen. Achte darauf, dass es unter 10 MB groß ist. Für größere Dateien oder eine Dateifreigabe per Link kannst du die [UdK-Cloud](https://cloud.udk-berlin.de/) verwenden.
 
 ## Ich habe ein Wort falsch geschrieben und muss die Nachricht bearbeiten!
 
-Du kannst deine bereits gesendeten Nachrichten ganz einfach bearbeiten, indem du beim Herüberfahren mit der Maus auf das Symbol `…` auf der rechten Seite deiner Nachricht klickst. Wähle `bearbeiten` und nimm deine Änderungen vor. Deine Nachricht erhält die Anmerkung (bearbeitet).
+Du kannst deine bereits gesendeten Nachrichten ganz einfach bearbeiten, indem du beim Herüberfahren mit der Maus auf das `…`-Symbol auf der rechten Seite deiner Nachricht klickst. Wähle `bearbeiten` und nimm deine Änderungen vor. Deine Nachricht erhält die Anmerkung (bearbeitet).
 
 ## Ich möchte auf eine Frage antworten oder eine andere Nachricht zitieren, ist dies möglich?
 
@@ -102,7 +102,7 @@ Wenn du ein persönliches Gerät verwendst, musst du dich nicht abmelden. Wenn d
 
 ## Ich habe eine Benachrichtigung erhalten, aber jetzt ist sie weg. Wo kann ich die aktuelle Aktivität finden?
 
-Um eine chronologische Liste deiner Benachrichtigung zu sehen, kannst du auf das Symbol 🔔 oben rechts auf deinem Bildschirm klicken.
+Um eine chronologische Liste deiner Benachrichtigung zu sehen, kannst du auf das `🔔`-Symbol oben rechts auf deinem Bildschirm klicken.
 
 ## Bei Videoanrufen in einem Raum stottert das Video, der Ton stottert oder puffert. Was muss ich tun?
 

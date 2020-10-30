@@ -71,7 +71,7 @@ Very little data is gathered and it will never be sold, used or in other ways ex
 
 Invitations to a private room can be seen on the left side in the room list. The room will have a notification icon and you will need to accept the invitation by clicking on it. If you enable browser notifications you will also receive a notification.
 
-If you don’t see the invitation, please make sure that you reload the page by clicking the 🔄 icon in your browser or using `cmd` + `r` . Public rooms can be found in the **[/explore](https://medienhaus.udk-berlin.de/explore)** tab.
+If you don’t see the invitation, please make sure that you reload the page by clicking the `🔄` icon in your browser or using `cmd` + `r`. Public rooms can be found in the **[/explore](https://medienhaus.udk-berlin.de/explore)** tab.
 
 ## I have a problem and I cannot find any information in this FAQ about it!
 
@@ -87,7 +87,7 @@ When typing your message you can use `@` followed by their name to mention them.
 
 ## Can I share a file, video or photo?
 
-Yes, you can use the 📎 icon in direct messages or a room to share any file format you want. Make sure its below 10 MB size. For bigger files or a collaborative file sharing you can use the [UdK Cloud](https://www.oase.udk-berlin.de/dienste/cloud-dienst/).
+Yes, you can use the `📎` icon in direct messages or a room to share any file format you want. Make sure its below 10 MB size. For bigger files or a collaborative file sharing you can use the [UdK Cloud](https://www.oase.udk-berlin.de/dienste/cloud-dienst/).
 
 ## I misspelled a word and need to edit the message!
 
@@ -107,7 +107,7 @@ If you use a private device you don’t need to logout. We furthermore discourag
 
 ## I received a notification but now it’s gone. Where can I find the recent activity?
 
-To see a chronological list of your mentions you can click the 🔔 icon on the top right side of your screen.
+To see a chronological list of your mentions you can click the `🔔` icon on the top right side of your screen.
 
 ## When video calling a room the video is stuttering, audio is stuttering or buffering. What do I do?
 

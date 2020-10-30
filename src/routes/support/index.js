@@ -35,8 +35,8 @@ const Support = () => {
   const faqPath = i18n.language === "en" ? require('../../assets/data/support/support_en.md') : require('../../assets/data/support/support_de.md');
 
   const [markdown, setMarkdown] = useState();
-  const [headline, setHeadline] = useState([]);
-  const elements = [];
+  //const [headline, setHeadline] = useState([]);
+  //const elements = [];
 
   const getMarkdownText = () => {
     setLoading(true)
@@ -56,6 +56,7 @@ const Support = () => {
     // eslint-disable-next-line
   }, [markdown, i18n.language])
 
+  /*
   const getHeadlines = () => {
     const el = document.getElementsByTagName('h2');
     //console.log(el);
@@ -66,6 +67,7 @@ const Support = () => {
     setHeadline(elements);
     setLoading(false);
   }
+  */
 
   const onSubmit = async () => {
     setSending(true);
@@ -87,10 +89,12 @@ const Support = () => {
     }
   }
 
+  /*
   const scrollBtn = (e, scroll) => {
     e.preventDefault();
     window.scrollTo(0, scroll - 100);
   }
+  */
 
   return (
     loading ? <Loading /> : (
