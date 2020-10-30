@@ -640,7 +640,7 @@ form textarea {
 }
 
 /* dark mode */
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
     --color-fg: rgb(255,255,255);
     --color-bg: rgb(20,20,20);
