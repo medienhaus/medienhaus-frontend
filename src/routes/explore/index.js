@@ -141,7 +141,7 @@ const Explore = () => {
       <>
         <h3>{displayName}</h3>
         {[...sort].map(publicRoom => (
-          publicRoom.name.startsWith(`${faculty}-`) ? (
+          publicRoom.name.startsWith(`${faculty}-`) || publicRoom.name.startsWith(`${faculty}+vk-`) || publicRoom.name.startsWith(`kum+${faculty}-`) ? (
             <div className="room" key={publicRoom.room_id}>
               {publicRoom.avatar_url ? (
                 <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, "crop", false)} alt="avatar" />
