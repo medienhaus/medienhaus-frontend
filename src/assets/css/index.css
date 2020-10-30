@@ -388,6 +388,11 @@ form textarea {
   grid-template-columns: auto 1fr 11ch;
 }
 
+.explore > div > label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .explore > h2 {
   text-decoration: underline;
 }
@@ -416,11 +421,21 @@ form textarea {
   margin:0 auto;
 }
 
-.faq > code {
-  background-color: var(--color-lo);
-  padding: 0 calc(var(--margin) * 0.2);
+.explore input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-color: var(--color-fg);
+  border-style: solid;
+  border-radius: unset;
+  border-width: calc(var(--margin) * 0.2);
+  box-shadow: none;
+  outline: none;
+  padding: calc(var(--margin) * 0.2);
+  width: 50%;
 }
 
+/*
 .faq button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -433,6 +448,12 @@ form textarea {
   font-weight: bold;
   line-height: 1.4;
   text-align: left;
+}
+*/
+
+.faq code {
+  background-color: var(--color-lo);
+  padding: 0 calc(var(--margin) * 0.2);
 }
 
 .kino {
@@ -652,6 +673,9 @@ form textarea {
   #login input[name="username"] {
     margin-right: calc(var(--margin) * 0.5);
     width: calc(100% - 13.2ch);
+  }
+  .explore input {
+    width: 100%;
   }
   header {
     grid-column: 1 / 3;

@@ -163,7 +163,7 @@ const Explore = () => {
 
   return (
     <section className="explore">
-      <input type='text' value={search} onChange={(e) => searchBar(e)} placeholder='i.e new media' />
+      <input name="search" type='text' value={search} onChange={(e) => searchBar(e)} placeholder='search …' />
       {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <RoomStructure />}
     </section>
   );
