@@ -115,7 +115,7 @@ const Account = () => {
               joinedRoom !== "" && <li key={joinedRoom}>{joinedRoom}</li>
             ))}
           </ul>
-          <LogoutBtn />
+          {/*<LogoutBtn />*/}
         </section>
       )
       }
