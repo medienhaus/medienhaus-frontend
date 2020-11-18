@@ -1,5 +1,3 @@
 {
-  "m.server": {
-    "base_url": "medienhaus.udk-berlin.de:8448"
-  }
+  "m.server": "medienhaus.udk-berlin.de:8448"
 }
