@@ -43,7 +43,7 @@ const Kino = () => {
                 { src: 'video/public_onboarding.webm', type: 'video/webm' }
               ]}
               head={'01. The Getting Started Video'}
-              sub={['Your first day at', <strong key={'medienhaus'}> /medienhaus</strong>]}
+              sub={['Your first day at ', <strong key={'medienhaus'}>/medienhaus</strong>]}
             />
 
             <Button
@@ -61,7 +61,15 @@ const Kino = () => {
                 { src: 'video/teacher_onboarding_widgets.webm', type: 'video/webm' }
               ]}
               head={'03. Widgets and Enhancements'}
-              sub={['Integrate ', <strong key={'meet'}>/meet</strong>, ', ', <strong key={'weite'}>/write</strong>, ', ', < strong key={'stream'} > /stream</strong >]}
+              sub={['Integrate ', <strong key={'meet'}>/meet</strong>, ', ', <strong key={'write'}>/write</strong>, ', ', <strong key={'stream'}>/stream</strong>]}
+            />
+            <Button
+              url={[
+                { src: 'video/stream_introduction.mp4', type: 'video/mp4' },
+                { src: 'video/stream_introduction.webm', type: 'video/webm' }
+              ]}
+              head={['04. Introduction to ', <strong key={'stream'}>/stream</strong>]}
+              sub={'Setting up your first live stream'}
             />
           </ul>
         </section>
