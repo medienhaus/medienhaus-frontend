@@ -4,8 +4,9 @@ import useJoinedRooms from "../../components/matrix_joined_rooms";
 import useProfile from "../../components/matrix_profile";
 import { Loading } from "../../components/loading"
 import { useTranslation } from 'react-i18next';
-import * as matrixcs from "matrix-js-sdk";
+import matrixcs, { MemoryStore } from "matrix-js-sdk";
 import i18n from '../../i18n';
+
 
 const myUserId = localStorage.getItem("mx_user_id");
 const myAccessToken = localStorage.getItem("mx_access_token");
@@ -13,7 +14,12 @@ const matrixClient = matrixcs.createClient({
   baseUrl: "https://medienhaus.udk-berlin.de",
   accessToken: myAccessToken,
   userId: myUserId,
-  useAuthorizationHeader: true
+  useAuthorizationHeader: true,
+  timelineSupport: true,
+  unstableClientRelationAggregation: true,
+  store: new MemoryStore({
+    localStorage: localStorage,
+  }),
 });
 
 const Account = () => {
@@ -27,7 +33,13 @@ const Account = () => {
   //const location = useContext();
   const { t } = useTranslation(['translation', 'account']);
   const [logBtnStr, setLogBtnStr] = useState(t('account:logout'))
+  const [visibleRooms, setVisibleRooms] = useState([]);
 
+  const visRooms = async () => {
+    const visible = await Promise.all(matrixClient.getVisibleRooms());
+    setVisibleRooms(visible);
+    console.log(visible);
+  }
 
   const getAccData = async () => {
     try {
@@ -50,7 +62,7 @@ const Account = () => {
 
   const getSync = async () => {
     try {
-      await matrixClient.isInitialSyncComplete();
+      await matrixClient.startClient();
     } catch (e) {
       console.log(e);
     }
@@ -97,6 +109,7 @@ const Account = () => {
   useEffect(() => {
     getAccData();
     getSync();
+    visRooms();
     // eslint-disable-next-line
   }, [profile]);
 
@@ -119,6 +132,7 @@ const Account = () => {
         </section>
       )
       }
+      {console.log(visibleRooms)}
     </>
   );
 }
