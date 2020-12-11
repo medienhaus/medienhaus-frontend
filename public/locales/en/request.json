@@ -1,5 +1,6 @@
 {
-  "instruction": "Please fill out the form below to request an <1>openly accessible</1> and <3>public</3> room … <5>you don’t have to request private rooms, you can create them.</5>",
+  "instructionRoom": "Please fill out the form below to request an <1>openly accessible</1> and <3>public</3> room … <5>you don’t have to request private rooms, you can create them.</5>",
+  "instructionAcc": "Please fill out the form below to request <1>external</1> Accounts ... <3>you don’t have to request accounts for students or faculty members with @udk-berlin.de accounts. They can login with their oase acoounts.</3>",
   "form": {
     "name": "your name",
     "email": "mail address",
