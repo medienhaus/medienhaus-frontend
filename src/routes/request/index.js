@@ -22,7 +22,11 @@ export default function App() {
   const [name, setName] = useState("");
   const [account, setAccount] = useState(false);
 
-  const changeMsg = e => setMsg(e.target.value);
+  const changeMsg = e => {
+    setMsg(e.target.value);
+
+
+  }
   const changeMail = e => setMail(e.target.value);
   const changeDepartment = e => setDepartment(e.target.value);
   const changeName = e => setName(e.target.value);
@@ -33,26 +37,30 @@ export default function App() {
   const onSubmit = async () => {
     //Andi feel free to change markup
     setSending(true);
-
+    const regex = /(\w)(\w+(( |-)|\w+)?)+/g;
+    const subst = `$1.$2_ext`;
+    const formattedNames = msg.toLowerCase().replace(regex, subst);
     const requestRoom = {
       "msgtype": "m.text",
       "format": "org.matrix.custom.html",
       "body": "support message",
       "formatted_body": "From: <b>" + name + "</b>  <br />User ID: <b>" + localStorage.getItem("mx_user_id") + "</b>  <br /> Email: <b>" + mail + "</b> <br /> Department: <b>" + department + "</b> <br /> Room name: <b>" + room + "</b><br />Notes: <b> " + msg + "</b><hr />"
     }
+
     const requestAcc = {
       "msgtype": "m.text",
       "format": "org.matrix.custom.html",
       "body": "support message",
-      "formatted_body": "From: <b>" + name + "</b>  <br />User ID: <b>" + localStorage.getItem("mx_user_id") + "</b>  <br /> Email: <b>" + mail + "</b> <br /> Department: <b>" + department + "</b><br />Account names: <b> " + msg + "</b><hr />"
+      "formatted_body": "From: <b>" + name + "</b>  <br />User ID: <b>" + localStorage.getItem("mx_user_id") + "</b>  <br /> Email: <b>" + mail + "</b> <br /> Department: <b>" + department + "</b><br />Account names: <b> " + msg + "</b> <br /> Formatted Names: <b>" + formattedNames + "</b><hr />"
     }
     try {
       account ? await matrixClient.sendMessage("!NcGFsMFcKRAgDJMEsN:medienhaus.udk-berlin.de", requestAcc) : await matrixClient.sendMessage("!NcGFsMFcKRAgDJMEsN:medienhaus.udk-berlin.de", requestRoom)
-      alert("Your request has ben sent! We will get back to you asap!");
+      alert(t('request:form.alertSuccess'));
       setSending(false);
     }
     catch (e) {
       console.log(e);
+      alert(t('request:form.alertFail'));
       alert("Couldn't send your message. Please check your internet connection");
       setSending(false);
     }
@@ -81,7 +89,7 @@ export default function App() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label htmlFor="name">{t('request:form.name')}</label>
-              <input type="text" placeholder="Name Yourname" name="name" value={name} onChange={changeName} ref={register({ required: true })} />
+              <input type="text" placeholder={t('request:form.nameplaceholder')} name="name" value={name} onChange={changeName} ref={register({ required: true })} />
             </div>
             {errors.name && "Please enter your name."}
             <div>
@@ -94,7 +102,7 @@ export default function App() {
               <input type="text" placeholder="Visuelle Kommunikation" name="department" value={department} onChange={changeDepartment} ref={register({ required: true })} />
             </div>
             {errors.department && "Please specifiy the department."}
-            <textarea name="notes" placeholder="Names of Accounts seperated by commas" rows="3" spellCheck="true" value={msg} onChange={changeMsg} ref={register({ required: true })} />
+            <textarea name="notes" placeholder={t('request:form.notesPlaceholderAcc')} rows="3" spellCheck="true" value={msg} onChange={changeMsg} ref={register({ required: true })} />
             {errors.name && "Please enter the names of the accounts you would like to request."}
             <button type="submit" disabled={sending}>{t('request:button')}</button>
           </form>
@@ -109,7 +117,7 @@ export default function App() {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div>
                 <label htmlFor="name">{t('request:form.name')}</label>
-                <input type="text" placeholder="Name Yourname" name="name" value={name} onChange={changeName} ref={register({ required: true })} />
+                <input type="text" placeholder={t('request:form.nameplaceholder')} name="name" value={name} onChange={changeName} ref={register({ required: true })} />
               </div>
               {errors.name && "Please enter your name."}
               <div>
@@ -124,10 +132,10 @@ export default function App() {
               {errors.department && "Please specifiy the department."}
               <div>
                 <label htmlFor="room">{t('request:form.room')}</label>
-                <input type="text" placeholder="i.e. the name of your class or course" name="room" value={room} onChange={changeRoom} ref={register({ required: true })} />
+                <input type="text" placeholder={t('request:form.roomPlaceholder')} name="room" value={room} onChange={changeRoom} ref={register({ required: true })} />
               </div>
               {errors.room && "Please enter a title for your room."}
-              <textarea name="notes" placeholder="Any additional notes?" rows="3" spellCheck="true" value={msg} onChange={changeMsg} ref={register} />
+              <textarea name="notes" placeholder={t('request:form.notesPlaceholderRoom')} rows="3" spellCheck="true" value={msg} onChange={changeMsg} ref={register} />
               <button type="submit" disabled={sending}>{t('request:button')}</button>
             </form>
           </>
