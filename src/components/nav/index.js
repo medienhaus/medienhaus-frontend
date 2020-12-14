@@ -49,8 +49,8 @@ const Nav = () => {
               <NavLink activeclassname="active" to="/support">/support</NavLink>
               <NavLink activeclassname="active" to="/kino">/kino</NavLink>
               <NavLink activeclassname="active" to="/admin">/admin</NavLink>
-              {//{console.log(matrixClient.isSynapseAdministrator())}
-              }
+              {matrixClient.isSynapseAdministrator() ?? console.log('with great power comes great responsibility')}
+
             </div>
             <div>
               <NavLink activeclassname="active" to="/meet">/meet</NavLink>
