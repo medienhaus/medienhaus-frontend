@@ -181,50 +181,39 @@ const Explore = () => {
       </>
     )
   }
-  /*const Federations = () => {
-    const sort = [...pubFeds].sort((a, b) => {
-      if (a.name < b.name) return -1;
-      if (a.name > b.name) return 1;
-      return 0;
-    });
-    return (
-      <>
-        <h2>{selectFed}</h2>
-        {loadingFed ? <Loading /> : sort.map((pubFed, index) => (
-          <div className="federation" key={index}>
-            {pubFed.avatar_url ? (
-              <img className="avatar" src={matrixClient.mxcUrlToHttp(pubFed.avatar_url, 100, 100, "crop", false)} alt="avatar" />
-            ) : (
-                <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
-              )}
-            <label htmlFor={pubFed.room_id} key={index} >{pubFed.name}</label>
-            {joinedRooms.includes(pubFed.name) ? <button onClick={() => setLeaveId(pubFed.room_id)} name="Leave">
-              {loading ? <Loading /> : t('explore:buttonLeave')}</button> :
-              <button onClick={() => setJoinId(pubFed.room_id)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
-          </div>
-        )
-        )}
-      </>
-    )
-  }*/
+  /* const Federations = () => {
+     const sort = [...pubFeds].sort((a, b) => {
+       if (a.name < b.name) return -1;
+       if (a.name > b.name) return 1;
+       return 0;
+     });
+     return (
+       <>
+         <h2>{selectFed}</h2>
+         {loadingFed ? <Loading /> : sort.map((pubFed, index) => (
+           <div className="federation" key={index}>
+             {pubFed.avatar_url ? (
+               <img className="avatar" src={matrixClient.mxcUrlToHttp(pubFed.avatar_url, 100, 100, "crop", false)} alt="avatar" />
+             ) : (
+                 <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
+               )}
+             <label htmlFor={pubFed.room_id} key={index} >{pubFed.name}</label>
+             {joinedRooms.includes(pubFed.name) ? <button onClick={() => setLeaveId(pubFed.room_id)} name="Leave">
+               {loading ? <Loading /> : t('explore:buttonLeave')}</button> :
+               <button onClick={() => setJoinId(pubFed.room_id)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
+           </div>
+         )
+         )}
+       </>
+     )
+   }*/
 
   return (
     <section className="explore">
-      {/*
-       <label htmlFor="fed-select">THE FEDS!:</label>
-     <select name="Federations" id="federations" onChange={(e) => changeServer(e.target.value)} >
-        <option >--Please choose a federation option--</option>
-        {federation.map((fed, index) => (
-          <option name={fed.server} id={index} value={fed.server} >{fed.name} </option>
-        ))}
-
-      </select>
-       */}
       <input name="search" type='text' value={search} onChange={(e) => searchBar(e)} placeholder='search …' />
-      {// <Federations />
-      }
-      {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <RoomStructure />}
-    </section>
+
+      { publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <RoomStructure />}
+    </section >
   );
 }
 
