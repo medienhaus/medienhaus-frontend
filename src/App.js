@@ -57,7 +57,8 @@ const App = () => (
                     <Route path="/meet" component={Meet} />
                     <Route path="/write" component={Write} />
                     <Route path="/stream" component={Stream} />
-                    <Route path="/admin" component={Admin} />
+                    {//<Route path="/admin" component={Admin} />
+                    }
                   </>)
               }
             </Switch>
