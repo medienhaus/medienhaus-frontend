@@ -1,6 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
+import * as matrixcs from "matrix-js-sdk";
 import { NavLink } from "react-router-dom";
 import { UserContext } from '../context/UserContext'
+
+/*
+const myUserId = localStorage.getItem("mx_user_id");
+const myAccessToken = localStorage.getItem("mx_access_token");
+const matrixClient = matrixcs.createClient({
+  baseUrl: 'https://medienhaus.udk-berlin.de',
+  accessToken: myAccessToken,
+  userId: myUserId,
+  useAuthorizationHeader: true
+});*/
+
 
 const Nav = () => {
   const { user } = useContext(UserContext);
@@ -36,6 +48,10 @@ const Nav = () => {
               <NavLink activeclassname="active" to="/request">/request</NavLink>
               <NavLink activeclassname="active" to="/support">/support</NavLink>
               <NavLink activeclassname="active" to="/kino">/kino</NavLink>
+              {//<NavLink activeclassname="active" to="/admin">/admin</NavLink>}
+                //matrixClient.isSynapseAdministrator() ?? console.log('with great power comes great responsibility')
+              }
+
             </div>
             <div>
               <NavLink activeclassname="active" to="/meet">/meet</NavLink>
