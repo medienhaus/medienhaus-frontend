@@ -21,7 +21,7 @@ const usePublicRooms = () => {
       setAnswer(answer.chunk);
     } catch (e) {
       if (e.data.error === "Unrecognised access token") {
-        alert("Oops something went wrong! Please try loggin in again")
+        alert("Oops something went wrong! Please try logging in again")
         localStorage.clear();
         return history.push('/login')
       } else if (e.data.error === "Invalid macaroon passed.") {

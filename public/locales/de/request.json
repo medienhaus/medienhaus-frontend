@@ -1,10 +1,17 @@
 {
-  "instruction": "Bitte fülle das Formular aus, um einen <1>öffentlich zugänglichen</1> und <3>gelisteten</3> Raum anzufragen. <5>Private Räume müssen nicht angefragt werden, diese können einfach erstellt werden.</5>",
+  "instructionRoom": "Bitte fülle das Formular aus, um einen <1>öffentlich zugänglichen</1> und <3>gelisteten</3> Raum anzufragen. <5>Private Räume müssen nicht angefragt werden, diese können einfach erstellt werden.</5>",
+  "instructionAcc": "Bitte fülle das Formular aus, um einen <1>externen</1> Account zu beantragen ... <3>accounts für Student*innen und Mitarbeiter*innen mit @udk-berlin.de accounts müssen nicht beantragt werden. Sie können sich einfach mit ihren oase accounts einloggen.<3>",
   "form": {
     "name": "Name",
+    "nameplaceholder": "Ihr Name",
     "email": "Mail-Adresse",
     "department": "Standort",
-    "room": "Raumname"
+    "room": "Raumname",
+    "roomPlaceholder": "z.B. der Name ihres Kurses",
+    "notesPlaceholderAcc": "Namen der accounts, getrennt durch Kommas",
+    "notesPlaceholderRoom": "Weitere Notizen",
+    "alertSuccess": "Ihre Nachricht wurde erfolgreich übermittelt!",
+    "alertFail": "Ihre Nachricht konnte nicht gesendet werden, bitte überorüfen Sie Ihre Verbindung"
   },
   "button": "ABSCHICKEN"
 }
