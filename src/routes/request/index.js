@@ -15,22 +15,23 @@ const matrixClient = matrixcs.createClient({
 export default function App() {
   const { register, handleSubmit, errors } = useForm();
   const [sending, setSending] = useState(false);
+  const [radio, setRadio] = useState(false);
   const [department, setDepartment] = useState("");
   const [mail, setMail] = useState("");
   const [msg, setMsg] = useState("");
   const [room, setRoom] = useState("");
   const [name, setName] = useState("");
-  const [account, setAccount] = useState(false);
+  const [account, setAccount] = useState("");
 
   const changeMsg = e => {
     setMsg(e.target.value);
-
-
   }
+
   const changeMail = e => setMail(e.target.value);
   const changeDepartment = e => setDepartment(e.target.value);
   const changeName = e => setName(e.target.value);
   const changeRoom = e => setRoom(e.target.value);
+  const changeAccount = e => setAccount(e.target.value);
 
   const { t } = useTranslation(['translation', 'request']);
 
@@ -39,19 +40,19 @@ export default function App() {
     setSending(true);
     const regex = /(\w)(\w+(( |-)|\w+)?)+/g;
     const subst = `$1.$2_ext`;
-    const formattedNames = msg.toLowerCase().replace(regex, subst);
+    const formattedNames = account.toLowerCase().replace(regex, subst);
     const requestRoom = {
       "msgtype": "m.text",
       "format": "org.matrix.custom.html",
       "body": "support message",
-      "formatted_body": "From: <b>" + name + "</b>  <br />User ID: <b>" + localStorage.getItem("mx_user_id") + "</b>  <br /> Email: <b>" + mail + "</b> <br /> Department: <b>" + department + "</b> <br /> Room name: <b>" + room + "</b><br />Notes: <b> " + msg + "</b><hr />"
+      "formatted_body": "From: <b>" + name + "</b><br />User ID: <b>" + localStorage.getItem("mx_user_id") + "</b>  <br /> Email: <b>" + mail + "</b><br /> Department: <b>" + department + "</b><br /> Room name: <b>" + room + "</b><br />Notes: <b>" + account + "</b><hr />"
     }
 
     const requestAcc = {
       "msgtype": "m.text",
       "format": "org.matrix.custom.html",
       "body": "support message",
-      "formatted_body": "From: <b>" + name + "</b>  <br />User ID: <b>" + localStorage.getItem("mx_user_id") + "</b>  <br /> Email: <b>" + mail + "</b> <br /> Department: <b>" + department + "</b><br />Account names: <b> " + msg + "</b> <br /> Formatted Names: <b>" + formattedNames + "</b><hr />"
+      "formatted_body": "From: <b>" + name + "</b><br />User ID: <b>" + localStorage.getItem("mx_user_id") + "</b><br /> Email: <b>" + mail + "</b><br /> Department: <b>" + department + "</b><br />Account names: <b> " + msg + "</b><br />Formatted Names: <b>" + formattedNames + "</b><hr />"
     }
     try {
       account ? await matrixClient.sendMessage("!NcGFsMFcKRAgDJMEsN:medienhaus.udk-berlin.de", requestAcc) : await matrixClient.sendMessage("!NcGFsMFcKRAgDJMEsN:medienhaus.udk-berlin.de", requestRoom)
@@ -67,23 +68,21 @@ export default function App() {
   }
 
   const WhichForm = () => {
-
-
   }
 
   return (
     <section className="request copy">
-      <div id="radiobuttons">
-        <input type="radio" id="room" name="request" value="room" checked={account === false} onClick={() => setAccount(false)} onChange={WhichForm} />
+      <div id="formchooser">
+        <input type="radio" id="room" name="room" value="room" checked={radio === false} onClick={() => setRadio(false)} onChange={WhichForm} />
         <label htmlFor="room">Room</label>
-        <input type="radio" id="account" name="request" value="account" checked={account === true} onClick={() => setAccount(true)} onChange={WhichForm} />
-        <label htmlFor="account">Account</label>
+        <input type="radio" id="account" name="account" value="account" checked={radio === true} onClick={() => setRadio(true)} onChange={WhichForm} />
+        <label htmlFfor="account">Account</label>
       </div>
-      {account ? (
+      {radio ? (
         <>
           <p>
             <Trans i18nKey="request:instructionAcc">
-              Please fill out the form below to request <strong>external</strong> Accounts ... <em>you don’t have to request accounts for students or faculty members with @udk-berlin.de accounts.They can login with their oase acoounts</em>
+              Please fill out the form below to request a temporary <strong>external</strong> account … <em>this is only necessary for people without an @udk-berlin.de account.</em>
             </Trans>
           </p>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -99,11 +98,15 @@ export default function App() {
             {errors.email && "Please enter a valid email address."}
             <div>
               <label htmlFor="department">{t('request:form.department')}</label>
-              <input type="text" placeholder="Visuelle Kommunikation" name="department" value={department} onChange={changeDepartment} ref={register({ required: true })} />
+              <input type="text" placeholder={t('request:form.departmentPlaceholder')} name="department" value={department} onChange={changeDepartment} ref={register({ required: true })} />
             </div>
             {errors.department && "Please specifiy the department."}
-            <textarea name="notes" placeholder={t('request:form.notesPlaceholderAcc')} rows="3" spellCheck="true" value={msg} onChange={changeMsg} ref={register({ required: true })} />
-            {errors.name && "Please enter the names of the accounts you would like to request."}
+            <div>
+              <label htmlFor="account">{t('request:form.account')}</label>
+              <input type="text" placeholder={t('request:form.accountPlaceholder')} name="account" value={account} onChange={changeAccount} ref={register({ required: true })} />
+            </div>
+            {errors.account && "Please enter the names of the accounts you would like to request."}
+            <textarea name="notes" placeholder={t('request:form.notesPlaceholderRoom')} rows="3" spellCheck="true" value={msg} onChange={changeMsg} ref={register} />
             <button type="submit" disabled={sending}>{t('request:button')}</button>
           </form>
         </>
@@ -127,7 +130,7 @@ export default function App() {
               {errors.email && "Please enter a valid email address."}
               <div>
                 <label htmlFor="department">{t('request:form.department')}</label>
-                <input type="text" placeholder="Visuelle Kommunikation" name="department" value={department} onChange={changeDepartment} ref={register({ required: true })} />
+                <input type="text" placeholder={t('request:form.departmentPlaceholder')} name="department" value={department} onChange={changeDepartment} ref={register({ required: true })} />
               </div>
               {errors.department && "Please specifiy the department."}
               <div>
