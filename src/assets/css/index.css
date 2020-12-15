@@ -458,7 +458,7 @@ form textarea {
 
 .request #formchooser {
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
   grid-gap: calc(var(--margin) * 1);
 }
 
