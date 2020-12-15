@@ -210,6 +210,14 @@ const Explore = () => {
 
   return (
     <section className="explore">
+      <label htmlFor="fed-select">THE FEDS!:</label>
+      <select name="Federations" id="federations" onChange={(e) => changeServer(e.target.value)} >
+        <option >--Please choose a federation option--</option>
+        {federation.map((fed, index) => (
+          <option name={fed.server} id={index} value={fed.server} >{fed.name} </option>
+        ))}
+
+      </select>
       <input name="search" type='text' value={search} onChange={(e) => searchBar(e)} placeholder='search …' />
 
       { publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <RoomStructure />}
