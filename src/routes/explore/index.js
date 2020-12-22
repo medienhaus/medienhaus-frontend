@@ -73,7 +73,7 @@ const Explore = () => {
     matrixClient.leave(leaveId)
       .then(() => setUpdate(true))
       .catch((e) => {
-        console.log("thrown error because leaveId can't be empty")
+        console.log(e)
       });
     setLeaveId("");
   }, [leaveId])
@@ -82,7 +82,7 @@ const Explore = () => {
     matrixClient.joinRoom(joinId)
       .then(() => setUpdate(true))
       .catch((e) => {
-        console.log("thrown error because joinId can't be empty")
+        console.log(e)
       }
       );
     setJoinId("");
@@ -102,6 +102,7 @@ const Explore = () => {
     };
     try {
       const answer = await matrixClient.publicRooms(opts)
+      console.log(answer.chunk);
       setPubFeds(answer.chunk);
     }
     catch (e) {
@@ -118,6 +119,7 @@ const Explore = () => {
     });
 
     return ([...sort].map(publicRoom => (
+
       publicRoom.name.includes(search.toLowerCase().replace(/ /g, '')) &&
       <div className="room" key={publicRoom.room_id}>
         {publicRoom.avatar_url ? (
@@ -183,6 +185,9 @@ const Explore = () => {
     )
   }
   const Federations = () => {
+    const opts = {
+      server: "klasseklima.org"
+    };
     const sort = [...pubFeds].sort((a, b) => {
       if (a.name < b.name) return -1;
       if (a.name > b.name) return 1;
@@ -201,7 +206,7 @@ const Explore = () => {
             <label htmlFor={pubFed.room_id} key={index} >{pubFed.name}</label>
             {joinedRooms.includes(pubFed.name) ? <button onClick={() => setLeaveId(pubFed.room_id)} name="Leave">
               {loading ? <Loading /> : t('explore:buttonLeave')}</button> :
-              <button onClick={() => setJoinId(pubFed.room_id)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
+              <button onClick={() => setJoinId(pubFed.canonical_alias)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
           </div>
         )
         )}
@@ -211,12 +216,11 @@ const Explore = () => {
 
   return (
     <section className="explore">
-
       <label htmlFor="fed-select">THE FEDS!:</label>
       <select name="Federations" id="federations" onChange={(e) => changeServer(e.target.value)} >
         <option >--Please choose a federation option--</option>
         {federation.map((fed, index) => (
-          <option name={fed.server} id={index} value={fed.server} >{fed.name} </option>
+          <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name} </option>
         ))}
       </select>
       <input name="search" type='text' value={search} onChange={(e) => searchBar(e)} placeholder='search …' />
