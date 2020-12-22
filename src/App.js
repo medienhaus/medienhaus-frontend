@@ -20,7 +20,7 @@ import Stream from "./routes/stream";
 import Login from "./routes/login";
 import Landing from "./routes/landing";
 import Dashboard from "./routes/dashboard";
-import Admin from "./routes/admin";
+//import Admin from "./routes/admin";
 
 const App = () => (
   <React.Fragment>
