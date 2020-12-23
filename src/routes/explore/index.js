@@ -7,11 +7,10 @@ import PublicRooms from "../../components/matrix_public_rooms"
 import * as matrixcs from "matrix-js-sdk";
 import { useTranslation } from 'react-i18next';
 
-
 const myUserId = localStorage.getItem("mx_user_id");
 const myAccessToken = localStorage.getItem("mx_access_token");
 const matrixClient = matrixcs.createClient({
-  baseUrl: 'https://medienhaus.udk-berlin.de',
+  baseUrl: "https://medienhaus.udk-berlin.de",
   accessToken: myAccessToken,
   userId: myUserId,
   useAuthorizationHeader: true
@@ -30,9 +29,6 @@ const Explore = () => {
   const [selectFed, setSelectFed] = useState(false);
   const history = useHistory();
   const { t } = useTranslation(['translation', 'explore']);
-
-
-  //first let's fetch all rooms our user is part of
   const getJoinedRooms = async () => {
     try {
       const answer = await matrixClient.getJoinedRooms();
@@ -73,7 +69,7 @@ const Explore = () => {
     matrixClient.leave(leaveId)
       .then(() => setUpdate(true))
       .catch((e) => {
-        console.log(e)
+        e.data.error === ' was not legal room ID or room alias' ? console.log("ID or Alias empty, taking a rest.") : e.data.error === 'Too Many Requests' ? alert(t('explore:ratelimit')) : console.log(e.data.error);
       });
     setLeaveId("");
   }, [leaveId])
@@ -82,7 +78,8 @@ const Explore = () => {
     matrixClient.joinRoom(joinId)
       .then(() => setUpdate(true))
       .catch((e) => {
-        console.log(e)
+        e.data.error === ' was not legal room ID or room alias' ? console.log("ID or Alias empty, taking a rest.") : e.data.error === 'Too Many Requests' ? alert(t('explore:ratelimit')) : console.log(e.data.error);
+        //console.log(e.data.error)
       }
       );
     setJoinId("");

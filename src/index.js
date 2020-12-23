@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import './assets/css/index.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import './config';
 import './i18n';
 import { Loading } from './components/loading/'
+
 
 ReactDOM.render(
   <React.StrictMode>
