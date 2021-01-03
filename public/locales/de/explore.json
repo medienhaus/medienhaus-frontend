@@ -1,4 +1,7 @@
 {
+  "federation": "Föderationen",
+  "fedOption": "Bitte wählen Sie eine Föderation",
   "buttonLeave": "VERLASSEN",
-  "buttonJoin": "BEITRETEN"
+  "buttonJoin": "BEITRETEN",
+  "ratelimit": "Das geht mir ein bisschen zu schnell, ich komme nicht hinterher!"
 }

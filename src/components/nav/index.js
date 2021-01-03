@@ -1,29 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import * as matrixcs from "matrix-js-sdk";
 import { NavLink } from "react-router-dom";
 import { UserContext } from '../context/UserContext'
-
-/*
-const myUserId = localStorage.getItem("mx_user_id");
-const myAccessToken = localStorage.getItem("mx_access_token");
-const matrixClient = matrixcs.createClient({
-  baseUrl: 'https://medienhaus.udk-berlin.de',
-  accessToken: myAccessToken,
-  userId: myUserId,
-  useAuthorizationHeader: true
-});*/
-
 
 const Nav = () => {
   const { user } = useContext(UserContext);
   const [auth, setAuth] = useState(null);
-  /*
-  const { t, i18n } = useTranslation(['translation', 'welcome']);
-
-  const changeLanguage = code => {
-    i18n.changeLanguage(code);
-  };
-  */
 
   useEffect(() => {
     setAuth(localStorage.getItem('mx_access_token'))

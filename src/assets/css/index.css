@@ -810,9 +810,9 @@ form textarea {
 
 /*insert for json editor*/
 i.glyphicon { display: none; }
-.btn-add::after { content: 'Add Federation'; }
-.array-item-move-up::after { content: 'UP'; }
-.array-item-move-down::after { content: 'DOWN'; }
+.btn-add::after { content: 'Add more'; }
+.array-item-move-up::after { content: 'Up'; }
+.array-item-move-down::after { content: 'Down'; }
 .array-item-remove::after { content: 'Remove'; }
 /*https://react-jsonschema-form.readthedocs.io/en/latest/usage/themes/
   For styling of Json editor
