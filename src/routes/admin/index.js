@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import Form, { withTheme } from '@rjsf/core';
+import React from 'react';
+import Form from '@rjsf/core';
 import federation from "../../assets/data/federation.json"
-import { useTranslation, Trans } from 'react-i18next';
+//import { useTranslation, Trans } from 'react-i18next';
 
 
 const Admin = () => {

@@ -29,6 +29,7 @@ const Explore = () => {
   const [selectFed, setSelectFed] = useState(false);
   const history = useHistory();
   const { t } = useTranslation(['translation', 'explore']);
+
   const getJoinedRooms = async () => {
     try {
       const answer = await matrixClient.getJoinedRooms();
@@ -72,6 +73,7 @@ const Explore = () => {
         e.data.error === ' was not legal room ID or room alias' ? console.log("ID or Alias empty, taking a rest.") : e.data.error === 'Too Many Requests' ? alert(t('explore:ratelimit')) : console.log(e.data.error);
       });
     setLeaveId("");
+    // eslint-disable-next-line
   }, [leaveId])
 
   useEffect(() => {
@@ -83,6 +85,7 @@ const Explore = () => {
       }
       );
     setJoinId("");
+    // eslint-disable-next-line
   }, [joinId])
 
   const searchBar = e => {
@@ -98,8 +101,7 @@ const Explore = () => {
       server: server
     };
     try {
-      const answer = await matrixClient.publicRooms(opts)
-      console.log(answer.chunk);
+      const answer = await matrixClient.publicRooms(opts);
       setPubFeds(answer.chunk);
     }
     catch (e) {
@@ -115,21 +117,45 @@ const Explore = () => {
       return 0;
     });
 
-    return ([...sort].map(publicRoom => (
+    const sortFeds = pubFeds ?? [...pubFeds].sort((a, b) => {
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
+    });
 
-      publicRoom.name.includes(search.toLowerCase().replace(/ /g, '')) &&
-      <div className="room" key={publicRoom.room_id}>
-        {publicRoom.avatar_url ? (
-          <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, "crop", false)} alt="avatar" />
-        ) : (
-            <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
-          )}
-        <label htmlFor={publicRoom.room_id} key={publicRoom.name} >{publicRoom.name}</label>
-        {joinedRooms.includes(publicRoom.name) ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
-          {loading ? <Loading /> : t('explore:buttonLeave')}</button> :
-          <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
-      </div>
-    ))
+    return (
+      <>
+        <h2>{selectFed}</h2>
+        {[...sortFeds].map(publicRoom => (
+          publicRoom.name.includes(search.toLowerCase().replace(/ /g, '')) &&
+          <div className="room" key={publicRoom.room_id}>
+            {publicRoom.avatar_url ? (
+              <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, "crop", false)} alt="avatar" />
+            ) : (
+                <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
+              )}
+            <label htmlFor={publicRoom.room_id} key={publicRoom.name} >{publicRoom.name}</label>
+            {joinedRooms.includes(publicRoom.name) ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
+              {loading ? <Loading /> : t('explore:buttonLeave')}</button> :
+              <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
+          </div>
+        ))}
+        <h2>Medienhaus</h2>
+        {[...sort].map(publicRoom => (
+          publicRoom.name.includes(search.toLowerCase().replace(/ /g, '')) &&
+          <div className="room" key={publicRoom.room_id}>
+            {publicRoom.avatar_url ? (
+              <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, "crop", false)} alt="avatar" />
+            ) : (
+                <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
+              )}
+            <label htmlFor={publicRoom.room_id} key={publicRoom.name} >{publicRoom.name}</label>
+            {joinedRooms.includes(publicRoom.name) ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
+              {loading ? <Loading /> : t('explore:buttonLeave')}</button> :
+              <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
+          </div>
+        ))}
+      </>
     )
   }
 
@@ -141,6 +167,7 @@ const Explore = () => {
     const uniqKeys = [...new Set(keys)];;
 
     return (
+
       uniqKeys.map(keys => (
         <><h2 style={{ textTransform: 'capitalize' }}>{keys}</h2>
           {roomStructure.map((data, index) => (
@@ -148,6 +175,7 @@ const Explore = () => {
           ))}
         </>)
       )
+
     )
   }
 
@@ -218,8 +246,7 @@ const Explore = () => {
         ))}
       </select>
       <input name="search" type='text' value={search} onChange={(e) => searchBar(e)} placeholder='search …' />
-      <Federations />
-      {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <RoomStructure />}
+      {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <><Federations /><RoomStructure /></>}
     </section>
   );
 }
