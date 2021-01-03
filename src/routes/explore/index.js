@@ -182,9 +182,6 @@ const Explore = () => {
     )
   }
   const Federations = () => {
-    const opts = {
-      server: "klasseklima.org"
-    };
     const sort = [...pubFeds].sort((a, b) => {
       if (a.name < b.name) return -1;
       if (a.name > b.name) return 1;
@@ -213,9 +210,9 @@ const Explore = () => {
 
   return (
     <section className="explore">
-      <label htmlFor="fed-select">THE FEDS!:</label>
+      <label htmlFor="fed-select">{t('explore:federation')}:</label>
       <select name="Federations" id="federations" onChange={(e) => changeServer(e.target.value)} >
-        <option >--Please choose a federation option--</option>
+        <option>{t('explore:fedOption')}</option>
         {federation.map((fed, index) => (
           <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name} </option>
         ))}
