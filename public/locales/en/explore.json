@@ -1,4 +1,7 @@
 {
+  "federation": "Federations",
+  "fedOption": "Please choose a federation",
   "buttonLeave": "LEAVE",
-  "buttonJoin": "JOIN"
+  "buttonJoin": "JOIN",
+  "ratelimit": "Slow Down! You're a bit too quick there"
 }
