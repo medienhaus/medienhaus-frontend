@@ -7,7 +7,7 @@ import federation from "../../assets/data/federation.json"
 const myUserId = localStorage.getItem("mx_user_id");
 const myAccessToken = localStorage.getItem("mx_access_token");
 const matrixClient = matrixcs.createClient({
-  baseUrl: "https://dev.medienhaus.udk-berlin.de",
+  baseUrl: "https://medienhaus.udk-berlin.de",
   accessToken: myAccessToken,
   userId: myUserId,
   useAuthorizationHeader: true
