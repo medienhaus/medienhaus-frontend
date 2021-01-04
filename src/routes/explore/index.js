@@ -21,6 +21,8 @@ const Explore = () => {
   const [joinId, setJoinId] = useState("");
   const [leaveId, setLeaveId] = useState("");
   const [search, setSearch] = useState("");
+  const [advancedRoom, setAdvancedRoom] = useState('');
+  const [advancedServer, setAdvancedServer] = useState('');
   const [update, setUpdate] = useState(false);
   const [loading, setLoading] = useState(true);
   const [loadingFed, setloadingFed] = useState();
@@ -91,6 +93,14 @@ const Explore = () => {
   const searchBar = e => {
     setSearch(e.target.value)
   }
+  const roomBar = e => {
+    e.preventDefault();
+    setAdvancedRoom(e.target.value)
+  }
+  const serverBar = e => {
+    e.preventDefault();
+    setAdvancedServer(e.target.value)
+  }
 
   const changeServer = async (server) => {
     setloadingFed(true);
@@ -108,6 +118,16 @@ const Explore = () => {
       console.log(e);
     }
     setloadingFed(false);
+  }
+  const advancedJoin = () => {
+    matrixClient.joinRoom(`#${advancedRoom}:${advancedServer}`)
+      .then(() => setUpdate(true))
+      .then(() => alert('Room joined successfully'))
+      .catch((e) => {
+        e.data.error === ' was not legal room ID or room alias' ? alert("ID or Alias empty, taking a rest.") : e.data.error === 'Too Many Requests' ? alert(t('explore:ratelimit')) : alert(e.data.error);
+        //console.log(e.data.error)
+      }
+      )
   }
 
   const SearchStructure = () => {
@@ -235,6 +255,17 @@ const Explore = () => {
       </>
     )
   }
+  const Advanced = () => {
+    return (
+      <>
+        <h3>Advanced</h3>
+        <p>Join server directly:</p>
+        <label htmlFor="room">Room: </label><input type='text' value={advancedRoom} onChange={(e) => roomBar(e)}></input>
+        <label htmlFor="server">Server: </label><input type='text' value={advancedServer} onChange={(e) => serverBar(e)}></input>
+        <button onClick={() => setJoinId(`#${advancedRoom}:${advancedServer}`)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>
+      </>
+    )
+  }
 
   return (
     <section className="explore">
@@ -246,8 +277,16 @@ const Explore = () => {
         ))}
       </select>
       <input name="search" type='text' value={search} onChange={(e) => searchBar(e)} placeholder='search …' />
+
+      <h3>Advanced</h3>
+      <p>Join server directly:</p>
+      <label htmlFor="room">Room: </label><input type='text' value={advancedRoom} onChange={(e) => roomBar(e)}></input>
+      <label htmlFor="server">Server: </label><input type='text' value={advancedServer} onChange={(e) => serverBar(e)}></input>
+      <button onClick={() => advancedJoin()} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>
+
       {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <><Federations /><RoomStructure /></>}
     </section>
+
   );
 }
 
