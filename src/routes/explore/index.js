@@ -280,10 +280,15 @@ const Explore = () => {
 
       <label>{t('explore:advanced')}</label>
       <p>{t('explore:advancedP')}</p>
-      <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' value={advancedRoom} onChange={(e) => roomBar(e)}></input>
-      <label htmlFor="server">{t('explore:advancedServer')}</label><input type='text' value={advancedServer} onChange={(e) => serverBar(e)}></input>
-      <button onClick={() => advancedJoin()} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>
+      {update ?
+        (<>
+          <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' value={advancedRoom} onChange={(e) => roomBar(e)}></input>
+          <label htmlFor="server">{t('explore:advancedServer')}</label><input type='text' value={advancedServer} onChange={(e) => serverBar(e)}></input>
+          <button onClick={() => advancedJoin()} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button> </>) : (
+          <Loading />
+        )
 
+      }
       {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <><Federations /><RoomStructure /></>}
     </section>
 
