@@ -3,5 +3,10 @@
   "fedOption": "Please choose a federation",
   "buttonLeave": "LEAVE",
   "buttonJoin": "JOIN",
-  "ratelimit": "Slow Down! You're a bit too quick there"
+  "ratelimit": "Slow Down! You're a bit too quick there",
+  "advanced": "Advanced",
+  "advancedJoin": "Joined room successfully",
+  "advancedP": "Join server directly:",
+  "advancedRoom": "Room: ",
+  "advancedServer": "Server: "
 }
