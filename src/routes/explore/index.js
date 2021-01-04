@@ -25,6 +25,7 @@ const Explore = () => {
   const [advancedServer, setAdvancedServer] = useState('');
   const [update, setUpdate] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [advancedJoining, setAdvancedJoining] = useState(false);
   const [loadingFed, setloadingFed] = useState();
   const publicRooms = PublicRooms();
   const [pubFeds, setPubFeds] = useState([]);
@@ -120,14 +121,17 @@ const Explore = () => {
     setloadingFed(false);
   }
   const advancedJoin = () => {
+    setAdvancedJoining(true)
     matrixClient.joinRoom(`#${advancedRoom}:${advancedServer}`)
-      .then(() => setUpdate(true))
       .then(() => alert(t('explore:advancedJoin')))
       .catch((e) => {
         e.data.error === ' was not legal room ID or room alias' ? alert("ID or Alias empty.") : e.data.error === 'Too Many Requests' ? alert(t('explore:ratelimit')) : alert(e.data.error);
         //console.log(e.data.error)
       }
+
       )
+      .then(() => setAdvancedJoining(false))
+
   }
 
   const SearchStructure = () => {
@@ -280,12 +284,11 @@ const Explore = () => {
 
       <label>{t('explore:advanced')}</label>
       <p>{t('explore:advancedP')}</p>
-      {update ?
+      {advancedJoining ? <Loading /> :
         (<>
           <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' value={advancedRoom} onChange={(e) => roomBar(e)}></input>
           <label htmlFor="server">{t('explore:advancedServer')}</label><input type='text' value={advancedServer} onChange={(e) => serverBar(e)}></input>
-          <button onClick={() => advancedJoin()} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button> </>) : (
-          <Loading />
+          <button onClick={() => advancedJoin()} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button> </>
         )
 
       }
