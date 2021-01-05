@@ -259,7 +259,7 @@ const Explore = () => {
       </>
     )
   }
-  const Advanced = () => {
+  /*const Advanced = () => {
     return (
       <>
         <h3>Advanced</h3>
@@ -270,7 +270,7 @@ const Explore = () => {
       </>
     )
   }
-
+*/
   return (
     <section className="explore">
       <label htmlFor="fed-select">{t('explore:federation')}:</label>
