@@ -164,7 +164,7 @@ const Explore = () => {
               <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
           </div>
         ))}
-        <h2>Medienhaus</h2>
+        <h2>UdK</h2>
         {[...sort].map(publicRoom => (
           publicRoom.name.includes(search.toLowerCase().replace(/ /g, '')) &&
           <div className="room" key={publicRoom.room_id}>
