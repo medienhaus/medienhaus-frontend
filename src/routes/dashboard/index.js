@@ -1,18 +1,16 @@
 import React from 'react';
-import Profile from "../../components/matrix_profile";
 import { Loading } from "../../components/loading";
 import { useTranslation, Trans } from 'react-i18next';
-//import ReactPlayer from 'react-player'
+import {useAuth} from "../../Auth";
 
 const Dashboard = () => {
-  //const [auth, setAuth] = useContext(AuthProvider);
-  const profile = Profile();
+  const auth = useAuth();
   const { t } = useTranslation(['translation', 'dashboard']);
 
   return (
-    profile.length === 0 ? (<Loading />) : (
+    !auth.user ? (<Loading />) : (
       <section className="dashboard copy">
-        <p>{t('dashboard:hello')}, <strong>{profile.displayname}</strong>.</p>
+        <p>{t('dashboard:hello')}, <strong>{auth.user.displayname}</strong>.</p>
         <p><Trans i18nKey="dashboard:p1">Your <strong>/classroom</strong> is a collaborative chat platform where you can find rooms for your courses and classes. Each room can be enhanced with a variety of widgets (think of plugins) like audio/video collaboration or collaborative real-time writing and editing.</Trans></p>
         <p><Trans i18nKey="dashboard:p2">The <strong>/account</strong> section shows your profile information and which rooms you are part of. You will soon be able to accept or reject invites to other rooms in this section.</Trans></p>
         <p><Trans i18nKey="dashboard:p3">You can <strong>/explore</strong> openly accessible public rooms categorized by department, location, and subject … soon we will provide a search function and filtering.</Trans></p>

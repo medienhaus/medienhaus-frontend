@@ -4,23 +4,8 @@ import useJoinedRooms from "../../components/matrix_joined_rooms";
 import useProfile from "../../components/matrix_profile";
 import { Loading } from "../../components/loading"
 import { useTranslation } from 'react-i18next';
-import matrixcs, { MemoryStore } from "matrix-js-sdk";
 import i18n from '../../i18n';
-
-
-const myUserId = localStorage.getItem("mx_user_id");
-const myAccessToken = localStorage.getItem("mx_access_token");
-const matrixClient = matrixcs.createClient({
-  baseUrl: "https://medienhaus.udk-berlin.de",
-  accessToken: myAccessToken,
-  userId: myUserId,
-  useAuthorizationHeader: true,
-  timelineSupport: true,
-  unstableClientRelationAggregation: true,
-  store: new MemoryStore({
-    localStorage: localStorage,
-  }),
-});
+import Matrix from "../../Matrix";
 
 const Account = () => {
   // eslint-disable-next-line
@@ -34,6 +19,7 @@ const Account = () => {
   const { t } = useTranslation(['translation', 'account']);
   const [logBtnStr, setLogBtnStr] = useState(t('account:logout'))
   const [visibleRooms, setVisibleRooms] = useState([]);
+  const matrixClient = Matrix.getMatrixClient();
 
   const visRooms = async () => {
     const visible = await Promise.all(matrixClient.getVisibleRooms());
@@ -128,7 +114,7 @@ const Account = () => {
               joinedRoom !== "" && <li key={joinedRoom}>{joinedRoom}</li>
             ))}
           </ul>
-          {/*<LogoutBtn />*/}
+          <LogoutBtn />
         </section>
       )
       }
