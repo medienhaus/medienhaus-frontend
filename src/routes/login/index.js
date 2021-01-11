@@ -3,25 +3,33 @@ import { useForm } from "react-hook-form";
 import { Redirect, useHistory, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
 import {useAuth} from "../../Auth";
+import {Loading} from "../../components/loading";
 
 const Login = () => {
   const { register, handleSubmit, errors } = useForm();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState(false);
   const history = useHistory();
   const location = useLocation();
   const { t } = useTranslation(['translation', 'login']);
 
   const auth = useAuth();
 
-
-  let { from } = location.state || { from: { pathname: "/" } };
-
+  let { from } = location.state || { from: { pathname: "/dashboard" } };
 
   const onSubmit = () => {
+    if (isLoading) { return; }
+
+    setLoading(true);
+
     auth.signin(name, password,() => {
+      setLoading(false);
       history.replace(from);
-    })
+    }).catch((error) => {
+      alert(error.data.error);
+      setLoading(false);
+    });
   };
 
   const changeName = e => setName(e.target.value);
@@ -45,7 +53,11 @@ const Login = () => {
           <input name="password" type="password" placeholder="" value={password} onChange={changePassword} ref={register({ required: true })} />
         </div>
         {errors.password && t('login:passwordError')}
-        <button name="submit" type="submit">LOGIN</button>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <button name="submit" type="submit">LOGIN</button>
+        )}
       </form>
       <ul>
         <li><a href="https://www.oase.udk-berlin.de/udk-oase-nutzeraccount/" rel="external noopener noreferrer">{t('login:account')}</a></li>
