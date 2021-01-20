@@ -291,10 +291,10 @@ const Explore = () => {
           (<>
             <p>{t('explore:advancedP')}</p>
             <div>
-              <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' value={advancedRoom} onChange={(e) => roomBar(e)}></input>
+              <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' value={advancedRoom} placeholder='events' onChange={(e) => roomBar(e)}></input>
             </div>
             <div>
-              <label htmlFor="server">{t('explore:advancedServer')}</label><input type='text' value={advancedServer} onChange={(e) => serverBar(e)}></input>
+              <label htmlFor="server">{t('explore:advancedServer')}</label><input type='text' value={advancedServer} placeholder='klasseklima.org' onChange={(e) => serverBar(e)}></input>
             </div>
             <button onClick={() => advancedJoin()} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button> </>
           )
