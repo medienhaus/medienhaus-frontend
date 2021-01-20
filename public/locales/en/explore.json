@@ -4,9 +4,9 @@
   "buttonLeave": "LEAVE",
   "buttonJoin": "JOIN",
   "ratelimit": "Slow Down! You're a bit too quick there",
-  "advanced": "Advanced",
+  "advanced": "Advanced options",
   "advancedJoin": "Joined room successfully",
-  "advancedP": "Join server directly:",
+  "advancedP": "Join room directly:",
   "advancedRoom": "Room: ",
   "advancedServer": "Server: "
 }
