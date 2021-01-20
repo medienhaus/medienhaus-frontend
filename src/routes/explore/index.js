@@ -26,6 +26,7 @@ const Explore = () => {
   const [update, setUpdate] = useState(false);
   const [loading, setLoading] = useState(true);
   const [advancedJoining, setAdvancedJoining] = useState(false);
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const [loadingFed, setloadingFed] = useState();
   const publicRooms = PublicRooms();
   const [pubFeds, setPubFeds] = useState([]);
@@ -273,25 +274,36 @@ const Explore = () => {
 */
   return (
     <section className="explore">
-      <label htmlFor="fed-select">{t('explore:federation')}:</label>
-      <select name="Federations" id="federations" onChange={(e) => changeServer(e.target.value)} >
-        <option>{t('explore:fedOption')}</option>
-        {federation.map((fed, index) => (
-          <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name} </option>
-        ))}
-      </select>
+      <form>
+        <div>
+          <label htmlFor="fed-select">{t('explore:federation')}:</label>
+          <select name="Federations" id="federations" onChange={(e) => changeServer(e.target.value)} >
+            <option disabled selected>{t('explore:fedOption')}</option>
+            {federation.map((fed, index) => (
+              <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name} </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label onClick={() => setShowAdvanced(!showAdvanced)}>{t('explore:advanced')}  {showAdvanced ? '-' : '+'}</label>
+        </div>
+        {showAdvanced && advancedJoining ? <Loading /> : showAdvanced ?
+          (<>
+            <p>{t('explore:advancedP')}</p>
+            <div>
+              <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' value={advancedRoom} onChange={(e) => roomBar(e)}></input>
+            </div>
+            <div>
+              <label htmlFor="server">{t('explore:advancedServer')}</label><input type='text' value={advancedServer} onChange={(e) => serverBar(e)}></input>
+            </div>
+            <button onClick={() => advancedJoin()} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button> </>
+          )
+          : null
+        }
+
+      </form>
       <input name="search" type='text' value={search} onChange={(e) => searchBar(e)} placeholder='search …' />
 
-      <label>{t('explore:advanced')}</label>
-      <p>{t('explore:advancedP')}</p>
-      {advancedJoining ? <Loading /> :
-        (<>
-          <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' value={advancedRoom} onChange={(e) => roomBar(e)}></input>
-          <label htmlFor="server">{t('explore:advancedServer')}</label><input type='text' value={advancedServer} onChange={(e) => serverBar(e)}></input>
-          <button onClick={() => advancedJoin()} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button> </>
-        )
-
-      }
       {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <><Federations /><RoomStructure /></>}
     </section>
 
