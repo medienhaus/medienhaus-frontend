@@ -38,9 +38,9 @@ export default function App() {
   const onSubmit = async () => {
     //Andi feel free to change markup
     setSending(true);
-    const regex = /(\w)(\w+(( |-)|\w+)?)+/g;
+    const regex = /(\w)(?:\. ?(?:(?:\w+\. )?)+)?(?:(?:\w+(?:-\w+)? )+)?(\w+(?:(?:-\w+)+)?)/gm;
     const subst = `$1.$2_ext`;
-    const formattedNames = account.toLowerCase().replace(regex, subst);
+    const formattedNames = account.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(regex, subst);
     const requestRoom = {
       "msgtype": "m.text",
       "format": "org.matrix.custom.html",
@@ -76,7 +76,7 @@ export default function App() {
         <input type="radio" id="room" name="room" value="room" checked={radio === false} onClick={() => setRadio(false)} onChange={WhichForm} />
         <label htmlFor="room">Room</label>
         <input type="radio" id="account" name="account" value="account" checked={radio === true} onClick={() => setRadio(true)} onChange={WhichForm} />
-        <label htmlFfor="account">Account</label>
+        <label htmlFor="account">Account</label>
       </div>
       {radio ? (
         <>
