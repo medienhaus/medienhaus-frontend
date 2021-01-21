@@ -112,7 +112,7 @@ const Explore = () => {
     setSelectFed(server);
     setPubFeds('');
     const opts = {
-      limit: 10,
+      limit: 20,
       server: server
     };
     try {
