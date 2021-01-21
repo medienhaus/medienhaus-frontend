@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import './i18n';
 import { Loading } from './components/loading/'
 
+
 ReactDOM.render(
   <React.StrictMode>
     <Suspense fallback={<Loading />}>
