@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Redirect, useHistory } from 'react-router-dom'
 import { UserContext } from '../../components/context/UserContext'
 import * as matrixcs from "matrix-js-sdk";
+import { useTranslation } from 'react-i18next';
 
 const myUserId = localStorage.getItem("mx_user_id");
 const myAccessToken = localStorage.getItem("mx_access_token");
@@ -19,6 +20,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const history = useHistory();
   const { setUser } = useContext(UserContext);
+  const { t } = useTranslation(['translation', 'login']);
 
   const onSubmit = async () => {
     const data = { "type": "m.login.password", "user": name, "password": password }
@@ -48,22 +50,22 @@ const Login = () => {
     < section id="login" >
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label htmlFor="username">username:</label>
-          <input name="username" type="text" placeholder="u.name" value={name} onChange={changeName} ref={register({ required: true })} />
-          <label>@udk-berlin.de</label>
+          <label htmlFor="username">{t('login:username')}:</label>
+          <input name="username" type="text" placeholder={t('login:usernamePlaceholder')} value={name} onChange={changeName} ref={register({ required: true })} />
+
         </div>
-        {errors.username && "Username can't be empty."}
+        {errors.username && t('login:usernameError')}
         <div>
-          <label htmlFor="password">password:</label>
+          <label htmlFor="password">{t('login:password')}:</label>
           <input name="password" type="password" placeholder="" value={password} onChange={changePassword} ref={register({ required: true })} />
         </div>
-        {errors.password && "Password can't be empty."}
+        {errors.password && t('login:passwordError')}
         <button name="submit" type="submit">LOGIN</button>
       </form>
       <ul>
-        <li><a href="https://www.oase.udk-berlin.de/udk-oase-nutzeraccount/" rel="external noopener noreferrer">Which account do I need?</a></li>
-        <li><a href="https://www.oase.udk-berlin.de/passwort" rel="external noopener noreferrer">I forgot my username/password!</a></li>
-        <li><a href="mailto:info@medienhaus.udk-berlin.de?subject=medienhaus/help" rel="external noopener noreferrer">I cannot log in!</a></li>
+        <li><a href="https://www.oase.udk-berlin.de/udk-oase-nutzeraccount/" rel="external noopener noreferrer">{t('login:account')}</a></li>
+        <li><a href="https://www.oase.udk-berlin.de/passwort" rel="external noopener noreferrer">{t('login:oasepw')}</a></li>
+        <li><a href="mailto:info@medienhaus.udk-berlin.de?subject=medienhaus/help" rel="external noopener noreferrer">{t('login:help')}</a></li>
       </ul>
     </section >
   );

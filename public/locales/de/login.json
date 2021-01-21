@@ -1,0 +1,10 @@
+{
+  "username": "benutzername",
+  "usernamePlaceholder": "i.name",
+  "usernameError": "Bitte geben Sie einen Benutzernamen ein.",
+  "password": "passwort",
+  "passwordError": "Bitte geben Sie ein Passwort ein.",
+  "account": "Welchen Account brauche ich?",
+  "oasepw": "Ich habe mein Passwort oder Account vergessen!",
+  "help": "Ich kann mich nicht einloggen!"
+}
