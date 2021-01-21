@@ -281,9 +281,9 @@ const Explore = () => {
 */
   return (
     <section className="explore">
-      <form>
-        <div>
-          <label htmlFor="fed-select">{t('explore:federation')}:</label>
+      <form id="server">
+        <div id="toolbar">
+          <input name="search" type='text' value={search} onChange={(e) => searchBar(e)} placeholder='search …' />
           <select name="Federations" id="federations" defaultValue='choose' onChange={(e) => changeServer(e.target.value)} >
             <option disabled value='choose'>{t('explore:fedOption')}</option>
             {federation.map((fed, index) => (
@@ -294,11 +294,11 @@ const Explore = () => {
           </select>
         </div>
         <div>
-          <label onClick={() => setShowAdvanced(!showAdvanced)}>{t('explore:advanced')}  {showAdvanced ? '-' : '+'}</label>
+          <label onClick={() => setShowAdvanced(!showAdvanced)}>{showAdvanced ? '×' : '+'} {t('explore:advanced')}</label>
         </div>
       </form>
       {showAdvanced && advancedJoining ? <Loading /> : showAdvanced ?
-        (<form onSubmit={handleSubmit(advancedJoin)}>
+        (<form id='advanced' onSubmit={handleSubmit(advancedJoin)}>
           <p>{t('explore:advancedP')}</p>
           <div>
             <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' name='advancedRoom' value={advancedRoom} placeholder='events' onChange={(e) => roomBar(e)} ref={register({ required: true })}></input>
@@ -313,9 +313,6 @@ const Explore = () => {
         )
         : null
       }
-
-
-      <input name="search" type='text' value={search} onChange={(e) => searchBar(e)} placeholder='search …' />
 
       {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <><Federations /><RoomStructure /></>}
     </section>
