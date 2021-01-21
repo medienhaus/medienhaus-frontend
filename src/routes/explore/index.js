@@ -134,6 +134,10 @@ const Explore = () => {
       }
 
       )
+      .then(() => getJoinedRooms())
+      .then(() => setAdvancedRoom(''))
+      .then(() => setAdvancedServer(''))
+      .then(() => setShowAdvanced(false))
       .then(() => setAdvancedJoining(false))
 
   }
@@ -280,8 +284,8 @@ const Explore = () => {
       <form>
         <div>
           <label htmlFor="fed-select">{t('explore:federation')}:</label>
-          <select name="Federations" id="federations" onChange={(e) => e.target.value != '' ? changeServer(e.target.value) : null} >
-            <option disabled selected>{t('explore:fedOption')}</option>
+          <select name="Federations" id="federations" defaultValue='choose' onChange={(e) => e.target.value != '' ? changeServer(e.target.value) : null} >
+            <option disabled value='choose'>{t('explore:fedOption')}</option>
             {federation.map((fed, index) => (
               <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name}</option>
             ))}
@@ -292,24 +296,25 @@ const Explore = () => {
         <div>
           <label onClick={() => setShowAdvanced(!showAdvanced)}>{t('explore:advanced')}  {showAdvanced ? '-' : '+'}</label>
         </div>
-        {showAdvanced && advancedJoining ? <Loading /> : showAdvanced ?
-          (<form onSubmit={handleSubmit(advancedJoin())}>
-            <p>{t('explore:advancedP')}</p>
-            <div>
-              <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' name='advancedRoom' value={advancedRoom} placeholder='events' onChange={(e) => roomBar(e)} ref={register({ required: true })}></input>
-              {errors.advancedRoom && "Please enter the name of your room."}
-            </div>
-            <div>
-              <label htmlFor="server">{t('explore:advancedServer')}</label><input type='text' name='advancedServer' value={advancedServer} placeholder='klasseklima.org' onChange={(e) => serverBar(e)} ref={register({ required: true })}></input>
-              {errors.advancedServer && "Please enter the name of your server."}
-            </div>
-            <button onClick={() => advancedJoin()} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>
-          </form>
-          )
-          : null
-        }
-
       </form>
+      {showAdvanced && advancedJoining ? <Loading /> : showAdvanced ?
+        (<form onSubmit={handleSubmit(advancedJoin)}>
+          <p>{t('explore:advancedP')}</p>
+          <div>
+            <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' name='advancedRoom' value={advancedRoom} placeholder='events' onChange={(e) => roomBar(e)} ref={register({ required: true })}></input>
+          </div>
+          {errors.advancedRoom && t('explore:advancedRoomError')}
+          <div>
+            <label htmlFor="server">{t('explore:advancedServer')}</label><input type='text' name='advancedServer' value={advancedServer} placeholder='klasseklima.org' onChange={(e) => serverBar(e)} ref={register({ required: true })}></input>
+          </div>
+          {errors.advancedServer && t('explore:advancedServerError')}
+          <button type='submit' name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>
+        </form>
+        )
+        : null
+      }
+
+
       <input name="search" type='text' value={search} onChange={(e) => searchBar(e)} placeholder='search …' />
 
       {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <><Federations /><RoomStructure /></>}

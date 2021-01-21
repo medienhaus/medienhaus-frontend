@@ -8,5 +8,7 @@
   "advancedJoin": "Joined room successfully",
   "advancedP": "Join room directly:",
   "advancedRoom": "Room: ",
-  "advancedServer": "Server: "
+  "advancedRoomError": "Please enter the name of your room.",
+  "advancedServer": "Server: ",
+  "advancedServerError": "Please enter the name of your server."
 }
