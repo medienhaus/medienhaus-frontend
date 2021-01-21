@@ -284,7 +284,7 @@ const Explore = () => {
       <form>
         <div>
           <label htmlFor="fed-select">{t('explore:federation')}:</label>
-          <select name="Federations" id="federations" defaultValue='choose' onChange={(e) => e.target.value != '' ? changeServer(e.target.value) : null} >
+          <select name="Federations" id="federations" defaultValue='choose' onChange={(e) => changeServer(e.target.value)} >
             <option disabled value='choose'>{t('explore:fedOption')}</option>
             {federation.map((fed, index) => (
               <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name}</option>
