@@ -293,7 +293,7 @@ const Explore = () => {
           <label onClick={() => setShowAdvanced(!showAdvanced)}>{t('explore:advanced')}  {showAdvanced ? '-' : '+'}</label>
         </div>
         {showAdvanced && advancedJoining ? <Loading /> : showAdvanced ?
-          (<form onSubmit={handleSubmit(onSubmit)}>
+          (<form onSubmit={handleSubmit(advancedJoin())}>
             <p>{t('explore:advancedP')}</p>
             <div>
               <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' name='advancedRoom' value={advancedRoom} placeholder='events' onChange={(e) => roomBar(e)} ref={register({ required: true })}></input>
