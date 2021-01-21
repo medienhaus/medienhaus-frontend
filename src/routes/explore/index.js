@@ -5,6 +5,7 @@ import roomStructure from "../../assets/data/naming.json"
 import federation from "../../assets/data/federation.json"
 import PublicRooms from "../../components/matrix_public_rooms"
 import * as matrixcs from "matrix-js-sdk";
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 const myUserId = localStorage.getItem("mx_user_id");
@@ -32,6 +33,7 @@ const Explore = () => {
   const [pubFeds, setPubFeds] = useState([]);
   const [selectFed, setSelectFed] = useState(false);
   const history = useHistory();
+  const { register, handleSubmit, errors } = useForm();
   const { t } = useTranslation(['translation', 'explore']);
 
   const getJoinedRooms = async () => {
@@ -105,6 +107,7 @@ const Explore = () => {
   }
 
   const changeServer = async (server) => {
+
     setloadingFed(true);
     setSelectFed(server);
     setPubFeds('');
@@ -277,26 +280,31 @@ const Explore = () => {
       <form>
         <div>
           <label htmlFor="fed-select">{t('explore:federation')}:</label>
-          <select name="Federations" id="federations" onChange={(e) => changeServer(e.target.value)} >
+          <select name="Federations" id="federations" onChange={(e) => e.target.value != '' ? changeServer(e.target.value) : null} >
             <option disabled selected>{t('explore:fedOption')}</option>
             {federation.map((fed, index) => (
-              <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name} </option>
+              <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name}</option>
             ))}
+            {// <option key='ownServer' name='addserver' value='' onClick={() => alert('sup')}>Add new server</option>
+            }
           </select>
         </div>
         <div>
           <label onClick={() => setShowAdvanced(!showAdvanced)}>{t('explore:advanced')}  {showAdvanced ? '-' : '+'}</label>
         </div>
         {showAdvanced && advancedJoining ? <Loading /> : showAdvanced ?
-          (<>
+          (<form onSubmit={handleSubmit(onSubmit)}>
             <p>{t('explore:advancedP')}</p>
             <div>
-              <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' value={advancedRoom} placeholder='events' onChange={(e) => roomBar(e)}></input>
+              <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' name='advancedRoom' value={advancedRoom} placeholder='events' onChange={(e) => roomBar(e)} ref={register({ required: true })}></input>
+              {errors.advancedRoom && "Please enter the name of your room."}
             </div>
             <div>
-              <label htmlFor="server">{t('explore:advancedServer')}</label><input type='text' value={advancedServer} placeholder='klasseklima.org' onChange={(e) => serverBar(e)}></input>
+              <label htmlFor="server">{t('explore:advancedServer')}</label><input type='text' name='advancedServer' value={advancedServer} placeholder='klasseklima.org' onChange={(e) => serverBar(e)} ref={register({ required: true })}></input>
+              {errors.advancedServer && "Please enter the name of your server."}
             </div>
-            <button onClick={() => advancedJoin()} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button> </>
+            <button onClick={() => advancedJoin()} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>
+          </form>
           )
           : null
         }
