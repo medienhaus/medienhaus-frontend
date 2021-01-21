@@ -20,7 +20,6 @@ import Stream from "./routes/stream";
 import Login from "./routes/login";
 import Landing from "./routes/landing";
 import Dashboard from "./routes/dashboard";
-import Admin from "./routes/admin";
 
 const App = () => (
   <React.Fragment>
@@ -43,7 +42,6 @@ const App = () => (
                   <Route path="/meet" component={Login} />
                   <Route path="/write" component={Login} />
                   <Route path="/stream" component={Login} />
-                  <Route path="/admin" component={Admin} />
                 </>
               ) : (
                   <>
@@ -58,7 +56,6 @@ const App = () => (
                     <Route path="/meet" component={Meet} />
                     <Route path="/write" component={Write} />
                     <Route path="/stream" component={Stream} />
-                    <Route path="/admin" component={Admin} />
                   </>)
               }
             </Switch>
