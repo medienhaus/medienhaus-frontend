@@ -7,6 +7,7 @@ import PublicRooms from "../../components/matrix_public_rooms"
 import * as matrixcs from "matrix-js-sdk";
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import config from '../../config.json'
 
 const myUserId = localStorage.getItem("mx_user_id");
 const myAccessToken = localStorage.getItem("mx_access_token");
@@ -107,22 +108,27 @@ const Explore = () => {
   }
 
   const changeServer = async (server) => {
+    if (server !== 'baseUrl') {
+      setloadingFed(true);
+      setSelectFed(server);
+      setPubFeds('');
+      const opts = {
+        limit: 20,
+        server: server
+      };
+      try {
+        const answer = await matrixClient.publicRooms(opts);
+        setPubFeds(answer.chunk);
+      }
+      catch (e) {
+        console.log(e);
+      }
+      setloadingFed(false);
+    } else {
+      setSelectFed(false);
+      //setPubFeds('');
+    }
 
-    setloadingFed(true);
-    setSelectFed(server);
-    setPubFeds('');
-    const opts = {
-      limit: 20,
-      server: server
-    };
-    try {
-      const answer = await matrixClient.publicRooms(opts);
-      setPubFeds(answer.chunk);
-    }
-    catch (e) {
-      console.log(e);
-    }
-    setloadingFed(false);
   }
   const advancedJoin = () => {
     setAdvancedJoining(true)
@@ -132,7 +138,6 @@ const Explore = () => {
         e.data.error === ' was not legal room ID or room alias' ? alert("ID or Alias empty.") : e.data.error === 'Too Many Requests' ? alert(t('explore:ratelimit')) : alert(e.data.error);
         //console.log(e.data.error)
       }
-
       )
       .then(() => getJoinedRooms())
       .then(() => setAdvancedRoom(''))
@@ -143,36 +148,24 @@ const Explore = () => {
   }
 
   const SearchStructure = () => {
-    const sort = [...publicRooms].sort((a, b) => {
-      if (a.name < b.name) return -1;
-      if (a.name > b.name) return 1;
-      return 0;
-    });
 
-    const sortFeds = pubFeds ?? [...pubFeds].sort((a, b) => {
-      if (a.name < b.name) return -1;
-      if (a.name > b.name) return 1;
-      return 0;
-    });
+
+    const sort =
+      selectFed ?
+        [...pubFeds].sort((a, b) => {
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1;
+          return 0;
+        })
+        :
+        [...publicRooms].sort((a, b) => {
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1;
+          return 0
+        })
 
     return (
       <>
-        <h2>{selectFed}</h2>
-        {[...sortFeds].map(publicRoom => (
-          publicRoom.name.includes(search.toLowerCase().replace(/ /g, '')) &&
-          <div className="room" key={publicRoom.room_id}>
-            {publicRoom.avatar_url ? (
-              <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, "crop", false)} alt="avatar" />
-            ) : (
-                <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
-              )}
-            <label htmlFor={publicRoom.room_id} key={publicRoom.name} >{publicRoom.name}</label>
-            {joinedRooms.includes(publicRoom.name) ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
-              {loading ? <Loading /> : t('explore:buttonLeave')}</button> :
-              <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
-          </div>
-        ))}
-        <h2>UdK</h2>
         {[...sort].map(publicRoom => (
           publicRoom.name.includes(search.toLowerCase().replace(/ /g, '')) &&
           <div className="room" key={publicRoom.room_id}>
@@ -267,25 +260,13 @@ const Explore = () => {
       </>
     )
   }
-  /*const Advanced = () => {
-    return (
-      <>
-        <h3>Advanced</h3>
-        <p>Join server directly:</p>
-        <label htmlFor="room">Room: </label><input type='text' value={advancedRoom} onChange={(e) => roomBar(e)}></input>
-        <label htmlFor="server">Server: </label><input type='text' value={advancedServer} onChange={(e) => serverBar(e)}></input>
-        <button onClick={() => setJoinId(`#${advancedRoom}:${advancedServer}`)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>
-      </>
-    )
-  }
-*/
   return (
     <section className="explore">
       <form id="server">
         <div id="toolbar">
           <input name="search" type='text' value={search} onChange={(e) => searchBar(e)} placeholder='search …' />
-          <select name="Federations" id="federations" defaultValue='choose' onChange={(e) => changeServer(e.target.value)} >
-            <option disabled value='choose'>{t('explore:fedOption')}</option>
+          <select name="Federations" id="federations" defaultValue='baseUrl' onChange={(e) => changeServer(e.target.value)} >
+            <option value='baseUrl'>{config.baseUrlAlias}</option>
             {federation.map((fed, index) => (
               <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name}</option>
             ))}
@@ -314,7 +295,7 @@ const Explore = () => {
         : null
       }
 
-      {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <><Federations /><RoomStructure /></>}
+      {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : selectFed ? <Federations /> : <RoomStructure />}
     </section>
 
   );
