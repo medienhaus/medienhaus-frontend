@@ -113,8 +113,8 @@ const Explore = () => {
       setSelectFed(server);
       setPubFeds('');
       const opts = {
-        limit: 20,
-        server: server
+        server: server,
+        limit: 50
       };
       try {
         const answer = await matrixClient.publicRooms(opts);
