@@ -2,5 +2,9 @@
   {
     "name": "Klasse Klima",
     "server": "klasseklima.org"
+  },
+  {
+    "name": "matrix.org",
+    "server": "matrix.org"
   }
 ]
