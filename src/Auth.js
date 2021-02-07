@@ -21,9 +21,8 @@ function useAuthProvider() {
   const [user, setUser] = useState(null);
 
   const signin = (username, password, callback) => {
-    return Matrix.login(username, password).then((profile) => {
-      setUser(profile);
-      callback();
+    return Matrix.login(username, password).then(() => {
+      fetchAndSetUserData(callback);
     });
   };
 
@@ -35,18 +34,27 @@ function useAuthProvider() {
     // });
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("mx_user_id")) {
-      Matrix.getMatrixClient().getProfileInfo(localStorage.getItem("mx_user_id")).then((profile) => {
+  const fetchAndSetUserData = (callback) => {
+    Matrix.getMatrixClient().getProfileInfo(localStorage.getItem("mx_user_id")).then((profile) => {
+      setTimeout(() => {
         if (profile) {
           setUser(profile);
         } else {
-          setUser(null);
+          setUser(false);
         }
-      }).catch((error) => {
-        // @TODO Possibly outdated token? ... Logout
-        console.log(error);
-      });
+        if (callback) { callback(); }
+      }, 5000);
+    }).catch((error) => {
+      console.log(error);
+      setUser(false);
+    });
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem("mx_user_id")) {
+      fetchAndSetUserData();
+    } else {
+      setUser(false);
     }
   }, []);
 
