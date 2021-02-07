@@ -32,10 +32,6 @@ class Matrix {
       localStorage.setItem('mx_hs_url', response['well_known']['m.homeserver']['base_url']);
       localStorage.setItem('mx_user_id', response.user_id);
       localStorage.setItem('mx_device_id', response.device_id);
-
-      return this.matrixClient.getProfileInfo(response.user_id);
-    }).then((profile) => {
-      return profile;
     }).catch((error) => {
       throw error;
     });
