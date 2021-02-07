@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect, useLocation } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Nav from "./components/nav";
@@ -21,26 +21,30 @@ import Dashboard from "./routes/dashboard";
 import Admin from "./routes/admin";
 
 import {AuthProvider, useAuth} from "./Auth";
+import {Loading} from "./components/loading";
 
 function PrivateRoute({ children, ...rest }) {
-  let auth = useAuth();
+  const auth = useAuth();
+  const location = useLocation();
 
+  // Still loading...
+  if (auth.user === null) {
+    return <Loading/>;
+  }
+
+  // Not logged in
+  if (auth.user === false) {
+    return <Redirect
+      to={{
+        pathname: "/login",
+        state: { from: location }
+      }}
+    />;
+  }
+
+  // Logged in - render our actual route components
   return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        auth.user ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location }
-            }}
-          />
-        )
-      }
-    />
+    <Route {...rest}>{children}</Route>
   );
 }
 

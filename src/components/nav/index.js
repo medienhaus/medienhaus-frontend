@@ -5,6 +5,10 @@ import {useAuth} from "../../Auth";
 const Nav = () => {
   const auth = useAuth();
 
+  if (auth.user === null) {
+    return null;
+  }
+
   return (
     <nav>
       <div>
