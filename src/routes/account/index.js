@@ -1,30 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import useJoinedRooms from "../../components/matrix_joined_rooms";
-import useProfile from "../../components/matrix_profile";
 import { Loading } from "../../components/loading"
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 import Matrix from "../../Matrix";
+import {useAuth} from "../../Auth";
 
 const Account = () => {
   // eslint-disable-next-line
   const joinedRooms = useJoinedRooms();
-  const profile = useProfile();
   const [mail, setMail] = useState("");
   const history = useHistory();
-  const auth = localStorage.getItem('mx_access_token');
   const logoutRef = useRef(0);
-  //const location = useContext();
   const { t } = useTranslation(['translation', 'account']);
   const [logBtnStr, setLogBtnStr] = useState(t('account:logout'))
   const [visibleRooms, setVisibleRooms] = useState([]);
   const matrixClient = Matrix.getMatrixClient();
 
+  const auth = useAuth();
+
   const visRooms = async () => {
     const visible = await Promise.all(matrixClient.getVisibleRooms());
     setVisibleRooms(visible);
-    console.log(visible);
   }
 
   const getAccData = async () => {
@@ -68,6 +66,8 @@ const Account = () => {
     }
   }
 
+  const profile = auth.user;
+
   const ProfilePic = () => {
     const src = matrixClient.mxcUrlToHttp(profile.avatar_url, 100, 100, "crop", true);
     return (<div className="pofile">
@@ -88,7 +88,7 @@ const Account = () => {
 
   const LogoutBtn = () => {
     return (
-      auth && <button onClick={() => logout()} name="logout">{logBtnStr}</button>
+      <button onClick={() => logout()} name="logout">{logBtnStr}</button>
     )
   }
 
@@ -97,7 +97,7 @@ const Account = () => {
     getSync();
     visRooms();
     // eslint-disable-next-line
-  }, [profile]);
+  }, []);
 
   useEffect(() => {
     LogoutBtn();
