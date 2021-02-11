@@ -1,8 +1,17 @@
 import React from 'react';
+import * as matrixcs from "matrix-js-sdk";
 import Form from '@rjsf/core';
 import federation from "../../assets/data/federation.json"
 //import { useTranslation, Trans } from 'react-i18next';
 
+const myUserId = localStorage.getItem("mx_user_id");
+const myAccessToken = localStorage.getItem("mx_access_token");
+const matrixClient = matrixcs.createClient({
+  baseUrl: "https://dev.medienhaus.udk-berlin.de",
+  accessToken: myAccessToken,
+  userId: myUserId,
+  useAuthorizationHeader: true
+});
 
 const Admin = () => {
 
@@ -44,6 +53,7 @@ const Admin = () => {
   }
   return (
     <section className="admin">
+      { console.log(matrixClient.isSynapseAdministrator())}
       <h2>Federation Settings</h2>
       <Form
         tagName="div"
