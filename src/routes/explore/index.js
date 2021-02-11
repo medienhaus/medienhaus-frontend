@@ -4,17 +4,8 @@ import { useHistory } from 'react-router-dom'
 import roomStructure from "../../assets/data/naming.json"
 import federation from "../../assets/data/federation.json"
 import PublicRooms from "../../components/matrix_public_rooms"
-import * as matrixcs from "matrix-js-sdk";
 import { useTranslation } from 'react-i18next';
-
-const myUserId = localStorage.getItem("mx_user_id");
-const myAccessToken = localStorage.getItem("mx_access_token");
-const matrixClient = matrixcs.createClient({
-  baseUrl: "https://medienhaus.udk-berlin.de",
-  accessToken: myAccessToken,
-  userId: myUserId,
-  useAuthorizationHeader: true
-});
+import Matrix from "../../Matrix";
 
 const Explore = () => {
   const [joinedRooms, setJoinedRooms] = useState([]);
@@ -29,6 +20,7 @@ const Explore = () => {
   const [selectFed, setSelectFed] = useState(false);
   const history = useHistory();
   const { t } = useTranslation(['translation', 'explore']);
+  const matrixClient = Matrix.getMatrixClient();
 
   const getJoinedRooms = async () => {
     try {
@@ -47,15 +39,9 @@ const Explore = () => {
       }));
       setJoinedRooms(getNames);
     } catch (e) {
-      if (e.data.error === "Invalid macaroon passed.") {
-        history.push('/login')
-      } else if (e.data.error === "Unrecognised access token") {
-        alert("Oops something went wrong! Please try loggin in again.")
-        localStorage.clear();
-        history.push('/login');
-      }
       console.log(e.data.error);
     }
+
     setLoading(false);
   }
 

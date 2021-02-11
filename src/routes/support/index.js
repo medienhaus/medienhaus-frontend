@@ -5,8 +5,7 @@ import { Loading } from '../../components/loading'
 import { useTranslation } from 'react-i18next';
 //import { Link } from "react-router-dom";
 import * as matrixcs from "matrix-js-sdk";
-
-import Profile from "../../components/matrix_profile";
+import {useAuth} from "../../Auth";
 
 const myUserId = "@support-bot:medienhaus.udk-berlin.de";
 const myAccessToken = "MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEBzdXBwb3J0LWJvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSBwQVZqWU9XflI0NFRYUkEtCjAwMmZzaWduYXR1cmUgdZm-5kS1tijZ3TQkBeiwsO261iOCBA-lhbLcTb4bTccK";
@@ -25,8 +24,10 @@ const Support = () => {
   const [browser, setBrowser] = useState();
   const [loading, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
-  const profile = Profile();
   const { t, i18n } = useTranslation(['translation', 'support']);
+
+  const auth = useAuth();
+  const profile = auth.user;
 
   const changeMsg = e => setMsg(e.target.value);
   const changeMail = e => setMail(e.target.value);

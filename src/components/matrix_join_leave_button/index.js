@@ -1,20 +1,11 @@
 import React, { useState } from "react";
-
-
-const myUserId = localStorage.getItem("mx_user_id");
-const myAccessToken = localStorage.getItem("mx_access_token");
-const matrixClient = matrixcs.createClient({
-  baseUrl: "https://medienhaus.udk-berlin.de",
-  accessToken: myAccessToken,
-  userId: myUserId,
-  useAuthorizationHeader: true
-});
-
+import Matrix from "../../Matrix";
 
 const JoinLeaveButton = ({ name, roomId }) => {
-
   const [isLoading, setLoading] = useState(false);
   const [joinedRooms, setJoinedRooms] = useState([]);
+
+  const matrixClient = Matrix.getMatrixClient();
 
   const getJoinedRooms = async () => {
     const answer = await matrixClient.getJoinedRooms();

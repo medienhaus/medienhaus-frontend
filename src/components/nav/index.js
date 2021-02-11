@@ -1,27 +1,25 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { NavLink } from "react-router-dom";
-import { UserContext } from '../context/UserContext'
+import {useAuth} from "../../Auth";
 
 const Nav = () => {
-  const { user } = useContext(UserContext);
-  const [auth, setAuth] = useState(null);
+  const auth = useAuth();
 
-  useEffect(() => {
-    setAuth(localStorage.getItem('mx_access_token'))
-    // eslint-disable-next-line
-  }, [user])
+  if (auth.user === null) {
+    return null;
+  }
 
   return (
     <nav>
       <div>
         <div>
-          {auth ? (
+          {auth.user ? (
             <a href="https://medienhaus.udk-berlin.de/classroom" rel="nofollow noopener noreferrer" target="_self">/classroom&nbsp;-&gt;</a>
           ) : (
-              <NavLink activeclassname="active" to="/login">/login</NavLink>
-            )}
+            <NavLink activeclassname="active" to="/login">/login</NavLink>
+          )}
         </div>
-        {auth ? (
+        {auth.user && (
           <>
             <div>
               <NavLink activeclassname="active" to="/account">/account</NavLink>
@@ -29,10 +27,10 @@ const Nav = () => {
               <NavLink activeclassname="active" to="/request">/request</NavLink>
               <NavLink activeclassname="active" to="/support">/support</NavLink>
               <NavLink activeclassname="active" to="/kino">/kino</NavLink>
-              {//<NavLink activeclassname="active" to="/admin">/admin</NavLink>}
+              {
+                //<NavLink activeclassname="active" to="/admin">/admin</NavLink>}
                 //matrixClient.isSynapseAdministrator() ?? console.log('with great power comes great responsibility')
               }
-
             </div>
             <div>
               <NavLink activeclassname="active" to="/meet">/meet</NavLink>
@@ -40,10 +38,7 @@ const Nav = () => {
               <NavLink activeclassname="active" to="/stream">/stream</NavLink>
             </div>
           </>
-        ) : (
-            null
-          )
-        }
+        )}
       </div>
     </nav>
   )

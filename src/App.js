@@ -1,7 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { LocationProvider } from "./components/context/LocationContext"
-import { UserProvider } from "./components/context/UserContext";
+import { BrowserRouter as Router, Route, Switch, Redirect, useLocation } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Nav from "./components/nav";
@@ -22,52 +20,59 @@ import Landing from "./routes/landing";
 import Dashboard from "./routes/dashboard";
 import Admin from "./routes/admin";
 
+import {AuthProvider, useAuth} from "./Auth";
+import {Loading} from "./components/loading";
+
+function PrivateRoute({ children, ...rest }) {
+  const auth = useAuth();
+  const location = useLocation();
+
+  // Still loading...
+  if (auth.user === null) {
+    return <Loading/>;
+  }
+
+  // Not logged in
+  if (auth.user === false) {
+    return <Redirect
+      to={{
+        pathname: "/login",
+        state: { from: location }
+      }}
+    />;
+  }
+
+  // Logged in - render our actual route components
+  return (
+    <Route {...rest}>{children}</Route>
+  );
+}
+
 const App = () => (
   <React.Fragment>
-    <UserProvider>
-      <LocationProvider>
-        <Router>
-          <Header />
-          <main>
-            <Switch>
-              {localStorage.getItem('mx_access_token') === null ? (
-                <>
-                  <Route path="/" exact component={Landing} />
-                  <Route path="/login" component={Login} />
-                  <Route path="/dashboard" component={Login} />
-                  <Route path="/account" component={Login} />
-                  <Route path="/explore" component={Login} />
-                  <Route path="/request" component={Login} />
-                  <Route path="/support" component={Login} />
-                  <Route path="/kino" component={Login} />
-                  <Route path="/meet" component={Login} />
-                  <Route path="/write" component={Login} />
-                  <Route path="/stream" component={Login} />
-                  <Route path="/admin" component={Admin} />
-                </>
-              ) : (
-                  <>
-                    <Route path="/" exact component={Landing} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/dashboard" component={Dashboard} />
-                    <Route path="/account" component={Account} />
-                    <Route path="/explore" component={Explore} />
-                    <Route path="/request" component={Request} />
-                    <Route path="/support" component={Support} />
-                    <Route path="/kino" component={Kino} />
-                    <Route path="/meet" component={Meet} />
-                    <Route path="/write" component={Write} />
-                    <Route path="/stream" component={Stream} />
-                    <Route path="/admin" component={Admin} />
-                  </>)
-              }
-            </Switch>
-          </main>
-          <Nav />
-          <Footer />
-        </Router>
-      </LocationProvider>
-    </UserProvider>
+    <AuthProvider>
+      <Router>
+        <Header />
+        <main>
+          <Switch>
+            <Route path="/" exact component={Landing} />
+            <Route path="/login" component={Login} />
+            <PrivateRoute path="/dashboard" component={Dashboard} />
+            <PrivateRoute path="/account" component={Account} />
+            <PrivateRoute path="/explore" component={Explore} />
+            <PrivateRoute path="/request" component={Request} />
+            <PrivateRoute path="/support" component={Support} />
+            <PrivateRoute path="/kino" component={Kino} />
+            <PrivateRoute path="/meet" component={Meet} />
+            <PrivateRoute path="/write" component={Write} />
+            <PrivateRoute path="/stream" component={Stream} />
+            <PrivateRoute path="/admin" component={Admin} />
+          </Switch>
+        </main>
+        <Nav />
+        <Footer />
+      </Router>
+    </AuthProvider>
   </React.Fragment>
 )
 
