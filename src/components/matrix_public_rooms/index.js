@@ -1,19 +1,12 @@
 import { useEffect, useState } from 'react';
-import * as matrixcs from "matrix-js-sdk";
 import { useHistory } from 'react-router-dom'
-
-const myUserId = localStorage.getItem("mx_user_id");
-const myAccessToken = localStorage.getItem("mx_access_token");
-const matrixClient = matrixcs.createClient({
-  baseUrl: "https://medienhaus.udk-berlin.de",
-  accessToken: myAccessToken,
-  userId: myUserId,
-  useAuthorizationHeader: true
-});
+import Matrix from "../../Matrix";
 
 const usePublicRooms = () => {
   const [answer, setAnswer] = useState([]);
   const history = useHistory();
+
+  const matrixClient = Matrix.getMatrixClient();
 
   const getAnswer = async () => {
     try {
