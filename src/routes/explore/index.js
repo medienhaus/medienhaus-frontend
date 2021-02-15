@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Loading } from "../../components/loading";
-import { useHistory } from 'react-router-dom'
 import roomStructure from "../../assets/data/naming.json"
 import federation from "../../assets/data/federation.json"
 import PublicRooms from "../../components/matrix_public_rooms"
@@ -18,7 +17,6 @@ const Explore = () => {
   const publicRooms = PublicRooms();
   const [pubFeds, setPubFeds] = useState([]);
   const [selectFed, setSelectFed] = useState(false);
-  const history = useHistory();
   const { t } = useTranslation(['translation', 'explore']);
   const matrixClient = Matrix.getMatrixClient();
 
