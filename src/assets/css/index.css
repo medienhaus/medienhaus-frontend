@@ -432,7 +432,14 @@ form textarea {
   box-shadow: none;
   outline: none;
   padding: calc(var(--margin) * 0.2);
-  width: 50%;
+}
+
+.explore form#server div {
+  grid-template-columns: 1fr 1fr;
+}
+
+.explore form#advanced div {
+  grid-template-columns: 5ch 1fr;
 }
 
 /*
@@ -730,6 +737,9 @@ form textarea {
   .explore input {
     width: 100%;
   }
+  .explore #toolbar * + * {
+    margin-top: var(--margin);
+  }
   header {
     grid-column: 1 / 3;
   }
@@ -784,7 +794,7 @@ form textarea {
 
 /* 800px */
 @media (min-width: 50em) {
-  form {
+  .support form {
     max-width: 55ch;
   }
 }
