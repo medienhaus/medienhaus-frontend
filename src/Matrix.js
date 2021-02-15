@@ -1,4 +1,5 @@
-import matrixcs, {MemoryStore} from "matrix-js-sdk";
+import matrixcs, { MemoryStore } from "matrix-js-sdk";
+import config from './config.json';
 
 class Matrix {
   constructor() {
@@ -6,13 +7,13 @@ class Matrix {
     const myAccessToken = localStorage.getItem("mx_access_token");
 
     this.matrixClient = new matrixcs.createClient({
-      baseUrl: "https://medienhaus.udk-berlin.de",
+      baseUrl: config.baseUrl,
       accessToken: myAccessToken,
       userId: myUserId,
       useAuthorizationHeader: true,
       timelineSupport: true,
       unstableClientRelationAggregation: true,
-      store: new MemoryStore({localStorage}),
+      store: new MemoryStore({ localStorage }),
     });
   }
 
