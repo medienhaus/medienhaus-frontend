@@ -4,6 +4,8 @@ import roomStructure from "../../assets/data/naming.json"
 import federation from "../../assets/data/federation.json"
 import PublicRooms from "../../components/matrix_public_rooms"
 import { useTranslation } from 'react-i18next';
+import { useForm } from 'react-hook-form';
+import config from '../../config.json'
 import Matrix from "../../Matrix";
 
 const Explore = () => {
@@ -14,9 +16,14 @@ const Explore = () => {
   const [update, setUpdate] = useState(false);
   const [loading, setLoading] = useState(true);
   const [loadingFed, setloadingFed] = useState();
+  const [advancedRoom, setAdvancedRoom] = useState('');
+  const [advancedServer, setAdvancedServer] = useState('');
+  const [advancedJoining, setAdvancedJoining] = useState(false);
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const publicRooms = PublicRooms();
   const [pubFeds, setPubFeds] = useState([]);
   const [selectFed, setSelectFed] = useState(false);
+  const { register, handleSubmit, errors } = useForm();
   const { t } = useTranslation(['translation', 'explore']);
   const matrixClient = Matrix.getMatrixClient();
 
@@ -76,24 +83,52 @@ const Explore = () => {
     setSearch(e.target.value)
   }
 
-  const changeServer = async (server) => {
-    setloadingFed(true);
-    setSelectFed(server);
-    setPubFeds('');
-    const opts = {
-      limit: 10,
-      server: server
-    };
-    try {
-      const answer = await matrixClient.publicRooms(opts);
-      setPubFeds(answer.chunk);
-    }
-    catch (e) {
-      console.log(e);
-    }
-    setloadingFed(false);
+  const roomBar = e => {
+    e.preventDefault();
+    setAdvancedRoom(e.target.value)
+  }
+  const serverBar = e => {
+    e.preventDefault();
+    setAdvancedServer(e.target.value)
   }
 
+  const changeServer = async (server) => {
+    if (server !== 'baseUrl') {
+      setloadingFed(true);
+      setSelectFed(server);
+      setPubFeds('');
+      const opts = {
+        server: server,
+        limit: 50
+      };
+      try {
+        const answer = await matrixClient.publicRooms(opts);
+        setPubFeds(answer.chunk);
+      }
+      catch (e) {
+        console.log(e);
+      }
+      setloadingFed(false);
+    } else {
+      setSelectFed(false);
+    }
+  }
+  const advancedJoin = () => {
+    setAdvancedJoining(true)
+    matrixClient.joinRoom(`#${advancedRoom}:${advancedServer}`)
+      .then(() => alert(t('explore:advancedJoin')))
+      .catch((e) => {
+        e.data.error === ' was not legal room ID or room alias' ? alert("ID or Alias empty.") : e.data.error === 'Too Many Requests' ? alert(t('explore:ratelimit')) : alert(e.data.error);
+        //console.log(e.data.error)
+      }
+      )
+      .then(() => getJoinedRooms())
+      .then(() => setAdvancedRoom(''))
+      .then(() => setAdvancedServer(''))
+      .then(() => setShowAdvanced(false))
+      .then(() => setAdvancedJoining(false))
+
+  }
   const SearchStructure = () => {
     const sort = [...publicRooms].sort((a, b) => {
       if (a.name < b.name) return -1;
@@ -222,16 +257,42 @@ const Explore = () => {
 
   return (
     <section className="explore">
-      <label htmlFor="fed-select">{t('explore:federation')}:</label>
-      <select name="Federations" id="federations" onChange={(e) => changeServer(e.target.value)} >
-        <option>{t('explore:fedOption')}</option>
-        {federation.map((fed, index) => (
-          <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name} </option>
-        ))}
-      </select>
-      <input name="search" type='text' value={search} onChange={(e) => searchBar(e)} placeholder='search …' />
-      {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : <><Federations /><RoomStructure /></>}
+      <form id="server">
+        <div id="toolbar">
+          <input name="search" type='text' value={search} onChange={(e) => searchBar(e)} placeholder='search …' />
+          <select name="Federations" id="federations" defaultValue='baseUrl' onChange={(e) => changeServer(e.target.value)} >
+            <option value='baseUrl'>{config.baseUrlAlias}</option>
+            {federation.map((fed, index) => (
+              <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name}</option>
+            ))}
+            {// <option key='ownServer' name='addserver' value='' onClick={() => alert('sup')}>Add new server</option>
+            }
+          </select>
+        </div>
+        <div>
+          <label onClick={() => setShowAdvanced(!showAdvanced)}>{showAdvanced ? '×' : '+'} {t('explore:advanced')}</label>
+        </div>
+      </form>
+      {showAdvanced && advancedJoining ? <Loading /> : showAdvanced ?
+        (<form id='advanced' onSubmit={handleSubmit(advancedJoin)}>
+          <p>{t('explore:advancedP')}</p>
+          <div>
+            <label htmlFor="room">{t('explore:advancedRoom')}</label><input type='text' name='advancedRoom' value={advancedRoom} placeholder='events' onChange={(e) => roomBar(e)} ref={register({ required: true })}></input>
+          </div>
+          {errors.advancedRoom && t('explore:advancedRoomError')}
+          <div>
+            <label htmlFor="server">{t('explore:advancedServer')}</label><input type='text' name='advancedServer' value={advancedServer} placeholder='klasseklima.org' onChange={(e) => serverBar(e)} ref={register({ required: true })}></input>
+          </div>
+          {errors.advancedServer && t('explore:advancedServerError')}
+          <button type='submit' name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>
+        </form>
+        )
+        : null
+      }
+
+      {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : selectFed ? <Federations /> : <RoomStructure />}
     </section>
+
   );
 }
 
