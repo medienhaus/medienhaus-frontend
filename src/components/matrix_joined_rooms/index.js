@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import * as matrixcs from "matrix-js-sdk";
 import { useHistory } from 'react-router-dom'
 import Matrix from "../../Matrix";
 
