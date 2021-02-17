@@ -1,13 +1,12 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import Backend from 'i18next-xhr-backend';
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
+import Backend from 'i18next-xhr-backend'
 
-
-let lng = 'en';
+let lng = 'en'
 if (localStorage.getItem('cr_lang') !== null) {
   lng = localStorage.getItem('cr_lang')
 } else {
-  lng = 'en';
+  lng = 'en'
 }
 
 i18n
@@ -22,8 +21,8 @@ i18n
     fallbackLng: 'en',
     whitelist: ['en', 'de'],
     interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
-    },
-  });
+      escapeValue: false // not needed for react as it escapes by default
+    }
+  })
 
-export default i18n;
+export default i18n

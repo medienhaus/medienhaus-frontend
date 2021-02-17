@@ -1,30 +1,30 @@
-import React, {createContext, useContext, useEffect, useState} from "react";
-import Matrix from "./Matrix";
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import Matrix from './Matrix'
 
-const AuthContext = createContext(undefined);
+const AuthContext = createContext(undefined)
 
-function AuthProvider({ children }) {
-  const auth = useAuthProvider();
+function AuthProvider ({ children }) {
+  const auth = useAuthProvider()
 
   return (
     <AuthContext.Provider value={auth}>
       {children}
     </AuthContext.Provider>
-  );
+  )
 }
 
-function useAuth() {
-  return useContext(AuthContext);
+function useAuth () {
+  return useContext(AuthContext)
 }
 
-function useAuthProvider() {
-  const [user, setUser] = useState(null);
+function useAuthProvider () {
+  const [user, setUser] = useState(null)
 
   const signin = (username, password, callback) => {
     return Matrix.login(username, password).then(() => {
-      fetchAndSetUserData(callback);
-    });
-  };
+      fetchAndSetUserData(callback)
+    })
+  }
 
   const signout = cb => {
     // @TODO Implement
@@ -32,40 +32,40 @@ function useAuthProvider() {
     //   setUser(null);
     //   cb();
     // });
-  };
+  }
 
   const fetchAndSetUserData = (callback) => {
-    Matrix.getMatrixClient().getProfileInfo(localStorage.getItem("mx_user_id")).then((profile) => {
+    Matrix.getMatrixClient().getProfileInfo(localStorage.getItem('mx_user_id')).then((profile) => {
       setTimeout(() => {
         if (profile) {
-          setUser(profile);
+          setUser(profile)
         } else {
-          setUser(false);
+          setUser(false)
         }
-        if (callback) { callback(); }
-      }, 5000);
+        if (callback) { callback() }
+      }, 5000)
     }).catch((error) => {
-      console.log(error);
-      setUser(false);
-    });
+      console.log(error)
+      setUser(false)
+    })
   }
 
   useEffect(() => {
-    if (localStorage.getItem("mx_user_id")) {
-      fetchAndSetUserData();
+    if (localStorage.getItem('mx_user_id')) {
+      fetchAndSetUserData()
     } else {
-      setUser(false);
+      setUser(false)
     }
-  }, []);
+  }, [])
 
   return {
     user,
     signin,
     signout
-  };
+  }
 }
 
 export {
   AuthProvider,
-  useAuth,
-};
+  useAuth
+}

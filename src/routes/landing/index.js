@@ -1,8 +1,8 @@
 import React from 'react'
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next'
 
 const Landing = () => {
-  const { t } = useTranslation(['translation', 'landing']);
+  const { t } = useTranslation(['translation', 'landing'])
 
   return (
     <>
@@ -50,4 +50,4 @@ const Landing = () => {
       </section>
 */
 
-export default Landing;
+export default Landing
