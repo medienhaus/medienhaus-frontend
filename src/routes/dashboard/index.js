@@ -1,10 +1,10 @@
-import React from 'react';
-import { useTranslation, Trans } from 'react-i18next';
-import {useAuth} from "../../Auth";
+import React from 'react'
+import { useTranslation, Trans } from 'react-i18next'
+import { useAuth } from '../../Auth'
 
 const Dashboard = () => {
-  const auth = useAuth();
-  const { t } = useTranslation(['translation', 'dashboard']);
+  const auth = useAuth()
+  const { t } = useTranslation(['translation', 'dashboard'])
 
   return (
     <section className="dashboard copy">
@@ -22,4 +22,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard;
+export default Dashboard

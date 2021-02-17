@@ -1,54 +1,54 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import Matrix from "../../Matrix";
+import Matrix from '../../Matrix'
 
 const useJoinedRooms = () => {
-  const [answer, setAnswer] = useState([]);
-  const history = useHistory();
-  const matrixClient = Matrix.getMatrixClient();
+  const [answer, setAnswer] = useState([])
+  const history = useHistory()
+  const matrixClient = Matrix.getMatrixClient()
 
   const getAnswer = async () => {
     try {
-      const answer = await matrixClient.getJoinedRooms();
+      const answer = await matrixClient.getJoinedRooms()
       if (answer.joined_rooms.length > 0) {
         const getNames = await Promise.all(answer.joined_rooms.map(async (roomId) => {
           try {
-            const room = await matrixClient.getStateEvent(roomId, "m.room.name");
-            if (room.name !== "") {
-              return room.name;
+            const room = await matrixClient.getStateEvent(roomId, 'm.room.name')
+            if (room.name !== '') {
+              return room.name
             } else {
-              return ""
+              return ''
             }
           } catch (error) {
-            if (error.data.error === "Unrecognised access token") {
-              alert("Oops something went wrong! Please try loggin in again")
-              localStorage.clear();
+            if (error.data.error === 'Unrecognised access token') {
+              alert('Oops something went wrong! Please try loggin in again')
+              localStorage.clear()
               return history.push('/login')
-            } else if (error.data.error === "Invalid macaroon passed.") {
-              alert("Oops something went wrong! Please try loggin in again")
-              localStorage.clear();
+            } else if (error.data.error === 'Invalid macaroon passed.') {
+              alert('Oops something went wrong! Please try loggin in again')
+              localStorage.clear()
               return history.push('/login')
             }
-            return ""
+            return ''
           }
         }
         )
-        );
-        setAnswer(getNames);
+        )
+        setAnswer(getNames)
       } else {
-        setAnswer(["You are currently not part of any rooms"])
+        setAnswer(['You are currently not part of any rooms'])
       }
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
   }
 
   useEffect(() => {
-    getAnswer();
+    getAnswer()
     // eslint-disable-next-line
   }, []);
 
-  return answer;
+  return answer
 }
 
-export default useJoinedRooms;
+export default useJoinedRooms
