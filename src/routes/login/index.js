@@ -12,7 +12,7 @@ const Login = () => {
   const [isLoading, setLoading] = useState(false)
   const history = useHistory()
   const location = useLocation()
-  const { t } = useTranslation(['translation', 'login'])
+  const { t } = useTranslation(['login'])
 
   const auth = useAuth()
 
@@ -43,16 +43,16 @@ const Login = () => {
     <section id="login">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label htmlFor="username">{t('login:username')}:</label>
-          <input name="username" type="text" placeholder={t('login:usernamePlaceholder')} value={name} onChange={changeName} ref={register({ required: true })} />
+          <label htmlFor="username">{t('username')}:</label>
+          <input name="username" type="text" placeholder={t('u.name')} value={name} onChange={changeName} ref={register({ required: true })} />
 
         </div>
-        {errors.username && t('login:usernameError')}
+        {errors.username && t('Username can\'t be empty.')}
         <div>
-          <label htmlFor="password">{t('login:password')}:</label>
+          <label htmlFor="password">{t('password')}:</label>
           <input name="password" type="password" placeholder="" value={password} onChange={changePassword} ref={register({ required: true })} />
         </div>
-        {errors.password && t('login:passwordError')}
+        {errors.password && t('Password can\'t be empty.')}
         {isLoading
           ? (
           <Loading />
@@ -62,9 +62,15 @@ const Login = () => {
             )}
       </form>
       <ul>
-        <li><a href="https://www.oase.udk-berlin.de/udk-oase-nutzeraccount/" rel="external noopener noreferrer">{t('login:account')}</a></li>
-        <li><a href="https://www.oase.udk-berlin.de/passwort" rel="external noopener noreferrer">{t('login:oasepw')}</a></li>
-        <li><a href="mailto:info@medienhaus.udk-berlin.de?subject=medienhaus/help" rel="external noopener noreferrer">{t('login:help')}</a></li>
+        <li><a href="https://www.oase.udk-berlin.de/udk-oase-nutzeraccount/" rel="external noopener noreferrer">
+          {t('Which account do I need?')}
+        </a></li>
+        <li><a href="https://www.oase.udk-berlin.de/passwort" rel="external noopener noreferrer">
+          {t('I forgot my username/password!')}
+        </a></li>
+        <li><a href="mailto:info@medienhaus.udk-berlin.de?subject=medienhaus/help" rel="external noopener noreferrer">
+          {t('I cannot log in!')}
+        </a></li>
       </ul>
     </section>
   )
