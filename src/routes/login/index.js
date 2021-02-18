@@ -1,39 +1,39 @@
-import React, { useState } from 'react';
-import { useForm } from "react-hook-form";
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { Redirect, useHistory, useLocation } from 'react-router-dom'
-import { useTranslation } from 'react-i18next';
-import {useAuth} from "../../Auth";
-import {Loading} from "../../components/loading";
+import { useTranslation } from 'react-i18next'
+import { useAuth } from '../../Auth'
+import { Loading } from '../../components/loading'
 
 const Login = () => {
-  const { register, handleSubmit, errors } = useForm();
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setLoading] = useState(false);
-  const history = useHistory();
-  const location = useLocation();
-  const { t } = useTranslation(['translation', 'login']);
+  const { register, handleSubmit, errors } = useForm()
+  const [name, setName] = useState('')
+  const [password, setPassword] = useState('')
+  const [isLoading, setLoading] = useState(false)
+  const history = useHistory()
+  const location = useLocation()
+  const { t } = useTranslation(['translation', 'login'])
 
-  const auth = useAuth();
+  const auth = useAuth()
 
-  let { from } = location.state || { from: { pathname: "/dashboard" } };
+  const { from } = location.state || { from: { pathname: '/dashboard' } }
 
   const onSubmit = () => {
-    if (isLoading) { return; }
+    if (isLoading) { return }
 
-    setLoading(true);
+    setLoading(true)
 
-    auth.signin(name, password,() => {
-      setLoading(false);
-      history.replace(from);
+    auth.signin(name, password, () => {
+      setLoading(false)
+      history.replace(from)
     }).catch((error) => {
-      alert(error.data.error);
-      setLoading(false);
-    });
-  };
+      alert(error.data.error)
+      setLoading(false)
+    })
+  }
 
-  const changeName = e => setName(e.target.value);
-  const changePassword = e => setPassword(e.target.value);
+  const changeName = e => setName(e.target.value)
+  const changePassword = e => setPassword(e.target.value)
 
   if (auth.user) {
     return <Redirect to={'/dashboard'} />
@@ -53,11 +53,13 @@ const Login = () => {
           <input name="password" type="password" placeholder="" value={password} onChange={changePassword} ref={register({ required: true })} />
         </div>
         {errors.password && t('login:passwordError')}
-        {isLoading ? (
+        {isLoading
+          ? (
           <Loading />
-        ) : (
+            )
+          : (
           <button name="submit" type="submit">LOGIN</button>
-        )}
+            )}
       </form>
       <ul>
         <li><a href="https://www.oase.udk-berlin.de/udk-oase-nutzeraccount/" rel="external noopener noreferrer">{t('login:account')}</a></li>
@@ -65,7 +67,7 @@ const Login = () => {
         <li><a href="mailto:info@medienhaus.udk-berlin.de?subject=medienhaus/help" rel="external noopener noreferrer">{t('login:help')}</a></li>
       </ul>
     </section>
-  );
+  )
 }
 
-export default Login;
+export default Login

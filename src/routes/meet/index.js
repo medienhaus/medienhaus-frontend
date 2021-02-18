@@ -1,8 +1,8 @@
-import React from 'react';
-import { useTranslation, Trans } from 'react-i18next';
+import React from 'react'
+import { useTranslation, Trans } from 'react-i18next'
 
 const Meet = () => {
-  const { t } = useTranslation(['translation', 'meet']);
+  const { t } = useTranslation(['translation', 'meet'])
 
   return (
     <section className="meet copy">
@@ -17,7 +17,7 @@ const Meet = () => {
         <Trans i18nKey="meet:p5"><strong>/meet</strong> can be accessed via: <a href="https://bbb.medienhaus.udk-berlin.de" rel="external nofollow noopener noreferrer" target="_blank">bbb.medienhaus.udk-berlin.de</a></Trans>
       </p>
     </section >
-  );
+  )
 }
 
-export default Meet;
+export default Meet
