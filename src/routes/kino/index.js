@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
-//import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import ReactPlayer from 'react-player'
 
 const Kino = () => {
-  //const { t } = useTranslation(['translation', 'kino']);
+  // const { t } = useTranslation(['translation', 'kino']);
   const [video, setVideo] = useState([
     { src: 'video/public_onboarding.mp4', type: 'video/mp4' },
     { src: 'video/public_onboarding.webm', type: 'video/webm' }
-  ]);
-  const [played, setPlayed] = useState(null);
+  ])
+  const [played, setPlayed] = useState(null)
 
   const Button = ({ url, head, sub }) => {
     console.log(Object.entries(video))
-    console.log("url: " + url)
+    console.log('url: ' + url)
     return (
       <li>
         <button onClick={() => setVideo(url)} >
@@ -78,4 +78,4 @@ const Kino = () => {
   )
 }
 
-export default Kino;
+export default Kino
