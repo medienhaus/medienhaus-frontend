@@ -1,8 +1,6 @@
 {
-  "email": "Bitte füge deinem Profil eine gültige Mail-Adresse hinzu …",
-  "rooms": {
-    "text": "Du bist in den folgenden Räumen:"
-  },
-  "logout": "Ausloggen",
-  "logout2": "Bist du sicher?"
+  "Please add an email address to your profile …": "Bitte füge deinem Profil eine gültige Mail-Adresse hinzu …",
+  "You are currently part of the following rooms:": "Du bist in den folgenden Räumen:",
+  "Logout": "Ausloggen",
+  "Are you sure?": "Bist du sicher?"
 }

@@ -1,14 +1,12 @@
 {
-  "federation": "Föderationen",
-  "fedOption": "Bitte wählen Sie eine Föderation",
-  "buttonLeave": "VERLASSEN",
-  "buttonJoin": "BEITRETEN",
-  "ratelimit": "Das geht mir ein bisschen zu schnell, ich komme nicht hinterher!",
-  "advanced": "Erweiterte Optionen",
-  "advancedJoin": "Raum erfolgreich beigetreten.",
-  "advancedP": "Einem Raum direkt beitreten:",
-  "advancedRoom": "Raum: ",
-  "advancedRoomError":"Bitte fügen Sie einen Raum hinzu.",
-  "advancedServer": "Server: ",
-  "advancedServerError": "Bitte fügen Sie einen Server hinzu."
+  "LEAVE": "VERLASSEN",
+  "JOIN": "BEITRETEN",
+  "Slow Down! You're a bit too quick there": "Das geht mir ein bisschen zu schnell, ich komme nicht hinterher!",
+  "Advanced options": "Erweiterte Optionen",
+  "Joined room successfully": "Raum erfolgreich beigetreten.",
+  "Join room directly": "Einem Raum direkt beitreten",
+  "Room": "Raum",
+  "Please enter the name of your room.":"Bitte fügen Sie einen Raum hinzu.",
+  "Server": "Server",
+  "Please enter the name of your server": "Bitte fügen Sie einen Server hinzu."
 }
