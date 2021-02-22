@@ -6,6 +6,7 @@ class Matrix {
     const myUserId = localStorage.getItem('mx_user_id')
     const myAccessToken = localStorage.getItem('mx_access_token')
 
+    // eslint-disable-next-line new-cap
     this.matrixClient = new matrixcs.createClient({
       baseUrl: config.baseUrl,
       accessToken: myAccessToken,
