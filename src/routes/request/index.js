@@ -75,7 +75,7 @@ export default function App () {
         <input type="radio" id="room" name="room" value="room" checked={radio === false} onClick={() => setRadio(false)} onChange={WhichForm} />
         <label htmlFor="room">Room</label>
         <input type="radio" id="account" name="account" value="account" checked={radio === true} onClick={() => setRadio(true)} onChange={WhichForm} />
-        <label htmlFfor="account">Account</label>
+        <label htmlFor="account">Account</label>
       </div>
       {radio
         ? (
