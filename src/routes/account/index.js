@@ -8,22 +8,15 @@ import Matrix from '../../Matrix'
 import { useAuth } from '../../Auth'
 
 const Account = () => {
-  // eslint-disable-next-line
-  const joinedRooms = useJoinedRooms();
+  const joinedRooms = useJoinedRooms()
   const [mail, setMail] = useState('')
   const history = useHistory()
   const logoutRef = useRef(0)
   const { t } = useTranslation(['translation', 'account'])
   const [logBtnStr, setLogBtnStr] = useState(t('account:logout'))
-  const [visibleRooms, setVisibleRooms] = useState([])
   const matrixClient = Matrix.getMatrixClient()
 
   const auth = useAuth()
-
-  const visRooms = async () => {
-    const visible = await Promise.all(matrixClient.getVisibleRooms())
-    setVisibleRooms(visible)
-  }
 
   const getAccData = async () => {
     try {
@@ -94,7 +87,6 @@ const Account = () => {
   useEffect(() => {
     getAccData()
     getSync()
-    visRooms()
     // eslint-disable-next-line
   }, []);
 
@@ -102,23 +94,22 @@ const Account = () => {
     LogoutBtn()
     // eslint-disable-next-line
   }, [t]);
+
+  if (joinedRooms.length === 0) {
+    return <Loading />
+  }
+
   return (
-    <>
-      {joinedRooms.length === 0 ? (<Loading />) : (
-        <section className="account">
-          <ProfilePic />
-          <p>{t('account:rooms.text')}</p>
-          <ul>
-            {[...joinedRooms].sort().map(joinedRoom => (
-              joinedRoom !== '' && <li key={joinedRoom}>{joinedRoom}</li>
-            ))}
-          </ul>
-          {/* <LogoutBtn /> */}
-        </section>
-      )
-      }
-      {console.log(visibleRooms)}
-    </>
+    <section className="account">
+      <ProfilePic />
+      <p>{t('account:rooms.text')}</p>
+      <ul>
+        {[...joinedRooms].sort().map(joinedRoom => (
+          joinedRoom !== '' && <li key={joinedRoom}>{joinedRoom}</li>
+        ))}
+      </ul>
+      {/* <LogoutBtn /> */}
+    </section>
   )
 }
 

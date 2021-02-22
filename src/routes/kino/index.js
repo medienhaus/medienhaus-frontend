@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 // import { useTranslation } from 'react-i18next';
 import ReactPlayer from 'react-player'
+import * as PropTypes from 'prop-types'
 
 const Kino = () => {
   // const { t } = useTranslation(['translation', 'kino']);
@@ -26,12 +27,18 @@ const Kino = () => {
     )
   }
 
+  Button.propTypes = {
+    url: PropTypes.array.isRequired,
+    head: PropTypes.element,
+    sub: PropTypes.element
+  }
+
   return (
     <section className="kino with-sidebar">
       <div>
         <section className="video">
           <div className="videowrapper">
-            <ReactPlayer className="videoplayer" playing controls url={video} light volume={0.6} width='100%' onProgress={(state) => setPlayed(state.played)} />
+            <ReactPlayer className="videoplayer" playing controls url={video} light volume={0.6} width="100%" onProgress={(state) => setPlayed(state.played)} />
             <progress max={1} value={played} />
           </div>
         </section>

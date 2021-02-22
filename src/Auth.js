@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import Matrix from './Matrix'
+import * as PropTypes from 'prop-types'
 
 const AuthContext = createContext(undefined)
 
@@ -11,6 +12,10 @@ function AuthProvider ({ children }) {
       {children}
     </AuthContext.Provider>
   )
+}
+
+AuthProvider.propTypes = {
+  children: PropTypes.element
 }
 
 function useAuth () {

@@ -22,6 +22,7 @@ import Admin from './routes/admin'
 
 import { AuthProvider, useAuth } from './Auth'
 import { Loading } from './components/loading'
+import PropTypes from 'prop-types'
 
 function PrivateRoute ({ children, ...rest }) {
   const auth = useAuth()
@@ -46,6 +47,10 @@ function PrivateRoute ({ children, ...rest }) {
   return (
     <Route {...rest}>{children}</Route>
   )
+}
+
+PrivateRoute.propTypes = {
+  children: PropTypes.element
 }
 
 const App = () => (
