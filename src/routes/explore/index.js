@@ -83,6 +83,14 @@ const Explore = () => {
   const searchBar = e => {
     setSearch(e.target.value)
   }
+  const roomBar = e => {
+    e.preventDefault();
+    setAdvancedRoom(e.target.value)
+  }
+  const serverBar = e => {
+    e.preventDefault();
+    setAdvancedServer(e.target.value)
+  }
 
   const roomBar = e => {
     e.preventDefault()
@@ -278,7 +286,6 @@ const Explore = () => {
       </>
     )
   }
-
   return (
     <section className="explore">
       <form id="server">
