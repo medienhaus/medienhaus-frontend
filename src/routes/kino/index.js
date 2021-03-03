@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
-//import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import ReactPlayer from 'react-player'
+import * as PropTypes from 'prop-types'
 
 const Kino = () => {
-  //const { t } = useTranslation(['translation', 'kino']);
+  // const { t } = useTranslation(['translation', 'kino']);
   const [video, setVideo] = useState([
     { src: 'video/public_onboarding.mp4', type: 'video/mp4' },
     { src: 'video/public_onboarding.webm', type: 'video/webm' }
-  ]);
-  const [played, setPlayed] = useState(null);
+  ])
+  const [played, setPlayed] = useState(null)
 
   const Button = ({ url, head, sub }) => {
     console.log(Object.entries(video))
-    console.log("url: " + url)
+    console.log('url: ' + url)
     return (
       <li>
         <button onClick={() => setVideo(url)} >
@@ -26,12 +27,18 @@ const Kino = () => {
     )
   }
 
+  Button.propTypes = {
+    url: PropTypes.array.isRequired,
+    head: PropTypes.element,
+    sub: PropTypes.element
+  }
+
   return (
     <section className="kino with-sidebar">
       <div>
         <section className="video">
           <div className="videowrapper">
-            <ReactPlayer className="videoplayer" playing controls url={video} light volume={0.6} width='100%' onProgress={(state) => setPlayed(state.played)} />
+            <ReactPlayer className="videoplayer" playing controls url={video} light volume={0.6} width="100%" onProgress={(state) => setPlayed(state.played)} />
             <progress max={1} value={played} />
           </div>
         </section>
@@ -78,4 +85,4 @@ const Kino = () => {
   )
 }
 
-export default Kino;
+export default Kino

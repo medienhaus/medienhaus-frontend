@@ -1,54 +1,45 @@
-import React, { useState } from "react";
-
-
-const myUserId = localStorage.getItem("mx_user_id");
-const myAccessToken = localStorage.getItem("mx_access_token");
-const matrixClient = matrixcs.createClient({
-  baseUrl: "https://medienhaus.udk-berlin.de",
-  accessToken: myAccessToken,
-  userId: myUserId,
-  useAuthorizationHeader: true
-});
-
+import React, { useState } from 'react'
+import Matrix from '../../Matrix'
 
 const JoinLeaveButton = ({ name, roomId }) => {
+  const [isLoading, setLoading] = useState(false)
+  const [joinedRooms, setJoinedRooms] = useState([])
 
-  const [isLoading, setLoading] = useState(false);
-  const [joinedRooms, setJoinedRooms] = useState([]);
+  const matrixClient = Matrix.getMatrixClient()
 
   const getJoinedRooms = async () => {
-    const answer = await matrixClient.getJoinedRooms();
+    const answer = await matrixClient.getJoinedRooms()
     const getNames = await Promise.all(answer.joined_rooms.map(async (roomId) => {
       try {
-        const room = await matrixClient.getStateEvent(roomId, "m.room.name");
-        if (room.name !== "") {
-          return room.name;
+        const room = await matrixClient.getStateEvent(roomId, 'm.room.name')
+        if (room.name !== '') {
+          return room.name
         } else {
-          return "[[ Untitled Chat ]]";
+          return '[[ Untitled Chat ]]'
         }
       } catch (error) {
-        return "[[ Private Chat ]]";
+        return '[[ Private Chat ]]'
       }
-    }));
-    setJoinedRooms(getNames);
+    }))
+    setJoinedRooms(getNames)
   }
 
   const handleClick = () => {
-    setLoading(true);
+    setLoading(true)
     if (joinedRooms.includes(name)) {
-      matrixClient.leave(roomId);
+      matrixClient.leave(roomId)
     } else {
-      matrixClient.joinRoom(roomId);
+      matrixClient.joinRoom(roomId)
     }
-    getJoinedRooms();
-    setLoading(false);
+    getJoinedRooms()
+    setLoading(false)
   }
 
   const handleText = () => {
     if (joinedRooms.includes(name)) {
-      return "LEAVE"
+      return 'LEAVE'
     } else {
-      return "JOIN"
+      return 'JOIN'
     }
   }
 
@@ -58,9 +49,9 @@ const JoinLeaveButton = ({ name, roomId }) => {
       onClick={!isLoading ? handleClick() : null}
       disabled={isLoading}
     >
-      {isLoading ? "Loading …" : handleText()}
+      {isLoading ? 'Loading …' : handleText()}
     </button>
-  );
+  )
 }
 
-export default JoinLeaveButton;
+export default JoinLeaveButton
