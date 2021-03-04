@@ -122,7 +122,7 @@ const Admin = () => {
       await matrixClient.uploadContent(selectedFile, { name: fileName })
         .then((response) => matrixClient.mxcUrlToHttp(response))
         .then((url) => matrixClient.sendMessage(roomId.room_id, {
-          body: `= yaml =\norder: ${faq.length + 1}\neditor: "${localStorage.getItem('mx_user_id')}"\nimage: ${url}\n= yaml =\n![${fileName}](${url})`,
+          body: `= yaml =\norder: ${faq.length}\neditor: "${localStorage.getItem('mx_user_id')}"\nimage: ${url}\n= yaml =\n![${fileName}](${url})`,
           format: 'org.matrix.custom.html',
           msgtype: 'm.text',
           formatted_body: `= yaml =\norder: ${faq.length + 1}\neditor: "${localStorage.getItem('mx_user_id')}"\nimage: ${url}\n= yaml =\n`
