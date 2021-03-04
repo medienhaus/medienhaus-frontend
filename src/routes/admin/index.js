@@ -3,7 +3,7 @@ import Matrix from '../../Matrix'
 import config from '../../config.json'
 // import adminList from "../../assets/data/admin.json"
 import { Loading } from '../../components/loading'
-import FetchFaq from '../../components/matrix_fetch_faq'
+import FetchCms from '../../components/matrix_fetch_cms'
 import { useTranslation } from 'react-i18next'
 import debounce from 'lodash/debounce'
 import Editor from 'rich-markdown-editor'
@@ -17,12 +17,12 @@ const Admin = () => {
   const [loading, setLoading] = useState(false)
   const { i18n } = useTranslation(['translation', 'support'])
   const converter = new showdown.Converter()
-  const { faq, error, fetching, onSave } = FetchFaq((index) => {
+  const faqPath = i18n.language === 'en' ? config.faq.en : config.faq.de
+  const { cms, error, fetching, onSave } = FetchCms(faqPath, index => {
     console.log(error, fetching)
   })
-  const [initalLength, setInitalLength] = useState(faq.length)
-  const faqPath = i18n.language === 'en' ? config.faq.en : config.faq.de
   const [selectedFile, setSelectedFile] = useState()
+  const [initalLength, setInitalLength] = useState(cms.length)
   const [fileName, setFileName] = useState('')
   const [upload, setUpload] = useState(false)
   const [uploadingImage, setUploadingImage] = useState(false)
@@ -36,7 +36,7 @@ const Admin = () => {
   }, [count]);
 
   useEffect(() => {
-    setInitalLength(faq.length)
+    setInitalLength(cms.length)
     // eslint-disable-next-line
   }, [fetching]);
 
@@ -70,14 +70,14 @@ const Admin = () => {
   }
 
   const changeOrder = (pos, direction) => {
-    faq.splice(pos + direction, 0, faq.splice(pos, 1).pop())
+    cms.splice(pos + direction, 0, cms.splice(pos, 1).pop())
     setCount(count + 1)
   }
 
   const addEntry = () => {
-    faq.splice(faq.length, 0, '')
+    cms.splice(cms.length, 0, '')
     setCount(count + 1)
-    console.log(faq.length)
+    console.log(cms.length)
   }
   const changeName = e => {
     e.preventDefault()
@@ -122,10 +122,10 @@ const Admin = () => {
       await matrixClient.uploadContent(selectedFile, { name: fileName })
         .then((response) => matrixClient.mxcUrlToHttp(response))
         .then((url) => matrixClient.sendMessage(roomId.room_id, {
-          body: `= yaml =\norder: ${faq.length}\neditor: "${localStorage.getItem('mx_user_id')}"\nimage: ${url}\n= yaml =\n![${fileName}](${url})`,
+          body: `= yaml =\norder: ${cms.length}\neditor: "${localStorage.getItem('mx_user_id')}"\nimage: ${url}\n= yaml =\n![${fileName}](${url})`,
           format: 'org.matrix.custom.html',
           msgtype: 'm.text',
-          formatted_body: `= yaml =\norder: ${faq.length + 1}\neditor: "${localStorage.getItem('mx_user_id')}"\nimage: ${url}\n= yaml =\n`
+          formatted_body: `= yaml =\norder: ${cms.length + 1}\neditor: "${localStorage.getItem('mx_user_id')}"\nimage: ${url}\n= yaml =\n`
         }))
         .then((res) => console.log(res))
       onSave()
@@ -217,15 +217,15 @@ const Admin = () => {
       if (redact) {
         try {
           await matrixClient.redactEvent(roomId.room_id, eventId, null, { reason: 'I have my reasons!' })
-          faq.splice(pos, 1)
+          cms.splice(pos, 1)
           console.log('redaction happened')
           // onSave()
-          console.log(faq)
+          console.log(cms)
         } catch (e) {
           console.log('error while trying to edit: ')
         }
       }
-      faq.forEach(async (entry, index) => {
+      cms.forEach(async (entry, index) => {
         if (entry.order !== index && localStorage.getItem(entry.event) === null) {
           console.log('order changed')
           try {
@@ -263,7 +263,7 @@ const Admin = () => {
         try {
           await matrixClient.redactEvent(roomId.room_id, eventId, null, { 'reason': 'I have my reasons!' })
           onSave()
-          console.log(faq)
+          console.log(cms)
         } catch (e) {
           console.log("error while trying to edit: ")
         }
@@ -307,7 +307,7 @@ const Admin = () => {
   const EditorComponent = () => {
     return (
       <>
-        { faq.map((entry, index) => (
+        { cms.map((entry, index) => (
           <>
             <Editor
               defaultValue={entry.body}
@@ -317,7 +317,7 @@ const Admin = () => {
               }, 250)}
               key={entry.eventId} />
             {index !== 0 && <button key={'up' + index} onClick={() => changeOrder(index, -1)}>UP</button>}
-            {index < faq.length - 1 && <button key={'down' + index} onClick={() => changeOrder(index, 1)}>DOWN</button>}
+            {index < cms.length - 1 && <button key={'down' + index} onClick={() => changeOrder(index, 1)}>DOWN</button>}
             <button key={'save' + index} onClick={() => saveAll(entry.event, false, index)}>Save Changes</button>
             <button key={'delete' + index} onClick={() => saveAll(entry.event, true, index)}>Delete Entry</button>
             <hr />
@@ -335,13 +335,13 @@ const Admin = () => {
         <section className="admin">
           <h2>Edit FAQ</h2>
           {fetching || loading ? <Loading /> : <EditorComponent />}
-          <button onClick={() => addEntry()} disabled={initalLength !== faq.length}>ADD NEW ENTRY</button>
+          <button onClick={() => addEntry()} disabled={initalLength !== cms.length}>ADD NEW ENTRY</button>
 
-          <button onClick={() => setUpload(upload => !upload)} disabled={initalLength !== faq.length}>ADD IMAGE</button>
+          <button onClick={() => setUpload(upload => !upload)} disabled={initalLength !== cms.length}>ADD IMAGE</button>
           {upload
             ? (
               <div>
-                <input type="file" name="filename" onChange={changeHandler} disabled={initalLength !== faq.length} />
+                <input type="file" name="filename" onChange={changeHandler} disabled={initalLength !== cms.length} />
                 {AddImage()}
                 <div>
                   {uploadingImage ? <Loading /> : <button onClick={handleSubmission}>Upload</button>}

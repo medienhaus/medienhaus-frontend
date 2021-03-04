@@ -2,13 +2,16 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../../Auth'
 import config from '../../config.json'
+import FetchCms from '../../components/matrix_fetch_cms'
 
 const Nav = () => {
   const auth = useAuth()
+  const { cms, error, fetching } = FetchCms(config.nav, false)
 
   if (auth.user === null) {
     return null
   }
+  console.log('error while fetching nav: ' + error)
 
   return (
     <nav>
@@ -25,12 +28,7 @@ const Nav = () => {
         {auth.user && (
           <>
             <div>
-              <NavLink activeclassname="active" to="/account">/account</NavLink>
-              <NavLink activeclassname="active" to="/explore">/explore</NavLink>
-              <NavLink activeclassname="active" to="/request">/request</NavLink>
-              <NavLink activeclassname="active" to="/support">/support</NavLink>
-              <NavLink activeclassname="active" to="/kino">/kino</NavLink>
-              <NavLink activeclassname="active" to="/admin">/admin</NavLink>
+              {fetching ? null : cms.map((entry, index) => <NavLink key={index} activeclassname="active" to={entry.link}>{entry.body}</NavLink>)}
               {
                 // <NavLink activeclassname="active" to="/admin">/admin</NavLink>}
                 // matrixClient.isSynapseAdministrator() ?? console.log('with great power comes great responsibility')

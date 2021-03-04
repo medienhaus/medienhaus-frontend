@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 import * as matrixcs from 'matrix-js-sdk'
 import config from '../../config.json'
 import { useAuth } from '../../Auth'
-import FetchFaq from '../../components/matrix_fetch_faq'
+import FetchCms from '../../components/matrix_fetch_cms'
 
 const myUserId = '@support-bot:medienhaus.udk-berlin.de'
 const myAccessToken = 'MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEBzdXBwb3J0LWJvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSBwQVZqWU9XflI0NFRYUkEtCjAwMmZzaWduYXR1cmUgdZm-5kS1tijZ3TQkBeiwsO261iOCBA-lhbLcTb4bTccK'
@@ -31,9 +31,7 @@ const Support = () => {
   const auth = useAuth()
   const profile = auth.user
   const faqPath = i18n.language === 'en' ? config.faq.en : config.faq.de
-
-  const { faq, error, fetching } = FetchFaq(false, faqPath)
-
+  const { cms, error, fetching } = FetchCms(faqPath, false)
   const changeMsg = e => setMsg(e.target.value)
   const changeMail = e => setMail(e.target.value)
   const changeBrowser = e => setBrowser(e.target.value)
@@ -88,7 +86,7 @@ const Support = () => {
           {/* headline.map((txt, index) => {
           return <button key={index} onClick={(e) => scrollBtn(e, txt.scroll)}>{txt.txt}</button>
         }) */}
-          {fetching ? <Loading /> : error ? console.log(error) : faq.map((questions, index) => (<ReactMarkdown key={index} source={questions.body} />))}
+          {fetching ? <Loading /> : error ? console.log(error) : cms.map((questions, index) => (<ReactMarkdown key={index} source={questions.body} />))}
         </section>
         <section className="support">
           <h2>{t('support:instruction')}</h2>
