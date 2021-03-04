@@ -1,43 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import ReactMarkdown from 'react-markdown' // https://github.com/remarkjs/react-markdown
-import { useForm } from "react-hook-form"; // https://github.com/react-hook-form/react-hook-form
+import { useForm } from 'react-hook-form' // https://github.com/react-hook-form/react-hook-form
 import { Loading } from '../../components/loading'
-import { useTranslation } from 'react-i18next';
-//import { Link } from "react-router-dom";
-import * as matrixcs from "matrix-js-sdk";
+import { useTranslation } from 'react-i18next'
+// import { Link } from "react-router-dom";
+import * as matrixcs from 'matrix-js-sdk'
 import config from '../../config.json'
-import { useAuth } from "../../Auth";
-import FetchFaq from '../../components/matrix_fetch_faq';
+import { useAuth } from '../../Auth'
+import FetchFaq from '../../components/matrix_fetch_faq'
 
-const myUserId = "@support-bot:medienhaus.udk-berlin.de";
-const myAccessToken = "MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEBzdXBwb3J0LWJvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSBwQVZqWU9XflI0NFRYUkEtCjAwMmZzaWduYXR1cmUgdZm-5kS1tijZ3TQkBeiwsO261iOCBA-lhbLcTb4bTccK";
+const myUserId = '@support-bot:medienhaus.udk-berlin.de'
+const myAccessToken = 'MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEBzdXBwb3J0LWJvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSBwQVZqWU9XflI0NFRYUkEtCjAwMmZzaWduYXR1cmUgdZm-5kS1tijZ3TQkBeiwsO261iOCBA-lhbLcTb4bTccK'
 const matrixClient = matrixcs.createClient({
   baseUrl: config.baseUrl,
   accessToken: myAccessToken,
   userId: myUserId,
   useAuthorizationHeader: true
-});
+})
 
 const Support = () => {
-  const { register, handleSubmit, errors } = useForm();
-  const [msg, setMsg] = useState("");
-  const [mail, setMail] = useState("");
-  const [system, setSystem] = useState();
-  const [browser, setBrowser] = useState();
-  const [loading, setLoading] = useState(false);
-  const [sending, setSending] = useState(false);
-  const { t, i18n } = useTranslation(['translation', 'support']);
+  const { register, handleSubmit, errors } = useForm()
+  const [msg, setMsg] = useState('')
+  const [mail, setMail] = useState('')
+  const [system, setSystem] = useState()
+  const [browser, setBrowser] = useState()
+  const [loading, setLoading] = useState(false)
+  const [sending, setSending] = useState(false)
+  const { t, i18n } = useTranslation(['translation', 'support'])
 
-  const auth = useAuth();
-  const profile = auth.user;
-  const faqPath = i18n.language === "en" ? config.faq.en : config.faq.de;
+  const auth = useAuth()
+  const profile = auth.user
+  const faqPath = i18n.language === 'en' ? config.faq.en : config.faq.de
 
-  const { faq, error, fetching } = FetchFaq(false, faqPath);
+  const { faq, error, fetching } = FetchFaq(false, faqPath)
 
-  const changeMsg = e => setMsg(e.target.value);
-  const changeMail = e => setMail(e.target.value);
-  const changeBrowser = e => setBrowser(e.target.value);
-  const changeSystem = e => setSystem(e.target.value);
+  const changeMsg = e => setMsg(e.target.value)
+  const changeMail = e => setMail(e.target.value)
+  const changeBrowser = e => setBrowser(e.target.value)
+  const changeSystem = e => setSystem(e.target.value)
 
   /*
   const getHeadlines = () => {
@@ -54,24 +54,22 @@ const Support = () => {
 
   const onSubmit = async () => {
     setLoading(true)
-    setSending(true);
+    setSending(true)
     const support = {
-      "msgtype": "m.text",
-      "format": "org.matrix.custom.html",
-      "body": "support message",
-      "formatted_body": "From: <b>" + profile.displayname + "</b>  <br /> Mail address: <b>" + mail + "</b> <br /> Web browser: <b>" + browser + "</b> <br /> Operating system: <b>" + system + "</b><hr /> <b> " + msg + "</b><br />"
+      msgtype: 'm.text',
+      format: 'org.matrix.custom.html',
+      body: 'support message',
+      formatted_body: 'From: <b>' + profile.displayname + '</b>  <br /> Mail address: <b>' + mail + '</b> <br /> Web browser: <b>' + browser + '</b> <br /> Operating system: <b>' + system + '</b><hr /> <b> ' + msg + '</b><br />'
     }
     try {
-      await matrixClient.sendMessage("!PHQMOmXiiNqFUJNDie:medienhaus.udk-berlin.de", support)
-      alert("Your message has ben sent! We will get back to you asap …");
-    }
-    catch (e) {
-      console.log(e);
-      alert("Couldn’t send your message. Please check your internet connection.");
-    }
-    finally {
-      setSending(false);
-      setLoading(false);
+      await matrixClient.sendMessage('!PHQMOmXiiNqFUJNDie:medienhaus.udk-berlin.de', support)
+      alert('Your message has ben sent! We will get back to you asap …')
+    } catch (e) {
+      console.log(e)
+      alert('Couldn’t send your message. Please check your internet connection.')
+    } finally {
+      setSending(false)
+      setLoading(false)
     }
   }
 
@@ -83,22 +81,21 @@ const Support = () => {
   */
 
   return (
+    // eslint-disable-next-line multiline-ternary
     loading ? <Loading /> : (
       <>
         <section className="faq">
-          {/*headline.map((txt, index) => {
+          {/* headline.map((txt, index) => {
           return <button key={index} onClick={(e) => scrollBtn(e, txt.scroll)}>{txt.txt}</button>
-        })*/}
-          {fetching ? <Loading /> : faq.map(questions => (
-            <ReactMarkdown source={questions.body} />
-          ))}
+        }) */}
+          {fetching ? <Loading /> : error ? console.log(error) : faq.map((questions, index) => (<ReactMarkdown key={index} source={questions.body} />))}
         </section>
         <section className="support">
           <h2>{t('support:instruction')}</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label htmlFor="Operating System">{t('support:form.os')}</label>
-              <select name="Operating System" defaultValue={''} onChange={changeSystem} ref={register({ required: true })}>
+              <select name="Operating System" defaultValue={''} onBlur={changeSystem} ref={register({ required: true })}>
                 <option value="" disabled hidden>-- select operating system --</option>
                 <option value="Linux">Linux</option>
                 <option value="macOS">macOS</option>
@@ -108,10 +105,10 @@ const Support = () => {
                 <option value="Other">(Other)</option>
               </select>
             </div>
-            {errors.browser && "Please select an operating system."}
+            {errors.browser && 'Please select an operating system.'}
             <div>
               <label htmlFor="Web Browser">{t('support:form.browser')}</label>
-              <select name="browser" defaultValue={''} onChange={changeBrowser} ref={register({ required: true })}>
+              <select name="browser" defaultValue={''} onBlur={changeBrowser} ref={register({ required: true })}>
                 <option value="" disabled hidden >-- select web browser --</option>
                 <option value="Firefox">Firefox</option>
                 <option value="Chrome">Chrome</option>
@@ -122,20 +119,20 @@ const Support = () => {
                 <option value="Other">(Other)</option>
               </select>
             </div>
-            {errors.browser && "Please select a web browser."}
+            {errors.browser && 'Please select a web browser.'}
             <div>
               <label htmlFor="Mail Address">{t('support:form.email')}</label>
-              {/* eslint-disable-next-line*/}
+              {/* eslint-disable-next-line */}
               <input type="email" placeholder="u.name@udk-berlin.de" name="email" value={mail} onChange={changeMail} ref={register({ required: true, pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })} />
             </div>
-            {errors.email && "Please enter a valid email address."}
+            {errors.email && 'Please enter a valid email address.'}
             <textarea name="messageInput" placeholder={t('support:form.placeholder')} rows="7" spellCheck="true" value={msg} onChange={changeMsg} ref={register({ required: true })} />
-            {errors.messageInput && "This field can’t be empty."}
+            {errors.messageInput && 'This field can’t be empty.'}
             <button type="submit" disabled={sending}>{t('support:button')}</button>
           </form>
         </section>
       </>)
-  );
+  )
 }
 
-export default Support;
+export default Support
