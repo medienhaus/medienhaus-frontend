@@ -8,10 +8,11 @@ const Nav = () => {
   const auth = useAuth()
   const { cms, error, fetching } = FetchCms(config.nav, false)
 
+  !error ?? console.log('error while fetching nav: ' + error)
+
   if (auth.user === null) {
     return null
   }
-  console.log('error while fetching nav: ' + error)
 
   return (
     <nav>
