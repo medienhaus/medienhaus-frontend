@@ -27,7 +27,7 @@ const Admin = () => {
   const faqPath = i18n.language === "en" ? config.faq.en : config.faq.de;
   const onlineUsers = []
   const [selectedFile, setSelectedFile] = useState();
-  const [fileName, setFileName] = useState();
+  const [fileName, setFileName] = useState("");
   const [upload, setUpload] = useState(false);
 
   //adminList.map(names => (admins.push(names.name)))
@@ -133,7 +133,8 @@ const Admin = () => {
         .then((res) => console.log(res))
       onSave()
       setFileName()
-      setSelectedFile()
+      setSelectedFile("")
+      setUpload(false)
     } catch (e) {
       console.log("error while trying to save image: " + e)
     }
