@@ -25,6 +25,7 @@ const Admin = () => {
   const [selectedFile, setSelectedFile] = useState()
   const [fileName, setFileName] = useState('')
   const [upload, setUpload] = useState(false)
+  const [uploadingImage, setUploadingImage] = useState(false)
 
   // adminList.map(names => (admins.push(names.name)))
 
@@ -115,6 +116,7 @@ const Admin = () => {
   }
 
   const handleSubmission = async () => {
+    setUploadingImage(true)
     const roomId = await matrixClient.getRoomIdForAlias(faqPath)
     try {
       await matrixClient.uploadContent(selectedFile, { name: fileName })
@@ -133,6 +135,7 @@ const Admin = () => {
     } catch (e) {
       console.log('error while trying to save image: ' + e)
     }
+    setUploadingImage(false)
   }
   /* const createEditContent = (editedEvent, index) => {
   //for editing messages
@@ -341,7 +344,7 @@ const Admin = () => {
                 <input type="file" name="filename" onChange={changeHandler} disabled={initalLength !== faq.length} />
                 {AddImage()}
                 <div>
-                  <button onClick={handleSubmission}>Upload</button>
+                  {uploadingImage ? <Loading /> : <button onClick={handleSubmission}>Upload</button>}
                 </div>
               </div>)
             : null}
