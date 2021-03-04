@@ -29,6 +29,7 @@ const Nav = () => {
               <NavLink activeclassname="active" to="/request">/request</NavLink>
               <NavLink activeclassname="active" to="/support">/support</NavLink>
               <NavLink activeclassname="active" to="/kino">/kino</NavLink>
+              <NavLink activeclassname="active" to="/admin">/admin</NavLink>
               {
                 // <NavLink activeclassname="active" to="/admin">/admin</NavLink>}
                 // matrixClient.isSynapseAdministrator() ?? console.log('with great power comes great responsibility')
