@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../../Auth'
+import config from '../../config.json'
 
 const Nav = () => {
   const auth = useAuth()
@@ -15,7 +16,7 @@ const Nav = () => {
         <div>
           {auth.user
             ? (
-            <a href="https://medienhaus.udk-berlin.de/classroom" rel="nofollow noopener noreferrer" target="_self">/classroom&nbsp;-&gt;</a>
+            <a href={config.baseUrl + '/classroom'} rel="nofollow noopener noreferrer" target="_self">/classroom&nbsp;-&gt;</a>
               )
             : (
             <NavLink activeclassname="active" to="/login">/login</NavLink>
