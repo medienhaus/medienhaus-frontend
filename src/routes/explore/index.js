@@ -88,6 +88,7 @@ const Explore = () => {
     e.preventDefault()
     setAdvancedRoom(e.target.value)
   }
+
   const serverBar = e => {
     e.preventDefault()
     setAdvancedServer(e.target.value)
@@ -278,7 +279,6 @@ const Explore = () => {
       </>
     )
   }
-
   return (
     <section className="explore">
       <form id="server">
