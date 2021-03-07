@@ -122,10 +122,10 @@ const Admin = () => {
       await matrixClient.uploadContent(selectedFile, { name: fileName })
         .then((response) => matrixClient.mxcUrlToHttp(response))
         .then((url) => matrixClient.sendMessage(roomId.room_id, {
-          body: `= yaml =\norder: ${cms.length}\neditor: "${localStorage.getItem('mx_user_id')}"\nimage: ${url}\n= yaml =\n![${fileName}](${url})`,
+          body: `= yaml =\norder: ${cms.length}\neditor: "${localStorage.getItem('medienhaus_user_id')}"\nimage: ${url}\n= yaml =\n![${fileName}](${url})`,
           format: 'org.matrix.custom.html',
           msgtype: 'm.text',
-          formatted_body: `= yaml =\norder: ${cms.length + 1}\neditor: "${localStorage.getItem('mx_user_id')}"\nimage: ${url}\n= yaml =\n`
+          formatted_body: `= yaml =\norder: ${cms.length + 1}\neditor: "${localStorage.getItem('medienhaus_user_id')}"\nimage: ${url}\n= yaml =\n`
         }))
         .then((res) => console.log(res))
       onSave()
@@ -165,7 +165,7 @@ const Admin = () => {
     const sendStatus = async (time, profile, body) => {
 
       const roomId = await matrixClient.getRoomIdForAlias(faqPath);
-      const allMessages = config.baseUrl + `/_matrix/client/r0/rooms/${roomId.room_id}/messages?limit=999999&access_token=${localStorage.getItem('mx_access_token')}&dir=b`
+      const allMessages = config.baseUrl + `/_matrix/client/r0/rooms/${roomId.room_id}/messages?limit=999999&access_token=${localStorage.getItem('medienhaus_access_token')}&dir=b`
       const result = await fetch(allMessages)
       const data = await result.json();
       data.chunk.map(type => {
@@ -201,9 +201,9 @@ const Admin = () => {
     const html = converter.makeHtml(body)
     const img = html.includes('<img')
     const imgLink = html.substring(html.indexOf('alt="'), html.indexOf('"'))
-    const formattedBody = img ? `= yaml =\norder: ${index}\neditor: "${localStorage.getItem('mx_user_id')}"\nimage: ${imgLink}\n= yaml =\n${html}` : `= yaml =\norder: ${index}\neditor: "${localStorage.getItem('mx_user_id')}"\n= yaml =\n${html}`
+    const formattedBody = img ? `= yaml =\norder: ${index}\neditor: "${localStorage.getItem('medienhaus_user_id')}"\nimage: ${imgLink}\n= yaml =\n${html}` : `= yaml =\norder: ${index}\neditor: "${localStorage.getItem('medienhaus_user_id')}"\n= yaml =\n${html}`
     await matrixClient.sendMessage(room, {
-      body: `= yaml =\norder: ${index}\neditor: "${localStorage.getItem('mx_user_id')}"\n= yaml =\n${body}`,
+      body: `= yaml =\norder: ${index}\neditor: "${localStorage.getItem('medienhaus_user_id')}"\n= yaml =\n${body}`,
       format: 'org.matrix.custom.html',
       msgtype: 'm.text',
       formatted_body: formattedBody

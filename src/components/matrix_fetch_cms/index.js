@@ -7,7 +7,7 @@ const fetchMatrix = async (path) => {
   const matrixClient = Matrix.getMatrixClient()
   try {
     const roomId = await matrixClient.getRoomIdForAlias(path)
-    const allMessages = config.baseUrl + `/_matrix/client/r0/rooms/${roomId.room_id}/messages?limit=999999&access_token=${localStorage.getItem('mx_access_token')}&dir=b`
+    const allMessages = config.baseUrl + `/_matrix/client/r0/rooms/${roomId.room_id}/messages?limit=999999&access_token=${localStorage.getItem('medienhaus_access_token')}&dir=b`
     const result = await fetch(allMessages)
     const data = await result.json()
     console.log(data)
