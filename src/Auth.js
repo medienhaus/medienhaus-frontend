@@ -40,7 +40,7 @@ function useAuthProvider () {
   }
 
   const fetchAndSetUserData = (callback) => {
-    Matrix.getMatrixClient().getProfileInfo(localStorage.getItem('mx_user_id')).then((profile) => {
+    Matrix.getMatrixClient().getProfileInfo(localStorage.getItem('medienhaus_user_id')).then((profile) => {
       setTimeout(() => {
         if (profile) {
           setUser(profile)
@@ -56,7 +56,7 @@ function useAuthProvider () {
   }
 
   useEffect(() => {
-    if (localStorage.getItem('mx_user_id')) {
+    if (localStorage.getItem('medienhaus_user_id') && localStorage.getItem('medienhaus_access_token')) {
       fetchAndSetUserData()
     } else {
       setUser(false)
