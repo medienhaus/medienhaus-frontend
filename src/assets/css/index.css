@@ -707,10 +707,12 @@ form textarea {
   form label + * {
     margin-top: calc(var(--margin) * 0.5);
   }
+  /*
   form input[name="username"] {
     margin-right: calc(var(--margin) * 0.5);
     width: calc(100% - 13.2ch);
   }
+  */
   form select {
     background-position: calc(100% - calc(var(--margin) * 0.6)) 55%;
     width: 100%;
@@ -727,6 +729,7 @@ form textarea {
   form select {
     padding: calc(var(--margin) * 0.6);
   }
+  /*
   #login label[for="username"] {
     display: block;
   }
@@ -734,6 +737,7 @@ form textarea {
     margin-right: calc(var(--margin) * 0.5);
     width: calc(100% - 13.2ch);
   }
+  */
   .explore input {
     width: 100%;
   }
@@ -765,9 +769,11 @@ form textarea {
   form input {
     min-width: 10ch;
   }
+  /*
   #login div:first-of-type {
     grid-template-columns: 8ch auto max-content;
   }
+  */
 }
 
 /* 799px */

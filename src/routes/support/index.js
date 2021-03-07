@@ -3,7 +3,6 @@ import ReactMarkdown from 'react-markdown' // https://github.com/remarkjs/react-
 import { useForm } from 'react-hook-form' // https://github.com/react-hook-form/react-hook-form
 import { Loading } from '../../components/loading'
 import { useTranslation } from 'react-i18next'
-// import { Link } from "react-router-dom";
 import * as matrixcs from 'matrix-js-sdk'
 import { useAuth } from '../../Auth'
 
@@ -33,42 +32,17 @@ const Support = () => {
   const changeMail = e => setMail(e.target.value)
   const changeBrowser = e => setBrowser(e.target.value)
   const changeSystem = e => setSystem(e.target.value)
-  const faqPath = i18n.language === 'en' ? require('../../assets/data/support/support_en.md') : require('../../assets/data/support/support_de.md')
+  const faqPath = i18n.language === 'en' ? require('../../assets/data/support/support_en.md').default : require('../../assets/data/support/support_de.md').default
 
   const [markdown, setMarkdown] = useState()
-  // const [headline, setHeadline] = useState([]);
-  // const elements = [];
 
-  const getMarkdownText = () => {
+  useEffect(() => {
     setLoading(true)
     fetch(faqPath)
       .then((response) => response.text())
       .then((text) => setMarkdown(text))
       .then(() => setLoading(false))
-  }
-
-  useEffect(() => {
-    getMarkdownText()
-    // eslint-disable-next-line
-  }, [i18n.language])
-
-  useEffect(() => {
-    // getHeadlines();
-    // eslint-disable-next-line
-  }, [markdown, i18n.language])
-
-  /*
-  const getHeadlines = () => {
-    const el = document.getElementsByTagName('h2');
-    //console.log(el);
-    // eslint-disable-next-line
-    Object.keys(el).map(function (key, index) {
-      elements.push({ "txt": el[key].innerText, "scroll": el[key].offsetTop });
-    });
-    setHeadline(elements);
-    setLoading(false);
-  }
-  */
+  }, [faqPath, i18n.language])
 
   const onSubmit = async () => {
     setSending(true)
@@ -89,21 +63,11 @@ const Support = () => {
     }
   }
 
-  /*
-  const scrollBtn = (e, scroll) => {
-    e.preventDefault();
-    window.scrollTo(0, scroll - 100);
-  }
-  */
-
   if (loading) return <Loading />
 
   return (
     <>
       <section className="faq">
-        {/* headline.map((txt, index) => {
-          return <button key={index} onClick={(e) => scrollBtn(e, txt.scroll)}>{txt.txt}</button>
-        }) */}
         <ReactMarkdown source={markdown} />
       </section>
       <section className="support">
@@ -138,7 +102,7 @@ const Support = () => {
           {errors.browser && 'Please select a web browser.'}
           <div>
             <label htmlFor="Mail Address">{t('support:form.email')}</label>
-            {/* eslint-disable-next-line */}
+            {/* eslint-disable-next-line no-useless-escape */}
             <input type="email" placeholder="u.name@udk-berlin.de" name="email" value={mail} onChange={changeMail} ref={register({ required: true, pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })} />
           </div>
           {errors.email && 'Please enter a valid email address.'}
