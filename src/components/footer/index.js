@@ -15,7 +15,7 @@ const Footer = () => {
 
   return (
     <footer>
-      <p className="copyright">&#x1f12f; 2020 <a href="mailto:info@medienhaus.udk-berlin.de?subject=medienhaus/" rel="nofollow noopener noreferrer"><strong>medienhaus/</strong></a></p>
+      <p className="copyright">&#x1f12f; 2021 <a href="mailto:info@medienhaus.udk-berlin.de?subject=medienhaus/" rel="nofollow noopener noreferrer"><strong>medienhaus/</strong></a></p>
       <div className="l10n">
         <button onClick={() => changeLanguage('de')}>
           {t('translation:de')}
