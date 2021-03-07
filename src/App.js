@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect, useLocation } from 'react-router-dom'
 import Header from './components/header'
 import Footer from './components/footer'
@@ -59,23 +59,27 @@ const App = () => (
       <Router>
         <Header />
         <main>
-          <Switch>
-            <Route path="/" exact component={Landing} />
-            <Route path="/login" component={Login} />
-            <PrivateRoute path="/dashboard" component={Dashboard} />
-            <PrivateRoute path="/account" component={Account} />
-            <PrivateRoute path="/explore" component={Explore} />
-            <PrivateRoute path="/request" component={Request} />
-            <PrivateRoute path="/support" component={Support} />
-            <PrivateRoute path="/kino" component={Kino} />
-            <PrivateRoute path="/meet" component={Meet} />
-            <PrivateRoute path="/write" component={Write} />
-            <PrivateRoute path="/stream" component={Stream} />
-            <PrivateRoute path="/admin" component={Admin} />
-          </Switch>
+          <Suspense fallback={<Loading />}>
+            <Switch>
+              <Route path="/" exact component={Landing} />
+              <Route path="/login" component={Login} />
+              <PrivateRoute path="/dashboard" component={Dashboard} />
+              <PrivateRoute path="/account" component={Account} />
+              <PrivateRoute path="/explore" component={Explore} />
+              <PrivateRoute path="/request" component={Request} />
+              <PrivateRoute path="/support" component={Support} />
+              <PrivateRoute path="/kino" component={Kino} />
+              <PrivateRoute path="/meet" component={Meet} />
+              <PrivateRoute path="/write" component={Write} />
+              <PrivateRoute path="/stream" component={Stream} />
+              <PrivateRoute path="/admin" component={Admin} />
+            </Switch>
+          </Suspense>
         </main>
         <Nav />
-        <Footer />
+        <Suspense fallback="">
+          <Footer />
+        </Suspense>
       </Router>
     </AuthProvider>
   </React.Fragment>
