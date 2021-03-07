@@ -3,8 +3,8 @@ import config from './config.json'
 
 class Matrix {
   constructor () {
-    const myUserId = localStorage.getItem('mx_user_id')
-    const myAccessToken = localStorage.getItem('mx_access_token')
+    const myAccessToken = localStorage.getItem('medienhaus_access_token')
+    const myUserId = localStorage.getItem('medienhaus_user_id')
 
     // eslint-disable-next-line new-cap
     this.matrixClient = new matrixcs.createClient({
@@ -29,6 +29,11 @@ class Matrix {
       user: user,
       password: password
     }).then((response) => {
+      // Set localStorage items for medienhaus/
+      localStorage.setItem('medienhaus_access_token', response.access_token)
+      localStorage.setItem('medienhaus_user_id', response.user_id)
+
+      // Set localStorage items for the Element client to automatically be logged-in
       localStorage.setItem('mx_access_token', response.access_token)
       localStorage.setItem('mx_home_server', response.home_server)
       localStorage.setItem('mx_hs_url', response.well_known['m.homeserver'].base_url)
