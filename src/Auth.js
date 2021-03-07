@@ -41,14 +41,12 @@ function useAuthProvider () {
 
   const fetchAndSetUserData = (callback) => {
     Matrix.getMatrixClient().getProfileInfo(localStorage.getItem('medienhaus_user_id')).then((profile) => {
-      setTimeout(() => {
-        if (profile) {
-          setUser(profile)
-        } else {
-          setUser(false)
-        }
-        if (callback) { callback() }
-      }, 5000)
+      if (profile) {
+        setUser(profile)
+      } else {
+        setUser(false)
+      }
+      if (callback) { callback() }
     }).catch((error) => {
       console.log(error)
       setUser(false)
