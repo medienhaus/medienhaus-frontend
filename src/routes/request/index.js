@@ -45,14 +45,14 @@ export default function App () {
       msgtype: 'm.text',
       format: 'org.matrix.custom.html',
       body: 'support message',
-      formatted_body: 'From: <b>' + name + '</b><br />User ID: <b>' + localStorage.getItem('mx_user_id') + '</b>  <br /> Email: <b>' + mail + '</b><br /> Department: <b>' + department + '</b><br /> Room name: <b>' + room + '</b><br />Notes: <b>' + account + '</b><hr />'
+      formatted_body: 'From: <b>' + name + '</b><br />User ID: <b>' + localStorage.getItem('medienhaus_user_id') + '</b>  <br /> Email: <b>' + mail + '</b><br /> Department: <b>' + department + '</b><br /> Room name: <b>' + room + '</b><br />Notes: <b>' + account + '</b><hr />'
     }
 
     const requestAcc = {
       msgtype: 'm.text',
       format: 'org.matrix.custom.html',
       body: 'support message',
-      formatted_body: 'From: <b>' + name + '</b><br />User ID: <b>' + localStorage.getItem('mx_user_id') + '</b><br /> Email: <b>' + mail + '</b><br /> Department: <b>' + department + '</b><br />Account names: <b> ' + account + '</b><br />Formatted Names: <b>' + formattedNames + '</b><hr />'
+      formatted_body: 'From: <b>' + name + '</b><br />User ID: <b>' + localStorage.getItem('medienhaus_user_id') + '</b><br /> Email: <b>' + mail + '</b><br /> Department: <b>' + department + '</b><br />Account names: <b> ' + account + '</b><br />Formatted Names: <b>' + formattedNames + '</b><hr />'
     }
     try {
       account ? await matrixClient.sendMessage('!NcGFsMFcKRAgDJMEsN:medienhaus.udk-berlin.de', requestAcc) : await matrixClient.sendMessage('!NcGFsMFcKRAgDJMEsN:medienhaus.udk-berlin.de', requestRoom)
