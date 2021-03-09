@@ -18,6 +18,7 @@ jobs:
         with:
           node-version: '15'
 
+      - run: npm ci
       - run: npm run build
       
       - uses: up9cloud/action-rsync@v1.1
