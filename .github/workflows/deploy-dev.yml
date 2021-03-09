@@ -1,0 +1,34 @@
+name: Deploy to dev.
+
+on:
+  push:
+    branches: [ develop ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2.1.5
+        with:
+          node-version: '15'
+
+      - run: npm ci
+      - run: npm run build
+      
+      - uses: up9cloud/action-rsync@v1.1
+        env:
+          HOST: dev.medienhaus.udk-berlin.de
+          KEY: ${{secrets.DEPLOY_SSH_KEY}}
+          TARGET: /var/www/html/
+          VERBOSE: true
+          USER: root
+          PORT: 22
+          ARGS: --recursive --update --delete --compress --exclude=/.git/
+          SSH_ARGS: '-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+          SOURCE: ./build/
