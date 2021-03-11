@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
 import Matrix from '../../Matrix'
 // import adminList from "../../assets/data/admin.json"
 import { Loading } from '../../components/loading'
@@ -25,7 +24,6 @@ const Admin = () => {
   const [fileName, setFileName] = useState('')
   const [upload, setUpload] = useState(false)
   const [uploadingImage, setUploadingImage] = useState(false)
-  const location = useLocation()
 
   // adminList.map(names => (admins.push(names.name)))
 
@@ -348,15 +346,16 @@ const Admin = () => {
     admin === 'admin'
       ? (
         <section className="admin">
+           <section className="request copy">
+          <div id="formchooser">
           {loading
             ? <Loading />
-            : joinedRooms.filter((el) => { return el !== undefined }).sort().map((nav, index) => <NavLink key={index} activeclassname="active" to={{
-              pathname: '/admin',
-              url: nav.topic
-            }} onClick={() => setCurrentPath(`#${nav.name}:${localStorage.getItem('mx_home_server')}`)}>{nav.topic}   </NavLink>
+            : joinedRooms.filter((el) => { return el !== undefined }).sort().map((nav, index) =>
+              <input key={index} type="radio" name={nav.topic} value={nav.topic} checked={ currentPath === `#${nav.name}:${localStorage.getItem('mx_home_server')}` } onClick={() => setCurrentPath(`#${nav.name}:${localStorage.getItem('mx_home_server')}`)} />
             )
-              }
-          <h2>Edit {location.url}</h2>
+            }
+            </div>
+            </section>
           {fetching || loading ? <Loading /> : <EditorComponent />}
           <button onClick={() => addEntry()} disabled={initalLength !== cms.length}>ADD NEW ENTRY</button>
 

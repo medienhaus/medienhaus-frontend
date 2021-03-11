@@ -66,15 +66,12 @@ export default function App () {
     }
   }
 
-  const WhichForm = () => {
-  }
-
   return (
     <section className="request copy">
       <div id="formchooser">
-        <input type="radio" id="room" name="room" value="room" checked={radio === false} onClick={() => setRadio(false)} onChange={WhichForm} />
+        <input type="radio" id="room" name="room" value="room" checked={radio === false} onClick={() => setRadio(false)} />
         <label htmlFor="room">Room</label>
-        <input type="radio" id="account" name="account" value="account" checked={radio === true} onClick={() => setRadio(true)} onChange={WhichForm} />
+        <input type="radio" id="account" name="account" value="account" checked={radio === true} onClick={() => setRadio(true)} />
         <label htmlFor="account">Account</label>
       </div>
       {radio
