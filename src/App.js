@@ -11,10 +11,6 @@ import Request from './routes/request'
 import Support from './routes/support'
 import Kino from './routes/kino'
 
-import Meet from './routes/meet'
-import Write from './routes/write'
-import Stream from './routes/stream'
-
 import Login from './routes/login'
 import Landing from './routes/landing'
 import Dashboard from './routes/dashboard'
@@ -68,9 +64,6 @@ const App = () => (
             <PrivateRoute path="/request" component={Request} />
             <PrivateRoute path="/support" component={Support} />
             <PrivateRoute path="/kino" component={Kino} />
-            <PrivateRoute path="/meet" component={Meet} />
-            <PrivateRoute path="/write" component={Write} />
-            <PrivateRoute path="/stream" component={Stream} />
             <PrivateRoute path="/admin" component={Admin} />
           </Switch>
         </main>
