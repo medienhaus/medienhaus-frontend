@@ -35,9 +35,9 @@ const Nav = () => {
               }
             </div>
             <div>
-              <NavLink activeclassname="active" to="/meet">/meet</NavLink>
-              <NavLink activeclassname="active" to="/write">/write</NavLink>
-              <NavLink activeclassname="active" to="/stream">/stream</NavLink>
+              <a href="https://meetings.udk-berlin.de" rel="external nofollow noopener noreferrer" target="_blank">/meet</a>
+              <a href="https://write.medienhaus.udk-berlin.de" rel="external nofollow noopener noreferrer" target="_blank">/write</a>
+              <a href="https://stream.medienhaus.udk-berlin.de" rel="external nofollow noopener noreferrer" target="_blank">/stream</a>
             </div>
           </>
         )}
