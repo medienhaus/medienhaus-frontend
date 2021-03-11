@@ -1,14 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../../Auth'
-import config from '../../config.json'
-import FetchCms from '../../components/matrix_fetch_cms'
 
 const Nav = () => {
   const auth = useAuth()
-  const { cms, error, fetching } = FetchCms(config.nav, false)
-
-  !error ?? console.log('error while fetching nav: ' + error)
 
   if (auth.user === null) {
     return null
@@ -20,7 +15,7 @@ const Nav = () => {
         <div>
           {auth.user
             ? (
-            <a href={config.baseUrl + '/classroom'} rel="nofollow noopener noreferrer" target="_self">/classroom&nbsp;-&gt;</a>
+            <a href="https://medienhaus.udk-berlin.de/classroom" rel="nofollow noopener noreferrer" target="_self">/classroom&nbsp;-&gt;</a>
               )
             : (
             <NavLink activeclassname="active" to="/login">/login</NavLink>
@@ -29,7 +24,11 @@ const Nav = () => {
         {auth.user && (
           <>
             <div>
-              {fetching ? null : cms.map((entry, index) => <NavLink key={index} activeclassname="active" to={entry.link}>{entry.body}</NavLink>)}
+              <NavLink activeclassname="active" to="/account">/account</NavLink>
+              <NavLink activeclassname="active" to="/explore">/explore</NavLink>
+              <NavLink activeclassname="active" to="/request">/request</NavLink>
+              <NavLink activeclassname="active" to="/support">/support</NavLink>
+              <NavLink activeclassname="active" to="/kino">/kino</NavLink>
               {
                 // <NavLink activeclassname="active" to="/admin">/admin</NavLink>}
                 // matrixClient.isSynapseAdministrator() ?? console.log('with great power comes great responsibility')
