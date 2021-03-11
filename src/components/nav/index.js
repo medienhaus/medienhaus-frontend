@@ -62,7 +62,9 @@ const Nav = () => {
                 ? error
                   ? console.log('error while fetching: ' + error)
                   : 'loading...'
-                : cms.map((entry, index) => <ReactMarkdown key={index} disallowedTypes={['paragraph']}unwrapDisallowed source={entry.body} />)}
+                /* eslint-disable */
+                : cms.map((entry, index) => <ReactMarkdown key={index} disallowedTypes={['paragraph']} unwrapDisallowed source={entry.body} renderers={{ link: props => <a href={props.href} rel="external nofollow noopener noreferrer" target="_blank">{props.children}</a> }}/>)}
+                {/* eslint-enable */}
             </div>
           </>
         )}
