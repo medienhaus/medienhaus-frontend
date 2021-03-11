@@ -40,15 +40,13 @@ function useAuthProvider () {
   }
 
   const fetchAndSetUserData = (callback) => {
-    Matrix.getMatrixClient().getProfileInfo(localStorage.getItem('mx_user_id')).then((profile) => {
-      setTimeout(() => {
-        if (profile) {
-          setUser(profile)
-        } else {
-          setUser(false)
-        }
-        if (callback) { callback() }
-      }, 5000)
+    Matrix.getMatrixClient().getProfileInfo(localStorage.getItem('medienhaus_user_id')).then((profile) => {
+      if (profile) {
+        setUser(profile)
+      } else {
+        setUser(false)
+      }
+      if (callback) { callback() }
     }).catch((error) => {
       console.log(error)
       setUser(false)
@@ -56,7 +54,7 @@ function useAuthProvider () {
   }
 
   useEffect(() => {
-    if (localStorage.getItem('mx_user_id')) {
+    if (localStorage.getItem('medienhaus_user_id') && localStorage.getItem('medienhaus_access_token')) {
       fetchAndSetUserData()
     } else {
       setUser(false)
