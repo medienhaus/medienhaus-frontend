@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 import Matrix from '../../Matrix'
-import config from '../../config.json'
 // import adminList from "../../assets/data/admin.json"
 import { Loading } from '../../components/loading'
 import FetchCms from '../../components/matrix_fetch_cms'
-import { useTranslation } from 'react-i18next'
 import debounce from 'lodash/debounce'
 import Editor from 'rich-markdown-editor'
 import showdown from 'showdown'
@@ -15,10 +14,10 @@ const Admin = () => {
   const [admin, setAdmin] = useState('checking')
   const [count, setCount] = useState(0) // hack to update view since array.splice doesnt seem to trigger effect hook
   const [loading, setLoading] = useState(false)
-  const { i18n } = useTranslation(['translation', 'support'])
   const converter = new showdown.Converter()
-  const faqPath = i18n.language === 'en' ? config.faq.en : config.faq.de
-  const { cms, error, fetching, onSave } = FetchCms(faqPath, index => {
+  const [joinedRooms, setJoinedRooms] = useState([])
+  const [currentPath, setCurrentPath] = useState('#admin-faq.en:dev.medienhaus.udk-berlin.de')
+  const { cms, error, fetching, onSave } = FetchCms(currentPath, index => {
     console.log(error, fetching)
   })
   const [selectedFile, setSelectedFile] = useState()
@@ -26,6 +25,7 @@ const Admin = () => {
   const [fileName, setFileName] = useState('')
   const [upload, setUpload] = useState(false)
   const [uploadingImage, setUploadingImage] = useState(false)
+  const location = useLocation()
 
   // adminList.map(names => (admins.push(names.name)))
 
@@ -43,23 +43,38 @@ const Admin = () => {
   useEffect(() => {
     checkMembers()
     // eslint-disable-next-line
-  }, [faqPath]);
+  }, [currentPath]);
+  useEffect(() => {
+    getJoinedRooms()
+    // eslint-disable-next-line
+  }, [])
 
-  /*
-    useEffect(() => {
-      const time = 3000;
-      const profile = auth.user;
-      const body = `${profile.displayname}`
-      const interval = setInterval(() => {
-        sendStatus(time, profile, body)
-      }, time);
-      return () => clearInterval(interval);
-    }, []);
-  */
+  const getJoinedRooms = async () => {
+    try {
+      const answer = await matrixClient.getJoinedRooms()
+      const getNames = await Promise.all(answer.joined_rooms.map(async (roomId) => {
+        try {
+          const room = await matrixClient.getStateEvent(roomId, 'm.room.name')
+          if (room.name.includes('admin-')) {
+            // const url = room.name.split('-')[1]
+            const topic = await matrixClient.getStateEvent(roomId, 'm.room.topic')
+            return { topic: topic.topic, name: room.name }
+          }
+        } catch (e) {
+          console.log('error in joinedRooms: ' + e)
+        }
+      }))
+      setJoinedRooms(getNames)
+    } catch (e) {
+      console.log(e.data.error)
+    }
+    setLoading(false)
+  }
+
   const checkMembers = async () => {
     try {
       setAdmin('checking')
-      const roomId = await matrixClient.getRoomIdForAlias(faqPath)
+      const roomId = await matrixClient.getRoomIdForAlias(currentPath)
       const members = await matrixClient.getJoinedRoomMembers(roomId.room_id)
       console.log('members: ' + JSON.stringify(members))
       setAdmin('admin')
@@ -117,7 +132,7 @@ const Admin = () => {
 
   const handleSubmission = async () => {
     setUploadingImage(true)
-    const roomId = await matrixClient.getRoomIdForAlias(faqPath)
+    const roomId = await matrixClient.getRoomIdForAlias(currentPath)
     try {
       await matrixClient.uploadContent(selectedFile, { name: fileName })
         .then((response) => matrixClient.mxcUrlToHttp(response))
@@ -164,7 +179,7 @@ const Admin = () => {
   /*
     const sendStatus = async (time, profile, body) => {
 
-      const roomId = await matrixClient.getRoomIdForAlias(faqPath);
+      const roomId = await matrixClient.getRoomIdForAlias(currentPath);
       const allMessages = config.baseUrl + `/_matrix/client/r0/rooms/${roomId.room_id}/messages?limit=999999&access_token=${localStorage.getItem('medienhaus_access_token')}&dir=b`
       const result = await fetch(allMessages)
       const data = await result.json();
@@ -212,7 +227,7 @@ const Admin = () => {
   }
   const saveAll = async (eventId, redact, pos) => {
     setLoading(true)
-    const roomId = await matrixClient.getRoomIdForAlias(faqPath)
+    const roomId = await matrixClient.getRoomIdForAlias(currentPath)
     try {
       if (redact) {
         try {
@@ -258,7 +273,7 @@ const Admin = () => {
   }
   /*
     const saveChanges = async (index, eventId, order, redact) => {
-      const roomId = await matrixClient.getRoomIdForAlias(faqPath);
+      const roomId = await matrixClient.getRoomIdForAlias(currentPath);
       if (redact) {
         try {
           await matrixClient.redactEvent(roomId.room_id, eventId, null, { 'reason': 'I have my reasons!' })
@@ -333,7 +348,15 @@ const Admin = () => {
     admin === 'admin'
       ? (
         <section className="admin">
-          <h2>Edit FAQ</h2>
+          {loading
+            ? <Loading />
+            : joinedRooms.filter((el) => { return el !== undefined }).sort().map((nav, index) => <NavLink key={index} activeclassname="active" to={{
+              pathname: '/admin',
+              url: nav.topic
+            }} onClick={() => setCurrentPath(`#${nav.name}:${localStorage.getItem('mx_home_server')}`)}>{nav.topic}</NavLink>
+            )
+              }
+          <h2>Edit {location.url}</h2>
           {fetching || loading ? <Loading /> : <EditorComponent />}
           <button onClick={() => addEntry()} disabled={initalLength !== cms.length}>ADD NEW ENTRY</button>
 

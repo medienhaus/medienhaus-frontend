@@ -1,9 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../../Auth'
+import ReactMarkdown from 'react-markdown' // https://github.com/remarkjs/react-markdown
+import FetchCms from '../../components/matrix_fetch_cms'
+import config from '../../config.json'
 
 const Nav = () => {
   const auth = useAuth()
+  const path = config.nav
+  const { cms, error, fetching } = FetchCms(path, false)
 
   if (auth.user === null) {
     return null
@@ -35,9 +40,7 @@ const Nav = () => {
               }
             </div>
             <div>
-              <NavLink activeclassname="active" to="/meet">/meet</NavLink>
-              <NavLink activeclassname="active" to="/write">/write</NavLink>
-              <NavLink activeclassname="active" to="/stream">/stream</NavLink>
+              {fetching ? error ? console.log('error while fetching: ' + error) : 'loading...' : cms.map((entry, index) => <NavLink key={'nav' + index} activeclassname="active" to="/meet"><ReactMarkdown key={index} source={entry.body} /></NavLink>)}
             </div>
           </>
         )}
