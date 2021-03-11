@@ -12,7 +12,7 @@ const Login = () => {
   const [isLoading, setLoading] = useState(false)
   const history = useHistory()
   const location = useLocation()
-  const { t } = useTranslation(['login'])
+  const { t } = useTranslation('login')
 
   const auth = useAuth()
 

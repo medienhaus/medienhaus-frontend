@@ -23,7 +23,7 @@ const Support = () => {
   const [browser, setBrowser] = useState()
   const [loading, setLoading] = useState(true)
   const [sending, setSending] = useState(false)
-  const { t, i18n } = useTranslation(['support'])
+  const { t, i18n } = useTranslation('support')
 
   const auth = useAuth()
   const profile = auth.user

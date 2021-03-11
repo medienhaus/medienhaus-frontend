@@ -12,7 +12,7 @@ const Account = () => {
   const [mail, setMail] = useState('')
   const history = useHistory()
   const logoutRef = useRef(0)
-  const { t } = useTranslation(['account'])
+  const { t } = useTranslation('account')
   const [logBtnStr, setLogBtnStr] = useState(t('Logout'))
   const matrixClient = Matrix.getMatrixClient()
 

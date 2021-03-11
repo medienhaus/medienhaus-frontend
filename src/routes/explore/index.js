@@ -25,7 +25,7 @@ const Explore = () => {
   const [pubFeds, setPubFeds] = useState([])
   const [selectFed, setSelectFed] = useState(false)
   const { register, handleSubmit, errors } = useForm()
-  const { t } = useTranslation(['explore'])
+  const { t } = useTranslation('explore')
   const matrixClient = Matrix.getMatrixClient()
 
   const getJoinedRooms = async () => {
