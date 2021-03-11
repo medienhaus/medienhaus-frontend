@@ -40,7 +40,11 @@ const Nav = () => {
               }
             </div>
             <div>
-              {fetching ? error ? console.log('error while fetching: ' + error) : 'loading...' : cms.map((entry, index) => <NavLink key={'nav' + index} activeclassname="active" to="/meet"><ReactMarkdown key={index} source={entry.body} /></NavLink>)}
+              {fetching
+                ? error
+                  ? console.log('error while fetching: ' + error)
+                  : 'loading...'
+                : cms.map((entry, index) => <ReactMarkdown key={index} disallowedTypes={['paragraph']}unwrapDisallowed source={entry.body} />)}
             </div>
           </>
         )}
