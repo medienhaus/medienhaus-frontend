@@ -33,7 +33,7 @@ export default function App () {
   const changeRoom = e => setRoom(e.target.value)
   const changeAccount = e => setAccount(e.target.value)
 
-  const { t } = useTranslation(['request'])
+  const { t } = useTranslation('request')
 
   const onSubmit = async () => {
     // Andi feel free to change markup

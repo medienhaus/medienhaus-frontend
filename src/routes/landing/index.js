@@ -2,7 +2,7 @@ import React from 'react'
 import { useTranslation, Trans } from 'react-i18next'
 
 const Landing = () => {
-  const { t } = useTranslation(['landing'])
+  const { t } = useTranslation('landing')
 
   return (
     <>

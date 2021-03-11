@@ -4,7 +4,7 @@ import { useAuth } from '../../Auth'
 
 const Dashboard = () => {
   const auth = useAuth()
-  const { t } = useTranslation(['dashboard'])
+  const { t } = useTranslation('dashboard')
 
   return (
     <section className="dashboard copy">
