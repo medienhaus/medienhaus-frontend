@@ -55,7 +55,7 @@ const Admin = () => {
       const getNames = await Promise.all(answer.joined_rooms.map(async (roomId) => {
         try {
           const room = await matrixClient.getStateEvent(roomId, 'm.room.name')
-          if (room.name.includes('admin-')) {
+          if (room.name.includes('admin-') && !room.name.includes('admin-hideout')) {
             // const url = room.name.split('-')[1]
             const topic = await matrixClient.getStateEvent(roomId, 'm.room.topic')
             return { topic: topic.topic, name: room.name }

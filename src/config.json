@@ -1,6 +1,7 @@
 {
   "baseUrl": "https://dev.medienhaus.udk-berlin.de",
   "baseUrlAlias": "Universität der Künste Berlin",
+  "admin": "#admin-hideout:dev.medienhaus.udk-berlin.de",
   "nav": "#admin-navbar:dev.medienhaus.udk-berlin.de",
   "faq": {
     "en": "#admin-faq.en:dev.medienhaus.udk-berlin.de",
