@@ -353,7 +353,7 @@ const Admin = () => {
             : joinedRooms.filter((el) => { return el !== undefined }).sort().map((nav, index) => <NavLink key={index} activeclassname="active" to={{
               pathname: '/admin',
               url: nav.topic
-            }} onClick={() => setCurrentPath(`#${nav.name}:${localStorage.getItem('mx_home_server')}`)}>{nav.topic}</NavLink>
+            }} onClick={() => setCurrentPath(`#${nav.name}:${localStorage.getItem('mx_home_server')}`)}>{nav.topic}   </NavLink>
             )
               }
           <h2>Edit {location.url}</h2>
