@@ -23,7 +23,7 @@ const Support = () => {
   const [browser, setBrowser] = useState()
   const [loading, setLoading] = useState(true)
   const [sending, setSending] = useState(false)
-  const { t, i18n } = useTranslation(['translation', 'support'])
+  const { t, i18n } = useTranslation(['support'])
 
   const auth = useAuth()
   const profile = auth.user
@@ -71,10 +71,10 @@ const Support = () => {
         <ReactMarkdown source={markdown} />
       </section>
       <section className="support">
-        <h2>{t('support:instruction')}</h2>
+        <h2>{t('In case you didn\'t find an answer to your question here, please provide us some details and tell us about the problem you encounter via the support form below.')}</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <label htmlFor="Operating System">{t('support:form.os')}</label>
+            <label htmlFor="Operating System">{t('operating system')}</label>
             <select name="Operating System" defaultValue={''} onBlur={changeSystem} ref={register({ required: true })}>
               <option value="" disabled hidden>-- select operating system --</option>
               <option value="Linux">Linux</option>
@@ -87,7 +87,7 @@ const Support = () => {
           </div>
           {errors.browser && 'Please select an operating system.'}
           <div>
-            <label htmlFor="Web Browser">{t('support:form.browser')}</label>
+            <label htmlFor="Web Browser">{t('web browser')}</label>
             <select name="browser" defaultValue={''} onBlur={changeBrowser} ref={register({ required: true })}>
               <option value="" disabled hidden >-- select web browser --</option>
               <option value="Firefox">Firefox</option>
@@ -101,14 +101,14 @@ const Support = () => {
           </div>
           {errors.browser && 'Please select a web browser.'}
           <div>
-            <label htmlFor="Mail Address">{t('support:form.email')}</label>
+            <label htmlFor="Mail Address">{t('email address')}</label>
             {/* eslint-disable-next-line no-useless-escape */}
             <input type="email" placeholder="u.name@udk-berlin.de" name="email" value={mail} onChange={changeMail} ref={register({ required: true, pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })} />
           </div>
           {errors.email && 'Please enter a valid email address.'}
-          <textarea name="messageInput" placeholder={t('support:form.placeholder')} rows="7" spellCheck="true" value={msg} onChange={changeMsg} ref={register({ required: true })} />
+          <textarea name="messageInput" placeholder={t('Please describe the problem you encounter …')} rows="7" spellCheck="true" value={msg} onChange={changeMsg} ref={register({ required: true })} />
           {errors.messageInput && 'This field can’t be empty.'}
-          <button type="submit" disabled={sending}>{t('support:button')}</button>
+          <button type="submit" disabled={sending}>{t('SUBMIT')}</button>
         </form>
       </section>
     </>
