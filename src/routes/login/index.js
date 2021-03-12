@@ -10,6 +10,7 @@ const Login = () => {
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setLoading] = useState(false)
+  const [errormsg, setErrormsg] = useState()
   const history = useHistory()
   const location = useLocation()
   const { t } = useTranslation('login')
@@ -20,20 +21,19 @@ const Login = () => {
 
   const onSubmit = () => {
     if (isLoading) { return }
-
     setLoading(true)
-
+    setErrormsg()
     auth.signin(name, password, () => {
       setLoading(false)
       history.replace(from)
     }).catch((error) => {
-      alert(error.data.error)
+      setErrormsg(error.data.error)
       setLoading(false)
     })
   }
 
   const changeName = e => setName(e.target.value)
-  const changePassword = e => setPassword(e.target.value)
+  const changePassword = e => { setPassword(e.target.value); setErrormsg() }
 
   if (auth.user) {
     return <Redirect to={'/dashboard'} />
@@ -53,6 +53,7 @@ const Login = () => {
           <input name="password" type="password" placeholder="" value={password} onChange={changePassword} ref={register({ required: true })} />
         </div>
         {errors.password && t('Password can\'t be empty.')}
+        {errormsg ?? errormsg}
         {isLoading
           ? (
           <Loading />
