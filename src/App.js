@@ -14,7 +14,6 @@ import Kino from './routes/kino'
 import Login from './routes/login'
 import Landing from './routes/landing'
 import Dashboard from './routes/dashboard'
-import Admin from './routes/admin'
 
 import { AuthProvider, useAuth } from './Auth'
 import { Loading } from './components/loading'
@@ -65,7 +64,6 @@ const App = () => (
               <PrivateRoute path="/request" component={Request} />
               <PrivateRoute path="/support" component={Support} />
               <PrivateRoute path="/kino" component={Kino} />
-              <PrivateRoute path="/admin" component={Admin} />
             </Switch>
           </Suspense>
         </main>
