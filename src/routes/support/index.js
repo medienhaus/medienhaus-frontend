@@ -88,7 +88,7 @@ const Support = () => {
               <option value="Linux">Linux</option>
               <option value="macOS">macOS</option>
               <option value="Windows">Windows</option>
-              <option value="iOs">iOs</option>
+              <option value="iOS">iOS</option>
               <option value="android">Android</option>
               <option value="Other">(Other)</option>
             </select>
