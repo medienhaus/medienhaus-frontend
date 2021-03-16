@@ -3,17 +3,7 @@ import ReactMarkdown from 'react-markdown' // https://github.com/remarkjs/react-
 import { useForm } from 'react-hook-form' // https://github.com/react-hook-form/react-hook-form
 import { Loading } from '../../components/loading'
 import { useTranslation } from 'react-i18next'
-import * as matrixcs from 'matrix-js-sdk'
 import { useAuth } from '../../Auth'
-
-const myUserId = '@support-bot:medienhaus.udk-berlin.de'
-const myAccessToken = 'MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEBzdXBwb3J0LWJvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSBwQVZqWU9XflI0NFRYUkEtCjAwMmZzaWduYXR1cmUgdZm-5kS1tijZ3TQkBeiwsO261iOCBA-lhbLcTb4bTccK'
-const matrixClient = matrixcs.createClient({
-  baseUrl: 'https://medienhaus.udk-berlin.de',
-  accessToken: myAccessToken,
-  userId: myUserId,
-  useAuthorizationHeader: true
-})
 
 const Support = () => {
   const { register, handleSubmit, errors } = useForm()
@@ -46,16 +36,34 @@ const Support = () => {
 
   const onSubmit = async () => {
     setSending(true)
-    const support = {
-      msgtype: 'm.text',
-      format: 'org.matrix.custom.html',
-      body: 'support message',
-      formatted_body: 'From: <b>' + profile.displayname + '</b>  <br /> Mail address: <b>' + mail + '</b> <br /> Web browser: <b>' + browser + '</b> <br /> Operating system: <b>' + system + '</b><hr /> <b> ' + msg + '</b><br />'
-    }
+    const support =
+      {
+        displayname: profile.displayname,
+        mail: mail,
+        browser: browser,
+        system: system,
+        msg: msg
+      }
     try {
-      await matrixClient.sendMessage('!PHQMOmXiiNqFUJNDie:medienhaus.udk-berlin.de', support)
+      const url = 'http://localhost:3001/messenger/support'
+      const requestMetadata = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(support)
+      }
+
+      fetch(url, requestMetadata)
+        .then(res => res.json())
+        .then(msg => {
+          console.log(msg)
+        })
       alert('Your message has ben sent! We will get back to you asap …')
       setSending(false)
+      setMail('')
+      setMsg('')
+      setSystem('')
     } catch (e) {
       console.log(e)
       alert('Couldn’t send your message. Please check your internet connection.')
