@@ -1,16 +1,6 @@
 import React, { useState } from 'react'
-import * as matrixcs from 'matrix-js-sdk'
 import { useForm } from 'react-hook-form'
 import { useTranslation, Trans } from 'react-i18next'
-
-const myUserId = '@request-bot:medienhaus.udk-berlin.de'
-const myAccessToken = 'MDAyNmxvY2F0aW9uIG1lZGllbmhhdXMudWRrLWJlcmxpbi5kZQowMDEzaWRlbnRpZmllciBrZXkKMDAxMGNpZCBnZW4gPSAxCjAwMzhjaWQgdXNlcl9pZCA9IEByZXF1ZXN0LWJvdDptZWRpZW5oYXVzLnVkay1iZXJsaW4uZGUKMDAxNmNpZCB0eXBlID0gYWNjZXNzCjAwMjFjaWQgbm9uY2UgPSBLUztZMyoyMHRENDRQeHNlCjAwMmZzaWduYXR1cmUg1o6ZEgjmbQC9FVK0D4nZZshNrUrgaX8DFWd8R-tBOjoK'
-const matrixClient = matrixcs.createClient({
-  baseUrl: 'https://medienhaus.udk-berlin.de',
-  accessToken: myAccessToken,
-  userId: myUserId,
-  useAuthorizationHeader: true
-})
 
 export default function App () {
   const { register, handleSubmit, errors } = useForm()
@@ -42,20 +32,56 @@ export default function App () {
     const subst = '$1.$2_ext'
     const formattedNames = account.toLowerCase().replace(regex, subst)
     const requestRoom = {
-      msgtype: 'm.text',
-      format: 'org.matrix.custom.html',
-      body: 'support message',
-      formatted_body: 'From: <b>' + name + '</b><br />User ID: <b>' + localStorage.getItem('medienhaus_user_id') + '</b>  <br /> Email: <b>' + mail + '</b><br /> Department: <b>' + department + '</b><br /> Room name: <b>' + room + '</b><br />Notes: <b>' + account + '</b><hr />'
+      name: name,
+      displayname: localStorage.getItem('medienhaus_user_id'),
+      mail: mail,
+      department: department,
+      room: room,
+      notes: msg
     }
 
     const requestAcc = {
-      msgtype: 'm.text',
-      format: 'org.matrix.custom.html',
-      body: 'support message',
-      formatted_body: 'From: <b>' + name + '</b><br />User ID: <b>' + localStorage.getItem('medienhaus_user_id') + '</b><br /> Email: <b>' + mail + '</b><br /> Department: <b>' + department + '</b><br />Account names: <b> ' + account + '</b><br />Formatted Names: <b>' + formattedNames + '</b><hr />'
+      name: name,
+      displayname: localStorage.getItem('medienhaus_user_id'),
+      mail: mail,
+      department: department,
+      account: account,
+      formattedNames: formattedNames,
+      notes: msg
     }
+
     try {
-      account ? await matrixClient.sendMessage('!NcGFsMFcKRAgDJMEsN:medienhaus.udk-berlin.de', requestAcc) : await matrixClient.sendMessage('!NcGFsMFcKRAgDJMEsN:medienhaus.udk-berlin.de', requestRoom)
+      if (!radio) {
+        const url = 'http://localhost:3001/messenger/requestRoom'
+        const requestMetadata = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(requestRoom)
+        }
+
+        fetch(url, requestMetadata)
+          .then(res => res.json())
+          .then(msg => {
+            console.log(msg)
+          })
+      } else {
+        const url = 'http://localhost:3001/messenger/requestAcc'
+        const requestMetadata = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(requestAcc)
+        }
+
+        fetch(url, requestMetadata)
+          .then(res => res.json())
+          .then(msg => {
+            console.log(msg)
+          })
+      }
       alert(t('Your request has ben sent! We will get back to you asap!'))
       setSending(false)
     } catch (e) {
