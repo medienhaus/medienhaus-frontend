@@ -1,0 +1,17 @@
+{
+  "instructionRoom": "Bitte fülle das Formular aus, um einen <1>öffentlich zugänglichen</1> und <3>gelisteten</3> Raum anzufragen. <5>Private Räume müssen nicht angefragt werden, diese können einfach erstellt werden.</5>",
+  "instructionAcc": "Bitte fülle das Formular aus, um einen temporären <1>externen</1> Account zu beantragen … <3>dies wäre nur notwendig für Teilnehmer*innen ohne @udk-berlin.de Account.<3>",
+  "your name": "Name",
+  "Name Yourname": "Ihr Name",
+  "email address": "Mail-Adresse",
+  "department": "Standort",
+  "art and media": "Kunst und Medien",
+  "room name": "Raumname",
+  "i.e. the name of your class or course": "z.B. der Name Ihrer Klasse oder Ihres Kurses",
+  "invitees": "Einzuladende",
+  "first and last names, seperated by commas": "Vor- und Nachnamen, durch Kommata getrennt",
+  "Any additional notes?": "Notizen",
+  "Your request has ben sent! We will get back to you asap!": "Ihre Nachricht wurde erfolgreich übermittelt!",
+  "Couldn't send your message. Please check your internet connection": "Ihre Nachricht konnte nicht gesendet werden, bitte überorüfen Sie Ihre Verbindung",
+  "SUBMIT": "ABSCHICKEN"
+}
