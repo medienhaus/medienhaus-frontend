@@ -33,7 +33,7 @@ export default function App () {
   const changeRoom = e => setRoom(e.target.value)
   const changeAccount = e => setAccount(e.target.value)
 
-  const { t } = useTranslation(['translation', 'request'])
+  const { t } = useTranslation('request')
 
   const onSubmit = async () => {
     // Andi feel free to change markup
@@ -56,91 +56,79 @@ export default function App () {
     }
     try {
       account ? await matrixClient.sendMessage('!NcGFsMFcKRAgDJMEsN:medienhaus.udk-berlin.de', requestAcc) : await matrixClient.sendMessage('!NcGFsMFcKRAgDJMEsN:medienhaus.udk-berlin.de', requestRoom)
-      alert(t('request:form.alertSuccess'))
+      alert(t('Your request has ben sent! We will get back to you asap!'))
       setSending(false)
     } catch (e) {
       console.log(e)
-      alert(t('request:form.alertFail'))
-      alert("Couldn't send your message. Please check your internet connection")
+      alert(t('Couldn\'t send your message. Please check your internet connection'))
       setSending(false)
     }
   }
 
-  const WhichForm = () => {
-  }
+  const nameEmailAndDepartmentInputs = (
+    <>
+      <div>
+        <label htmlFor="name">{t('your name')}</label>
+        <input type="text" placeholder={t('Name Yourname')} name="name" value={name} onChange={changeName} ref={register({ required: true })} />
+      </div>
+      {errors.name && 'Please enter your name.'}
+      <div>
+        <label htmlFor="email">{t('email address')}</label>
+        <input type="email" placeholder="u.name@udk-berlin.de" name="email" value={mail} onChange={changeMail} ref={register({ required: true })} />
+      </div>
+      {errors.email && 'Please enter a valid email address.'}
+      <div>
+        <label htmlFor="department">{t('department')}</label>
+        <input type="text" placeholder={t('arts and media')} name="department" value={department} onChange={changeDepartment} ref={register({ required: true })} />
+      </div>
+      {errors.department && 'Please specify the department.'}
+    </>
+  )
 
   return (
     <section className="request copy">
       <div id="formchooser">
-        <input type="radio" id="room" name="room" value="room" checked={radio === false} onClick={() => setRadio(false)} onChange={WhichForm} />
+        <input type="radio" id="room" name="room" value="room" checked={radio === false} onClick={() => setRadio(false)} />
         <label htmlFor="room">Room</label>
-        <input type="radio" id="account" name="account" value="account" checked={radio === true} onClick={() => setRadio(true)} onChange={WhichForm} />
+        <input type="radio" id="account" name="account" value="account" checked={radio === true} onClick={() => setRadio(true)} />
         <label htmlFor="account">Account</label>
       </div>
       {radio
         ? (
         <>
           <p>
-            <Trans i18nKey="request:instructionAcc">
+            <Trans t={t} i18nKey="instructionAcc">
               Please fill out the form below to request a temporary <strong>external</strong> account … <em>this is only necessary for people without an @udk-berlin.de account.</em>
             </Trans>
           </p>
           <form onSubmit={handleSubmit(onSubmit)}>
+            {nameEmailAndDepartmentInputs}
             <div>
-              <label htmlFor="name">{t('request:form.name')}</label>
-              <input type="text" placeholder={t('request:form.nameplaceholder')} name="name" value={name} onChange={changeName} ref={register({ required: true })} />
-            </div>
-            {errors.name && 'Please enter your name.'}
-            <div>
-              <label htmlFor="email">{t('request:form.email')}</label>
-              <input type="email" placeholder="u.name@udk-berlin.de" name="email" value={mail} onChange={changeMail} ref={register({ required: true })} />
-            </div>
-            {errors.email && 'Please enter a valid email address.'}
-            <div>
-              <label htmlFor="department">{t('request:form.department')}</label>
-              <input type="text" placeholder={t('request:form.departmentPlaceholder')} name="department" value={department} onChange={changeDepartment} ref={register({ required: true })} />
-            </div>
-            {errors.department && 'Please specifiy the department.'}
-            <div>
-              <label htmlFor="account">{t('request:form.account')}</label>
-              <input type="text" placeholder={t('request:form.accountPlaceholder')} name="account" value={account} onChange={changeAccount} ref={register({ required: true })} />
+              <label htmlFor="account">{t('invitees')}</label>
+              <input type="text" placeholder={t('first and last names, seperated by commas')} name="account" value={account} onChange={changeAccount} ref={register({ required: true })} />
             </div>
             {errors.account && 'Please enter the names of the accounts you would like to request.'}
-            <textarea name="notes" placeholder={t('request:form.notesPlaceholderRoom')} rows="3" spellCheck="true" value={msg} onChange={changeMsg} ref={register} />
-            <button type="submit" disabled={sending}>{t('request:button')}</button>
+            <textarea name="notes" placeholder={t('Any additional notes?')} rows="3" spellCheck="true" value={msg} onChange={changeMsg} ref={register} />
+            <button type="submit" disabled={sending}>{t('SUBMIT')}</button>
           </form>
         </>
           )
         : (
           <>
             <p>
-              <Trans i18nKey="request:instructionRoom">
+              <Trans t={t} i18nKey="instructionRoom">
                 Please fill out the form below to request an <strong>openly accessible</strong> and <strong>public</strong> room … <em>you don’t have to request private rooms, you can create them.</em>
               </Trans>
             </p>
             <form onSubmit={handleSubmit(onSubmit)}>
+              {nameEmailAndDepartmentInputs}
               <div>
-                <label htmlFor="name">{t('request:form.name')}</label>
-                <input type="text" placeholder={t('request:form.nameplaceholder')} name="name" value={name} onChange={changeName} ref={register({ required: true })} />
-              </div>
-              {errors.name && 'Please enter your name.'}
-              <div>
-                <label htmlFor="email">{t('request:form.email')}</label>
-                <input type="email" placeholder="u.name@udk-berlin.de" name="email" value={mail} onChange={changeMail} ref={register({ required: true })} />
-              </div>
-              {errors.email && 'Please enter a valid email address.'}
-              <div>
-                <label htmlFor="department">{t('request:form.department')}</label>
-                <input type="text" placeholder={t('request:form.departmentPlaceholder')} name="department" value={department} onChange={changeDepartment} ref={register({ required: true })} />
-              </div>
-              {errors.department && 'Please specifiy the department.'}
-              <div>
-                <label htmlFor="room">{t('request:form.room')}</label>
-                <input type="text" placeholder={t('request:form.roomPlaceholder')} name="room" value={room} onChange={changeRoom} ref={register({ required: true })} />
+                <label htmlFor="room">{t('room name')}</label>
+                <input type="text" placeholder={t('i.e. the name of your class or course')} name="room" value={room} onChange={changeRoom} ref={register({ required: true })} />
               </div>
               {errors.room && 'Please enter a title for your room.'}
-              <textarea name="notes" placeholder={t('request:form.notesPlaceholderRoom')} rows="3" spellCheck="true" value={msg} onChange={changeMsg} ref={register} />
-              <button type="submit" disabled={sending}>{t('request:button')}</button>
+              <textarea name="notes" placeholder={t('Any additional notes?')} rows="3" spellCheck="true" value={msg} onChange={changeMsg} ref={register} />
+              <button type="submit" disabled={sending}>{t('SUBMIT')}</button>
             </form>
           </>
           )

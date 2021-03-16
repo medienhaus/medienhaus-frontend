@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect, useLocation } from 'react-router-dom'
 import Header from './components/header'
 import Footer from './components/footer'
@@ -54,23 +54,19 @@ const App = () => (
       <Router>
         <Header />
         <main>
-          <Suspense fallback={<Loading />}>
-            <Switch>
-              <Route path="/" exact component={Landing} />
-              <Route path="/login" component={Login} />
-              <PrivateRoute path="/dashboard" component={Dashboard} />
-              <PrivateRoute path="/account" component={Account} />
-              <PrivateRoute path="/explore" component={Explore} />
-              <PrivateRoute path="/request" component={Request} />
-              <PrivateRoute path="/support" component={Support} />
-              <PrivateRoute path="/kino" component={Kino} />
-            </Switch>
-          </Suspense>
+          <Switch>
+            <Route path="/" exact component={Landing} />
+            <Route path="/login" component={Login} />
+            <PrivateRoute path="/dashboard" component={Dashboard} />
+            <PrivateRoute path="/account" component={Account} />
+            <PrivateRoute path="/explore" component={Explore} />
+            <PrivateRoute path="/request" component={Request} />
+            <PrivateRoute path="/support" component={Support} />
+            <PrivateRoute path="/kino" component={Kino} />
+          </Switch>
         </main>
         <Nav />
-        <Suspense fallback="">
-          <Footer />
-        </Suspense>
+        <Footer />
       </Router>
     </AuthProvider>
   </React.Fragment>

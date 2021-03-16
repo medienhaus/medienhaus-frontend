@@ -25,7 +25,7 @@ const Explore = () => {
   const [pubFeds, setPubFeds] = useState([])
   const [selectFed, setSelectFed] = useState(false)
   const { register, handleSubmit, errors } = useForm()
-  const { t } = useTranslation(['translation', 'explore'])
+  const { t } = useTranslation('explore')
   const matrixClient = Matrix.getMatrixClient()
 
   const getJoinedRooms = async () => {
@@ -62,7 +62,7 @@ const Explore = () => {
     matrixClient.leave(leaveId)
       .then(() => setUpdate(true))
       .catch((e) => {
-        e.data.error === ' was not legal room ID or room alias' ? console.log('ID or Alias empty, taking a rest.') : e.data.error === 'Too Many Requests' ? alert(t('explore:ratelimit')) : console.log(e.data.error)
+        e.data.error === ' was not legal room ID or room alias' ? console.log('ID or Alias empty, taking a rest.') : e.data.error === 'Too Many Requests' ? alert(t('Slow Down! You\'re a bit too quick there')) : console.log(e.data.error)
       })
     setLeaveId('')
     // eslint-disable-next-line
@@ -72,7 +72,7 @@ const Explore = () => {
     matrixClient.joinRoom(joinId)
       .then(() => setUpdate(true))
       .catch((e) => {
-        e.data.error === ' was not legal room ID or room alias' ? console.log('ID or Alias empty, taking a rest.') : e.data.error === 'Too Many Requests' ? alert(t('explore:ratelimit')) : console.log(e.data.error)
+        e.data.error === ' was not legal room ID or room alias' ? console.log('ID or Alias empty, taking a rest.') : e.data.error === 'Too Many Requests' ? alert(t('Slow Down! You\'re a bit too quick there')) : console.log(e.data.error)
         // console.log(e.data.error)
       }
       )
@@ -117,9 +117,9 @@ const Explore = () => {
   const advancedJoin = () => {
     setAdvancedJoining(true)
     matrixClient.joinRoom(`#${advancedRoom}:${advancedServer}`)
-      .then(() => alert(t('explore:advancedJoin')))
+      .then(() => alert(t('Joined room successfully')))
       .catch((e) => {
-        e.data.error === ' was not legal room ID or room alias' ? alert('ID or Alias empty.') : e.data.error === 'Too Many Requests' ? alert(t('explore:ratelimit')) : alert(e.data.error)
+        e.data.error === ' was not legal room ID or room alias' ? alert('ID or Alias empty.') : e.data.error === 'Too Many Requests' ? alert(t('Slow Down! You\'re a bit too quick there')) : alert(e.data.error)
         // console.log(e.data.error)
       }
       )
@@ -158,8 +158,8 @@ const Explore = () => {
             <label htmlFor={publicRoom.room_id} key={publicRoom.name} >{publicRoom.name}</label>
             {joinedRooms.includes(publicRoom.name)
               ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
-              {loading ? <Loading /> : t('explore:buttonLeave')}</button>
-              : <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
+              {loading ? <Loading /> : t('LEAVE')}</button>
+              : <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('JOIN')}</button>}
           </div>
         ))}
         <h2>Medienhaus</h2>
@@ -176,8 +176,8 @@ const Explore = () => {
             <label htmlFor={publicRoom.room_id} key={publicRoom.name} >{publicRoom.name}</label>
             {joinedRooms.includes(publicRoom.name)
               ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
-              {loading ? <Loading /> : t('explore:buttonLeave')}</button>
-              : <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
+              {loading ? <Loading /> : t('LEAVE')}</button>
+              : <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('JOIN')}</button>}
           </div>
         ))}
       </>
@@ -230,8 +230,8 @@ const Explore = () => {
               <label htmlFor={publicRoom.room_id} key={publicRoom.name} name={faculty}>{publicRoom.name}</label>
               {joinedRooms.includes(publicRoom.name)
                 ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
-                {loading ? <Loading /> : t('explore:buttonLeave')}</button>
-                : <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
+                {loading ? <Loading /> : t('LEAVE')}</button>
+                : <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('JOIN')}</button>}
             </div>
                   )
                 : (
@@ -271,8 +271,8 @@ const Explore = () => {
             <label htmlFor={pubFed.room_id} key={index} >{pubFed.name}</label>
             {joinedRooms.includes(pubFed.name)
               ? <button onClick={() => setLeaveId(pubFed.room_id)} name="Leave">
-              {loading ? <Loading /> : t('explore:buttonLeave')}</button>
-              : <button onClick={() => setJoinId(pubFed.canonical_alias)} name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>}
+              {loading ? <Loading /> : t('LEAVE')}</button>
+              : <button onClick={() => setJoinId(pubFed.canonical_alias)} name="Join">{loading ? <Loading /> : t('JOIN')}</button>}
           </div>
           )
           )}
@@ -296,25 +296,25 @@ const Explore = () => {
         </div>
         <div>
           {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/click-events-have-key-events */}
-          <label onClick={() => setShowAdvanced(!showAdvanced)}>{showAdvanced ? '×' : '+'} {t('explore:advanced')}</label>
+          <label onClick={() => setShowAdvanced(!showAdvanced)}>{showAdvanced ? '×' : '+'} {t('Advanced options')}</label>
         </div>
       </form>
       {showAdvanced && advancedJoining
         ? <Loading />
         : showAdvanced
           ? (<form id="advanced" onSubmit={handleSubmit(advancedJoin)}>
-          <p>{t('explore:advancedP')}</p>
+          <p>{t('Join room directly')}:</p>
           <div>
-            <label htmlFor="room">{t('explore:advancedRoom')}</label>
+            <label htmlFor="room">{t('Room')}: </label>
             <input type="text" name="advancedRoom" value={advancedRoom} placeholder="events" onChange={(e) => roomBar(e)} ref={register({ required: true })} />
           </div>
-          {errors.advancedRoom && t('explore:advancedRoomError')}
+          {errors.advancedRoom && t('Please enter the name of your room.')}
           <div>
-            <label htmlFor="server">{t('explore:advancedServer')}</label>
+            <label htmlFor="server">{t('Server')}: </label>
             <input type="text" name="advancedServer" value={advancedServer} placeholder="klasseklima.org" onChange={(e) => serverBar(e)} ref={register({ required: true })} />
           </div>
-          {errors.advancedServer && t('explore:advancedServerError')}
-          <button type="submit" name="Join">{loading ? <Loading /> : t('explore:buttonJoin')}</button>
+          {errors.advancedServer && t('Please enter the name of your server.')}
+          <button type="submit" name="Join">{loading ? <Loading /> : t('JOIN')}</button>
         </form>
             )
           : null

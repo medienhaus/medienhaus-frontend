@@ -1,0 +1,12 @@
+{
+  "LEAVE": "VERLASSEN",
+  "JOIN": "BEITRETEN",
+  "Slow Down! You're a bit too quick there": "Das geht mir ein bisschen zu schnell, ich komme nicht hinterher!",
+  "Advanced options": "Erweiterte Optionen",
+  "Joined room successfully": "Raum erfolgreich beigetreten.",
+  "Join room directly": "Einem Raum direkt beitreten",
+  "Room": "Raum",
+  "Please enter the name of your room.":"Bitte fügen Sie einen Raum hinzu.",
+  "Server": "Server",
+  "Please enter the name of your server": "Bitte fügen Sie einen Server hinzu."
+}

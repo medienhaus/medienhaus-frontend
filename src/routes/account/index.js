@@ -12,8 +12,8 @@ const Account = () => {
   const [mail, setMail] = useState('')
   const history = useHistory()
   const logoutRef = useRef(0)
-  const { t } = useTranslation(['translation', 'account'])
-  const [logBtnStr, setLogBtnStr] = useState(t('account:logout'))
+  const { t } = useTranslation('account')
+  const [logBtnStr, setLogBtnStr] = useState(t('Logout'))
   const matrixClient = Matrix.getMatrixClient()
 
   const auth = useAuth()
@@ -54,7 +54,7 @@ const Account = () => {
       return window.location.reload(false)
     } else {
       logoutRef.current = logoutRef.current + 1
-      setLogBtnStr(t('account:logout2'))
+      setLogBtnStr(t('Are you sure?'))
     }
   }
 
@@ -74,7 +74,7 @@ const Account = () => {
 
   const Email = () => {
     return (
-      mail ? <p>{mail}</p> : <p>{t('account:email')}</p>
+      mail ? <p>{mail}</p> : <p>{t('Please add an email address to your profile …')}</p>
     )
   }
 
@@ -102,7 +102,7 @@ const Account = () => {
   return (
     <section className="account">
       <ProfilePic />
-      <p>{t('account:rooms.text')}</p>
+      <p>{t('You are currently part of the following rooms:')}</p>
       <ul>
         {[...joinedRooms].sort().map(joinedRoom => (
           joinedRoom !== '' && <li key={joinedRoom}>{joinedRoom}</li>
