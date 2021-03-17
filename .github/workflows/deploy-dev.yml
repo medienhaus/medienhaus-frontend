@@ -18,9 +18,12 @@ jobs:
         with:
           node-version: '15'
 
-      - run: npm ci
+      - run: npm clean-install
+
       - run: npm run build
-      
+        env:
+          NODE_ENV: development
+
       - uses: up9cloud/action-rsync@v1.1
         env:
           HOST: dev.medienhaus.udk-berlin.de
