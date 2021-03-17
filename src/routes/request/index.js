@@ -52,7 +52,7 @@ export default function App () {
 
     try {
       if (!radio) {
-        const url = 'http://localhost:3001/messenger/requestRoom'
+        const url = `${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/messenger/requestRoom`
         const requestMetadata = {
           method: 'POST',
           headers: {
@@ -67,7 +67,7 @@ export default function App () {
             console.log(msg)
           })
       } else {
-        const url = 'http://localhost:3001/messenger/requestAcc'
+        const url = `${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/messenger/requestAcc`
         const requestMetadata = {
           method: 'POST',
           headers: {

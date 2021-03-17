@@ -45,7 +45,7 @@ const Support = () => {
         msg: msg
       }
     try {
-      const url = 'http://localhost:3001/messenger/support'
+      const url = `${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/messenger/support`
       const requestMetadata = {
         method: 'POST',
         headers: {
