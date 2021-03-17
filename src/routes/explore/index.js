@@ -5,7 +5,6 @@ import federation from '../../assets/data/federation.json'
 import PublicRooms from '../../components/matrix_public_rooms'
 import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
-import config from '../../config.json'
 import Matrix from '../../Matrix'
 import PropTypes from 'prop-types'
 
@@ -286,7 +285,7 @@ const Explore = () => {
           <input name="search" type="text" value={search} onChange={(e) => searchBar(e)} placeholder="search …" />
           {/* eslint-disable-next-line jsx-a11y/no-onchange */}
           <select name="Federations" id="federations" defaultValue="baseUrl" onChange={(e) => changeServer(e.target.value)} >
-            <option value="baseUrl">{config.baseUrlAlias}</option>
+            <option value="baseUrl">{process.env.REACT_APP_MATRIX_BASE_ALIAS}</option>
             {federation.map((fed, index) => (
               <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name}</option>
             ))}
