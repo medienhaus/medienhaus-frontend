@@ -215,12 +215,31 @@ const Admin = () => {
     const img = html.includes('<img')
     const imgLink = html.substring(html.indexOf('alt="'), html.indexOf('"'))
     const formattedBody = img ? `= yaml =\norder: ${index}\neditor: "${localStorage.getItem('medienhaus_user_id')}"\nimage: ${imgLink}\n= yaml =\n${html}` : `= yaml =\norder: ${index}\neditor: "${localStorage.getItem('medienhaus_user_id')}"\n= yaml =\n${html}`
-    await matrixClient.sendMessage(room, {
-      body: `= yaml =\norder: ${index}\neditor: "${localStorage.getItem('medienhaus_user_id')}"\n= yaml =\n${body}`,
-      format: 'org.matrix.custom.html',
-      msgtype: 'm.text',
-      formatted_body: formattedBody
-    })
+
+    const message = {
+      index: index,
+      displayname: localStorage.getItem('medienhaus_user_id'),
+      body: body,
+      formattedBody: formattedBody,
+      room: room
+    }
+    const url = `${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/messenger/sendCms`
+    const requestMetadata = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(message)
+    }
+    try {
+      fetch(url, requestMetadata)
+        .then(res => res.json())
+        .then(msg => {
+          console.log(msg)
+        })
+    } catch (e) {
+      console.log('error while saving: ' + e)
+    }
     onSave()
   }
   const saveAll = async (eventId, redact, pos) => {
@@ -228,21 +247,61 @@ const Admin = () => {
     const roomId = await matrixClient.getRoomIdForAlias(currentPath)
     try {
       if (redact) {
+        const message = {
+          room: roomId.room_id,
+          event: eventId,
+          dunno: null,
+          reason: { reason: 'I have my reasons!' }
+        }
+        const url = `${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/messenger/redactMessage`
+        const requestMetadata = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(message)
+        }
         try {
-          await matrixClient.redactEvent(roomId.room_id, eventId, null, { reason: 'I have my reasons!' })
+          fetch(url, requestMetadata)
+            .then(res => res.json())
+            .then(msg => {
+              console.log(msg)
+            })
           cms.splice(pos, 1)
           console.log('redaction happened')
-          // onSave()
-          console.log(cms)
         } catch (e) {
-          console.log('error while trying to edit: ')
+          console.log('error while trying to delete: ' + e)
         }
       }
       cms.forEach(async (entry, index) => {
         if (entry.order !== index && localStorage.getItem(entry.event) === null) {
           console.log('order changed')
           try {
-            await matrixClient.redactEvent(roomId.room_id, entry.event, null, { reason: 'I have my reasons!' })
+            const message = {
+              room: roomId.room_id,
+              event: entry.event,
+              dunno: null,
+              reason: { reason: 'I have my reasons!' }
+            }
+            const url = `${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/messenger/redactMessage`
+            const requestMetadata = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(message)
+            }
+            try {
+              fetch(url, requestMetadata)
+                .then(res => res.json())
+                .then(msg => {
+                  console.log(msg)
+                })
+              cms.splice(pos, 1)
+              console.log('redaction happened')
+            } catch (e) {
+              console.log('error while trying to delete: ' + e)
+            }
             console.log(entry.event + ' was deleted')
             saveMessage(index, roomId.room_id, entry.body)
             // onSave()
@@ -252,9 +311,33 @@ const Admin = () => {
         } else if (localStorage.getItem(entry.event) !== null) {
           console.log('body changed')
           try {
-            await matrixClient.redactEvent(roomId.room_id, entry.event, null, { reason: 'I have my reasons!' })
-            saveMessage(index, roomId.room_id, localStorage.getItem(entry.event))
-            localStorage.removeItem(entry.event)
+            const message = {
+              room: roomId.room_id,
+              event: entry.event,
+              dunno: null,
+              reason: { reason: 'I have my reasons!' }
+            }
+            const url = `${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/messenger/redactMessage`
+            const requestMetadata = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(message)
+            }
+            try {
+              fetch(url, requestMetadata)
+                .then(res => res.json())
+                .then(msg => {
+                  console.log(msg)
+                })
+              cms.splice(pos, 1)
+              console.log('redaction happened')
+            } catch (e) {
+              console.log('error while trying to delete: ' + e)
+            }
+            console.log(entry.event + ' was deleted')
+            saveMessage(index, roomId.room_id, entry.body)
             // onSave()
           } catch (e) {
             console.log('error while trying to edit: ')
