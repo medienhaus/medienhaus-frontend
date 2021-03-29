@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form' // https://github.com/react-hook-form/
 import { Loading } from '../../components/loading'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../Auth'
+import { makeRequest } from '../../Backend'
 
 const Support = () => {
   const { register, handleSubmit, errors } = useForm()
@@ -45,17 +46,7 @@ const Support = () => {
         msg: msg
       }
     try {
-      const url = `${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/messenger/support`
-      const requestMetadata = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(support)
-      }
-
-      fetch(url, requestMetadata)
-        .then(res => res.json())
+      makeRequest('messenger/support', support)
         .then(msg => {
           console.log(msg)
         })
