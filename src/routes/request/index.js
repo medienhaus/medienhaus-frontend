@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation, Trans } from 'react-i18next'
+import { makeRequest } from '../../Backend'
 
 export default function App () {
   const { register, handleSubmit, errors } = useForm()
@@ -52,35 +53,13 @@ export default function App () {
 
     try {
       if (!radio) {
-        const url = `${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/messenger/requestRoom`
-        const requestMetadata = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(requestRoom)
-        }
-
-        fetch(url, requestMetadata)
-          .then(res => res.json())
-          .then(msg => {
-            console.log(msg)
-          })
+        makeRequest('messenger/requestRoom', requestRoom).then(msg => {
+          console.log(msg)
+        })
       } else {
-        const url = `${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/messenger/requestAcc`
-        const requestMetadata = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(requestAcc)
-        }
-
-        fetch(url, requestMetadata)
-          .then(res => res.json())
-          .then(msg => {
-            console.log(msg)
-          })
+        makeRequest('messenger/requestAcc', requestAcc).then(msg => {
+          console.log(msg)
+        })
       }
       alert(t('Your request has ben sent! We will get back to you asap!'))
       setSending(false)
