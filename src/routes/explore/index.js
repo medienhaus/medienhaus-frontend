@@ -27,6 +27,7 @@ const Explore = () => {
   const { t } = useTranslation('explore')
   const matrixClient = Matrix.getMatrixClient()
 
+  //  Fetching all rooms a user has already joined and replacing private rooms with generic names
   const getJoinedRooms = async () => {
     try {
       const answer = await matrixClient.getJoinedRooms()
@@ -128,6 +129,7 @@ const Explore = () => {
       .then(() => setShowAdvanced(false))
       .then(() => setAdvancedJoining(false))
   }
+
   const SearchStructure = () => {
     const sort = [...publicRooms].sort((a, b) => {
       if (a.name < b.name) return -1
@@ -184,6 +186,7 @@ const Explore = () => {
   }
 
   const RoomStructure = () => {
+    /* We map through our json and look for unique faculty names to add to our array */
     const keys = []
     roomStructure.map(data => (
       keys.push(data.type)
@@ -216,6 +219,9 @@ const Explore = () => {
         {loading
           ? <Loading />
           : [...sort].map(publicRoom => (
+            /* the following structure is very specific to our use case and will most likely need some changes before using it in different scenarios
+                we map through all public rooms and check if those rooms start wuth a certain prefix defined in ../../assets/data/naming.json
+            */
               publicRoom.name.startsWith(`${faculty}-`) || publicRoom.name.startsWith(`${faculty}+vk-`) || publicRoom.name.startsWith(`kum+${faculty}-`)
                 ? (
             <div className="room" key={publicRoom.room_id}>
@@ -278,6 +284,7 @@ const Explore = () => {
       </>
     )
   }
+
   return (
     <section className="explore">
       <form id="server">
@@ -294,7 +301,8 @@ const Explore = () => {
           </select>
         </div>
         <div>
-          {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/click-events-have-key-events */}
+          {// <----- Advanced joining method  start ------>
+          /* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/click-events-have-key-events */}
           <label onClick={() => setShowAdvanced(!showAdvanced)}>{showAdvanced ? '×' : '+'} {t('Advanced options')}</label>
         </div>
       </form>
@@ -318,8 +326,9 @@ const Explore = () => {
             )
           : null
       }
+      {// <----- Advanced joining method  end ------>
 
-      {publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : selectFed ? <Federations /> : <RoomStructure />}
+      publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : selectFed ? <Federations /> : <RoomStructure />}
     </section>
 
   )
