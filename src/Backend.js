@@ -8,8 +8,8 @@ function makeRequest (url, payload, method = 'POST', authenticate = true) {
   }
 
   if (authenticate) {
-    requestMetadata.headers.MEDIENHAUS_MATRIX_ACCESS_TOKEN = localStorage.getItem('medienhaus_access_token')
-    requestMetadata.headers.MEDIENHAUS_MATRIX_USER_ID = localStorage.getItem('medienhaus_user_id')
+    requestMetadata.headers['Medienhaus-Matrix-Access-Token'] = localStorage.getItem('medienhaus_access_token')
+    requestMetadata.headers['Medienhaus-Matrix-User-Id'] = localStorage.getItem('medienhaus_user_id')
   }
 
   return fetch(`${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/${url}`, requestMetadata)
