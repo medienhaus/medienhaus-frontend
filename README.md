@@ -14,7 +14,7 @@ This repository contains the code for the **medienhaus/** landing hub, which is 
 
 Our landing hub itself is written in JavaScript, we're using the React framework. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Also make sure to check out the [medienhaus-backend](#) repository, which is required for certain functionalities like handling form submissions by users to request support or the creation of rooms and accounts.
+Also make sure to check out the [medienhaus-backend](https://github.com/medienhaus/medienhaus-backend) repository, which is required for certain functionalities like handling form submissions by users to request support or the creation of rooms and accounts.
 
 
 ## Development
