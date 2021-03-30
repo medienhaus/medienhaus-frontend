@@ -1,4 +1,4 @@
-<img src="public/favicon.svg" width="80" />
+<img src="public/favicon.svg" width="70" />
 
 ### medienhaus/
 
@@ -6,7 +6,7 @@ Berlin University of the Arts’ free and open-source environment for digital le
 
 [Concept Paper](https://medienhaus.dev/) | [Twitter](https://twitter.com/medienhaus_)
 
-<br><br>
+<br>
 
 # medienhaus-frontend
 
@@ -18,6 +18,16 @@ Also make sure to check out the [medienhaus-backend](#) repository, which is req
 
 
 ## Development
+
+### Installation
+
+#### `npm install`
+
+Installs all of the application's dependencies.
+
+### Configuration
+
+Configuration happens via environment variables. To start developing locally just copy the supplied `.env.local.example` file to `.env.local` and adjust the values of the variables to your likings. Check the `.env` file for more available variables, that you can also then modify in your `.env.local` file.
 
 ### Available Scripts
 
