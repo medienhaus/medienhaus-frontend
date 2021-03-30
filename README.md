@@ -1,4 +1,4 @@
-<img src="src/assets/icons/android-chrome-192x192.png" width="80" />
+<img src="public/favicon.svg" width="80" />
 
 ### medienhaus/
 
