@@ -27,7 +27,7 @@ Installs all of the application's dependencies.
 
 ### Configuration
 
-Configuration happens via environment variables. To start developing locally just copy the supplied `.env.local.example` file to `.env.local` and adjust the values of the variables to your likings. Check the `.env` file for more available variables, that you can also then modify in your `.env.local` file.
+Configuration happens via environment variables. To start developing locally just copy the supplied `.env.local.example` file to `.env.local` and adjust the values of the variables to your liking. Check the `.env` file for more available variables, which you can also then modify in your `.env.local` file.
 
 ### Available Scripts
 
