@@ -91,7 +91,7 @@ export default function App () {
   )
 
   return (
-    <section className="request copy">
+    <section className="request">
       <div id="formchooser">
         <input type="radio" id="room" name="room" value="room" checked={radio === false} onClick={() => setRadio(false)} />
         <label htmlFor="room">Room</label>
