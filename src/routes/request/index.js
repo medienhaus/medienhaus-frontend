@@ -53,11 +53,11 @@ export default function App () {
 
     try {
       if (!radio) {
-        makeRequest('messenger/requestRoom', requestRoom).then(msg => {
+        await makeRequest('messenger/requestRoom', requestRoom).then(msg => {
           console.log(msg)
         })
       } else {
-        makeRequest('messenger/requestAcc', requestAcc).then(msg => {
+        await makeRequest('messenger/requestAcc', requestAcc).then(msg => {
           console.log(msg)
         })
       }
@@ -65,7 +65,7 @@ export default function App () {
       setSending(false)
     } catch (e) {
       console.log(e)
-      alert(t('Couldn\'t send your message. Please check your internet connection'))
+      alert(t('Couldn\'t send your message. ' + e))
       setSending(false)
     }
   }
@@ -91,7 +91,7 @@ export default function App () {
   )
 
   return (
-    <section className="request copy">
+    <section className="request">
       <div id="formchooser">
         <input type="radio" id="room" name="room" value="room" checked={radio === false} onClick={() => setRadio(false)} />
         <label htmlFor="room">Room</label>

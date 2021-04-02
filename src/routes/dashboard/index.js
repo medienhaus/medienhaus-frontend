@@ -7,7 +7,7 @@ const Dashboard = () => {
   const { t } = useTranslation('dashboard')
 
   return (
-    <section className="dashboard copy">
+    <section className="dashboard">
       <p>{t('Hello')}, <strong>{auth.user.displayname}</strong>.</p>
       <p><Trans t={t} i18nKey="p1">Your <strong>/classroom</strong> is a collaborative chat platform where you can find rooms for your courses and classes. Each room can be enhanced with a variety of widgets (think of plugins) like audio/video collaboration or collaborative real-time writing and editing.</Trans></p>
       <p><Trans t={t} i18nKey="p2">The <strong>/account</strong> section shows your profile information and which rooms you are part of. You will soon be able to accept or reject invites to other rooms in this section.</Trans></p>

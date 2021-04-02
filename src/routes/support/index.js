@@ -46,7 +46,7 @@ const Support = () => {
         msg: msg
       }
     try {
-      makeRequest('messenger/support', support)
+      await makeRequest('messenger/support', support)
         .then(msg => {
           console.log(msg)
         })
@@ -57,7 +57,7 @@ const Support = () => {
       setSystem('')
     } catch (e) {
       console.log(e)
-      alert('Couldn’t send your message. Please check your internet connection.')
+      alert('Couldn’t send your message. ' + e)
       setSending(false)
     }
   }
