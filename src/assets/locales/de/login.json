@@ -4,7 +4,6 @@
   "Username can't be empty.": "Bitte geben Sie einen Benutzernamen ein.",
   "password": "passwort",
   "Password can't be empty.": "Bitte geben Sie ein Passwort ein.",
-  "Which account do I need?": "Welchen Account brauche ich?",
   "I forgot my username/password!": "Ich habe mein Passwort oder Account vergessen!",
   "I cannot log in!": "Ich kann mich nicht einloggen!"
 }

@@ -63,13 +63,10 @@ const Login = () => {
             )}
       </form>
       <ul>
-        <li><a href="https://www.oase.udk-berlin.de/udk-oase-nutzeraccount/" rel="external noopener noreferrer">
-          {t('Which account do I need?')}
-        </a></li>
-        <li><a href="https://www.oase.udk-berlin.de/passwort" rel="external noopener noreferrer">
+        <li><a href={process.env.REACT_APP_MEDIENHAUS_FRONTEND_LOGIN_FORGOT_PASSWORD} rel="external noopener noreferrer">
           {t('I forgot my username/password!')}
         </a></li>
-        <li><a href="mailto:info@medienhaus.udk-berlin.de?subject=medienhaus/help" rel="external noopener noreferrer">
+        <li><a href={process.env.REACT_APP_MEDIENHAUS_FRONTEND_LOGIN_SUPPORT_MAIL_TO} rel="external noopener noreferrer">
           {t('I cannot log in!')}
         </a></li>
       </ul>
