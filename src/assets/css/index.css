@@ -51,6 +51,10 @@ body > #app > main > :first-of-type {
   margin-top: calc(var(--margin) * 0.6);
 }
 
+body > #app > main > :first-of-type#definition {
+  margin-top: calc(var(--margin) * 1.6);
+}
+
 body > #app > main > section + section {
   margin-top: calc(var(--margin) * 4);
 }
