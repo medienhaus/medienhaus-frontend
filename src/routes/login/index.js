@@ -63,12 +63,21 @@ const Login = () => {
             )}
       </form>
       <ul>
-        <li><a href={process.env.REACT_APP_MEDIENHAUS_FRONTEND_LOGIN_FORGOT_PASSWORD} rel="external noopener noreferrer">
-          {t('I forgot my username/password!')}
-        </a></li>
-        <li><a href={process.env.REACT_APP_MEDIENHAUS_FRONTEND_LOGIN_SUPPORT_MAIL_TO} rel="external noopener noreferrer">
-          {t('I cannot log in!')}
-        </a></li>
+        <li>
+          <a href={process.env.REACT_APP_MEDIENHAUS_FRONTEND_LOGIN_FORGOT_PASSWORD} rel="external noopener noreferrer">
+            {t('Forgot your password?')}
+          </a>
+        </li>
+        <li>
+          <a href={process.env.REACT_APP_MEDIENHAUS_FRONTEND_LOGIN_REGISTER_ACCOUNT} rel="external noopener noreferrer">
+            {t('Register new account?')}
+          </a>
+        </li>
+        <li>
+          <a href={process.env.REACT_APP_MEDIENHAUS_FRONTEND_LOGIN_SUPPORT_MAILTO} rel="external noopener noreferrer">
+            {t('Need support?')}
+          </a>
+        </li>
       </ul>
     </section>
   )
