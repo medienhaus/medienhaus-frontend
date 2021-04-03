@@ -5,6 +5,7 @@
   "Advanced options": "Erweiterte Optionen",
   "Joined room successfully": "Raum erfolgreich beigetreten.",
   "Join room directly": "Einem Raum direkt beitreten",
+  "%REACT_APP_MEDIENHAUS_FRONTEND_HOMESERVER_NAME_DEFAULT%": "%REACT_APP_MEDIENHAUS_FRONTEND_HOMESERVER_NAME_I18N_DE%",
   "Room": "Raum",
   "Please enter the name of your room.":"Bitte fügen Sie einen Raum hinzu.",
   "Server": "Server",

@@ -292,10 +292,7 @@ const Explore = () => {
           <input name="search" type="text" value={search} onChange={(e) => searchBar(e)} placeholder="search …" />
           {/* eslint-disable-next-line jsx-a11y/no-onchange */}
           <select name="Federations" id="federations" defaultValue="baseUrl" onChange={(e) => changeServer(e.target.value)} >
-            {/* TODO: make process.env work in assets/locales/de/explore.json
             <option value="baseUrl">{t(process.env.REACT_APP_MEDIENHAUS_FRONTEND_HOMESERVER_NAME_DEFAULT)}</option>
-            */}
-            <option value="baseUrl">{process.env.REACT_APP_MEDIENHAUS_FRONTEND_HOMESERVER_NAME_DEFAULT}</option>
             {federation.map((fed, index) => (
               <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name}</option>
             ))}
