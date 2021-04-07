@@ -393,6 +393,7 @@ form textarea {
 }
 
 .explore button > #loading {
+  border-color: var(--color-bg) transparent var(--color-bg) transparent;
   max-height: calc(var(--margin) * 1.15);
   max-width: calc(var(--margin) * 1.15);
   margin:0 auto;
