@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import i18n from '../../i18n'
 import Matrix from '../../Matrix'
 import { useAuth } from '../../Auth'
+import Avatar from '../../components/avatar'
 
 const Account = () => {
   const joinedRooms = useJoinedRooms()
@@ -61,9 +62,8 @@ const Account = () => {
   const profile = auth.user
 
   const ProfilePic = () => {
-    const src = matrixClient.mxcUrlToHttp(profile.avatar_url, 100, 100, 'crop', true)
     return (<div className="pofile">
-      { profile.avatar_url ? <img className="avatar" src={src} alt="avatar" /> : <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>}
+      <Avatar url={matrixClient.mxcUrlToHttp(profile.avatar_url, 100, 100, 'crop', true)} />
       < div >
         <h2><strong>{profile.displayname}</strong></h2>
         <Email />

@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form'
 import { useTranslation, Trans } from 'react-i18next'
 import { makeRequest } from '../../Backend'
 
+import styles from './Request.module.css'
+
 export default function App () {
   const { register, handleSubmit, errors } = useForm()
   const [sending, setSending] = useState(false)
@@ -91,8 +93,8 @@ export default function App () {
   )
 
   return (
-    <section className="request">
-      <div id="formchooser">
+    <section>
+      <div className={styles.formChooser}>
         <input type="radio" id="room" name="room" value="room" checked={radio === false} onClick={() => setRadio(false)} />
         <label htmlFor="room">Room</label>
         <input type="radio" id="account" name="account" value="account" checked={radio === true} onClick={() => setRadio(true)} />

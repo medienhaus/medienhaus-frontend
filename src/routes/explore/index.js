@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
 import Matrix from '../../Matrix'
 import PropTypes from 'prop-types'
+import Avatar from '../../components/avatar'
 
 const Explore = () => {
   const [joinedRooms, setJoinedRooms] = useState([])
@@ -149,13 +150,7 @@ const Explore = () => {
         {[...sortFeds].map(publicRoom => (
           publicRoom.name.includes(search.toLowerCase().replace(/ /g, '')) &&
           <div className="room" key={publicRoom.room_id}>
-            {publicRoom.avatar_url
-              ? (
-              <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, 'crop', false)} alt="avatar" />
-                )
-              : (
-                <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
-                )}
+            <Avatar url={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, 'crop', true)} />
             <label htmlFor={publicRoom.room_id} key={publicRoom.name} >{publicRoom.name}</label>
             {joinedRooms.includes(publicRoom.name)
               ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
@@ -167,13 +162,7 @@ const Explore = () => {
         {[...sort].map(publicRoom => (
           publicRoom.name.includes(search.toLowerCase().replace(/ /g, '')) &&
           <div className="room" key={publicRoom.room_id}>
-            {publicRoom.avatar_url
-              ? (
-              <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, 'crop', false)} alt="avatar" />
-                )
-              : (
-                <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
-                )}
+            <Avatar url={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, 'crop', true)} />
             <label htmlFor={publicRoom.room_id} key={publicRoom.name} >{publicRoom.name}</label>
             {joinedRooms.includes(publicRoom.name)
               ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
@@ -225,13 +214,7 @@ const Explore = () => {
               publicRoom.name.startsWith(`${faculty}-`) || publicRoom.name.startsWith(`${faculty}+vk-`) || publicRoom.name.startsWith(`kum+${faculty}-`)
                 ? (
             <div className="room" key={publicRoom.room_id}>
-              {publicRoom.avatar_url
-                ? (
-                <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, 'crop', false)} alt="avatar" />
-                  )
-                : (
-                  <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
-                  )}
+              <Avatar url={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, 'crop', true)} />
               <label htmlFor={publicRoom.room_id} key={publicRoom.name} name={faculty}>{publicRoom.name}</label>
               {joinedRooms.includes(publicRoom.name)
                 ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
@@ -266,13 +249,7 @@ const Explore = () => {
           ? <Loading />
           : sort.map((pubFed, index) => (
           <div className="federation" key={index}>
-            {pubFed.avatar_url
-              ? (
-              <img className="avatar" src={matrixClient.mxcUrlToHttp(pubFed.avatar_url, 100, 100, 'crop', false)} alt="avatar" />
-                )
-              : (
-                <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
-                )}
+            <Avatar url={matrixClient.mxcUrlToHttp(pubFed.avatar_url, 100, 100, 'crop', true)} />
             <label htmlFor={pubFed.room_id} key={index} >{pubFed.name}</label>
             {joinedRooms.includes(pubFed.name)
               ? <button onClick={() => setLeaveId(pubFed.room_id)} name="Leave">

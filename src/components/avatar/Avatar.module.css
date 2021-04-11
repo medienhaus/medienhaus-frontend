@@ -1,0 +1,9 @@
+.avatar {
+  height: calc(var(--margin) * 2.8);
+  width: calc(var(--margin) * 2.8);
+}
+
+.avatarFallback {
+  composes: avatar;
+  background-color: black;
+}
