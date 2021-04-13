@@ -9,6 +9,8 @@
     "@testing-library/user-event": "^13.1.1",
     "i18next": "^20.1.0",
     "i18next-resource-store-loader": "^0.1.2",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "matrix-js-sdk": "^9.10.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
