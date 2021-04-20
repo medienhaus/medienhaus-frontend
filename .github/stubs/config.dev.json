@@ -1,0 +1,30 @@
+{
+  "matrix_homeserver_base_url": "https://dev.medienhaus.udk-berlin.de",
+  "backend_base_url": "https://dev.medienhaus.udk-berlin.de/api",
+  "element": {
+    "label": "/classroom",
+    "href": "https://dev.medienhaus.udk-berlin.de/classroom"
+  },
+  "login": {
+    "register_href": "https://dev.medienhaus.udk-berlin.de/classroom/#/register",
+    "forgot_password_href": "https://dev.medienhaus.udk-berlin.de/classroom/#/forgot_password",
+    "support_href": "mailto:info@medienhaus.udk-berlin.de?subject=medienhaus/help"
+  },
+  "federation": {
+    "enabled": true,
+    "homeserver": {
+      "label": "Berlin University of the Arts (dev)",
+      "label_de": "Universität der Künste Berlin (dev)"
+    },
+    "directory": [
+      {
+        "url": "klasseklima.org",
+        "label": "Klasse Klima"
+      },
+      {
+        "url": "matrix.org",
+        "label": "matrix.org"
+      }
+    ]
+  }
+}
