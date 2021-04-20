@@ -3,7 +3,7 @@
   "backend_base_url": "https://medienhaus.udk-berlin.de/api",
   "element": {
     "label": "/classroom",
-    "href": "https://dev.medienhaus.udk-berlin.de/classroom"
+    "href": "https://medienhaus.udk-berlin.de/classroom"
   },
   "login": {
     "register_href": "https://medienhaus.udk-berlin.de/classroom/#/register",
