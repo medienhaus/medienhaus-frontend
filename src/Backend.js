@@ -1,3 +1,5 @@
+import config from './config.json'
+
 function makeRequest (url, payload, method = 'POST', authenticate = true) {
   const requestMetadata = {
     method: method,
@@ -12,7 +14,7 @@ function makeRequest (url, payload, method = 'POST', authenticate = true) {
     requestMetadata.headers['Medienhaus-Matrix-User-Id'] = localStorage.getItem('medienhaus_user_id')
   }
 
-  return fetch(`${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/${url}`, requestMetadata)
+  return fetch(`${config.medienhaus_backend_base_url}/${url}`, requestMetadata)
     .then(res => res.json())
 }
 

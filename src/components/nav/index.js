@@ -2,6 +2,7 @@ import React from 'react'
 import i18n from 'i18next'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../../Auth'
+import config from '../../config.json'
 
 const Nav = () => {
   const auth = useAuth()
@@ -22,7 +23,7 @@ const Nav = () => {
           <div>
             {auth.user
               ? (
-              <a href={process.env.REACT_APP_MATRIX_BASE_URL + '/classroom'} rel="nofollow noopener noreferrer" target="_self">/classroom&nbsp;-&gt;</a>
+              <a href={config.element.href} rel="nofollow noopener noreferrer" target="_self">{config.element.label}&nbsp;-&gt;</a>
                 )
               : (
               <NavLink activeclassname="active" to="/login">/login</NavLink>
@@ -42,9 +43,9 @@ const Nav = () => {
                 }
               </div>
               <div>
-                <a href="https://meetings.udk-berlin.de" rel="external nofollow noopener noreferrer" target="_blank">/meet</a>
-                <a href="https://write.medienhaus.udk-berlin.de" rel="external nofollow noopener noreferrer" target="_blank">/write</a>
-                <a href="https://stream.medienhaus.udk-berlin.de" rel="external nofollow noopener noreferrer" target="_blank">/stream</a>
+                {config.navigation.outgoingLinks.map((service, index) => (
+                  <a href={service.url} rel="external nofollow noopener noreferrer" target="_blank" key={index}>{service.label}</a>
+                ))}
               </div>
             </>
           )}
