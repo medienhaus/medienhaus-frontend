@@ -1,13 +1,14 @@
 import React from 'react'
 import { Loading } from '../../components/loading'
 import roomStructure from '../../assets/data/naming.json'
-import federation from '../../assets/data/federation.json'
 import { withTranslation } from 'react-i18next'
 import Matrix from '../../Matrix'
 import PropTypes from 'prop-types'
 import AdvancedJoinForm from './advancedJoinForm'
 import { map, uniq, filter, keyBy } from 'lodash-es'
 import RoomList from './roomList'
+import i18n from '../../i18n'
+import config from '../../config.json'
 
 class Explore extends React.Component {
   constructor (props) {
@@ -162,22 +163,26 @@ class Explore extends React.Component {
         <form id="server">
           <div id="toolbar">
             <input name="search" type="text" value={search} onChange={(e) => this.setState({ search: e.target.value })} placeholder="search …"/>
-            {/* eslint-disable-next-line jsx-a11y/no-onchange */}
-            <select
-              name="federations"
-              id="federations"
-              onChange={this.setFederationServer}
-              value={federationServer}
-            >
-              <option value="">{process.env.REACT_APP_MATRIX_BASE_ALIAS}</option>
-              {federation.map((fed, index) => (
-                <option key={index} name={fed.server} id={index} value={fed.server}>{fed.name}</option>
-              ))}
-            </select>
+            {config.federation.enabled && (
+              /* eslint-disable-next-line jsx-a11y/no-onchange */
+              <select
+                name="federations"
+                id="federations"
+                onChange={this.setFederationServer}
+                value={federationServer}
+              >
+                <option value="">{config.federation.homeserver[`label_${i18n.language}`] || config.federation.homeserver.label}</option>
+                {config.federation.directory.map((server, index) => (
+                  <option key={index} name={server.url} id={index} value={server.url}>{server[`label_${i18n.language}`] || server.label}</option>
+                ))}
+              </select>
+            )}
           </div>
           <div>
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-            <label onClick={() => this.setState({ showAdvanced: !showAdvanced })}>{showAdvanced ? '×' : '+'} {t('Advanced options')}</label>
+            {config.federation.enabled && (
+              /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */
+              <label onClick={() => this.setState({ showAdvanced: !showAdvanced })}>{showAdvanced ? '×' : '+'} {t('Advanced options')}</label>
+            )}
           </div>
         </form>
         {showAdvanced && (<AdvancedJoinForm submit={this.submitAdvancedJoinForm.bind(this)} loading={advancedJoinFormLoading} />)}
@@ -198,7 +203,7 @@ class Explore extends React.Component {
         {/* If we have an active search going on, we just list our base server's public rooms if there are any... */}
         {
           (search && publicRooms.length > 0) && (<>
-            <h2>{process.env.REACT_APP_MATRIX_BASE_ALIAS}</h2>
+            <h2>{config.federation.homeserver[`label_${i18n.language}`] || config.federation.homeserver.label}</h2>
             <RoomList
               roomsToList={publicRooms}
               joinedRooms={this.state.joinedRooms}

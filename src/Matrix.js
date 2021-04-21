@@ -1,4 +1,5 @@
 import matrixcs, { MemoryStore } from 'matrix-js-sdk'
+import config from './config.json'
 
 class Matrix {
   constructor () {
@@ -7,7 +8,7 @@ class Matrix {
 
     // eslint-disable-next-line new-cap
     this.matrixClient = new matrixcs.createClient({
-      baseUrl: process.env.REACT_APP_MATRIX_BASE_URL,
+      baseUrl: config.matrix_homeserver_base_url,
       accessToken: myAccessToken,
       userId: myUserId,
       useAuthorizationHeader: true,

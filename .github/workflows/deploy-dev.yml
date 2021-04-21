@@ -19,23 +19,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - run: cp ./.github/stubs/config.dev.json ./src/config.json
+
       - uses: actions/setup-node@v2.1.5
         with:
           node-version: '15'
 
       - run: npm clean-install
 
-      # If this was a manually triggered deploy we load some environment variables from GitHub's UI, otherwise ...
+      # If this was a manually triggered deploy we may replace the Matrix base URL configuration variable via GitHub's UI
       - if: ${{ github.event_name == 'workflow_dispatch' }}
-        run: npm run build
-        env:
-          REACT_APP_MATRIX_BASE_URL: ${{github.event.inputs.matrix_base_url}}
+        name: Update Matrix base URL in config.json
+        uses: datamonsters/replace-action
+        with:
+          files: 'src/config.json'
+          replacements: 'https://dev.medienhaus.udk-berlin.de=${{github.event.inputs.matrix_base_url}}'
 
-      # ... this was an automatic deploy and we fill in our default environment variables.
-      - if: ${{ github.event_name != 'workflow_dispatch' }}
-        run: npm run build
-        env:
-          REACT_APP_MATRIX_BASE_URL: https://dev.medienhaus.udk-berlin.de
+      - run: npm run build
 
       - uses: up9cloud/action-rsync@v1.1
         env:

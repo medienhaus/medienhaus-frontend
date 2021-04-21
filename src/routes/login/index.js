@@ -4,6 +4,7 @@ import { Redirect, useHistory, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../Auth'
 import { Loading } from '../../components/loading'
+import config from '../../config.json'
 
 const Login = () => {
   const { register, handleSubmit, errors } = useForm()
@@ -64,17 +65,17 @@ const Login = () => {
       </form>
       <ul>
         <li>
-          <a href={process.env.REACT_APP_MEDIENHAUS_FRONTEND_LOGIN_FORGOT_PASSWORD} rel="external noopener noreferrer">
+          <a href={config.login.forgot_password_href} rel="external noopener noreferrer">
             {t('Forgot your password?')}
           </a>
         </li>
         <li>
-          <a href={process.env.REACT_APP_MEDIENHAUS_FRONTEND_LOGIN_REGISTER_ACCOUNT} rel="external noopener noreferrer">
+          <a href={config.login.register_href} rel="external noopener noreferrer">
             {t('Register new account?')}
           </a>
         </li>
         <li>
-          <a href={process.env.REACT_APP_MEDIENHAUS_FRONTEND_LOGIN_SUPPORT_MAILTO} rel="external noopener noreferrer">
+          <a href={config.login.support_href} rel="external noopener noreferrer">
             {t('Need support?')}
           </a>
         </li>
