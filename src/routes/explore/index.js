@@ -6,7 +6,7 @@ import { withTranslation } from 'react-i18next'
 import Matrix from '../../Matrix'
 import PropTypes from 'prop-types'
 import AdvancedJoinForm from './advancedJoinForm'
-import { map, uniq, filter, keyBy } from 'lodash-es'
+import { map, uniq, filter, keyBy, pickBy } from 'lodash-es'
 import RoomList from './roomList'
 
 class Explore extends React.Component {
@@ -20,7 +20,7 @@ class Explore extends React.Component {
       loading: false,
       advancedJoinFormLoading: false,
       showAdvanced: false,
-      federationServer: null,
+      federationServer: '',
       federationServerPublicRooms: {}
     }
 
@@ -101,7 +101,7 @@ class Explore extends React.Component {
 
     // Unset the federation server, and display our base server's rooms
     if (!server) {
-      this.setState({ federationServer: null })
+      this.setState({ federationServer: '' })
       return
     }
 
@@ -153,8 +153,8 @@ class Explore extends React.Component {
 
     // If we have an active search going on, filter our search results before rendering them
     if (search) {
-      publicRooms = filter(publicRooms, room => room.name.includes(search.toLowerCase().replace(/ /g, '')))
-      federationServerPublicRooms = filter(federationServerPublicRooms, room => room.name.includes(search.toLowerCase().replace(/ /g, '')))
+      publicRooms = pickBy(publicRooms, room => room.name.includes(search.toLowerCase().replace(/ /g, '')))
+      federationServerPublicRooms = pickBy(federationServerPublicRooms, room => room.name.includes(search.toLowerCase().replace(/ /g, '')))
     }
 
     return (
@@ -197,7 +197,7 @@ class Explore extends React.Component {
 
         {/* If we have an active search going on, we just list our base server's public rooms if there are any... */}
         {
-          (search && publicRooms.length > 0) && (<>
+          (search && Object.keys(publicRooms).length > 0) && (<>
             <h2>{process.env.REACT_APP_MATRIX_BASE_ALIAS}</h2>
             <RoomList
               roomsToList={publicRooms}
@@ -216,19 +216,20 @@ class Explore extends React.Component {
             // Title for each "type" section
             <h2 key={type} style={{ textTransform: 'capitalize' }}>{type}</h2>,
             // All rooms of the given type
-            filter(roomStructure, { type: type }).map((section) => (<>
-              <h3>{section.displayName}</h3>
+            filter(roomStructure, { type: type }).map((section) => [
+              <h3 key={`h3${section.faculty}`}>{section.displayName}</h3>,
               <RoomList
-                roomsToList={filter(publicRooms, (room) => {
-                  return room.name.startsWith(`${section.faculty}-`) ||
-                    room.name.startsWith(`${section.faculty}+vk-`) ||
-                    room.name.startsWith(`kum+${section.faculty}-`)
-                })}
+                key={`roomList${section.faculty}`}
+                roomsToList={pickBy(publicRooms, room => (
+                  room.name.startsWith(`${section.faculty}-`) ||
+                  room.name.startsWith(`${section.faculty}+vk-`) ||
+                  room.name.startsWith(`kum+${section.faculty}-`)
+                ))}
                 joinedRooms={this.state.joinedRooms}
                 onJoinRoom={this.joinRoom}
                 onLeaveRoom={this.leaveRoom}
               />
-            </>))
+            ])
           ])
         }
       </section>
