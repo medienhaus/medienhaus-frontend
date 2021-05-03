@@ -127,20 +127,20 @@
   },
   {
     "id": 21,
+    "faculty": "ub",
+    "type": "other",
+    "displayName": "Bibliothek"
+  },
+  {
+    "id": 22,
     "faculty": "org",
     "type": "other",
     "displayName": "Organisationen"
   },
   {
-    "id": 22,
+    "id": 23,
     "faculty": "udk2030",
     "type": "other",
     "displayName": "UdK2030"
-  },
-  {
-    "id": 23,
-    "faculty": "ub",
-    "type": "other",
-    "displayName": "Bibliothek"
   }
 ]
