@@ -1,340 +1,244 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Loading } from '../../components/loading'
 import roomStructure from '../../assets/data/naming.json'
 import federation from '../../assets/data/federation.json'
-import PublicRooms from '../../components/matrix_public_rooms'
-import { useTranslation } from 'react-i18next'
-import { useForm } from 'react-hook-form'
+import { withTranslation } from 'react-i18next'
 import Matrix from '../../Matrix'
 import PropTypes from 'prop-types'
+import AdvancedJoinForm from './advancedJoinForm'
+import { map, uniq, filter, keyBy, pickBy } from 'lodash-es'
+import RoomList from './roomList'
 
-const Explore = () => {
-  const [joinedRooms, setJoinedRooms] = useState([])
-  const [joinId, setJoinId] = useState('')
-  const [leaveId, setLeaveId] = useState('')
-  const [search, setSearch] = useState('')
-  const [update, setUpdate] = useState(false)
-  const [loading, setLoading] = useState(true)
-  const [loadingFed, setloadingFed] = useState()
-  const [advancedRoom, setAdvancedRoom] = useState('')
-  const [advancedServer, setAdvancedServer] = useState('')
-  const [advancedJoining, setAdvancedJoining] = useState(false)
-  const [showAdvanced, setShowAdvanced] = useState(false)
-  const publicRooms = PublicRooms()
-  const [pubFeds, setPubFeds] = useState([])
-  const [selectFed, setSelectFed] = useState(false)
-  const { register, handleSubmit, errors } = useForm()
-  const { t } = useTranslation('explore')
-  const matrixClient = Matrix.getMatrixClient()
+class Explore extends React.Component {
+  constructor (props) {
+    super(props)
 
-  //  Fetching all rooms a user has already joined and replacing private rooms with generic names
-  const getJoinedRooms = async () => {
-    try {
-      const answer = await matrixClient.getJoinedRooms()
-      const getNames = await Promise.all(answer.joined_rooms.map(async (roomId) => {
-        try {
-          const room = await matrixClient.getStateEvent(roomId, 'm.room.name')
-          if (room.name !== '') {
-            return room.name
-          } else {
-            return '[[ Untyped Chat ]]'
+    this.state = {
+      publicRooms: {},
+      joinedRooms: {},
+      search: '',
+      loading: false,
+      advancedJoinFormLoading: false,
+      showAdvanced: false,
+      federationServer: '',
+      federationServerPublicRooms: {}
+    }
+
+    this.matrixClient = Matrix.getMatrixClient()
+
+    this.leaveRoom = this.leaveRoom.bind(this)
+    this.joinRoom = this.joinRoom.bind(this)
+    this.setFederationServer = this.setFederationServer.bind(this)
+  }
+
+  componentDidMount () {
+    this.fetchPublicRooms()
+    this.fetchJoinedRooms()
+  }
+
+  async fetchPublicRooms () {
+    const publicRooms = (await this.matrixClient.publicRooms()).chunk
+    this.setState({ publicRooms: keyBy(publicRooms, 'room_id') })
+  }
+
+  joinRoom (roomId) {
+    return this.matrixClient.joinRoom(roomId)
+      .then(async () => {
+        this.setState((previousState) => {
+          const joinedRooms = previousState.joinedRooms
+          joinedRooms[roomId] = previousState.publicRooms[roomId].name
+
+          return {
+            joinedRooms: joinedRooms
           }
-        } catch (error) {
-          return '[[ Private Chat ]]'
-        }
-      }))
-      setJoinedRooms(getNames)
-    } catch (e) {
-      console.log(e.data.error)
-    }
-
-    setLoading(false)
-  }
-
-  useEffect(() => {
-    setLoading(true)
-    getJoinedRooms()
-    setUpdate(false)
-    // eslint-disable-next-line
-  }, [update, t, search])
-
-  useEffect(() => {
-    matrixClient.leave(leaveId)
-      .then(() => setUpdate(true))
-      .catch((e) => {
-        e.data.error === ' was not legal room ID or room alias' ? console.log('ID or Alias empty, taking a rest.') : e.data.error === 'Too Many Requests' ? alert(t('Slow Down! You\'re a bit too quick there')) : console.log(e.data.error)
+        })
       })
-    setLeaveId('')
-    // eslint-disable-next-line
-  }, [leaveId])
-
-  useEffect(() => {
-    matrixClient.joinRoom(joinId)
-      .then(() => setUpdate(true))
       .catch((e) => {
-        e.data.error === ' was not legal room ID or room alias' ? console.log('ID or Alias empty, taking a rest.') : e.data.error === 'Too Many Requests' ? alert(t('Slow Down! You\'re a bit too quick there')) : console.log(e.data.error)
-        // console.log(e.data.error)
-      }
-      )
-    setJoinId('')
-    // eslint-disable-next-line
-  }, [joinId])
-
-  const searchBar = e => {
-    setSearch(e.target.value)
+        e.data.error === ' was not legal room ID or room alias' ? console.log('ID or Alias empty, taking a rest.') : e.data.error === 'Too Many Requests' ? alert(this.props.t('Slow Down! You\'re a bit too quick there')) : console.log(e.data.error)
+      })
   }
 
-  const roomBar = e => {
-    e.preventDefault()
-    setAdvancedRoom(e.target.value)
+  leaveRoom (roomId) {
+    return this.matrixClient.leave(roomId)
+      .then(() => {
+        this.setState((previousState) => {
+          const joinedRooms = previousState.joinedRooms
+          delete joinedRooms[roomId]
+
+          return {
+            joinedRooms: joinedRooms
+          }
+        })
+      })
+      .catch((e) => {
+        e.data.error === ' was not legal room ID or room alias' ? console.log('ID or Alias empty, taking a rest.') : e.data.error === 'Too Many Requests' ? alert(this.props.t('Slow Down! You\'re a bit too quick there')) : console.log(e.data.error)
+      })
   }
 
-  const serverBar = e => {
-    e.preventDefault()
-    setAdvancedServer(e.target.value)
-  }
+  // Fetching all rooms a user has already joined and replacing private rooms with generic names
+  async fetchJoinedRooms () {
+    const joinedRoomsWithNames = {}
 
-  const changeServer = async (server) => {
-    if (server !== 'baseUrl') {
-      setloadingFed(true)
-      setSelectFed(server)
-      setPubFeds('')
-      const opts = {
-        server: server,
-        limit: 50
-      }
+    const response = await this.matrixClient.getJoinedRooms()
+    await Promise.all(response.joined_rooms.map(async (roomId) => {
       try {
-        const answer = await matrixClient.publicRooms(opts)
-        setPubFeds(answer.chunk)
-      } catch (e) {
-        console.log(e)
+        const room = await this.matrixClient.getStateEvent(roomId, 'm.room.name')
+        if (room.name !== '') {
+          joinedRoomsWithNames[roomId] = room.name
+        } else {
+          joinedRoomsWithNames[roomId] = '[[ Untyped Chat ]]'
+        }
+      } catch (error) {
+        joinedRoomsWithNames[roomId] = '[[ Private Chat ]]'
       }
-      setloadingFed(false)
-    } else {
-      setSelectFed(false)
+    }))
+
+    this.setState({ joinedRooms: joinedRoomsWithNames })
+  }
+
+  setFederationServer (e) {
+    const server = e.target.value
+
+    // Unset the federation server, and display our base server's rooms
+    if (!server) {
+      this.setState({ federationServer: '' })
+      return
     }
+
+    // Select a different server we want to federate with
+    this.setState({ loading: true })
+
+    this.matrixClient.publicRooms({
+      server: server,
+      limit: 50
+    }).then((resp) => {
+      this.setState({ federationServer: server, federationServerPublicRooms: keyBy(resp.chunk, 'room_id') })
+    }).finally(() => {
+      this.setState({ loading: false })
+    })
   }
-  const advancedJoin = () => {
-    setAdvancedJoining(true)
-    matrixClient.joinRoom(`#${advancedRoom}:${advancedServer}`)
-      .then(() => alert(t('Joined room successfully')))
+
+  submitAdvancedJoinForm ({ advancedRoom, advancedServer }) {
+    this.setState({ advancedJoinFormLoading: true })
+    return this.matrixClient.joinRoom(`#${advancedRoom}:${advancedServer}`)
+      .then(() => alert(this.props.t('Joined room successfully')))
       .catch((e) => {
-        e.data.error === ' was not legal room ID or room alias' ? alert('ID or Alias empty.') : e.data.error === 'Too Many Requests' ? alert(t('Slow Down! You\'re a bit too quick there')) : alert(e.data.error)
-        // console.log(e.data.error)
-      }
-      )
-      .then(() => getJoinedRooms())
-      .then(() => setAdvancedRoom(''))
-      .then(() => setAdvancedServer(''))
-      .then(() => setShowAdvanced(false))
-      .then(() => setAdvancedJoining(false))
+        e.data.error === ' was not legal room ID or room alias' ? alert('ID or Alias empty.') : e.data.error === 'Too Many Requests' ? alert(this.props.t('Slow Down! You\'re a bit too quick there')) : alert(e.data.error)
+      })
+      .then(async () => await this.fetchJoinedRooms())
+      .finally(() => {
+        this.setState({
+          showAdvanced: false,
+          advancedJoinFormLoading: false
+        })
+      })
   }
 
-  const SearchStructure = () => {
-    const sort = [...publicRooms].sort((a, b) => {
-      if (a.name < b.name) return -1
-      if (a.name > b.name) return 1
-      return 0
-    })
+  render () {
+    const t = this.props.t
+    const {
+      search,
+      loading,
+      advancedJoinFormLoading,
+      showAdvanced,
+      federationServer
+    } = this.state
+    let {
+      publicRooms,
+      federationServerPublicRooms
+    } = this.state
 
-    const sortFeds = pubFeds ?? [...pubFeds].sort((a, b) => {
-      if (a.name < b.name) return -1
-      if (a.name > b.name) return 1
-      return 0
-    })
+    // Show our loading spinner if we're still waiting for results
+    if (loading) return <Loading />
+
+    // If we have an active search going on, filter our search results before rendering them
+    if (search) {
+      publicRooms = pickBy(publicRooms, room => room.name.includes(search.toLowerCase().replace(/ /g, '')))
+      federationServerPublicRooms = pickBy(federationServerPublicRooms, room => room.name.includes(search.toLowerCase().replace(/ /g, '')))
+    }
 
     return (
-      <>
-        <h2>{selectFed}</h2>
-        {[...sortFeds].map(publicRoom => (
-          publicRoom.name.includes(search.toLowerCase().replace(/ /g, '')) &&
-          <div className="room" key={publicRoom.room_id}>
-            {publicRoom.avatar_url
-              ? (
-              <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, 'crop', false)} alt="avatar" />
-                )
-              : (
-                <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
-                )}
-            <label htmlFor={publicRoom.room_id} key={publicRoom.name} >{publicRoom.name}</label>
-            {joinedRooms.includes(publicRoom.name)
-              ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
-              {loading ? <Loading /> : t('LEAVE')}</button>
-              : <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('JOIN')}</button>}
+      <section className="explore">
+        <form id="server">
+          <div id="toolbar">
+            <input name="search" type="text" value={search} onChange={(e) => this.setState({ search: e.target.value })} placeholder="search …"/>
+            {/* eslint-disable-next-line jsx-a11y/no-onchange */}
+            <select
+              name="federations"
+              id="federations"
+              onChange={this.setFederationServer}
+              value={federationServer}
+            >
+              <option value="">{process.env.REACT_APP_MATRIX_BASE_ALIAS}</option>
+              {federation.map((fed, index) => (
+                <option key={index} name={fed.server} id={index} value={fed.server}>{fed.name}</option>
+              ))}
+            </select>
           </div>
-        ))}
-        <h2>Medienhaus</h2>
-        {[...sort].map(publicRoom => (
-          publicRoom.name.includes(search.toLowerCase().replace(/ /g, '')) &&
-          <div className="room" key={publicRoom.room_id}>
-            {publicRoom.avatar_url
-              ? (
-              <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, 'crop', false)} alt="avatar" />
-                )
-              : (
-                <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
-                )}
-            <label htmlFor={publicRoom.room_id} key={publicRoom.name} >{publicRoom.name}</label>
-            {joinedRooms.includes(publicRoom.name)
-              ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
-              {loading ? <Loading /> : t('LEAVE')}</button>
-              : <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('JOIN')}</button>}
-          </div>
-        ))}
-      </>
-    )
-  }
-
-  const RoomStructure = () => {
-    /* We map through our json and look for unique faculty names to add to our array */
-    const keys = []
-    roomStructure.map(data => (
-      keys.push(data.type)
-    ))
-    const uniqKeys = [...new Set(keys)]
-
-    return (
-
-      uniqKeys.map(keys => (
-        <><h2 style={{ textTransform: 'capitalize' }}>{keys}</h2>
-          {roomStructure.map((data, index) => (
-            keys === data.type && <RoomList faculty={data.faculty} displayName={data.displayName} type={data.type} key={data.id} />
-          ))}
-        </>)
-      )
-
-    )
-  }
-
-  const RoomList = ({ faculty, displayName, type }) => {
-    const sort = [...publicRooms].sort((a, b) => {
-      if (a.name < b.name) return -1
-      if (a.name > b.name) return 1
-      return 0
-    })
-    return (
-      <>
-        <h3>{displayName}</h3>
-
-        {loading
-          ? <Loading />
-          : [...sort].map(publicRoom => (
-            /* the following structure is very specific to our use case and will most likely need some changes before using it in different scenarios
-                we map through all public rooms and check if those rooms start wuth a certain prefix defined in ../../assets/data/naming.json
-            */
-              publicRoom.name.startsWith(`${faculty}-`) || publicRoom.name.startsWith(`${faculty}+vk-`) || publicRoom.name.startsWith(`kum+${faculty}-`)
-                ? (
-            <div className="room" key={publicRoom.room_id}>
-              {publicRoom.avatar_url
-                ? (
-                <img className="avatar" src={matrixClient.mxcUrlToHttp(publicRoom.avatar_url, 100, 100, 'crop', false)} alt="avatar" />
-                  )
-                : (
-                  <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
-                  )}
-              <label htmlFor={publicRoom.room_id} key={publicRoom.name} name={faculty}>{publicRoom.name}</label>
-              {joinedRooms.includes(publicRoom.name)
-                ? <button onClick={() => setLeaveId(publicRoom.room_id)} name="Leave">
-                {loading ? <Loading /> : t('LEAVE')}</button>
-                : <button onClick={() => setJoinId(publicRoom.room_id)} name="Join">{loading ? <Loading /> : t('JOIN')}</button>}
-            </div>
-                  )
-                : (
-                    null
-                  )
-            ))}
-      </>
-    )
-  }
-
-  RoomList.propTypes = {
-    faculty: PropTypes.any,
-    displayName: PropTypes.string,
-    type: PropTypes.any
-  }
-
-  const Federations = () => {
-    const sort = [...pubFeds].sort((a, b) => {
-      if (a.name < b.name) return -1
-      if (a.name > b.name) return 1
-      return 0
-    })
-    return (
-      <>
-        <h2>{selectFed}</h2>
-        {loadingFed
-          ? <Loading />
-          : sort.map((pubFed, index) => (
-          <div className="federation" key={index}>
-            {pubFed.avatar_url
-              ? (
-              <img className="avatar" src={matrixClient.mxcUrlToHttp(pubFed.avatar_url, 100, 100, 'crop', false)} alt="avatar" />
-                )
-              : (
-                <canvas className="avatar" style={{ backgroundColor: 'black' }}></canvas>
-                )}
-            <label htmlFor={pubFed.room_id} key={index} >{pubFed.name}</label>
-            {joinedRooms.includes(pubFed.name)
-              ? <button onClick={() => setLeaveId(pubFed.room_id)} name="Leave">
-              {loading ? <Loading /> : t('LEAVE')}</button>
-              : <button onClick={() => setJoinId(pubFed.canonical_alias)} name="Join">{loading ? <Loading /> : t('JOIN')}</button>}
-          </div>
-          )
-          )}
-      </>
-    )
-  }
-
-  return (
-    <section className="explore">
-      <form id="server">
-        <div id="toolbar">
-          <input name="search" type="text" value={search} onChange={(e) => searchBar(e)} placeholder="search …" />
-          {/* eslint-disable-next-line jsx-a11y/no-onchange */}
-          <select name="Federations" id="federations" defaultValue="baseUrl" onChange={(e) => changeServer(e.target.value)} >
-            {/* TODO: make process.env work in assets/locales/de/explore.json
-            <option value="baseUrl">{t(process.env.REACT_APP_MEDIENHAUS_FRONTEND_HOMESERVER_NAME_DEFAULT)}</option>
-            */}
-            <option value="baseUrl">{process.env.REACT_APP_MEDIENHAUS_FRONTEND_HOMESERVER_NAME_DEFAULT}</option>
-            {federation.map((fed, index) => (
-              <option key={index} name={fed.server} id={index} value={fed.server} >{fed.name}</option>
-            ))}
-            {// <option key='ownServer' name='addserver' value='' onClick={() => alert('sup')}>Add new server</option>
-            }
-          </select>
-        </div>
-        <div>
-          {// <----- Advanced joining method  start ------>
-          /* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/click-events-have-key-events */}
-          <label onClick={() => setShowAdvanced(!showAdvanced)}>{showAdvanced ? '×' : '+'} {t('Advanced options')}</label>
-        </div>
-      </form>
-      {showAdvanced && advancedJoining
-        ? <Loading />
-        : showAdvanced
-          ? (<form id="advanced" onSubmit={handleSubmit(advancedJoin)}>
-          <p>{t('Join room directly')}:</p>
           <div>
-            <label htmlFor="room">{t('Room')}: </label>
-            <input type="text" name="advancedRoom" value={advancedRoom} placeholder="events" onChange={(e) => roomBar(e)} ref={register({ required: true })} />
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
+            <label onClick={() => this.setState({ showAdvanced: !showAdvanced })}>{showAdvanced ? '×' : '+'} {t('Advanced options')}</label>
           </div>
-          {errors.advancedRoom && t('Please enter the name of your room.')}
-          <div>
-            <label htmlFor="server">{t('Server')}: </label>
-            <input type="text" name="advancedServer" value={advancedServer} placeholder="klasseklima.org" onChange={(e) => serverBar(e)} ref={register({ required: true })} />
-          </div>
-          {errors.advancedServer && t('Please enter the name of your server.')}
-          <button type="submit" name="Join">{loading ? <Loading /> : t('JOIN')}</button>
         </form>
-            )
-          : null
-      }
-      {// <----- Advanced joining method  end ------>
+        {showAdvanced && (<AdvancedJoinForm submit={this.submitAdvancedJoinForm.bind(this)} loading={advancedJoinFormLoading} />)}
 
-      publicRooms.length === 0 ? <Loading /> : search ? <SearchStructure /> : selectFed ? <Federations /> : <RoomStructure />}
-    </section>
+        {/* If we have selected a different server we want to federate with, then show its rooms */}
+        {
+          federationServer && federationServerPublicRooms && (<>
+            <h2>{federationServer}</h2>
+            <RoomList
+              roomsToList={federationServerPublicRooms}
+              joinedRooms={this.state.joinedRooms}
+              onJoinRoom={this.joinRoom}
+              onLeaveRoom={this.leaveRoom}
+            />
+          </>)
+        }
 
-  )
+        {/* If we have an active search going on, we just list our base server's public rooms if there are any... */}
+        {
+          (search && Object.keys(publicRooms).length > 0) && (<>
+            <h2>{process.env.REACT_APP_MATRIX_BASE_ALIAS}</h2>
+            <RoomList
+              roomsToList={publicRooms}
+              joinedRooms={this.state.joinedRooms}
+              onJoinRoom={this.joinRoom}
+              onLeaveRoom={this.leaveRoom}
+            />
+          </>)
+        }
+
+        {/* ... but if there's no active search we display our base server's public rooms in specific sections: */}
+        {/* the filtering logic is very specific to our use case and will most likely need some changes before using it in different scenarios */}
+        {/* we map through all public rooms and check if those rooms start with a certain prefix defined in /src/assets/data/naming.json */}
+        {
+          (!federationServer && !search) && uniq(map(roomStructure, 'type')).map(type => [
+            // Title for each "type" section
+            <h2 key={type} style={{ textTransform: 'capitalize' }}>{type}</h2>,
+            // All rooms of the given type
+            filter(roomStructure, { type: type }).map((section) => [
+              <h3 key={`h3${section.faculty}`}>{section.displayName}</h3>,
+              <RoomList
+                key={`roomList${section.faculty}`}
+                roomsToList={pickBy(publicRooms, room => (
+                  room.name.startsWith(`${section.faculty}-`) ||
+                  room.name.startsWith(`${section.faculty}+vk-`) ||
+                  room.name.startsWith(`kum+${section.faculty}-`)
+                ))}
+                joinedRooms={this.state.joinedRooms}
+                onJoinRoom={this.joinRoom}
+                onLeaveRoom={this.leaveRoom}
+              />
+            ])
+          ])
+        }
+      </section>
+    )
+  }
 }
 
-export default Explore
+Explore.propTypes = {
+  t: PropTypes.func.isRequired
+}
+
+export default withTranslation('explore')(Explore)
