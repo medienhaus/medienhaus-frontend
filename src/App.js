@@ -10,6 +10,7 @@ import Explore from './routes/explore'
 import Request from './routes/request'
 import Support from './routes/support'
 import Kino from './routes/kino'
+import Admin from './routes/admin'
 
 import Login from './routes/login'
 import Landing from './routes/landing'
@@ -63,6 +64,7 @@ const App = () => (
             <PrivateRoute path="/request" component={Request} />
             <PrivateRoute path="/support" component={Support} />
             <PrivateRoute path="/kino" component={Kino} />
+            <PrivateRoute path="/admin" component={Admin} />
           </Switch>
         </main>
         <Nav />

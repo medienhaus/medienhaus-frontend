@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form' // https://github.com/react-hook-form/react-hook-form
+import { Loading } from '../../components/loading'
 import Matrix from '../../Matrix'
 
 // import { useAuth } from '../../Auth'
@@ -11,11 +12,24 @@ const Admin = () => {
   const [password, setPassword] = useState('')
   const [mail, setMail] = useState('')
   const [sending, setSending] = useState(false)
+  const [admin, setAdmin] = useState(false)
   const { handleSubmit } = useForm()
   const matrixClient = Matrix.getMatrixClient()
 
+  useEffect(() => {
+    const checkAdminPriviliges = async () => {
+      setAdmin(await matrixClient.isSynapseAdministrator().catch(console.log))
+      console.log(admin ? 'you are a server admin' : 'you are not a server admin')
+    }
+    checkAdminPriviliges()
+  }, [admin, matrixClient])
+
   const onSubmit = async () => {
     setSending(true)
+
+    fetch(`${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/_synapse/admin/v1/register/`, { method: 'GET' })
+      .then(res => res.json())
+      .then(console.log)
 
     const body = {
       password: password,
@@ -29,8 +43,7 @@ const Admin = () => {
       admin: false,
       deactivated: false
     }
-    const admin = await matrixClient.isSynapseAdministrator()
-    console.log(admin)
+
     const requestOptions = {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -41,7 +54,10 @@ const Admin = () => {
     fetch(`${process.env.REACT_APP_MEDIENHAUS_BACKEND_API_ENDPOINT}/_synapse/admin/v2/users/`, requestOptions)
       .then(response => response.json())
       .then(data => console.log(data))
+      .then(setSending(false))
   }
+  if (!matrixClient) return <Loading />
+  if (!admin) return <p>You need admin priviliges to see this page.</p>
 
   return (
     <>
