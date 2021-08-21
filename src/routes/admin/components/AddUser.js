@@ -88,11 +88,8 @@ const AddUser = ({ matrixClient }) => {
         {/* eslint-disable-next-line no-useless-escape */}
         <input type="text" value={mail} onChange={(e) => setMail(e.target.value)} placeholder="email" />
         <div>
-          <label htmlFor="password">Make user admin: </label>
-          <label className="switch">
-            <input type="checkbox" value={admin} onChange={() => setAdmin(!admin)} checked={admin === true} />
-            <span className="slider"></span>
-          </label>
+          <label htmlFor="checkbox">Make user admin: </label>
+            <input type="checkbox" id="checkbox" name="checkbox" value={admin} onChange={() => setAdmin(!admin)} checked={admin === true} />
         </div>
         <button type="submit" disabled={sending || !name || !password || !mail}>{sending ? <Loading /> : 'SUBMIT'}</button>
       </form>
