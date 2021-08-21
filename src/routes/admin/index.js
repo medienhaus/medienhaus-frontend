@@ -13,7 +13,7 @@ import DeleteUser from './components/DeleteUser'
 const Admin = () => {
   const [admin, setAdmin] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [selection, setSelection] = useState(false)
+  const [selection, setSelection] = useState('add')
 
   const matrixClient = Matrix.getMatrixClient()
 
@@ -43,7 +43,7 @@ const Admin = () => {
   if (!matrixClient || loading) return <Loading />
   if (!admin) return <p>You need admin priviliges to see this page.</p>
   return (
-    <>
+    <><section className="request">
         <div id="formchooser">
         <input type="radio" id="add-user" name="add-user" value="add-user" checked={selection === 'add'} onClick={() => setSelection('add')} />
         <label htmlFor="add-user">Add Account</label>
@@ -52,6 +52,7 @@ const Admin = () => {
         <input type="radio" id="delete-user" name="delete-user" value="delete-user" checked={selection === 'delete'} onClick={() => setSelection('delete')} />
         <label htmlFor="delete-user">Delete user</label>
       </div>
+      </section>
       {renderSelection()}
   </>
   )
