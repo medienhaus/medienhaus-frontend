@@ -71,7 +71,6 @@ const AddUser = ({ matrixClient }) => {
           .then(setSending(false))
       })
   }
-  console.log(admin)
   return (
     <>
       <h2>Add user</h2>

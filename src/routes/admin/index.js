@@ -43,11 +43,11 @@ const Admin = () => {
     <>
         <div id="formchooser">
         <input type="radio" id="add-user" name="add-user" value="add-user" checked={selection === 'add'} onClick={() => setSelection('add')} />
-        <label htmlFor="add-user">Room</label>
+        <label htmlFor="add-user">Add Account</label>
         <input type="radio" id="change-password" name="change-password" value="change-password" checked={selection === 'password'} onClick={() => setSelection('password')} />
-        <label htmlFor="change-password">Account</label>
+        <label htmlFor="change-password">Reset Password</label>
         <input type="radio" id="delete-user" name="delete-user" value="delete-user" checked={selection === 'delete'} onClick={() => setSelection('delete')} />
-        <label htmlFor="delete-user">Room</label>
+        <label htmlFor="delete-user">Delete user</label>
       </div>
       {renderSelection()}
   </>
