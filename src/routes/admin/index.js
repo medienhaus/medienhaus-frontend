@@ -12,6 +12,7 @@ import DeleteUser from './components/DeleteUser'
 
 const Admin = () => {
   const [admin, setAdmin] = useState(false)
+  const [selection, setSelection] = useState(false)
 
   const matrixClient = Matrix.getMatrixClient()
 
@@ -23,14 +24,32 @@ const Admin = () => {
     checkAdminPriviliges()
   }, [admin, matrixClient])
 
+  const renderSelection = () => {
+    switch (selection) {
+      case 'add':
+        return <AddUser />
+      case 'password':
+        return <ChangePassword />
+      case 'delete':
+        return <DeleteUser />
+      default:
+        return <AddUser matrixClient={matrixClient} />
+    }
+  }
+
   if (!matrixClient) return <Loading />
   if (!admin) return <p>You need admin priviliges to see this page.</p>
-
   return (
     <>
-      <AddUser matrixClient={matrixClient}/>
-      <ChangePassword/>
-      <DeleteUser />
+        <div id="formchooser">
+        <input type="radio" id="add-user" name="add-user" value="add-user" checked={selection === 'add'} onClick={() => setSelection('add')} />
+        <label htmlFor="add-user">Room</label>
+        <input type="radio" id="change-password" name="change-password" value="change-password" checked={selection === 'password'} onClick={() => setSelection('password')} />
+        <label htmlFor="change-password">Account</label>
+        <input type="radio" id="delete-user" name="delete-user" value="delete-user" checked={selection === 'delete'} onClick={() => setSelection('delete')} />
+        <label htmlFor="delete-user">Room</label>
+      </div>
+      {renderSelection()}
   </>
   )
 }
