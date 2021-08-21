@@ -1,0 +1,14 @@
+{
+  "Add Account": "Benutzer hinzufügen",
+  "Reset Password": "Passwort zurücksetzen",
+  "Delete user": "Benutzer löschen",
+  "Username": "Benutzername",
+  "Password": "Passwort",
+  "Make user admin": "Benutzer Adminrechte geben",
+  "email address": "Mail-Adresse",
+  "SUBMIT": "ABSCHICKEN",
+  "adminPriviliges": "Sie brauchen Administrationsrechte um diese Seite aufrufen zu können.",
+  "passChange": "Passwort wurde erfolgreich zurückgesetzt.",
+  "Successfully deleted user ": "Der folgende Benutzer wurde erfolgreich gelöscht: ",
+  "User was successfully created.": "Benutzeraccount wurde erfolgreich angelegt."
+}

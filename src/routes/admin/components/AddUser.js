@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import JsSHA from 'jssha'
 import { useForm } from 'react-hook-form' // https://github.com/react-hook-form/react-hook-form
 import { Loading } from '../../../components/loading'
+import { useTranslation } from 'react-i18next'
 
 const AddUser = ({ matrixClient }) => {
   const [response, setResponse] = useState('')
@@ -11,6 +12,7 @@ const AddUser = ({ matrixClient }) => {
   const [admin, setAdmin] = useState(false)
   const [sending, setSending] = useState(false)
   const { handleSubmit } = useForm()
+  const { t } = useTranslation('admin')
 
   const onSubmit = async () => {
     setSending(true)
@@ -28,7 +30,6 @@ const AddUser = ({ matrixClient }) => {
     fetch(`${process.env.REACT_APP_MATRIX_BASE_URL}/_synapse/admin/v1/register/`, { method: 'GET' })
       .then(res => res.json())
       .then(res => {
-        console.log(res)
         const shaObj = new JsSHA('SHA-1', 'TEXT', {
           hmacKey: { value: process.env.REACT_APP_DEV_SHARED_SECRET, format: 'TEXT' }
         })
@@ -59,7 +60,7 @@ const AddUser = ({ matrixClient }) => {
               setName('')
               setMail('')
               setPassword('')
-              setResponse(`User ${name} was successfully created. An e-mail has been sent to: ${mail}`)
+              setResponse(t('User was successfully created.'))
               setTimeout(() => {
                 setResponse('')
               }, 2500)
@@ -73,24 +74,24 @@ const AddUser = ({ matrixClient }) => {
   }
   return (
     <>
-      <h2>Add user</h2>
+      <h2>{t('Add Account')}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label htmlFor="name">Username: </label>
+          <label htmlFor="name">{t('Username')}:</label>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="password">Password: </label>
+          <label htmlFor="password">{t('Password')}: </label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <label htmlFor="mail">E-Mail: </label>
+        <label htmlFor="mail">{t('E-Mail')}: </label>
         {/* eslint-disable-next-line no-useless-escape */}
         <input type="text" value={mail} onChange={(e) => setMail(e.target.value)} placeholder="email" />
         <div>
-          <label htmlFor="checkbox">Make user admin: </label>
+          <label htmlFor="checkbox">{t('Make user admin')}: </label>
             <input type="checkbox" id="checkbox" name="checkbox" value={admin} onChange={() => setAdmin(!admin)} checked={admin === true} />
         </div>
-        <button type="submit" disabled={sending || !name || !password || !mail}>{sending ? <Loading /> : 'SUBMIT'}</button>
+        <button type="submit" disabled={sending || !name || !password || !mail}>{sending ? <Loading /> : t('SUBMIT')}</button>
       </form>
 
       {response && <p>{response}</p>}

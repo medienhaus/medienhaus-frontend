@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form' // https://github.com/react-hook-form/react-hook-form
+import { useTranslation } from 'react-i18next'
 import { Loading } from '../../../components/loading'
 
 const DeleteUser = () => {
@@ -7,6 +8,7 @@ const DeleteUser = () => {
   const [name, setName] = useState('')
   const [sending, setSending] = useState(false)
   const { handleSubmit } = useForm()
+  const { t } = useTranslation('admin')
 
   const onSubmit = async () => {
     setSending(true)
@@ -21,7 +23,7 @@ const DeleteUser = () => {
       .then(async res => {
         if (res.ok) {
           setName('')
-          setResponse(`Successfully deleted user ${name}.`)
+          setResponse(t('Successfully deleted user ') + name)
           setTimeout(() => {
             setResponse('')
           }, 2500)
@@ -37,11 +39,11 @@ const DeleteUser = () => {
     <h2>Delete user</h2>
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <label htmlFor="name">Username: </label>
+        <label htmlFor="name">{t('Username')}: </label>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
       </div>
 
-      <button type="submit" disabled={sending || !name }>{sending ? <Loading /> : 'SUBMIT'}</button>
+      <button type="submit" disabled={sending || !name }>{sending ? <Loading /> : t('SUBMIT')}</button>
       </form>
         {response && <p>{response}</p>}
         </>

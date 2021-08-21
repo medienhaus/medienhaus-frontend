@@ -5,6 +5,7 @@ import Matrix from '../../Matrix'
 import AddUser from './components/AddUser'
 import ChangePassword from './components/ChangePassword'
 import DeleteUser from './components/DeleteUser'
+import { useTranslation, Trans } from 'react-i18next'
 
 // import { useAuth } from '../../Auth'
 
@@ -14,6 +15,7 @@ const Admin = () => {
   const [admin, setAdmin] = useState(false)
   const [loading, setLoading] = useState(false)
   const [selection, setSelection] = useState('add')
+  const { t } = useTranslation('admin')
 
   const matrixClient = Matrix.getMatrixClient()
 
@@ -41,16 +43,18 @@ const Admin = () => {
   }
 
   if (!matrixClient || loading) return <Loading />
-  if (!admin) return <p>You need admin priviliges to see this page.</p>
+  if (!admin) return <Trans t={t} i18nKey="adminPriviliges">You need admin priviliges to see this page.</Trans>
+
   return (
-    <><section className="request">
+    <>
+      <section className="request">
         <div id="formchooser">
-        <input type="radio" id="add-user" name="add-user" value="add-user" checked={selection === 'add'} onClick={() => setSelection('add')} />
-        <label htmlFor="add-user">Add Account</label>
-        <input type="radio" id="change-password" name="change-password" value="change-password" checked={selection === 'password'} onClick={() => setSelection('password')} />
-        <label htmlFor="change-password">Reset Password</label>
-        <input type="radio" id="delete-user" name="delete-user" value="delete-user" checked={selection === 'delete'} onClick={() => setSelection('delete')} />
-        <label htmlFor="delete-user">Delete user</label>
+        <input type="radio" id="add-user" name={t('Add Account')} checked={selection === 'add'} onChange={() => setSelection('add')} />
+        <label htmlFor="add-user">{t('Add Account')}</label>
+        <input type="radio" id="change-password" name={t('Reset Password')} value="change-password" checked={selection === 'password'} onChange={() => setSelection('password')} />
+        <label htmlFor="change-password">{t('Reset Password')}</label>
+          <input type="radio" id="delete-user" name={t('Delete user')} value="delete-user" checked={selection === 'delete'} onChange={() => setSelection('delete')} />
+        <label htmlFor="delete-user">{t('Delete user')}</label>
       </div>
       </section>
       {renderSelection()}
