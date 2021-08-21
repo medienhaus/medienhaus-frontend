@@ -12,14 +12,17 @@ import DeleteUser from './components/DeleteUser'
 
 const Admin = () => {
   const [admin, setAdmin] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [selection, setSelection] = useState(false)
 
   const matrixClient = Matrix.getMatrixClient()
 
   useEffect(() => {
     const checkAdminPriviliges = async () => {
+      setLoading(true)
       setAdmin(await matrixClient.isSynapseAdministrator().catch(console.log))
       console.log(admin ? 'you are a server admin' : 'you are not a server admin')
+      setLoading(false)
     }
     checkAdminPriviliges()
   }, [admin, matrixClient])
@@ -37,7 +40,7 @@ const Admin = () => {
     }
   }
 
-  if (!matrixClient) return <Loading />
+  if (!matrixClient || loading) return <Loading />
   if (!admin) return <p>You need admin priviliges to see this page.</p>
   return (
     <>
