@@ -8,6 +8,7 @@ const AddUser = ({ matrixClient }) => {
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const [mail, setMail] = useState('')
+  const [admin, setAdmin] = useState(false)
   const [sending, setSending] = useState(false)
   const { handleSubmit } = useForm()
 
@@ -37,7 +38,7 @@ const AddUser = ({ matrixClient }) => {
         shaObj.update('\0')
         shaObj.update(password)
         shaObj.update('\0')
-        shaObj.update('notadmin')
+        shaObj.update(admin ? 'admin' : 'notadmin')
         const hmac = shaObj.getHash('HEX')
 
         const body = {
@@ -45,7 +46,7 @@ const AddUser = ({ matrixClient }) => {
           username: name,
           displayname: name,
           password: password,
-          admin: false,
+          admin: admin,
           mac: hmac
         }
 
@@ -70,27 +71,34 @@ const AddUser = ({ matrixClient }) => {
           .then(setSending(false))
       })
   }
-
+  console.log(admin)
   return (
-      <>
-     <h2>Add user</h2>
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="name">Username: </label>
+    <>
+      <h2>Add user</h2>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label htmlFor="name">Username: </label>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-      </div>
-      <div>
-        <label htmlFor="password">Password: </label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </div>
+        </div>
+        <div>
+          <label htmlFor="password">Password: </label>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </div>
         <label htmlFor="mail">E-Mail: </label>
         {/* eslint-disable-next-line no-useless-escape */}
-      <input type="text" value={mail} onChange={(e) => setMail(e.target.value)} placeholder="email"/>
-
-      <button type="submit" disabled={sending || !name || !password || !mail}>{sending ? <Loading /> : 'SUBMIT'}</button>
+        <input type="text" value={mail} onChange={(e) => setMail(e.target.value)} placeholder="email" />
+        <div>
+          <label htmlFor="password">Make user admin: </label>
+          <label className="switch">
+            <input type="checkbox" value={admin} onChange={() => setAdmin(!admin)} checked={admin === true} />
+            <span className="slider"></span>
+          </label>
+        </div>
+        <button type="submit" disabled={sending || !name || !password || !mail}>{sending ? <Loading /> : 'SUBMIT'}</button>
       </form>
+
       {response && <p>{response}</p>}
-        </>
+    </>
   )
 }
 export default AddUser
