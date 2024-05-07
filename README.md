@@ -1,10 +1,10 @@
-<img src="public/favicon.svg" width="70" />
+<img src="logo.svg" width="70" />
 
 ### medienhaus/
 
-Berlin University of the Arts’ free and open-source environment for digital learning, teaching, and collaboration.
+Customizable modular free and open-source environment for decentralized, distributed communication and collaboration.
 
-[Concept Paper](https://medienhaus.dev/) | [Twitter](https://twitter.com/medienhaus_)
+[Website](https://medienhaus.dev/) — [Fediverse](https://chaos.social/@medienhaus)
 
 <br>
 
